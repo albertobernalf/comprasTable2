@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)https://docs.djangoproject.com/es/1.11/topics/http/file-uploads/ -->
+<html lang="es" class=" mdzr-js mdzr-borderradius mdzr-boxshadow mdzr-cssanimations mdzr-svg" data-theme="auto"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="ROBOTS" content="ALL">
+    <meta name="MSSmartTagsPreventParsing" content="true">
+    <meta name="Copyright" content="Django Software Foundation">
+    <meta name="keywords" content="Python, Django, framework, open-source">
+    <meta name="description" content="">
+
+    
+  
+    
+      
+    
+  
+  <link rel="canonical" href="https://docs.djangoproject.com/es/4.1/topics/http/file-uploads/">
+  
+    
+      
+    
+    <link rel="alternate" hreflang="el" href="https://docs.djangoproject.com/el/1.11/topics/http/file-uploads/">
+  
+    
+      
+    
+    <link rel="alternate" hreflang="en" href="https://docs.djangoproject.com/en/1.11/topics/http/file-uploads/">
+  
+    
+      
+    
+    <link rel="alternate" hreflang="es" href="https://docs.djangoproject.com/es/1.11/topics/http/file-uploads/">
+  
+    
+      
+    
+    <link rel="alternate" hreflang="fr" href="https://docs.djangoproject.com/fr/1.11/topics/http/file-uploads/">
+  
+    
+      
+    
+    <link rel="alternate" hreflang="id" href="https://docs.djangoproject.com/id/1.11/topics/http/file-uploads/">
+  
+    
+      
+    
+    <link rel="alternate" hreflang="ja" href="https://docs.djangoproject.com/ja/1.11/topics/http/file-uploads/">
+  
+    
+      
+    
+    <link rel="alternate" hreflang="ko" href="https://docs.djangoproject.com/ko/1.11/topics/http/file-uploads/">
+  
+    
+      
+    
+    <link rel="alternate" hreflang="pl" href="https://docs.djangoproject.com/pl/1.11/topics/http/file-uploads/">
+  
+    
+      
+    
+    <link rel="alternate" hreflang="pt-br" href="https://docs.djangoproject.com/pt-br/1.11/topics/http/file-uploads/">
+  
+
+  <link rel="search" type="application/opensearchdescription+xml" href="https://docs.djangoproject.com/es/1.11/search/description/" title="Documentación de Django">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="https://static.djangoproject.com/img/icon-touch.e4872c4da341.png">
+    <link rel="icon" sizes="192x192" href="https://static.djangoproject.com/img/icon-touch.e4872c4da341.png">
+    <link rel="shortcut icon" href="https://static.djangoproject.com/img/favicon.6dbf28c0650e.ico">
+    <meta name="msapplication-TileColor" content="#113228">
+    <meta name="msapplication-TileImage" content="https://static.djangoproject.com/img/icon-tile.b01ac0ef9f67.png">
+    <meta name="theme-color" content="#0C4B33">
+
+    
+    <meta property="og:title" content="Django">
+    <meta property="og:description" content="The web framework for perfectionists with deadlines.">
+    <meta property="og:image" content="https://static.djangoproject.com/img/logos/django-logo-negative.1d528e2cb5fb.png">
+    <meta property="og:image:alt" content="Django logo">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="546">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:url" content="https://docs.djangoproject.com/es/1.11/topics/http/file-uploads/">
+    <meta property="og:site_name" content="Django Project">
+
+    <meta property="twitter:creator" content="djangoproject">
+    <meta property="twitter:site" content="djangoproject">
+    <meta property="twitter:card" content="summary">
+    
+
+    <title>File Uploads | Documentación de Django | Django</title>
+
+    <link rel="stylesheet" href="./File Uploads _ Documentación de Django _ Django_files/output.1adc4207e45f.css">
+    <script src="./File Uploads _ Documentación de Django _ Django_files/webfontloader.e75218f5f090.js.descarga"></script>
+    <link rel="stylesheet" href="./File Uploads _ Documentación de Django _ Django_files/css"><script>
+    WebFont.load({
+      custom: {
+        families: ['FontAwesome', 'Fira+Mono'],
+      },
+      google: {
+        families: ['Roboto:400italic,700italic,300,700,400:latin'
+        ]
+      },
+      classes: false,
+      events: false,
+      timeout: 1000
+    });
+    </script>
+    <script src="./File Uploads _ Documentación de Django _ Django_files/modernizr.3b36762e418a.js.descarga"></script>
+    <script src="./File Uploads _ Documentación de Django _ Django_files/switch-dark-mode.a0e0dca32970.js.descarga"></script>
+    
+  <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="main.48270eac7c0b" src="./File Uploads _ Documentación de Django _ Django_files/main.48270eac7c0b.js.descarga"></script><style>.osSwitch{position:relative;display:inline-block;width:34px;height:15.3px}.osSwitch input{opacity:0;width:0;height:0}.osSlider{position:absolute;top:0;left:0;right:0;bottom:0;border-radius:34px;background-color:#93a0b5;transition:0.4s}.osSlider:before{position:absolute;content:'';height:13px;width:13px;left:2px;bottom:1px;border-radius:50%;background-color:white;transition:0.4s}input:checked+.sliderGreen{background-color:#04d289}input:checked+.sliderRed{background-color:#ff3b30}input:not(:checked)+.defaultGreen{background-color:#04d289}input:checked+.osSlider:before{transform:translateX(17px)}
+</style><style>
+    @font-face {
+      font-family: 'SegoeUI_online_security'; 
+      src: url(chrome-extension://llbcnfanfmjhpedaedhbcnpgeepdnnok/segoe-ui.woff);
+    }
+
+    @font-face {
+      font-family: 'SegoeUI_bold_online_security'; 
+      src: url(chrome-extension://llbcnfanfmjhpedaedhbcnpgeepdnnok/segoe-ui-bold.woff);
+    }
+</style><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="mod/mobile-menu" src="./File Uploads _ Documentación de Django _ Django_files/mobile-menu.6012f4745df8.js.descarga"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="mod/version-switcher" src="./File Uploads _ Documentación de Django _ Django_files/version-switcher.c56ff7ed5481.js.descarga"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="mod/doc-switcher" src="./File Uploads _ Documentación de Django _ Django_files/doc-switcher.js.descarga"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="mod/floating-warning" src="./File Uploads _ Documentación de Django _ Django_files/floating-warning.a21b2abd2884.js.descarga"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="mod/search-key" src="./File Uploads _ Documentación de Django _ Django_files/search-key.ae7292327b47.js.descarga"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="mod/clippify" src="./File Uploads _ Documentación de Django _ Django_files/clippify.js.descarga"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="clipboard" src="./File Uploads _ Documentación de Django _ Django_files/clipboard.min.bd70fd596a23.js.descarga"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="jquery" src="./File Uploads _ Documentación de Django _ Django_files/jquery.min.87e69028f78d.js.descarga"></script></head>
+
+  <body id="generic" class=""><div id="outdated-warning" class="doc-floating-warning" style="position: relative;">
+  Este documento es para una versión insegura de Django que ya no será soportado. ¡Por favor, actualice a una versión más reciente!
+</div>
+
+    <div role="banner" id="top">
+  <div class="container">
+    <a class="logo" href="https://www.djangoproject.com/">Django</a>
+    <p class="meta">The web framework for perfectionists with deadlines.</p>
+    <div class="menu-button"><i class="icon icon-reorder"></i><span>Menu</span></div><div class="mobile-toggle">
+      
+
+<button class="theme-toggle">
+  <div class="visually-hidden theme-label-when-auto">Toggle theme (current theme: auto)</div>
+  <div class="visually-hidden theme-label-when-light">Toggle theme (current theme: light)</div>
+  <div class="visually-hidden theme-label-when-dark">Toggle theme (current theme: dark)</div>
+
+  <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+  <svg aria-hidden="true" class="theme-icon-when-auto">
+    <use xlink:href="#icon-auto"></use>
+  </svg>
+  <svg aria-hidden="true" class="theme-icon-when-dark">
+    <use xlink:href="#icon-moon"></use>
+  </svg>
+  <svg aria-hidden="true" class="theme-icon-when-light">
+    <use xlink:href="#icon-sun"></use>
+  </svg>
+</button>
+
+    </div>
+    <div role="navigation" class="nav-menu-on">
+      <ul>
+        <li>
+          <a href="https://www.djangoproject.com/start/overview/">Overview</a>
+        </li>
+        <li>
+          <a href="https://www.djangoproject.com/download/">Download</a>
+        </li>
+        <li class="active">
+          <a href="https://docs.djangoproject.com/">Documentation</a>
+        </li>
+        <li>
+          <a href="https://www.djangoproject.com/weblog/">News</a>
+        </li>
+        <li>
+          <a href="https://www.djangoproject.com/community/">Community</a>
+        </li>
+        <li>
+          <a href="https://github.com/django/django" target="_blank" rel="noopener">Code</a>
+        </li>
+        <li>
+          <a href="https://code.djangoproject.com/">Issues</a>
+        </li>
+        <li>
+          <a href="https://www.djangoproject.com/foundation/">About</a>
+        </li>
+        <li>
+          <a href="https://www.djangoproject.com/fundraising/">♥ Donate</a>
+        </li>
+        <li>
+          
+
+<button class="theme-toggle">
+  <div class="visually-hidden theme-label-when-auto">Toggle theme (current theme: auto)</div>
+  <div class="visually-hidden theme-label-when-light">Toggle theme (current theme: light)</div>
+  <div class="visually-hidden theme-label-when-dark">Toggle theme (current theme: dark)</div>
+
+  <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+  <svg aria-hidden="true" class="theme-icon-when-auto">
+    <use xlink:href="#icon-auto"></use>
+  </svg>
+  <svg aria-hidden="true" class="theme-icon-when-dark">
+    <use xlink:href="#icon-moon"></use>
+  </svg>
+  <svg aria-hidden="true" class="theme-icon-when-light">
+    <use xlink:href="#icon-sun"></use>
+  </svg>
+</button>
+
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+    <div class="copy-banner">
+      <div class="container 
+container--flex container--flex--wrap--mobile
+">
+        
+<h1><a href="https://docs.djangoproject.com/es/1.11/">Documentación</a></h1>
+
+
+<form action="https://docs.djangoproject.com/es/1.11/search/" class="search form-input" role="search">
+  <label class="visuallyhidden" for="id_q">Search:</label>
+    <input type="search" name="q" placeholder="Buscar documentación sobre 1.11  (Ctrl + K)" id="id_q">
+
+    <button type="submit">
+      <i class="icon icon-search"></i>
+      <span class="visuallyhidden">Buscar</span>
+    </button>
+</form>
+
+
+      </div>
+    </div>
+    <div id="billboard"></div>
+
+    <div class="container sidebar-right">
+      <div role="main">
+
+        
+          
+        
+
+        
+<div id="version-switcher">
+  <ul id="faq-link">
+    <li class="current-link">
+      <a href="https://docs.djangoproject.com/es/1.11/faq/help/">
+        <span>Getting Help</span>
+      </a>
+    </li>
+  </ul>
+  <ul id="doc-languages" class="language-switcher doc-switcher">
+  
+  
+  <li class="other">
+    
+      
+    
+    <a href="https://docs.djangoproject.com/el/1.11/topics/http/file-uploads/">el</a>
+  </li>
+  
+  
+  
+  <li class="other">
+    
+      
+    
+    <a href="https://docs.djangoproject.com/en/1.11/topics/http/file-uploads/">en</a>
+  </li>
+  
+  
+  
+  
+  
+  <li class="other">
+    
+      
+    
+    <a href="https://docs.djangoproject.com/fr/1.11/topics/http/file-uploads/">fr</a>
+  </li>
+  
+  
+  
+  <li class="other">
+    
+      
+    
+    <a href="https://docs.djangoproject.com/id/1.11/topics/http/file-uploads/">id</a>
+  </li>
+  
+  
+  
+  <li class="other">
+    
+      
+    
+    <a href="https://docs.djangoproject.com/ja/1.11/topics/http/file-uploads/">ja</a>
+  </li>
+  
+  
+  
+  <li class="other">
+    
+      
+    
+    <a href="https://docs.djangoproject.com/ko/1.11/topics/http/file-uploads/">ko</a>
+  </li>
+  
+  
+  
+  <li class="other">
+    
+      
+    
+    <a href="https://docs.djangoproject.com/pl/1.11/topics/http/file-uploads/">pl</a>
+  </li>
+  
+  
+  
+  <li class="other">
+    
+      
+    
+    <a href="https://docs.djangoproject.com/pt-br/1.11/topics/http/file-uploads/">pt-br</a>
+  </li>
+  
+  
+    <li class="current" title="Haga clic en los enlaces de la izquierda para cambiar a otro idioma.">
+      <span>Idioma: <strong>es</strong></span>
+    </li>
+  </ul>
+
+  
+  <ul id="doc-versions" class="version-switcher doc-switcher">
+    
+    
+    <li class="other">
+      
+        
+      
+      <a href="https://docs.djangoproject.com/es/1.10/topics/http/file-uploads/">1.10</a>
+    </li>
+    
+    
+    
+    
+    
+    <li class="other">
+      
+        
+      
+      <a href="https://docs.djangoproject.com/es/2.0/topics/http/file-uploads/">2.0</a>
+    </li>
+    
+    
+    
+    <li class="other">
+      
+        
+      
+      <a href="https://docs.djangoproject.com/es/2.1/topics/http/file-uploads/">2.1</a>
+    </li>
+    
+    
+    
+    <li class="other">
+      
+        
+      
+      <a href="https://docs.djangoproject.com/es/2.2/topics/http/file-uploads/">2.2</a>
+    </li>
+    
+    
+    
+    <li class="other">
+      
+        
+      
+      <a href="https://docs.djangoproject.com/es/3.0/topics/http/file-uploads/">3.0</a>
+    </li>
+    
+    
+    
+    <li class="other">
+      
+        
+      
+      <a href="https://docs.djangoproject.com/es/3.1/topics/http/file-uploads/">3.1</a>
+    </li>
+    
+    
+    
+    <li class="other">
+      
+        
+      
+      <a href="https://docs.djangoproject.com/es/3.2/topics/http/file-uploads/">3.2</a>
+    </li>
+    
+    
+    
+    <li class="other">
+      
+        
+      
+      <a href="https://docs.djangoproject.com/es/4.0/topics/http/file-uploads/">4.0</a>
+    </li>
+    
+    
+    
+    <li class="other">
+      
+        
+      
+      <a href="https://docs.djangoproject.com/es/4.1/topics/http/file-uploads/">4.1</a>
+    </li>
+    
+    
+    
+    <li class="other">
+      
+        
+      
+      <a href="https://docs.djangoproject.com/es/dev/topics/http/file-uploads/">dev</a>
+    </li>
+    
+    
+    <li class="current" title="Este documento describes Django 1.11. Haga clic en los enlaces de la izquierda para ver otras versiones.">
+       <span>Versión de la documentación:
+         <strong>1.11</strong>
+       </span>
+    </li>
+  </ul>
+</div>
+
+
+<div id="docs-content">
+<div class="section" id="s-file-uploads">
+<span id="file-uploads"></span><h1>File Uploads<a class="headerlink" href="https://docs.djangoproject.com/es/1.11/topics/http/file-uploads/#file-uploads" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>When Django handles a file upload, the file data ends up placed in
+<a class="reference internal" href="https://docs.djangoproject.com/es/1.11/ref/request-response/#django.http.HttpRequest.FILES" title="django.http.HttpRequest.FILES"><code class="xref py py-attr docutils literal"><span class="pre">request.FILES</span></code></a> (for more on the
+<code class="docutils literal"><span class="pre">request</span></code> object see the documentation for <a class="reference internal" href="https://docs.djangoproject.com/es/1.11/ref/request-response/"><span class="doc">request and response objects</span></a>). This document explains how files are stored on disk
+and in memory, and how to customize the default behavior.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p class="last">There are security risks if you are accepting uploaded content from
+untrusted users! See the security guide’s topic on
+<a class="reference internal" href="https://docs.djangoproject.com/es/1.11/topics/security/#user-uploaded-content-security"><span class="std std-ref">User-uploaded content</span></a> for mitigation details.</p>
+</div>
+<div class="section" id="s-basic-file-uploads">
+<span id="basic-file-uploads"></span><h2>Basic file uploads<a class="headerlink" href="https://docs.djangoproject.com/es/1.11/topics/http/file-uploads/#basic-file-uploads" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Consider a simple form containing a <a class="reference internal" href="https://docs.djangoproject.com/es/1.11/ref/forms/fields/#django.forms.FileField" title="django.forms.FileField"><code class="xref py py-class docutils literal"><span class="pre">FileField</span></code></a>:</p>
+<div class="highlight-default snippet"><div class="snippet-filename">forms.py<span class="btn-clipboard" title="Copy this code"><i class="icon icon-clipboard"></i></span></div>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="k">import</span> <span class="n">forms</span>
+
+<span class="k">class</span> <span class="nc">UploadFileForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    <span class="n">file</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">FileField</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>A view handling this form will receive the file data in
+<a class="reference internal" href="https://docs.djangoproject.com/es/1.11/ref/request-response/#django.http.HttpRequest.FILES" title="django.http.HttpRequest.FILES"><code class="xref py py-attr docutils literal"><span class="pre">request.FILES</span></code></a>, which is a dictionary
+containing a key for each <a class="reference internal" href="https://docs.djangoproject.com/es/1.11/ref/forms/fields/#django.forms.FileField" title="django.forms.FileField"><code class="xref py py-class docutils literal"><span class="pre">FileField</span></code></a> (or
+<a class="reference internal" href="https://docs.djangoproject.com/es/1.11/ref/forms/fields/#django.forms.ImageField" title="django.forms.ImageField"><code class="xref py py-class docutils literal"><span class="pre">ImageField</span></code></a>, or other <a class="reference internal" href="https://docs.djangoproject.com/es/1.11/ref/forms/fields/#django.forms.FileField" title="django.forms.FileField"><code class="xref py py-class docutils literal"><span class="pre">FileField</span></code></a>
+subclass) in the form. So the data from the above form would
+be accessible as <code class="docutils literal"><span class="pre">request.FILES['file']</span></code>.</p>
+<p>Note that <a class="reference internal" href="https://docs.djangoproject.com/es/1.11/ref/request-response/#django.http.HttpRequest.FILES" title="django.http.HttpRequest.FILES"><code class="xref py py-attr docutils literal"><span class="pre">request.FILES</span></code></a> will only
+contain data if the request method was <code class="docutils literal"><span class="pre">POST</span></code> and the <code class="docutils literal"><span class="pre">&lt;form&gt;</span></code> that posted
+the request has the attribute <code class="docutils literal"><span class="pre">enctype="multipart/form-data"</span></code>. Otherwise,
+<code class="docutils literal"><span class="pre">request.FILES</span></code> will be empty.</p>
+<p>Most of the time, you’ll simply pass the file data from <code class="docutils literal"><span class="pre">request</span></code> into the
+form as described in <a class="reference internal" href="https://docs.djangoproject.com/es/1.11/ref/forms/api/#binding-uploaded-files"><span class="std std-ref">Binding uploaded files to a form</span></a>. This would look
+something like:</p>
+<div class="highlight-default snippet"><div class="snippet-filename">views.py<span class="btn-clipboard" title="Copy this code"><i class="icon icon-clipboard"></i></span></div>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">HttpResponseRedirect</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="k">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">.forms</span> <span class="k">import</span> <span class="n">UploadFileForm</span>
+
+<span class="c1"># Imaginary function to handle an uploaded file.</span>
+<span class="kn">from</span> <span class="nn">somewhere</span> <span class="k">import</span> <span class="n">handle_uploaded_file</span>
+
+<span class="k">def</span> <span class="nf">upload_file</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">'POST'</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">UploadFileForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">handle_uploaded_file</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">[</span><span class="s1">'file'</span><span class="p">])</span>
+            <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s1">'/success/url/'</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">UploadFileForm</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">'upload.html'</span><span class="p">,</span> <span class="p">{</span><span class="s1">'form'</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>Notice that we have to pass <a class="reference internal" href="https://docs.djangoproject.com/es/1.11/ref/request-response/#django.http.HttpRequest.FILES" title="django.http.HttpRequest.FILES"><code class="xref py py-attr docutils literal"><span class="pre">request.FILES</span></code></a>
+into the form’s constructor; this is how file data gets bound into a form.</p>
+<p>Here’s a common way you might handle an uploaded file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">handle_uploaded_file</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'some/file/name.txt'</span><span class="p">,</span> <span class="s1">'wb+'</span><span class="p">)</span> <span class="k">as</span> <span class="n">destination</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">chunks</span><span class="p">():</span>
+            <span class="n">destination</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Looping over <code class="docutils literal"><span class="pre">UploadedFile.chunks()</span></code> instead of using <code class="docutils literal"><span class="pre">read()</span></code> ensures that
+large files don’t overwhelm your system’s memory.</p>
+<p>There are a few other methods and attributes available on <code class="docutils literal"><span class="pre">UploadedFile</span></code>
+objects; see <a class="reference internal" href="https://docs.djangoproject.com/es/1.11/ref/files/uploads/#django.core.files.uploadedfile.UploadedFile" title="django.core.files.uploadedfile.UploadedFile"><code class="xref py py-class docutils literal"><span class="pre">UploadedFile</span></code></a> for a complete reference.</p>
+<div class="section" id="s-handling-uploaded-files-with-a-model">
+<span id="handling-uploaded-files-with-a-model"></span><h3>Handling uploaded files with a model<a class="headerlink" href="https://docs.djangoproject.com/es/1.11/topics/http/file-uploads/#handling-uploaded-files-with-a-model" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>If you’re saving a file on a <a class="reference internal" href="https://docs.djangoproject.com/es/1.11/ref/models/instances/#django.db.models.Model" title="django.db.models.Model"><code class="xref py py-class docutils literal"><span class="pre">Model</span></code></a> with a
+<a class="reference internal" href="https://docs.djangoproject.com/es/1.11/ref/models/fields/#django.db.models.FileField" title="django.db.models.FileField"><code class="xref py py-class docutils literal"><span class="pre">FileField</span></code></a>, using a <a class="reference internal" href="https://docs.djangoproject.com/es/1.11/topics/forms/modelforms/#django.forms.ModelForm" title="django.forms.ModelForm"><code class="xref py py-class docutils literal"><span class="pre">ModelForm</span></code></a>
+makes this process much easier. The file object will be saved to the location
+specified by the <a class="reference internal" href="https://docs.djangoproject.com/es/1.11/ref/models/fields/#django.db.models.FileField.upload_to" title="django.db.models.FileField.upload_to"><code class="xref py py-attr docutils literal"><span class="pre">upload_to</span></code></a> argument of the
+corresponding <a class="reference internal" href="https://docs.djangoproject.com/es/1.11/ref/models/fields/#django.db.models.FileField" title="django.db.models.FileField"><code class="xref py py-class docutils literal"><span class="pre">FileField</span></code></a> when calling
+<code class="docutils literal"><span class="pre">form.save()</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">HttpResponseRedirect</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="k">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">.forms</span> <span class="k">import</span> <span class="n">ModelFormWithFileField</span>
+
+<span class="k">def</span> <span class="nf">upload_file</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">'POST'</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModelFormWithFileField</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="c1"># file is saved</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s1">'/success/url/'</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModelFormWithFileField</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">'upload.html'</span><span class="p">,</span> <span class="p">{</span><span class="s1">'form'</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>If you are constructing an object manually, you can simply assign the file
+object from <a class="reference internal" href="https://docs.djangoproject.com/es/1.11/ref/request-response/#django.http.HttpRequest.FILES" title="django.http.HttpRequest.FILES"><code class="xref py py-attr docutils literal"><span class="pre">request.FILES</span></code></a> to the file
+field in the model:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">HttpResponseRedirect</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="k">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">.forms</span> <span class="k">import</span> <span class="n">UploadFileForm</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="k">import</span> <span class="n">ModelWithFileField</span>
+
+<span class="k">def</span> <span class="nf">upload_file</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">'POST'</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">UploadFileForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">instance</span> <span class="o">=</span> <span class="n">ModelWithFileField</span><span class="p">(</span><span class="n">file_field</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">[</span><span class="s1">'file'</span><span class="p">])</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s1">'/success/url/'</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">UploadFileForm</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">'upload.html'</span><span class="p">,</span> <span class="p">{</span><span class="s1">'form'</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="s-uploading-multiple-files">
+<span id="uploading-multiple-files"></span><h3>Uploading multiple files<a class="headerlink" href="https://docs.djangoproject.com/es/1.11/topics/http/file-uploads/#uploading-multiple-files" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>If you want to upload multiple files using one form field, set the <code class="docutils literal"><span class="pre">multiple</span></code>
+HTML attribute of field’s widget:</p>
+<div class="highlight-default snippet"><div class="snippet-filename">forms.py<span class="btn-clipboard" title="Copy this code"><i class="icon icon-clipboard"></i></span></div>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="k">import</span> <span class="n">forms</span>
+
+<span class="k">class</span> <span class="nc">FileFieldForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
+    <span class="n">file_field</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">FileField</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="n">forms</span><span class="o">.</span><span class="n">ClearableFileInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">'multiple'</span><span class="p">:</span> <span class="kc">True</span><span class="p">}))</span>
+</pre></div>
+</div>
+<p>Then override the <code class="docutils literal"><span class="pre">post</span></code> method of your
+<a class="reference internal" href="https://docs.djangoproject.com/es/1.11/ref/class-based-views/generic-editing/#django.views.generic.edit.FormView" title="django.views.generic.edit.FormView"><code class="xref py py-class docutils literal"><span class="pre">FormView</span></code></a> subclass to handle multiple file
+uploads:</p>
+<div class="highlight-default snippet"><div class="snippet-filename">views.py<span class="btn-clipboard" title="Copy this code"><i class="icon icon-clipboard"></i></span></div>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.generic.edit</span> <span class="k">import</span> <span class="n">FormView</span>
+<span class="kn">from</span> <span class="nn">.forms</span> <span class="k">import</span> <span class="n">FileFieldForm</span>
+
+<span class="k">class</span> <span class="nc">FileFieldView</span><span class="p">(</span><span class="n">FormView</span><span class="p">):</span>
+    <span class="n">form_class</span> <span class="o">=</span> <span class="n">FileFieldForm</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s1">'upload.html'</span>  <span class="c1"># Replace with your template.</span>
+    <span class="n">success_url</span> <span class="o">=</span> <span class="s1">'...'</span>  <span class="c1"># Replace with your URL or reverse().</span>
+
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">form_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_form_class</span><span class="p">()</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_form</span><span class="p">(</span><span class="n">form_class</span><span class="p">)</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span><span class="s1">'file_field'</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+                <span class="o">...</span>  <span class="c1"># Do something with each file.</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">form_valid</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">form_invalid</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="s-upload-handlers">
+<span id="upload-handlers"></span><h2>Upload Handlers<a class="headerlink" href="https://docs.djangoproject.com/es/1.11/topics/http/file-uploads/#upload-handlers" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>When a user uploads a file, Django passes off the file data to an <em>upload
+handler</em> – a small class that handles file data as it gets uploaded. Upload
+handlers are initially defined in the <a class="reference internal" href="https://docs.djangoproject.com/es/1.11/ref/settings/#std:setting-FILE_UPLOAD_HANDLERS"><code class="xref std std-setting docutils literal"><span class="pre">FILE_UPLOAD_HANDLERS</span></code></a> setting,
+which defaults to:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s2">"django.core.files.uploadhandler.MemoryFileUploadHandler"</span><span class="p">,</span>
+ <span class="s2">"django.core.files.uploadhandler.TemporaryFileUploadHandler"</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Together <a class="reference internal" href="https://docs.djangoproject.com/es/1.11/ref/files/uploads/#django.core.files.uploadhandler.MemoryFileUploadHandler" title="django.core.files.uploadhandler.MemoryFileUploadHandler"><code class="xref py py-class docutils literal"><span class="pre">MemoryFileUploadHandler</span></code></a> and
+<a class="reference internal" href="https://docs.djangoproject.com/es/1.11/ref/files/uploads/#django.core.files.uploadhandler.TemporaryFileUploadHandler" title="django.core.files.uploadhandler.TemporaryFileUploadHandler"><code class="xref py py-class docutils literal"><span class="pre">TemporaryFileUploadHandler</span></code></a> provide Django’s default file upload
+behavior of reading small files into memory and large ones onto disk.</p>
+<p>You can write custom handlers that customize how Django handles files. You
+could, for example, use custom handlers to enforce user-level quotas, compress
+data on the fly, render progress bars, and even send data to another storage
+location directly without storing it locally. See <a class="reference internal" href="https://docs.djangoproject.com/es/1.11/ref/files/uploads/#custom-upload-handlers"><span class="std std-ref">Writing custom upload handlers</span></a>
+for details on how you can customize or completely replace upload behavior.</p>
+<div class="section" id="s-where-uploaded-data-is-stored">
+<span id="s-modifying-upload-handlers-on-the-fly"></span><span id="where-uploaded-data-is-stored"></span><span id="modifying-upload-handlers-on-the-fly"></span><h3>Where uploaded data is stored<a class="headerlink" href="https://docs.djangoproject.com/es/1.11/topics/http/file-uploads/#where-uploaded-data-is-stored" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Before you save uploaded files, the data needs to be stored somewhere.</p>
+<p>By default, if an uploaded file is smaller than 2.5 megabytes, Django will hold
+the entire contents of the upload in memory. This means that saving the file
+involves only a read from memory and a write to disk and thus is very fast.</p>
+<p>However, if an uploaded file is too large, Django will write the uploaded file
+to a temporary file stored in your system’s temporary directory. On a Unix-like
+platform this means you can expect Django to generate a file called something
+like <code class="docutils literal"><span class="pre">/tmp/tmpzfp6I6.upload</span></code>. If an upload is large enough, you can watch this
+file grow in size as Django streams the data onto disk.</p>
+<p>These specifics – 2.5 megabytes; <code class="docutils literal"><span class="pre">/tmp</span></code>; etc. – are simply «reasonable
+defaults» which can be customized as described in the next section.</p>
+</div>
+<div class="section" id="s-changing-upload-handler-behavior">
+<span id="changing-upload-handler-behavior"></span><h3>Changing upload handler behavior<a class="headerlink" href="https://docs.djangoproject.com/es/1.11/topics/http/file-uploads/#changing-upload-handler-behavior" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>There are a few settings which control Django’s file upload behavior. See
+<a class="reference internal" href="https://docs.djangoproject.com/es/1.11/ref/settings/#file-upload-settings"><span class="std std-ref">File Upload Settings</span></a> for details.</p>
+</div>
+<div class="section" id="s-id1">
+<span id="id1"></span><h3>Modifying upload handlers on the fly<a class="headerlink" href="https://docs.djangoproject.com/es/1.11/topics/http/file-uploads/#id1" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Sometimes particular views require different upload behavior. In these cases,
+you can override upload handlers on a per-request basis by modifying
+<code class="docutils literal"><span class="pre">request.upload_handlers</span></code>. By default, this list will contain the upload
+handlers given by <a class="reference internal" href="https://docs.djangoproject.com/es/1.11/ref/settings/#std:setting-FILE_UPLOAD_HANDLERS"><code class="xref std std-setting docutils literal"><span class="pre">FILE_UPLOAD_HANDLERS</span></code></a>, but you can modify the list
+as you would any other list.</p>
+<p>For instance, suppose you’ve written a <code class="docutils literal"><span class="pre">ProgressBarUploadHandler</span></code> that
+provides feedback on upload progress to some sort of AJAX widget. You’d add this
+handler to your upload handlers like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">request</span><span class="o">.</span><span class="n">upload_handlers</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ProgressBarUploadHandler</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>You’d probably want to use <code class="docutils literal"><span class="pre">list.insert()</span></code> in this case (instead of
+<code class="docutils literal"><span class="pre">append()</span></code>) because a progress bar handler would need to run <em>before</em> any
+other handlers. Remember, the upload handlers are processed in order.</p>
+<p>If you want to replace the upload handlers completely, you can just assign a new
+list:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">request</span><span class="o">.</span><span class="n">upload_handlers</span> <span class="o">=</span> <span class="p">[</span><span class="n">ProgressBarUploadHandler</span><span class="p">(</span><span class="n">request</span><span class="p">)]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>You can only modify upload handlers <em>before</em> accessing
+<code class="docutils literal"><span class="pre">request.POST</span></code> or <code class="docutils literal"><span class="pre">request.FILES</span></code> – it doesn’t make sense to
+change upload handlers after upload handling has already
+started. If you try to modify <code class="docutils literal"><span class="pre">request.upload_handlers</span></code> after
+reading from <code class="docutils literal"><span class="pre">request.POST</span></code> or <code class="docutils literal"><span class="pre">request.FILES</span></code> Django will
+throw an error.</p>
+<p>Thus, you should always modify uploading handlers as early in your view as
+possible.</p>
+<p>Also, <code class="docutils literal"><span class="pre">request.POST</span></code> is accessed by
+<a class="reference internal" href="https://docs.djangoproject.com/es/1.11/ref/middleware/#django.middleware.csrf.CsrfViewMiddleware" title="django.middleware.csrf.CsrfViewMiddleware"><code class="xref py py-class docutils literal"><span class="pre">CsrfViewMiddleware</span></code></a> which is enabled by
+default. This means you will need to use
+<a class="reference internal" href="https://docs.djangoproject.com/es/1.11/ref/csrf/#django.views.decorators.csrf.csrf_exempt" title="django.views.decorators.csrf.csrf_exempt"><code class="xref py py-func docutils literal"><span class="pre">csrf_exempt()</span></code></a> on your view to allow you
+to change the upload handlers.  You will then need to use
+<a class="reference internal" href="https://docs.djangoproject.com/es/1.11/ref/csrf/#django.views.decorators.csrf.csrf_protect" title="django.views.decorators.csrf.csrf_protect"><code class="xref py py-func docutils literal"><span class="pre">csrf_protect()</span></code></a> on the function that
+actually processes the request.  Note that this means that the handlers may
+start receiving the file upload before the CSRF checks have been done.
+Example code:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.decorators.csrf</span> <span class="k">import</span> <span class="n">csrf_exempt</span><span class="p">,</span> <span class="n">csrf_protect</span>
+
+<span class="nd">@csrf_exempt</span>
+<span class="k">def</span> <span class="nf">upload_file_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">upload_handlers</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ProgressBarUploadHandler</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">_upload_file_view</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+
+<span class="nd">@csrf_protect</span>
+<span class="k">def</span> <span class="nf">_upload_file_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="o">...</span> <span class="c1"># Process request</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+<div class="browse-horizontal">
+  
+  <div class="left"><a href="https://docs.djangoproject.com/es/1.11/topics/http/decorators/"><i class="icon icon-chevron-left"></i> View decorators</a></div>
+  
+  
+  <div class="right"><a href="https://docs.djangoproject.com/es/1.11/topics/http/shortcuts/">Django shortcut functions <i class="icon icon-chevron-right"></i></a></div>
+  
+</div>
+
+
+
+        <a href="https://docs.djangoproject.com/es/1.11/topics/http/file-uploads/#top" class="backtotop"><i class="icon icon-chevron-up"></i> Back to Top</a>
+      </div>
+
+      
+<h1 class="visuallyhidden">Información Adicional</h1>
+<div role="complementary">
+
+  
+
+
+  <div class="fundraising-sidebar">
+    <h2>Support Django!</h2>
+
+    <div class="small-heart">
+      <img src="./File Uploads _ Documentación de Django _ Django_files/fundraising-heart.cd6bb84ffd33.svg" alt="Support Django!">
+    </div>
+
+    <div class="small-cta">
+      <ul class="list-links-small">
+        <li><a href="https://www.djangoproject.com/fundraising/">
+          Sophilabs donated to the Django Software Foundation to
+          support Django development. Donate today!
+        </a></li>
+      </ul>
+    </div>
+  </div>
+
+
+
+  
+    <h2>Contenidos</h2>
+    
+    <ul>
+<li><a class="reference internal" href="https://docs.djangoproject.com/es/1.11/topics/http/file-uploads/#">File Uploads</a><ul>
+<li><a class="reference internal" href="https://docs.djangoproject.com/es/1.11/topics/http/file-uploads/#basic-file-uploads">Basic file uploads</a><ul>
+<li><a class="reference internal" href="https://docs.djangoproject.com/es/1.11/topics/http/file-uploads/#handling-uploaded-files-with-a-model">Handling uploaded files with a model</a></li>
+<li><a class="reference internal" href="https://docs.djangoproject.com/es/1.11/topics/http/file-uploads/#uploading-multiple-files">Uploading multiple files</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="https://docs.djangoproject.com/es/1.11/topics/http/file-uploads/#upload-handlers">Upload Handlers</a><ul>
+<li><a class="reference internal" href="https://docs.djangoproject.com/es/1.11/topics/http/file-uploads/#where-uploaded-data-is-stored">Where uploaded data is stored</a></li>
+<li><a class="reference internal" href="https://docs.djangoproject.com/es/1.11/topics/http/file-uploads/#changing-upload-handler-behavior">Changing upload handler behavior</a></li>
+<li><a class="reference internal" href="https://docs.djangoproject.com/es/1.11/topics/http/file-uploads/#id1">Modifying upload handlers on the fly</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    
+  
+
+  
+  <h2>Mostrar</h2>
+  <ul>
+    
+    
+    <li>Previo: <a href="https://docs.djangoproject.com/es/1.11/topics/http/decorators/">View decorators</a></li>
+    
+    
+    <li>Siguiente: <a href="https://docs.djangoproject.com/es/1.11/topics/http/shortcuts/">Django shortcut functions</a></li>
+    
+    <li><a href="https://docs.djangoproject.com/es/1.11/contents/">Tabla de contenidos</a></li>
+    
+    <li><a href="https://docs.djangoproject.com/es/1.11/genindex/">Índice General</a></li>
+    
+    <li><a href="https://docs.djangoproject.com/es/1.11/py-modindex/">Índice de Módulos Python</a></li>
+    
+    
+  </ul>
+  
+
+  
+  <h2>Está aquí:</h2>
+  <ul>
+    <li>
+      <a href="https://docs.djangoproject.com/es/1.11/">Documentación de Django 1.11 </a>
+      
+      <ul><li><a href="https://docs.djangoproject.com/es/1.11/topics/">Using Django</a>
+      
+      <ul><li><a href="https://docs.djangoproject.com/es/1.11/topics/http/">Handling HTTP requests</a>
+      
+      <ul><li>File Uploads</li></ul>
+      </li></ul></li></ul>
+    </li>
+  </ul>
+  
+
+  
+  <h2 id="getting-help-sidebar">Obtener ayuda</h2>
+  <dl class="list-links">
+    <dt><a href="https://docs.djangoproject.com/es/1.11/faq/">FAQ</a></dt>
+    <dd>Pruebe las preguntas frecuentes: tiene respuestas a muchas preguntas comunes.</dd>
+
+    <dt><a href="https://docs.djangoproject.com/en/stable/genindex/">Índice</a>, <a href="https://docs.djangoproject.com/en/stable/py-modindex/">Índice del módulo</a>, or <a href="https://docs.djangoproject.com/en/stable/contents/">Tabla de Contenidos</a></dt>
+    <dd>Práctico cuando se busca información específica.</dd>
+
+    <dt><a href="https://groups.google.com/group/django-users/">django-users mailing list</a></dt>
+    <dd>Busque información en los archivos de la lista de correos django-users o plantee una pregunta.</dd>
+
+    <dt><a href="irc://irc.libera.chat/django">#django IRC channel</a></dt>
+    <dd>Haga una pregunta en el canal #django IRC, o busque los registros del IRC para ver si ya la han hecho antes.</dd>
+
+    <dt><a href="https://discord.gg/xcRH6mN4fa">Django Discord Server</a></dt>
+    <dd>Join the Django Discord Community.</dd>
+
+    <dt><a href="https://forum.djangoproject.com/">Official Django Forum</a></dt>
+    <dd>Join the community on the Django Forum.</dd>
+
+    <dt><a href="https://code.djangoproject.com/">Ticket tracker</a></dt>
+    <dd>Reporte bugs con Django o con la documentación de Django en nuestro rastreador de tickets.</dd>
+  </dl>
+  
+
+  
+  <h2>Descarga:</h2>
+  <p>
+    Desconectado (Django 1.11):
+    <a href="https://media.djangoproject.com/docs/django-docs-1.11-es.zip">HTML</a> |
+    <a href="https://media.readthedocs.org/pdf/django/1.11.x/django.pdf">PDF</a> |
+    <a href="https://media.readthedocs.org/epub/django/1.11.x/django.epub">ePub</a>
+    <br>
+    <span class="quiet">
+      Proporcionado por <a href="https://readthedocs.org/"></a>Lea los documentos.
+ 
+    </span>
+  </p>
+  
+</div>
+
+      
+
+    </div>
+
+     
+     
+
+    
+    
+    
+
+    <!-- SVGs -->
+    <svg xmlns="http://www.w3.org/2000/svg">
+      <symbol viewBox="0 0 24 24" id="icon-auto"><path d="M0 0h24v24H0z" fill="currentColor"></path><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2V4a8 8 0 1 0 0 16z"></path></symbol>
+      <symbol viewBox="0 0 24 24" id="icon-moon"><path d="M0 0h24v24H0z" fill="currentColor"></path><path d="M10 7a7 7 0 0 0 12 4.9v.1c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2h.1A6.979 6.979 0 0 0 10 7zm-6 5a8 8 0 0 0 15.062 3.762A9 9 0 0 1 8.238 4.938 7.999 7.999 0 0 0 4 12z"></path></symbol>
+      <symbol viewBox="0 0 24 24" id="icon-sun"><path d="M0 0h24v24H0z" fill="currentColor"></path><path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"></path></symbol>
+    </svg>
+    <!-- END SVGs -->
+
+    
+      <div role="contentinfo">
+  <div class="subfooter">
+    <div class="container">
+      <h1 class="visuallyhidden">Django Links</h1>
+      <div class="column-container">
+        <div class="col-learn-more">
+          <h2>Learn More</h2>
+          <ul>
+            <li><a href="https://www.djangoproject.com/start/overview/">About Django</a></li>
+            
+            <li><a href="https://www.djangoproject.com/start/">Getting Started with Django</a></li>
+            <li><a href="https://docs.djangoproject.com/en/dev/internals/organization/">Team
+              Organization</a></li>
+            <li><a href="https://www.djangoproject.com/foundation/">Django Software Foundation</a></li>
+            <li><a href="https://www.djangoproject.com/conduct/">Code of Conduct</a></li>
+            <li><a href="https://www.djangoproject.com/diversity/">Diversity Statement</a></li>
+          </ul>
+        </div>
+
+        <div class="col-get-involved">
+          <h2>Get Involved</h2>
+          <ul>
+            <li><a href="https://www.djangoproject.com/community/">Join a Group</a></li>
+            <li><a href="https://docs.djangoproject.com/en/dev/internals/contributing/">Contribute
+              to Django</a></li>
+            <li><a href="https://docs.djangoproject.com/en/dev/internals/contributing/bugs-and-features/">Submit
+              a Bug</a></li>
+            <li><a href="https://docs.djangoproject.com/en/dev/internals/security/#reporting-security-issues">Report
+              a Security Issue</a></li>
+          </ul>
+        </div>
+
+        <div class="col-get-help">
+          <h2>Get Help</h2>
+          <ul>
+            <li><a href="https://docs.djangoproject.com/en/stable/faq/">Getting Help FAQ</a>
+            </li>
+            <li><a href="irc://irc.libera.chat/django">#django IRC channel</a></li>
+            <li><a href="https://discord.gg/xcRH6mN4fa" target="_blank">Django Discord</a></li>
+            <li><a href="https://forum.djangoproject.com/" target="_blank">Official Django Forum</a></li>
+          </ul>
+        </div>
+
+        <div class="col-follow-us">
+          <h2>Follow Us</h2>
+          <ul>
+            <li><a href="https://github.com/django">GitHub</a></li>
+            <li><a href="https://twitter.com/djangoproject">Twitter</a></li>
+            <li><a href="https://www.djangoproject.com/rss/weblog/">News RSS</a></li>
+            <li><a href="https://groups.google.com/forum/#!forum/django-users">Django Users Mailing List</a></li>
+          </ul>
+        </div>
+
+        <div class="col-support-us">
+          <h2>Support Us</h2>
+          <ul>
+            <li><a href="https://www.djangoproject.com/fundraising/">Sponsor Django</a></li>
+            <li><a href="https://django.threadless.com/" target="_blank">Official merchandise store</a></li>
+            <li><a href="https://docs.djangoproject.com/foundation/donate/#benevity-giving">Benevity Workplace Giving Program</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="container">
+      <div class="footer-logo">
+        <a class="logo" href="https://www.djangoproject.com/">Django</a>
+      </div>
+      <ul class="thanks">
+        <li>
+          <span>Hosting by</span> <a class="in-kind-donors" href="https://www.djangoproject.com/fundraising/#in-kind-donors">In-kind
+          donors</a>
+        </li>
+        <li class="design"><span>Design by</span> <a class="threespot" href="https://www.threespot.com/">Threespot</a>
+          <span class="ampersand">&amp;</span> <a class="andrevv" href="http://andrevv.com/">andrevv</a></li>
+      </ul>
+      <p class="copyright">© 2005-2023
+        <a href="https://www.djangoproject.com/foundation/"> Django Software
+          Foundation</a> and individual contributors. Django is a
+        <a href="https://www.djangoproject.com/trademarks/">registered
+          trademark</a> of the Django Software Foundation.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+    
+
+    
+    <script>
+    function extless(input) {
+        return input.replace(/(.*)\.[^.]+$/, '$1');
+    }
+    var require = {
+        shim: {
+            'jquery': [],
+            'jquery.inview': ["jquery"],
+            'jquery.payment': ["jquery"],
+            'jquery.flot': ["jquery"],
+            'jquery.unveil': ["jquery"],
+            'stripe': {
+              exports: 'Stripe'
+            }
+        },
+        paths: {
+            "jquery": extless("https://static.djangoproject.com/js/lib/jquery/dist/jquery.min.87e69028f78d.js"),
+            "jquery.inview": extless("https://static.djangoproject.com/js/lib/jquery.inview/jquery.inview.min.4edba1c65592.js"),
+            "jquery.payment": extless("https://static.djangoproject.com/js/lib/jquery.payment/lib/jquery.payment.e99c05ca79ae.js"),
+            "jquery.unveil": extless("https://static.djangoproject.com/js/lib/unveil/jquery.unveil.min.ac79eb277093.js"),
+            "jquery.flot": extless("https://static.djangoproject.com/js/lib/jquery-flot/jquery.flot.min.9964206e9d7f.js"),
+            "clipboard": extless("https://static.djangoproject.com/js/lib/clipboard/dist/clipboard.min.bd70fd596a23.js"),
+            "mod/floating-warning": extless("https://static.djangoproject.com/js/mod/floating-warning.a21b2abd2884.js"),
+            "mod/list-collapsing": extless("https://static.djangoproject.com/js/mod/list-collapsing.c1a08d3ef9e9.js"),
+            "mod/list-feature": extless("https://static.djangoproject.com/js/mod/list-feature.73529480f25b.js"),
+            "mod/mobile-menu": extless("https://static.djangoproject.com/js/mod/mobile-menu.6012f4745df8.js"),
+            "mod/version-switcher": extless("https://static.djangoproject.com/js/mod/version-switcher.c56ff7ed5481.js"),
+            "mod/search-key": extless("https://static.djangoproject.com/js/mod/search-key.ae7292327b47.js"),
+            "mod/stripe-change-card": extless("https://static.djangoproject.com/js/mod/stripe-change-card.682c710317a8.js"),
+            "mod/switch-dark-mode": extless("https://static.djangoproject.com/js/mod/switch-dark-mode.a0e0dca32970.js"),
+            "mod/console-tabs": extless("https://static.djangoproject.com/js/mod/console-tabs.70ce882faaf3.js"),
+            "stripe-checkout": "https://checkout.stripe.com/checkout",
+            "stripe": "https://js.stripe.com/v3/?" // ? needed due to require.js
+        }
+    };
+    </script>
+    <script data-main="https://static.djangoproject.com/js/main.48270eac7c0b.js" src="./File Uploads _ Documentación de Django _ Django_files/require.177879fbe7dd.js.descarga"></script>
+    
+
+<div id="outdated-warning" class="doc-floating-warning">
+  Este documento es para una versión insegura de Django que ya no será soportado. ¡Por favor, actualice a una versión más reciente!
+</div>
+
+
+  
+
+</body></html>

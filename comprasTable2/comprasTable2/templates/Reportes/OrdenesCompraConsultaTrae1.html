@@ -1,0 +1,214 @@
+{% extends "Reportes/cabeza.html" %}
+{% load static %}
+
+{% block content %}
+
+<script>
+    window.onload = function(){
+
+    }
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        /*------------------------------------------
+        --------------------------------------------
+        Post Listing Page
+        --------------------------------------------
+        --------------------------------------------*/
+
+        var desdeFechaSolicitud = document.getElementById("desdeFechaSolicitud").value;
+
+
+        var hastaFechaSolicitud = document.getElementById("hastaFechaSolicitud").value;
+        var username = document.getElementById("username").value;
+        var sedeSeleccionada = document.getElementById("sedeSeleccionada").value;
+        var nombreUsuario = document.getElementById("nombreUsuario").value;
+        var nombreSede = document.getElementById("nombreSede").value;
+        var perfil = document.getElementById("perfil").value;
+        var solicitudId = document.getElementById("solicitudId").value;
+
+         var data =  {}   ;
+         data['desdeFechaSolicitud'] = desdeFechaSolicitud;
+         data['hastaFechaSolicitud'] = hastaFechaSolicitud;
+         data['username'] = username;
+         data['sedeSeleccionada'] = sedeSeleccionada;
+         data['nombreUsuario'] = nombreUsuario;
+         data['nombreSede'] = nombreSede;
+         data['perfil'] = perfil;
+         data['solicitudId'] = solicitudId;
+         data = JSON.stringify(data);
+
+
+        var table = $('.tablaOrdenesCompraConsulta').DataTable({
+         "language": {
+                  "lengthMenu": "Display _MENU_ registros",
+                   "search": "Filtrar registros:",
+                    "paginate": {
+                         "first": "Primera pag",
+                         "previous": "Anterior",
+                         "next": "Siguiente",
+                        }
+                    },
+
+            processing: true,
+            serverSide: false,
+            columnDefs: [
+                {
+                    "render": function ( data, type, row ) {
+                        var btn = '';
+                     btn = btn + " <button class='btn btn-primary editPostu' data-pk='" + row.pk + "'>" + '<i class="fa fa-pencil"></i>' + "</button>";
+
+                        return btn;
+                    },
+                    "targets": 21
+                }
+            ],
+            ajax: {
+                 url:"/load_dataOrdenesCompraConsulta/" + data  +"/" ,
+                 type: "POST",
+                data: { desdeFechaSolicitud:desdeFechaSolicitud, hastaFechaSolicitud:hastaFechaSolicitud },
+                dataSrc: ""
+            },
+
+            lengthMenu: [3, 5, 10, 20, 30, 40, 50],
+            columns: [
+                { data: "fields.id" },
+                { data: "fields.fechaElab" },
+                { data: "fields.proveedor" },
+                { data: "fields.area" },
+                { data: "fields.usuarioCompras" },
+                { data: "fields.usuarioAproboStaff" },
+
+                { data: "fields.observaciones" },
+
+                { data: "fields.item" },
+                { data: "fields.articulo" },
+                 { data: "fields.estadoOrden" },
+                { data: "fields.opciones" },
+                { data: "fields.valorBruto" },
+                { data: "fields.descuento" },
+                { data: "fields.valorParcial" },
+                { data: "fields.iva" },
+                { data: "fields.valorTotal" },
+                { data: "fields.iva" },
+                { data: "fields.recibidoOrdenCantidad" },
+                { data: "fields.solicitadoOrdenCantidad" },
+                { data: "fields.valorUnitario" },
+                { data: "fields.solicitadoOrdenValor" },
+                { data: "fields.recibidoOrdenValor" },
+            ]
+        });
+
+
+        /*------------------------------------------
+        --------------------------------------------
+        Print Error Msg
+        --------------------------------------------
+        --------------------------------------------*/
+        function printErrorMsg(msg) {
+            $('.error-msg').find('ul').html('');
+            $('.error-msg').css('display','block');
+            $.each( msg, function( key, value ) {
+                $(".error-msg").find("ul").append('<li>'+value+'</li>');
+            });
+        }
+
+
+    });
+</script>
+<form id="postForma" name="postForma" class="form-horizontal" novalidate>
+
+                    <input type="hidden" class="form-control" id="username" name="username" value={{Username}}>
+                    <input type="hidden" class="form-control" id="sedeSeleccionada" name="sedeSeleccionada" value={{SedeSeleccionada}}>
+                    <input type="hidden" class="form-control" id="nombreUsuario" name="nombreUsuario" value={{NombreUsuario}}>
+                    <input type="hidden" class="form-control" id="nombreSede" name="nombreSede" value={{NombreSede}}>
+                    <input type="hidden" class="form-control" id="perfil" name="perfil" value={{Perfil}}>
+                    <input type="hidden" class="form-control" id="solicitudId" name="solicitudId" value={{SolicitudId}}>
+
+                    <input type="hidden" class="form-control" id="desdeFechaSolicitud" name="desdeFechaSolicitud" value={{DesdeFechaSolicitud }}>
+                    <input type="hidden" class="form-control" id="hastaFechaSolicitud" name="hastaFechaSolicitud" value={{HastaFechaSolicitud }}>
+
+
+
+<div class="col-lg-12">
+
+    <div class="row">
+        <div style=" background-color:#7B67FA ">
+            <center>
+                <H4>
+                    <span style="font-style:font-size:2px">
+                            <b>
+                           <FONT COLOR="white">  ORDENES COMPRA CONSULTAS  </FONT>
+                            </b>
+                    </span>
+                </H4>
+            </center>
+        </div>
+    </div>
+
+    <br>
+    <!-- INICIO ENCABEZADO PROPUESTO -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="row">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-success success-msg" style="display:none"></div>
+                            <table class="table table-bordered tablaOrdenesCompraConsulta">
+                                <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>fechaElab</th>
+                                    <th>proveedor</th>
+                                    <th>area</th>
+                                    <th>usuarioCompras</th>
+                                    <th>AproboStaff</th>
+
+
+
+                                    <th>observaciones</th>
+
+                                    <th>item</th>
+                                    <th>articulo</th>
+                                    <th>estadoOrden</th>
+                                    <th>opciones</th>
+                                    <th>valorBruto</th>
+                                    <th>descuento</th>
+                                    <th>valorParcial</th>
+                                    <th>iva</th>
+                                    <th>valorTotal</th>
+                                    <th>iva</th>
+                                    <th>recibidoOrdenCantidad</th>
+                                    <th>solicitadoOrdenCantidad</th>
+                                    <th>valorUnitario</th>
+                                    <th>solicitadoOrdenValor</th>
+                                    <th>recibidoOrdenValor</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                   </form>
+
+{% endblock %}
+
+{% block SUBGRUPO %}
+{% endblock %}

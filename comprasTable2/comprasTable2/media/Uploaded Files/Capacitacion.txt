@@ -1,0 +1,38 @@
+
+
+
+
+-- Como se accede al modulo de Enfermeria
+-- Como dispensan un medicamento
+-- Como despachan un medicamento
+-- Hay documentos contables ?
+-- Como es e proceso de autorizaciones, que autorizan
+-- como es el registro de abonos, copagos, cuotas moderadoas
+-- como se hace una factura
+-- como se genera una factura electronica
+-- Como orenan una cirugia
+-- como ordenan un meidcamenbto, lab, proc no qx, imagen
+-- como planean el medicamento
+-- como aplican el medicamento
+-- como cambian de habitacion un paciente
+-- como remiten un paciente
+-- como son los cargos de facturacion
+-- como se crean la tarifas
+-- hay portafolios, maneja vigencia
+-- como se crean las agendas de consulta externa
+-- como se ordenan las terapias
+-- como se contestan o aplican terapias, o se planean
+-- como se interpreta un exa raiologico
+-- como funciona laboratorio
+-- como son los resultados de los examenes
+-- hay hoja de ruta, como saber donde esta una factura
+-- auditoria que hace con himotep
+-- hay modulos de glosas
+-- hay modulo de remisiones ?
+-- los username tiene  que ver con el perfil o la lista de modulos a ver
+-- en Programacion como se aplica el concepto de que existan tablas con campos donde se almacenan la logia del programa
+-- Hay modulo mde apoyo terapeutico
+-- 
+
+
+En DE LA .19 formatos quedaron las copias

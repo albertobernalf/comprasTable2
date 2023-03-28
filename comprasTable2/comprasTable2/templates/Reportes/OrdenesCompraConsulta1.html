@@ -1,0 +1,134 @@
+{% extends "Reportes/cabeza.html" %}
+{% load static %}
+
+{% block content %}
+<script>
+window.onload = function(){
+  var fecha = new Date(); //Fecha actual
+  var mes = fecha.getMonth()+1; //obteniendo mes
+  var dia = fecha.getDate(); //obteniendo dia
+  var ano = fecha.getFullYear(); //obteniendo año
+  var hora = fecha.getHours();
+  var minutos = fecha.getMinutes();
+  var segs = fecha.getSeconds();
+
+  horario = hora+":"+minutos+":"+ segs;
+  console.log(horario);
+
+  if (hora < 10)
+     hora = '0' + hora;  //agrega cero si el hora de 10
+  if (minutos < 10)
+        minutos = '0' + minutos;
+  if (segs < 10)
+         segs = '0' + segs;
+
+      horario = hora+":"+minutos+":"+ segs;
+  console.log(horario);
+
+  if(dia<10)
+    dia='0'+dia; //agrega cero si el menor de 10
+  if(mes<10)
+    mes='0'+mes //agrega cero si el menor de 10
+
+  // document.getElementById('desdeFechaSolicitud').value=ano+"-"+mes+"-"+dia + " " +hora+":"+minutos+":"+ segs;
+  // document.getElementById('hastaFechaSolicitud').value=ano+"-"+mes+"-"+dia + " " +hora+":"+minutos+":"+ segs;
+
+  document.getElementById('desdeFechaSolicitud').value=ano+"-"+mes+"-"+dia +" "+ "00:00:00";
+  document.getElementById('hastaFechaSolicitud').value=ano+"-"+mes+"-"+dia +" "+ "00:00:00";
+
+}
+
+</script>
+
+
+
+<input type="hidden" class="form-control" id="username" name="username" value={{ Username }}>
+<input type="hidden" class="form-control" id="sedeSeleccionada" name="sedeSeleccionada" value={{ SedeSeleccionada }}>
+<input type="hidden" class="form-control" id="nombreUsuario" name="nombreUsuario" value={{NombreUsuario}}>
+<input type="hidden" class="form-control" id="nombreSede" name="nombreSede" value={{ NombreSede }}>
+<input type="hidden" class="form-control" id="solicitudId" name="solicitudId" value={{ SolicitudId }}>
+<input type="hidden" class="form-control" id="perfil" name="perfil" value={{Perfil}}>
+
+
+<div class="col-lg-12">
+
+    <div class="row">
+        <div style=" background-color:#7B67FA ">
+            <center>
+                <H4>
+                    <span style="font-style:font-size:2px">
+                            <b>
+                           <FONT COLOR="white">  CONSULTA ORDENES DE COMPRA </FONT>
+                            </b>
+                    </span>
+                </H4>
+            </center>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row " style=" width:1250px;  height: 10px;"></div>
+
+    <div class="row " style=" width:1250px;  height: 20px;">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <form class="form-inline" action="/ordenesCompraConsultaTrae" method="GET" id="formOrdenesCompraConsultaTrae">
+                <div class="form-row">
+
+                    <div class="form-group col-md-12 ">
+                        Suministre rango de fechas:
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-1"></div>
+                    <div class="form-group col-md-6">
+                        <label for="desdeFechaSolicitud" class="col-form-label"></label>
+                        <input type="datetime-local" id="desdeFechaSolicitud" name="desdeFechaSolicitud"></input>
+                    </div>
+
+                    <div class="form-group col-md-5 ">
+                        <label for="hastaFechaSolicitud" class="col-form-label"></label>
+                        <input type="datetime-local" id="hastaFechaSolicitud" name="hastaFechaSolicitud"></input>
+
+                    </div>
+                    <div class="form-group col-md-2"></div>
+
+                    <div class="form-group col-md-1">
+
+                        <input type="hidden" class="form-control" id="username" name="username" value={{Username}}>
+                        <input type="hidden" class="form-control" id="sedeSeleccionada" name="sedeSeleccionada" value={{SedeSeleccionada}}>
+                        <input type="hidden" class="form-control" id="nombreUsuario" name="nombreUsuario" value={{NombreUsuario}}>
+                        <input type="hidden" class="form-control" id="perfil" name="perfil" value={{Perfil}}>
+                        <input type="hidden" class="form-control" id="nombreSede" name="nombreSede" value={{NombreSede}}>
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-10"></div>
+                    <div class="form-group col-md-1">
+                        <input type="submit" id="btnEnviarSol" name="btnEnviarSol" value="Enviar"> </input></div>
+                    <div class="form-group col-md-1"></div>
+                </div>
+                <div class="form-row">
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+    <div class="row " style="  height: 40px;"></div>
+    <div class="row " style="  height: 40px;"></div>
+    <div class="row " style="  height: 40px;"></div>
+    <div class="row " style="   height: 20px;">
+        <div class="form-group col-md-5"></div>
+        <div class="form-group col-md-7 "><span style="color: #ed1b24" id="mensajes1" name="mensajes1">{{Error}} </span>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block SUBGRUPO %}
+{% endblock %}

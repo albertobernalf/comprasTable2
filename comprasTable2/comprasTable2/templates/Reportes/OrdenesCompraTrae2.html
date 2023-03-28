@@ -1,0 +1,311 @@
+{% extends "Reportes/cabeza.html" %}
+{% load static %}
+
+{% block content %}
+
+<script>
+    window.onload = function(){
+      var fecha = new Date(); //Fecha actual
+  var mes = fecha.getMonth()+1; //obteniendo mes
+  var dia = fecha.getDate(); //obteniendo dia
+  var ano = fecha.getFullYear(); //obteniendo año
+  var hora = fecha.getHours();
+  var minutos = fecha.getMinutes();
+  var segs = fecha.getSeconds();
+
+  horario = hora+":"+minutos+":"+ segs;
+  console.log(horario);
+
+  if (hora < 10)
+     hora = '0' + hora;  //agrega cero si el hora de 10
+  if (minutos < 10)
+        minutos = '0' + minutos;
+  if (segs < 10)
+         segs = '0' + segs;
+
+      horario = hora+":"+minutos+":"+ segs;
+  console.log(horario);
+
+  if(dia<10)
+    dia='0'+dia; //agrega cero si el menor de 10
+  if(mes<10)
+    mes='0'+mes //agrega cero si el menor de 10
+
+   document.getElementById('fechaElab').value=ano+"-"+mes+"-"+dia + " " +hora+":"+minutos+":"+ segs;
+   document.getElementById('fechaRevi').value=ano+"-"+mes+"-"+dia + " " +hora+":"+minutos+":"+ segs;
+   document.getElementById('fechaApro').value=ano+"-"+mes+"-"+dia + " " +hora+":"+minutos+":"+ segs;
+
+
+
+    }
+
+function cargaImagen()
+{
+
+    var archivo = "Archivo";
+
+    $.ajax({
+		type: 'POST',
+    	url: '/descargaArchivo/archivo',
+		data: {'archivo':archivo},
+		success: function (respuesta) {
+
+
+
+		        window.location.reload()
+
+               	//document.getElementById("id").innerHTML = "";
+
+              //  window.location.reload()
+                    },
+	   		    error: function (request, status, error) {
+	   	    	}
+	      });
+
+}
+
+</script>
+
+
+<div class="col-lg-12">
+
+    <div class="row">
+        <div style=" background-color:#7B67FA ">
+            <center>
+                <H4>
+                    <span style="font-style:font-size:2px">
+                            <b>
+                           <FONT COLOR="white">  ORDEN DE COMPRA  </FONT>
+                            </b>
+                    </span>
+                </H4>
+            </center>
+        </div>
+    </div>
+
+<br>
+    <!-- INICIO ENCABEZADO PROPUESTO -->
+<!-- Comenzamos con la FORM -->
+
+<form id="postFormaOrdenCompra" name="postFormaOrdenCompra" method="POST" class="form-horizontal" novalidate>
+                     <input type="hidden" class="form-control" id="username" name="username" value={{Username}}>
+                    <input type="hidden" class="form-control" id="sedeSeleccionada" name="sedeSeleccionada" value={{SedeSeleccionada}}>
+                    <input type="hidden" class="form-control" id="nombreUsuario" name="nombreUsuario" value={{NombreUsuario}}>
+                    <input type="hidden" class="form-control" id="nombreSede" name="nombreSede" value={{NombreSede}}>
+                    <input type="hidden" class="form-control" id="perfil" name="perfil" value={{Perfil}}>
+                    <input type="hidden" class="form-control" id="estadoReg" name="estadoReg" value="A">
+                    <input type="hidden" class="form-control" id="solicitudId" name="solicitudId" value={{SolicitudId}}>
+                    <input type="hidden" class="form-control" id="noOrdenCompra" name="noOrdenCompra" value={{NoOrdenCompra }}>
+
+
+    <div class="row">
+           <span id="message" name="message" style="color:blue">{{message}}</span>
+         <span id="error" name="error" style="color:blue">{{error }}</span>
+        <div class="col-md-12">
+            <div class="card"  >
+                <div class="card-header">
+                    <div class="row">
+                        <div class="row">
+                            <div class="col-sm-4" >
+                                el aprobo = {{Aprobo}}
+                                engtrega En = {{entregarEn}}
+                               <h6> FECHA DE ELABORACION: <span class="small"> <input type="datetime-local" id="fechaElab" name="fechaElab" value={{ordenesCompraForm.fechaElab}}> </span></h6>
+                            </div>
+                            <div class="col-sm-4">
+                                <h6>FECHA DE REVISION: <span class="small"> <input type="datetime-local" id="fechaRevi" name="fechaRevi" value={{ordenesCompraForm.fechaRevi}}> </span></h6>
+                            </div>
+                            <div class="col-sm-3">
+                                <h6>FECHA APROBACION: <span class="small"><input type="datetime-local" id="fechaApro" name="fechaApro" value={{ordenesCompraForm.fechaApro}}> </span></h6>
+                            </div>
+                            <div class="col-sm-1">
+                                <h6>ESTADO: <span class="small">{{ordenesCompraForm.estadoOrden}}</span></h6>
+                            </div>
+
+                         </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h6>ELABORO: <span class="small">{{ordenesCompraForm.elaboro}}</span></h6>
+                            </div>
+
+                            <div class="col-md-4">
+                                <h6>REVIZO: <span class="small">{{ordenesCompraForm.revizo}}</span></h6>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-3">
+                                <h6>APROBO: <span class="small">{{ordenesCompraForm.aprobo}}</span></h6>
+                            </div>
+                         </div>
+                        <div class="row">
+                            <div class="col-md-12 " style="color:blue">
+                            <center><h6>DATOS DE LA ORDEN DE COMPRA <span class="small" ></span></h6></center>
+                                 </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h6>AREA: <span class="small">{{ordenesCompraForm.area}}</span></h6>
+                            </div>
+                            <div class="col-md-3">
+                                <h6>CONTACTO: <span class="small">{{ordenesCompraForm.contacto}}</span></h6>
+                            </div>
+                            <div class="col-md-3">
+                                <h6>ENTREGA EN: <span class="small">{{ordenesCompraForm.entregarEn}}</span></h6>
+                            </div>
+                            <div class="col-md-2">
+                                <h6>TELEFONO: <span class="small">{{ordenesCompraForm.telefono}}</span></h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12" style="color:blue">
+                            <center><h6>DATOS DEL PROVEEDOR: <span class="small"></span></h6></center>
+                                 </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>RAZON SOCIAL: <span class="small">{{ordenesCompraForm.proveedor}}</span></h6>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>ATENCION: <span class="small"></span></h6>
+                            </div>
+
+                        </div>
+                </div>
+                    <div class="card-body">
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <div id="noTomar2" class="scrollablet" align="center">
+                                    <!-- <div class="alert alert-success success-msg" style="display:none"></div> -->
+                                    <table class="table table-bordered tablaOrdenesCompra" id="tablaOrdenesCompra">
+                                        <!--    <table cellspacing="0"  class="table  table-bordered table-fixed " id="tablaOrdenesCompra" > -->
+
+                                        <thead>
+                                        <tr>
+
+                                            <th>Item</th>
+                                            <th>Descripcion</th>
+                                            <th>Tipo</th>
+                                            <th>Producto</th>
+                                            <th>Presentacion</th>
+                                            <th>Sol.Almacen</th>
+
+                                            <th>Iva</th>
+                                            <th>Cant.Solicitada</th>
+                                            <th>Cant.Recibida</th>
+                                            <th>ValorUnitario</th>
+                                            <th>SolicitadoValor</th>
+                                            <th>RecibidoValor</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        {% for solicitudDetalle in SolicitudDetalle %}
+                                        <tr height="30px">
+
+                                            <td><input type="text"  id="item_{{solicitudDetalle.item}}" name="item_{{solicitudDetalle.item}}" value="{{solicitudDetalle.item}}"  size="2" readonly> </td>
+                                            <td> {{solicitudDetalle.descripcion}}</td>
+                                            <td> {{solicitudDetalle.tiposCompra}}</td>
+                                            <td> {{solicitudDetalle.nombre_producto}}</td>
+                                            <td> {{solicitudDetalle.presentacion}}</td>
+                                            <td> {{solicitudDetalle.solicitadoAlmacen}}</td>
+                                            <td><input type="text"  id="iva_{{solicitudDetalle.item}}" name="iva_{{solicitudDetalle.item}}"          value="{{solicitudDetalle.iva|floatformat:2 }}" size="10"> </td>
+                                            <td><input type="text"  id="solcan_{{solicitudDetalle.item}}" name="solcan_{{solicitudDetalle.item}}"    value="{{solicitudDetalle.solicitadoOrdenCantidad}}"size="5"> </td>
+                                            <td><input type="text"  id="reccan_{{solicitudDetalle.item}}" name="reccan_{{solicitudDetalle.item}}"    value="{{solicitudDetalle.recibidoOrdenCantidad}}"size="5"> </td>
+                                            <td><input type="text"  id="unitario_{{solicitudDetalle.item}}" name="unitario_{{solicitudDetalle.item}}" value="{{solicitudDetalle.valorUnitario|floatformat:2 }}" size="10"> </td>
+                                            <td><input type="text"  id="solval_{{solicitudDetalle.item}}" name="solval_{{solicitudDetalle.item}}"    value="{{solicitudDetalle.solicitadoOrdenValor|floatformat:2 }}" size="10"> </td>
+                                            <td><input type="text"  id="recval_{{solicitudDetalle.item}}" name="recval_{{solicitudDetalle.item}}"    value="{{solicitudDetalle.recibidoOrdenValor|floatformat:2 }}" size="10"> </td>
+
+
+                                        </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                <div class="card-footer">
+                    <div class="row" >
+                        <div class="col-md-5" >
+                             <h6>FORMA DE PAGO: <span class="small">{{ordenesCompraForm.opciones}}</span></h6>
+                        </div>
+                        <div class="col-md-4" >
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="row">
+                                <h6>VALOR BRUTO: <span class="small">{{ordenesCompraForm.valorBruto}}</span></h6>
+                            </div>
+                            <div class="row">
+                                <h6>DESCUENTO: <span class="small">{{ordenesCompraForm.descuento}}</span></h6>
+                            </div>
+                            <div class="row">
+                                <h6>VALOR PARCIAL: <span class="small">{{ordenesCompraForm.valorParcial}}</span></h6>
+                            </div>
+                            <div class="row">
+                                <h6>IVA: <span class="small">{{ordenesCompraForm.iva}}</span></h6>
+                            </div>
+                            <div class="row">
+                                <h6>VALOR TOTAL: <span class="small">{{ordenesCompraForm.valorTotal}}</span></h6>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="row" >
+                        <div class="col-md-12" >
+                             <h8>OBSERVACIONES: <span style="width:500px;" >{{ordenesCompraForm.observaciones}}</span></h8>
+                        </div>
+                    </div>
+                    <div class="row" >
+                        <div class="col-md-3" >
+                             <h6>RESP.COMPRA: <span class="small">{{ordenesCompraForm.responsableCompra}}</span></h6>
+                        </div>
+                        <div class="col-md-3" >
+                            <h6>ENTREGA: <span class="small">{{ordenesCompraForm.entragaMercancia}}</span></h6>
+                        </div>
+                        <div class="col-md-3" >
+                            <h6>RECIBE: <span class="small">{{ordenesCompraForm.recibeMercancia}}</span></h6>
+                        </div>
+                        <div class="col-md-3" >
+                            <h6>APROBO: <span class="small">{{form.aproboCompraStaff}}</span></h6>
+                        </div>
+                        <!--
+                        <div class="col-md-3" >
+                            <h6>DESCARGAR: <span class="small">
+                             <figure class="figure">
+                                <img src="{% static '/img/CSV.JPG' %}" class="figure-img img-fluid rounded" style="height:30px;"  alt="..." onclick="cargaImagenMal()">
+                                <figcaption class="figure-caption text-right">
+                                        <a href="/descargaArchivo/chivo">Descarga...</a>
+                            </figcaption>
+                            </figure>
+                            </span></h6>
+                        </div>
+                        -->
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="col-sm-offset-2 col-sm-10 mt-2">
+            <center>
+
+
+      <button type="submit" class="btn btn-primary" id="saveBtnOrdenCompra" value="create">GENERA ORDEN </button>
+                </center>
+                    </div>
+ <!-- TERMINA FORM -->
+ </form>
+
+
+<!-- FIN ENCABEZADO PROPUESTO  -->
+
+{% endblock %}
+
+{% block SUBGRUPO %}
+{% endblock %}

@@ -1,0 +1,161 @@
+## Aqui la impresion Excel del detalle de la Orden de Compra
+            llaveb = 'b'+voy
+            llaveb1 = 'B'+voy
+            llaveb = my_sheet[llaveb1]
+            llaveb.value = str(data1)
+            #b23 = my_sheet['B23']
+            #b23.value = str(data1)
+            llavec = 'c' + voy
+            llavec1 = 'C' + voy
+            llavec = my_sheet[llavec1]
+            llavec.value =  "AqUi descripcion"
+            #c23 = my_sheet['C23']
+            #c23.value = "AqUi descripcion"
+            llavef  = 'f' + voy
+            llavef1 = 'F' + voy
+	    llavef = my_sheet[llavef1]
+            llavef.value =  "AqUi presentacion"
+            #f23 = my_sheet['F23']
+            #f23.value = "AqUi presentacion"
+	    llaveg  = 'g' + voy
+            llaveg1 = 'G' + voy
+	    llaveg = my_sheet[llaveg1]
+            llaveg.value =  str(data2)
+            #g23 = my_sheet['G23']
+            #g23.value = str(data2)
+	    llaveh  = 'h' + voy
+            llaveh1 = 'H' + voy
+	    llaveh = my_sheet[llaveh1]
+            llaveh.value =  str(data3)
+            #h23 = my_sheet['H23']
+            #h23.value = str(data3)
+	    llavei  = 'i' + voy
+            llavei1 = 'I' + voy
+	    llavei = my_sheet[llavei1]
+            llavei.value =  str(data4)
+            #i23 = my_sheet['I23']
+            #i23.value = str(data4)
+	    llavej  = 'j' + voy
+            llavej1 = 'J' + voy
+	    llavej = my_sheet[llavej1]
+            llavej.value =  str(data5)
+            #j23 = my_sheet['J23']
+            #j23.value = str(data5)
+	    llavek  = 'k' + voy
+            llavek1 = 'K' + voy
+	    llavek = my_sheet[llavek1]
+            llavek.value =  str(data6)
+            #k23 = my_sheet['K23']
+            #k23.value = str(data6)
+
+	    llavel  = 'l' + voy
+            llavel1 = 'L' + voy
+	    llavel = my_sheet[llavel1]
+            llavel.value =  str(data7)
+            #l23 = my_sheet['L23']
+            #l23.value = str(data7)
+            voy = voy +1
+
+
+
+/////////////////// esto borre ////////////////
+            if (campoItem==1):
+                b23 = my_sheet['B23']
+                b23.value = str(data1)
+                c23 = my_sheet['C23']
+                c23.value = "AqUi descripcion"
+                f23 = my_sheet['F23']
+                f23.value = "AqUi presentacion"
+                g23 = my_sheet['G23']
+                g23.value = str(data2)
+                h23 = my_sheet['H23']
+                h23.value = str(data3)
+                i23 = my_sheet['I23']
+                i23.value = str(data4)
+                j23 = my_sheet['J23']
+                j23.value = str(data5)
+                k23 = my_sheet['K23']
+                k23.value = str(data6)
+                l23 = my_sheet['L23']
+                l23.value = str(data7)
+
+            if (campoItem==2):
+                b24 = my_sheet['B24']
+                b24.value = str(data1)
+                c24 = my_sheet['C24']
+                c24.value = "AqUi descripcion"
+                f24 = my_sheet['F24']
+                f24.value = "AqUi presentacion"
+                g24 = my_sheet['G24']
+                g24.value = str(data2)
+                h24 = my_sheet['H24']
+                h24.value = str(data3)
+                i24 = my_sheet['I24']
+                i24.value = str(data4)
+                j24 = my_sheet['J24']
+                j24.value = str(data5)
+                k24 = my_sheet['K24']
+                k24.value = str(data6)
+                l24 = my_sheet['L24']
+                l24.value = str(data7)
+
+            if (campoItem==3):
+                b25 = my_sheet['B25']
+                b25.value = str(data1)
+                c25 = my_sheet['C25']
+                c25.value = "AqUi descripcion"
+                f25 = my_sheet['F25']
+                f25.value = "AqUi presentacion"
+                g25 = my_sheet['G25']
+                g25.value = str(data2)
+                h25 = my_sheet['H25']
+                h25.value = str(data3)
+                i25 = my_sheet['I25']
+                i25.value = str(data4)
+                j25 = my_sheet['J25']
+                j25.value = str(data5)
+                k25 = my_sheet['K25']
+                k25.value = str(data6)
+                l25 = my_sheet['L25']
+                l25.value = str(data7)
+
+            if (campoItem==4):
+                b26 = my_sheet['B26']
+                b26.value = str(data1)
+                c26 = my_sheet['C26']
+                c26.value = "AqUi descripcion"
+                f26 = my_sheet['F26']
+                f26.value = "AqUi presentacion"
+                g26 = my_sheet['G26']
+                g26.value = str(data2)
+                h26 = my_sheet['H26']
+                h26.value = str(data3)
+                i26 = my_sheet['I26']
+                i26.value = str(data4)
+                j26 = my_sheet['J26']
+                j26.value = str(data5)
+                k26 = my_sheet['K26']
+                k26.value = str(data6)
+                l26 = my_sheet['L26']
+                l26.value = str(data7)
+
+            if (campoItem==5):
+                b27 = my_sheet['B27']
+                b27.value = str(data1)
+                c27 = my_sheet['C27']
+                c27.value = "AqUi descripcion"
+                f27 = my_sheet['F27']
+                f27.value = "AqUi presentacion"
+                g27 = my_sheet['G27']
+                g27.value = str(data2)
+                h27 = my_sheet['H27']
+                h27.value = str(data3)
+                i27 = my_sheet['I27']
+                i27.value = str(data4)
+                j27 = my_sheet['J27']
+                j27.value = str(data5)
+                k27 = my_sheet['K27']
+                k27.value = str(data6)
+                l27 = my_sheet['L27']
+                l27.value = str(data7)
+

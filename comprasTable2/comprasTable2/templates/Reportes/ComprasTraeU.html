@@ -1,0 +1,565 @@
+{% extends "Reportes/cabeza.html" %}
+{% load static %}
+
+{% block content %}
+
+<script>
+
+</script>
+
+
+<script>
+    window.onload = function(){
+
+
+
+    }
+</script>
+<script>
+
+
+
+
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        /*------------------------------------------
+        --------------------------------------------
+        Post Listing Page
+        --------------------------------------------
+        --------------------------------------------*/
+        <!--  alert("Cargue tabla"); -->
+
+        solicitudId            = document.getElementById("solicitudId").value;
+        var sedeSeleccionada = document.getElementById("sedeSeleccionada").value;
+        var username = document.getElementById("username").value;
+        var nombreUsuario = document.getElementById("nombreUsuario").value;
+        var nombreSede = document.getElementById("nombreSede").value;
+        var perfil = document.getElementById("perfil").value;
+
+         var data =  {}   ;
+         data['solicitudId'] = solicitudId;
+         data['username'] = username;
+         data['sedeSeleccionada'] = sedeSeleccionada;
+         data['nombreUsuario'] = nombreUsuario;
+         data['nombreSede'] = nombreSede;
+         data['perfil'] = perfil;
+         data = JSON.stringify(data);
+
+
+        var table = $('.tablaAlmacenDetalle').DataTable({
+         "language": {
+                  "lengthMenu": "Display _MENU_ registros",
+                   "search": "Filtrar registros:",
+                    "paginate": {
+                         "first": "Primera pag",
+                         "previous": "Anterior",
+                         "next": "Siguiente",
+                        }
+                    },
+
+            processing: true,
+            serverSide: false,
+            columnDefs: [
+                {
+                    "render": function ( data, type, row ) {
+                        var btn = '';
+                // <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+                        btn = btn + " <button class='btn btn-primary editPost'    data-pk='" + row.pk + "'>" + '<i class="fa fa-pencil"></i>' + "</button>";
+                        //btn = btn + " <button class='btn btn-primary visualizaPost'    data-pk='" + row.pk + "'>" + '<i class="fa fa-plus"></i>' + "</button>";
+                        //btn = btn + " <button class='btn btn-primary visualizaPost'    data-pk='" + row.pk + "'>" + '<i class="fa fa-plus"></i>' + "</button>";
+
+                        // <a href="{% url 'post_descargaArchivo' %}/18">Descargar</a>
+                          btn = btn +  "<a href='{% url "post_descargaArchivo" %}" + "/" +  row.pk + "'>"   +  ' <i class="fa fa-plus"></i>' + "Descargar</a>";
+
+
+
+
+
+                        return btn;
+                    },
+                    "targets": 13
+                }
+            ],
+            ajax: {
+
+                 url:"/load_dataCompras/" +  data,
+                 type: "POST",
+
+                dataSrc: ""
+            },
+
+            lengthMenu: [3, 5, 10, 20, 30, 40, 50],
+            columns: [
+                { data: "fields.solicitudNo" },
+                { data: "fields.fecha" },
+                { data: "fields.nombre_area" },
+                { data: "fields.usuariosCreaSol" },
+                { data: "fields.item" },
+               // { data: "fields.tiposCompra" },
+                { data: "fields.producto" },
+                { data: "fields.cantidad" },
+                { data: "fields.especificacionesTecnicas" },
+                { data: "fields.estadosAlmacen" },
+                { data: "fields.usuAlmacen" },
+                { data: "fields.observacionesCompras" },
+                { data: "fields.estadosCompras" },
+                { data: "fields.usuCompras" },
+
+
+            ]
+        });
+
+
+        /*------------------------------------------
+        --------------------------------------------
+        Click to Edit Button
+        --------------------------------------------
+        --------------------------------------------*/
+        $('body').on('click', '.editPost', function () {
+          <!--  alert("Entre a Editar"); -->
+          var username = document.getElementById("username").value;
+         var sedeSeleccionada = document.getElementById("sedeSeleccionada").value;
+          //var sedeSeleccionada = 'PEPITO';
+          var nombreUsuario = document.getElementById("nombreUsuario").value;
+          var nombreSede = document.getElementById("nombreSede").value;
+          var solicitudId = document.getElementById("solicitudId").value;
+          var perfil = document.getElementById("perfil").value;
+
+
+            var post_id = $(this).data('pk');
+           <!--  alert("post_id = " + post_id); -->
+            $.get("/ComprasConsulta/postCompras" +'/' + post_id + ',' + username  + ',' + sedeSeleccionada +','+ nombreUsuario + ',' + nombreSede + ',' + perfil + ',' + post_id   + '/edit/' ,function (data) {
+
+                $('#modelHeading').html("Edit Post");
+                $('#saveBtn').val("edit-post");
+                $('#ajaxModel').modal('show');
+
+                $('#pk').val(data.pk);
+                $('#item').val(data.item);
+                $('#descripcion').val(data.descripcion_id);
+                $('#descripcion_nombre').val(data.descripcion);
+                $('#tiposCompra').val(data.tiposCompra_id);
+                $('#tiposCompra_nombre').val(data.tiposCompra);
+                $('#producto').val(data.producto);
+                $('#producto_nombre').val(data.nombre_producto);
+                $('#presentacion').val(data.presentacion_id);
+                $('#presentacion_nombre').val(data.presentacion);
+                $('#cantidad').val(data.cantidad);
+                $('#justificacion').val(data.justificacion);
+                $('#especificacionesTecnicas').val(data.especificacionesTecnicas);
+                $('#usuarioResponsableValidacion').val(data.usuarioResponsableValidacion_id);
+                $('#usuarioResponsableValidacion_nombre').val(data.usuarioResponsableValidacion);
+                $('#estadosValidacion').val(data.estadosValidacion_id);
+
+                $('#especificacionesAlmacen').val(data.especificacionesAlmacen);
+                $('#estadosAlmacen').val(data.estadosAlmacen_id);
+                $('#usuAlmacen').val(data.usuAlmacen);
+
+                $('#observacionesCompras').val(data.observacionesCompras);
+
+                $('#estadosCompras').val(data.estadosCompras_id);
+                $('#usuCompras').val(data.usuCompras);
+
+
+            })
+        });
+
+        /*------------------------------------------
+        --------------------------------------------
+        Print Error Msg
+        --------------------------------------------
+        --------------------------------------------*/
+        function printErrorMsg(msg) {
+            $('.error-msg').find('ul').html('');
+            $('.error-msg').css('display','block');
+            $.each( msg, function( key, value ) {
+                $(".error-msg").find("ul").append('<li>'+value+'</li>');
+            });
+        }
+
+        /*------------------------------------------
+        --------------------------------------------
+        Create Post Code
+        --------------------------------------------
+        --------------------------------------------*/
+        $('#saveBtn').click(function (e) {
+
+            e.preventDefault();
+            var username = document.getElementById("username").value;
+            var adjunto = document.getElementById("adjuntoCompras").value;
+
+
+            $(this).html('Sending..');
+          <!--  alert( "data = " +  $('#postForm').serialize());  -->
+             var data = new FormData($('#postForm').get(0));
+
+            $.ajax({
+               data: data,
+             // data: $('#postForm').serialize(), "filePath":filePath,
+                //obtener dato de formulario tipo archivo
+
+                url: "{% url 'post_storeCompras' %}",
+                type: "POST",
+             //   dataType: 'json',
+                cache:false,
+                contentType:false,
+                processData:false,
+
+                success: function (data) {
+                <!-- alert("Entre satisfactorio");  -->
+
+                    if ($.isEmptyObject(data.error)) {
+                        $("input[name='item']").val('');
+                        $("input[name='descripcion']").val('');
+                        $("input[name='tiposCompra']").val('');
+                        $("input[name='producto']").val('');
+                        $("input[name='presentacion']").val('');
+                        $("input[name='cantidad']").val('');
+                        $("input[name='justificacion']").val('');
+                        $("input[name='especificacionesTecnicas']").val('');
+                        $("input[name='usuarioResponsableValidacion']").val('');
+                        $("input[name='estadosValidacion']").val('');
+                        $("input[name='especificacionesAlmacen']").val('');
+                        $("input[name='estadosAlmacen']").val('');
+                        $("input[name='usuAlmacen']").val('');
+                        $("input[name='especificacionesCompras']").val('');
+                        $("input[name='estadosCompras']").val('');
+                        $("input[name='usuCompras']").val('');
+                        $("input[name='tipoAdjuntoCompras']").val('');
+                        $("input[name='adjuntoCompras']").val('');
+
+
+
+                        $('#ajaxModel').modal('hide');
+                        $('.success-msg').css('display','block');
+                        $('.success-msg').text(data.message);
+                    }else{
+                        alert("Entre HORRORES");
+                        printErrorMsg(data.error)
+                    }
+                    $('#postForm').trigger("reset");
+                    table.ajax.reload();
+
+                },
+                error: function (data) {
+                    $('#saveBtn').html('Save Changes');
+                }
+            });
+        });
+
+
+    });
+</script>
+
+
+<div class="col-lg-12">
+
+
+    <div class="row">
+        <div style=" background-color:#7B67FA ">
+            <center>
+                <H4>
+                    <span style="font-style:font-size:2px">
+                            <b>
+                           <FONT COLOR="white">  NOTIFICACION COMPRAS  </FONT>
+                            </b>
+                    </span>
+                </H4>
+            </center>
+        </div>
+    </div>
+
+<br>
+    <!-- INICIO ENCABEZADO PROPUESTO -->
+    <div class="row" >
+        <div class="col-md-12">
+            <div class="card" >
+                <div class="card-header">
+                    <div class="row">
+                        <div class="row">
+
+                    </div>
+                </div>
+                <div class="card-body"  >
+                    <div class="row"  >
+                        <div class="col-md-12" >
+                            <div class="alert alert-success success-msg" style="display:none"></div>
+                            <table class="table table-bordered tablaAlmacenDetalle" >
+                                <thead   >
+                                <tr >
+                                    <th>No</th>
+                                    <th>fecha</th>
+                                    <th>nombre_area</th>
+                                    <th>usuariosCreaSol</th>
+                                    <th>It</th>
+                                <!--     <th>Tipo</th>  -->
+                                    <th>Producto</th>
+                                    <th>#</th>
+                                    <th>Espec.Tec</th>
+                                     <th >Est.Alm</th>
+                                     <th>usuAlm</th>
+                                     <th>Obs.Com</th>
+                                     <th >Est.Com</th>
+                                     <th>usuCom</th>
+                                    <th>Action</th>
+
+                                  <!--  <th data-visible="true"></th>  -->
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MODAL -->
+
+<div class="modal fade" id="ajaxModel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modelHeading"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger error-msg" style="display:none">
+                    <ul class="mb-0"></ul>
+                </div>
+                <form id="postForm" name="postForm" class="form-horizontal"  method="post" enctype="multipart/form-data" novalidate>
+
+                    <input type="hidden" class="form-control" id="username" name="username" value={{Username}}>
+                    <input type="hidden" class="form-control" id="sedeSeleccionada" name="sedeSeleccionada" value={{SedeSeleccionada}}>
+                    <input type="hidden" class="form-control" id="nombreUsuario" name="nombreUsuario" value={{NombreUsuario}}>
+                    <input type="hidden" class="form-control" id="nombreSede" name="nombreSede" value={{NombreSede}}>
+                    <input type="hidden" class="form-control" id="solicitudId" name="solicitudId" value={{SolicitudId}}>
+                    <input type="hidden" class="form-control" id="perfil" name="perfil" value={{Perfil}}>
+
+                    <input type="hidden" name="pk" id="pk">
+                    <input type="hidden" name="item" id="item">
+
+                   <!-- <div class="form-group">
+                        <label for="item" class="col-sm-2 control-label">Item</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="item" name="item" placeholder="Enter Item"
+                                   value="" maxlength="50" readonly>
+                        </div>
+                    </div>  -->
+
+                    <input type="hidden" name="descripcion" id="descripcion">
+
+                    <input type="hidden" name="descripcion_nombre" id="descripcion_nombre">
+
+                 <!--    <div class="form-group">  -->
+                  <!--      <label for="descripcion_nombre" class="col-sm-2 control-label">descripcion_nombre</label> -->
+                  <!--      <div class="col-sm-12"> -->
+                   <!--         <input type="text" class="form-control" id="descripcion_nombre" name="descripcion_nombre" placeholder="Enter descripcion" -->
+                    <!--               value="" maxlength="150" readonly> -->
+                    <!--    </div> -->
+                    <!-- </div> -->
+
+                        <input type="hidden" name="tiposCompra" id="tiposCompra">
+
+                    <input type="hidden" name="tiposCompra_nombre" id="tiposCompra_nombre">
+                 <!--      <div class="form-group"> -->
+                 <!--        <label for="tiposCompra_nombre" class="col-sm-2 control-label">tipo</label> -->
+                 <!--        <div class="col-sm-12"> -->
+                  <!--           <input type="text" class="form-control" id="tiposCompra_nombre" name="tiposCompra_nombre" placeholder="Enter tipo" -->
+                   <!--                 value="" maxlength="150" readonly> -->
+                   <!--      </div> -->
+                    <!--  </div> -->
+
+                 <input type="hidden" name="producto" id="producto">
+                    <input type="hidden" name="producto_nombre" id="producto_nombre">
+
+                   <!--    <div class="form-group">
+                        <label for="producto_nombre" class="col-sm-2 control-label">producto</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="producto_nombre" name="producto_nombre" placeholder="Enter producto"
+                                   value="" maxlength="150" readonly>
+                        </div>
+                    </div>  -->
+
+                    <input type="hidden" name="presentacion" id="presentacion">
+                    <input type="hidden" name="presentacion_nombre" id="presentacion_nombre">
+
+                      <!--      <div class="form-group">
+                        <label for="presentacion_nombre" class="col-sm-2 control-label">presentacion</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="presentacion_nombre" name="presentacion_nombre" placeholder="Enter presentacion"
+                                   value="" maxlength="150" readonly>
+                        </div>
+                    </div> -->
+
+                     <input type="hidden" name="cantidad" id="cantidad">
+
+                      <!--     <div class="form-group">
+                        <label for="cantidad" class="col-sm-2 control-label">cantidad</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="cantidad" name="cantidad" placeholder="Enter cantidad"
+                                   value="" maxlength="50" readonly>
+                        </div>
+                    </div> -->
+
+                    <input type="hidden" name="justificacion" id="justificacion">
+
+                    <!--         <div class="form-group"> -->
+                    <!--    <label for="justificacion" class="col-sm-2 control-label">justificacion</label> -->
+                    <!--    <div class="col-sm-12"> -->
+                    <!--        <input type="text" class="form-control" id="justificacion" name="justificacion" placeholder="Enter justificacion" -->
+                    <!--               value="" maxlength="150" readonly> -->
+                    <!--    </div> -->
+                     <!-- </div> -->
+
+                    <input type="hidden" name="especificacionesTecnicas" id="especificacionesTecnicas">
+
+                   <!--       <div class="form-group">
+                        <label for="especificacionesTecnicas" class="col-sm-2 control-label">especificacionesTecnicas</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="especificacionesTecnicas" name="especificacionesTecnicas" placeholder="Enter espTecnicas"
+                                   value="" maxlength="150" readonly>
+                        </div>
+                    </div>  -->
+
+                      <input type="hidden" name="usuarioResponsableValidacion" id="usuarioResponsableValidacion">
+                        <input type="hidden" name="usuarioResponsableValidacion_nombre" id="usuarioResponsableValidacion_nombre">
+
+                      <!--      <div class="form-group"> -->
+                      <!--    <label for="usuarioResponsableValidacion_nombre" class="col-sm-2 control-label">usuarioResponsableValidacion</label> -->
+                      <!--   <div class="col-sm-12"> -->
+                       <!--      <input type="text" class="form-control" id="usuarioResponsableValidacion_nombre" name="usuarioResponsableValidacion_nombre" placeholder="Enter usuarioResponsableValidacion_nombre" -->
+                       <!--             value="" maxlength="150" readonly> -->
+                      <!--   </div> -->
+                      <!--  </div> -->
+
+                               <div class="form-group">
+                        <label for="estadosValidacion" class="col-sm-2 control-label">estadosValidacion</label>
+                        <div class="col-sm-12">
+
+                             <select class="form-control" id="estadosValidacion" name="estadosValidacion" style="pointer-events: none;">
+
+                                 {% for estadosValidacion in EstadosValidacion %}
+                                    <option value="{{estadosValidacion.id}}"> {{estadosValidacion.nombre}}</option>
+                                    {% endfor %}
+
+                            </select>
+
+                           <!--     <input type="text" class="form-control" id="estadosValidacion" name="estadosValidacion" placeholder="Enter estado validacion"  value="" maxlength="50">  -->
+
+                        </div>
+                    </div>
+
+                       <div class="form-group">
+                        <label for="especificacionesAlmacen" class="col-sm-2 control-label">especificacionesAlmacen</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="especificacionesAlmacen" name="especificacionesAlmacen" placeholder="Enter especificacionesAlmacen"
+                                   value="" maxlength="150" readonly >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="estadosAlmacen" class="col-sm-2 control-label">estadosAlmacen</label>
+                        <div class="col-sm-12">
+                            <select class="form-control" id="estadosAlmacen" name="estadosAlmacen" style="pointer-events: none;">
+
+                                {% for estadosAlmacen in EstadosAlmacen %}
+                                <option value="{{estadosAlmacen.id}}"> {{estadosAlmacen.nombre}}</option>
+                                {% endfor %}
+
+                            </select>
+
+                        </div>
+                    </div>
+
+                                         <input type="hidden" name="usuAlmacen" id="usuAlmacen">
+
+
+                   <!--         <div class="form-group">  -->
+                   <!--     <label for="usuAlmacen" class="col-sm-2 control-label">usuAlmacen</label> -->
+                   <!--     <div class="col-sm-12"> -->
+                    <!--        <input type="text" class="form-control" id="usuAlmacen" name="usuAlmacen" placeholder="Enter usuAlmacen" -->
+                    <!--               value="" maxlength="150" readonly> -->
+                    <!--    </div> -->
+                    <!-- </div> -->
+
+                     <div class="form-group">
+                        <label for="observacionesCompras" class="col-sm-2 control-label">Observaciones Compras</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="observacionesCompras" name="observacionesCompras" placeholder="Enter Observaciones Compras"
+                                   value="" maxlength="150">
+                        </div>
+                    </div>
+
+
+
+
+
+                    </div>
+
+
+                      <div class="form-group">
+                        <label for="adjuntoCompras" class="col-sm-2 control-label">Archivo adjunto</label>
+                        <div class="col-sm-12">
+                          <input type="file" class="form-control" id="adjuntoCompras" name="adjuntoCompras"  placeholder="Enter Adjunto Compras" >
+                        </div>
+                      </div>
+
+
+
+
+                      <div class="form-group">
+                        <label for="estadosCompras" class="col-sm-2 control-label">estadosCompras</label>
+                        <div class="col-sm-12">
+                            <select class="form-control" id="estadosCompras" name="estadosCompras" required>
+
+                                {% for estadosCompras in EstadosCompras %}
+                                <option value="{{estadosCompras.id}}"> {{estadosCompras.nombre}}</option>
+                                {% endfor %}
+
+                            </select>
+
+                        </div>
+                    </div>
+
+                              <div class="form-group">
+                        <label for="usuCompras" class="col-sm-2 control-label">usuCompras</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="usuCompras" name="usuCompras" placeholder="Enter usuCompras"
+                                   value="" maxlength="150" readonly>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-offset-2 col-sm-10 mt-2">
+                        <button type="submit" class="btn btn-primary" id="saveBtn" value="create">Graba Cambios
+                        </button>
+                    </div>
+                </form>
+
+                 {% if uploaded_file_url %}
+                    <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+                    {% endif %}
+
+                    <p><a href="{% url 'post_storeCompras' %}">Return to home</a></p>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- FIN  MODAL -->
+
+<!-- FIN ENCABEZADO PROPUESTO  -->
+
+{% endblock %}
+
+{% block SUBGRUPO %}
+{% endblock %}

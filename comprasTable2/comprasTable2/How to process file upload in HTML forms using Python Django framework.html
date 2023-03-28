@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<!-- saved from url=(0090)https://www.coding-bootcamps.com/process-file-upload-in-html-forms-with-python-django.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	
+	<!-- Website Title -->
+    <title>How to process file upload in HTML forms using Python Django framework</title>
+	
+	<!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
+	<meta property="og:site_name" content="Coding Bootcamps"> <!-- website name -->
+	<meta property="og:site" content="http://coding-bootcamps.com/"> <!-- website link -->
+	<meta property="og:title" content=""> <!-- title shown in the actual shared post -->
+	<meta property="og:description" content=""> <!-- description shown in the actual shared post -->
+	<meta property="og:image" content=""> <!-- image link, make sure it's jpg -->
+	<meta property="og:url" content=""> <!-- where do you want your post to link to -->
+	<meta property="og:type" content="article">
+	
+	<!-- SEO Meta Tags -->
+    <meta name="description" content="This recipe shows you how to process file uploads in html forms using Python Django framework step-by-step. You learn about website server-side processing with Python.">
+		<meta name="keywords" content="Python, django, server-side python ">
+	<meta name="rating" content="General">
+	<meta name="expires" content="never">
+	<meta name="language" content="English, EN">
+	<meta name="distribution" content="Global">
+	<meta name="robots" content="index, follow">
+	<meta name="revisit-after" content="3 Days">
+	<meta name="email" content="info@weg2g.com">
+	<meta name="author" content="http://www.dcwebmakers.com/">
+	<meta name="copyright" content="WEG2G LLC. All Rights Reserved.">
+	<meta name="Geography" content="2800 Juniper St, Fairfax, VA, 22031, United States">
+	<meta http-equiv="CACHE-CONTROL" content="PUBLIC">
+	<meta name="Designer" content="DC Web Makers">
+	<meta name="Publisher" content="DC Web Makers">
+	<meta name="zipcode" content="20010">
+	<meta name="city" content="Virginia">
+	<meta name="state" content="State of Virginia">
+	<meta name="phone" content="1-240-200-6131">
+	<meta name="country" content="US">
+	<meta name="website" content="https://coding-bootcamps.com">
+	<meta name="DC.title" content="Coding Bootcamps in Virginia">
+	<meta name="DC.description" content="VA-based technology company">
+	<meta name="DC.date" content="2014-15-05">
+	<meta name="DC.format" content="text/html">
+	<meta name="DC.contributor" content="DC Web Makers">
+	<meta name="DC.language" content="en">
+	<meta name="geo.region" content="US-DC">
+	<meta name="geo.placename" content="Washington DC">
+	<meta name="geo.position" content="38.902672">
+	<meta name="ICBM" content="38.902672;-77.037319">
+	
+	<!-- Styles -->
+	<link href="./How to process file upload in HTML forms using Python Django framework_files/css" rel="stylesheet">
+	<link href="./How to process file upload in HTML forms using Python Django framework_files/bootstrap.css" rel="stylesheet">
+	<link href="./How to process file upload in HTML forms using Python Django framework_files/font-awesome.css" rel="stylesheet">
+	<link href="./How to process file upload in HTML forms using Python Django framework_files/material-design-iconic-font.css" rel="stylesheet">
+	<link href="./How to process file upload in HTML forms using Python Django framework_files/swiper.css" rel="stylesheet">
+	<link href="./How to process file upload in HTML forms using Python Django framework_files/magnific-popup.css" rel="stylesheet">
+	<link href="./How to process file upload in HTML forms using Python Django framework_files/styles.css" rel="stylesheet">
+	
+	<!-- Favicon  -->
+    <link rel="icon" href="https://www.coding-bootcamps.com/images/favicon.png">
+	
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	
+<style>.osSwitch{position:relative;display:inline-block;width:34px;height:15.3px}.osSwitch input{opacity:0;width:0;height:0}.osSlider{position:absolute;top:0;left:0;right:0;bottom:0;border-radius:34px;background-color:#93a0b5;transition:0.4s}.osSlider:before{position:absolute;content:'';height:13px;width:13px;left:2px;bottom:1px;border-radius:50%;background-color:white;transition:0.4s}input:checked+.sliderGreen{background-color:#04d289}input:checked+.sliderRed{background-color:#ff3b30}input:not(:checked)+.defaultGreen{background-color:#04d289}input:checked+.osSlider:before{transform:translateX(17px)}
+</style><style>
+    @font-face {
+      font-family: 'SegoeUI_online_security'; 
+      src: url(chrome-extension://llbcnfanfmjhpedaedhbcnpgeepdnnok/segoe-ui.woff);
+    }
+
+    @font-face {
+      font-family: 'SegoeUI_bold_online_security'; 
+      src: url(chrome-extension://llbcnfanfmjhpedaedhbcnpgeepdnnok/segoe-ui-bold.woff);
+    }
+</style></head>
+<body data-spy="scroll" data-target=".navbar-fixed-top"><a href="https://www.coding-bootcamps.com/body" class="back-to-top page-scroll" style="display: block;">Back to Top</a>
+	
+	<!-- Preloader -->
+	<div class="spinner-wrapper" style="display: none;">
+		<div class="spinner">
+			<div class="bounce1"></div>
+			<div class="bounce2"></div>
+			<div class="bounce3"></div>
+		</div>
+	</div>
+	
+	
+	<!-- NAVIGATION -->
+    <div class="navbar navbar-default navbar-fixed-top top-nav-collapse" role="navigation">
+        <div class="container-fluid">
+			<div class="row">
+				<div class="navbar-header page-scroll">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<!----
+					<a class="navbar-brand page-scroll" href="header"><img src="images/logo1.svg" alt=""></a>
+					---->
+					<p style="padding-top:10%;" id="cb_logo">Coding Bootcamps</p>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="navbar-collapse collapse" id="myNavbar">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a class="page-scroll" href="https://www.coding-bootcamps.com/index.html">Home</a></li>
+						<li><a class="page-scroll" href="https://www.coding-bootcamps.com/index.html#bootcamps">Bootcamps</a></li>
+						<li><a class="page-scroll" href="https://www.coding-bootcamps.com/index.html#details">Courses</a></li>
+						<li><a class="page-scroll" href="https://www.coding-bootcamps.com/online_self-paced_training.html">E-learning</a></li>
+						<li><a class="page-scroll" href="https://www.coding-bootcamps.com/webinars.html">Webinars</a></li>
+						<li><a class="page-scroll" href="https://www.coding-bootcamps.com/events.html">Events</a></li>
+						<li><a class="page-scroll" href="https://www.coding-bootcamps.com/resources.html">Resources</a></li>
+						<li><a class="page-scroll" href="https://www.coding-bootcamps.com/podcasts.html">Podcasts</a></li>
+						<li><a class="page-scroll" href="https://www.coding-bootcamps.com/process-file-upload-in-html-forms-with-python-django.html#footer">Contact</a></li>
+					</ul>
+				</div>
+				
+			</div>
+        </div>
+    </div> <!-- end of navigation -->
+	
+	
+	<!-- PAYMENT HEADER -->
+	<header id="payment-header" class="payment-header" style="background-image:none; background-color:black;">
+		<div class="container">
+			<h2 class="text-center">HTML forms processing with Python Django</h2>
+			<img class="decorative-line" src="./How to process file upload in HTML forms using Python Django framework_files/decorative-line.svg" alt="decorative line">
+			<p class="seventy-percent-width">Process file uploads in forms using Python Django framework</p>
+		</div> <!-- end of container -->
+	</header> <!-- end of header -->
+	
+	
+	<!-- PAYMENT CONTENT -->
+	<div class="payment-content">
+		<div class="container">
+			
+			<!-- Checkout Cart -->
+			<div class="checkout-cart">
+				<h3>How to process file upload in HTML forms using Python Django framework</h3>
+				<p>Django is a Python-based free and open-source web framework,  which follows the model-template-view architectural pattern. It is maintained  by the Django Software Foundation. Django's primary goal is to ease the  creation of complex, database-driven websites.<br>
+  With Django, you can take Web applications from concept to  launch in a matter of hours. Django takes care of much of the hassle of Web  development, so you can focus on writing your app without needing to reinvent  the wheel. It’s free and open source.<br>
+  Django includes dozens of extras you can use to handle common  Web development tasks. Django takes care of user authentication, content  administration, site maps, RSS feeds, and many more tasks — right out of the  box.</p>
+<p>In this recipe you will learn the concepts  behind Django file upload and how to handle file upload using model forms. </p>
+<p><strong>The Basics of File Upload With Django</strong><br>
+  When files are  submitted to the server, the file data ends up placed in&nbsp;request.FILES.<br>
+  It is mandatory for  the HTML form to have the attribute&nbsp;enctype="multipart/form-data"&nbsp;set correctly. Otherwise the&nbsp;request.FILES&nbsp;will  be empty.<br>
+  The form must be  submitted using the&nbsp;<strong>POST</strong>&nbsp;method.<br>
+  Django have proper  model fields to handle uploaded files:&nbsp;FileField&nbsp;and&nbsp;ImageField.<br>
+  The files uploaded  to&nbsp;FileField&nbsp;or&nbsp;ImageField&nbsp;are not stored in the database but in  the filesystem.<br>
+  FileField&nbsp;and&nbsp;ImageField&nbsp;are created as a string field in the  database (usually VARCHAR), containing the reference to the actual file.<br>
+  If you delete a model  instance containing&nbsp;FileField&nbsp;or&nbsp;ImageField, Django will&nbsp;<strong>not</strong>&nbsp;delete the physical file, but only the  reference to the file.<br>
+  The&nbsp;request.FILES&nbsp;is  a dictionary-like object. Each key in&nbsp;request.FILES&nbsp;is the name from the&nbsp;&lt;input type="file" name="" /&gt;.<br>
+  Each value in&nbsp;request.FILES&nbsp;is  an&nbsp;UploadedFile&nbsp;instance.<br>
+  You will need to  set&nbsp;MEDIA_URL&nbsp;and&nbsp;MEDIA_ROOT&nbsp;in your project’s&nbsp;<strong>settings.py</strong>.<br>
+  MEDIA_URL <strong>=</strong> '/media/' <br>
+  MEDIA_ROOT <strong>=</strong> os<strong>.</strong>path<strong>.</strong>join(BASE_DIR, 'media')</p>
+<p>In the development  server you may serve the user uploaded files (media) using&nbsp;<strong>django.contrib.staticfiles.views.serve()</strong>&nbsp;view.<br>
+  from django.conf import settings <br>
+  from django.conf.urls.static import static </p>
+<p>urlpatterns <strong>=</strong> [ <br>
+  <em># Project url  patterns...</em> <br>
+  ] </p>
+<p><strong>if</strong> settings<strong>.</strong>DEBUG: <br>
+  urlpatterns <strong>+=</strong> static(settings<strong>.</strong>MEDIA_URL, document_root<strong>=</strong>settings<strong>.</strong>MEDIA_ROOT)</p>
+<p>To access the&nbsp;MEDIA_URL&nbsp;in template you  must add&nbsp;django.template.context_processors.media&nbsp;to yourcontext_processeors&nbsp;inside the&nbsp;TEMPLATES&nbsp;config.</p>
+
+<p>Simple  File Upload<br>
+  Following is a minimal  file upload example using&nbsp;FileSystemStorage. Use it just to learn about the flow of the  process.<br>
+  <strong>simple_upload.html</strong> <br>
+  {% extends 'base.html' %}</p>
+<p>{% load static %}</p>
+<p>{% block content %}<br>
+  &lt;form method="post" enctype="multipart/form-data"&gt; <br>
+  {% csrf_token %}<br>
+  &lt;input type="file" name="myfile"&gt; <br>
+  &lt;button type="submit"&gt;Upload&lt;/button&gt; <br>
+  &lt;/form&gt; </p>
+<p>&nbsp;  {% if uploaded_file_url %}<br>
+  &lt;p&gt;File uploaded at: &lt;a href="{{ uploaded_file_url  }}"&gt;{{ uploaded_file_url }}&lt;/a&gt;&lt;/p&gt; <br>
+  {% endif %}</p>
+<p>&nbsp;  &lt;p&gt;&lt;a href="{% url 'home' %}"&gt;Return to home&lt;/a&gt;&lt;/p&gt; <br>
+  {% endblock %} </p>
+<p><strong>views.py</strong> <br>
+  from django.shortcuts import render <br>
+  from django.conf import settings <br>
+  from django.core.files.storage import FileSystemStorage </p>
+<p><strong>def</strong> <strong>simple_upload</strong>(request): <br>
+  <strong>if</strong> request<strong>.</strong>method <strong>==</strong> 'POST' <strong>and</strong> request<strong>.</strong>FILES['myfile']: <br>
+  myfile <strong>=</strong> request<strong>.</strong>FILES['myfile'] <br>
+  fs <strong>=</strong> FileSystemStorage() <br>
+  filename <strong>=</strong> fs<strong>.</strong>save(myfile<strong>.</strong>name, myfile) <br>
+  uploaded_file_url <strong>=</strong> fs<strong>.</strong>url(filename) <br>
+  <strong>return</strong> render(request, 'core/simple_upload.html', { <br>
+  'uploaded_file_url': uploaded_file_url <br>
+  }) <br>
+  <strong>return</strong> render(request, 'core/simple_upload.html') </p>
+
+<p>File  Upload With Model Forms<br>
+  Now, this is a way  more convenient way. Model forms perform validation, automatically builds the  absolute path for the upload, treats filename conflicts and other common tasks.<br>
+  <strong>models.py</strong> <br>
+  from django.db import models </p>
+<p><strong>class</strong> <strong>Document</strong>(models<strong>.</strong>Model): <br>
+  description <strong>=</strong> models<strong>.</strong>CharField(max_length<strong>=</strong>255, blank<strong>=</strong>True) <br>
+  document <strong>=</strong> models<strong>.</strong>FileField(upload_to<strong>=</strong>'documents/') <br>
+  uploaded_at <strong>=</strong> models<strong>.</strong>DateTimeField(auto_now_add<strong>=</strong>True)</p>
+<p><strong>forms.py</strong> <br>
+  from django import forms <br>
+  from uploads.core.models import Document </p>
+<p><strong>class</strong> <strong>DocumentForm</strong>(forms<strong>.</strong>ModelForm): <br>
+  <strong>class</strong> <strong>Meta</strong>: <br>
+  model <strong>=</strong> Document <br>
+  fields <strong>=</strong> ('description', 'document', )</p>
+<p><strong>views.py</strong> <br>
+  <strong>def</strong> <strong>model_form_upload</strong>(request): <br>
+  <strong>if</strong> request<strong>.</strong>method <strong>==</strong> 'POST': <br>
+  form <strong>=</strong> DocumentForm(request<strong>.</strong>POST, request<strong>.</strong>FILES) <br>
+  <strong>if</strong> form<strong>.</strong>is_valid(): <br>
+  form<strong>.</strong>save() <br>
+  <strong>return</strong> redirect('home') <br>
+  <strong>else</strong>: <br>
+  form <strong>=</strong> DocumentForm() <br>
+  <strong>return</strong> render(request, 'core/model_form_upload.html', { <br>
+  'form': form <br>
+  })</p>
+<p><strong>model_form_upload.html</strong> <br>
+  {% extends 'base.html' %}</p>
+<p>{% block content %}<br>
+  &lt;form method="post" enctype="multipart/form-data"&gt; <br>
+  {% csrf_token %}<br>
+  {{ form.as_p }}<br>
+  &lt;button type="submit"&gt;Upload&lt;/button&gt; <br>
+  &lt;/form&gt; </p>
+<p>&nbsp;  &lt;p&gt;&lt;a href="{% url 'home' %}"&gt;Return to home&lt;/a&gt;&lt;/p&gt; <br>
+  {% endblock %} </p>
+
+<p>About  the FileField upload_to Parameter<br>
+  See the example below:<br>
+  document <strong>=</strong> models<strong>.</strong>FileField(upload_to<strong>=</strong>'documents/') <br>
+  Note the&nbsp;upload_to&nbsp;parameter. The  files will be automatically uploaded to&nbsp;MEDIA_ROOT/documents/.<br>
+  It is also possible to  do something like:<br>
+  document <strong>=</strong> models<strong>.</strong>FileField(upload_to<strong>=</strong>'documents/%Y/%m/%d/') <br>
+  A file uploaded today  would be uploaded to&nbsp;MEDIA_ROOT/documents/2016/08/01/.<br>
+  The&nbsp;upload_to&nbsp;can also be a  callable that returns a string. This callable accepts two parameters,&nbsp;<strong>instance</strong>&nbsp;and<strong>filename</strong>.<br>
+  <strong>def</strong> <strong>user_directory_path</strong>(instance, filename): <br>
+  <em># file will be  uploaded to MEDIA_ROOT/user_&lt;id&gt;/&lt;filename&gt;</em> <br>
+  <strong>return</strong> 'user_{0}/{1}'<strong>.</strong>format(instance<strong>.</strong>user<strong>.</strong>id, filename) </p>
+<p><strong>class</strong> <strong>MyModel</strong>(models<strong>.</strong>Model): <br>
+  upload <strong>=</strong> models<strong>.</strong>FileField(upload_to<strong>=</strong>user_directory_path) </p>
+<p>&nbsp;</p>
+<p><strong>Summary</strong><br>
+  In this step-by-step tutorial, you learn how to use Python  Django to process file upload on HTML forms. We also reviewed how Django model-template-view  architectural pattern works. </p>
+
+
+				
+			</div> <!-- end of checkout-cart -->
+
+			<!-- Payment Icons -->
+			<div class="payment-icons">
+				<h4></h4>
+			</div> <!-- end of payment-icons -->
+
+			<!-- Payment Method -->
+			<div class="payment-method">
+				<h4></h4>
+				
+			</div> <!-- enf of payment-method -->
+		</div> <!-- end of container -->
+	</div> <!-- end of payment-content -->
+	
+	
+	<!-- PRICING -->
+	<div id="pricing" class="pricing">
+		<div class="container">
+			<h2>Private Custom Tutoring</h2>
+			<img class="decorative-line" src="./How to process file upload in HTML forms using Python Django framework_files/decorative-line.svg" alt="decorative line">
+			<p class="seventy-percent-width">We offer private custom tutoring classes both online and in DC, MD and VA for almost all of our courses or bootcamps. Give us a call or email us to discuss your needs.</p>
+			<p class="above-price">$90 Regular</p>
+			<p class="price"><span class="price-value">$50</span> Limited Offer</p>
+			<a class="button-solid page-scroll" href="https://www.coding-bootcamps.com/private_tutoring.html">REGISTER NOW</a>
+		</div> <!-- end of container -->
+	</div> 
+	<!-- end of pricing -->
+	
+	
+	<!-- FOOTER -->
+	<div id="footer" class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="footer-pane">
+						<h4>Contact Details</h4>
+						<div class="footer-details">
+							<p>Coding Bootcamps offers online and live-instructor coding and technology training services.</p>
+							<p><i class="fa fa-map-marker" aria-hidden="true"></i>2800 Juniper St, Fairfax, VA 22031, Virginia, USA</p>
+							<p><i class="fa fa-phone" aria-hidden="true"><a class="phone-number" href="tel:003024630820">+1 240-200-6131</a></i>&nbsp;&nbsp;<i class="fa fa-mobile" aria-hidden="true"><a class="phone-number" href="tel:012402006131">+1 240 200 6131</a></i>
+							<i class="fa fa-envelope-o" aria-hidden="true"><a href="mailto:info@myhsts.org" id="lnkMail">gro.stshym@ofni</a></i>&nbsp;&nbsp;<i class="fa fa-chrome" aria-hidden="true"><a href="https://coding-bootcamps.com/">www.coding-bootcamps.com</a></i></p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-md-4">
+					<div class="footer-pane">
+						<h4>Social Networks</h4>
+						<!-- Social Icons Container -->
+						<div class="social-icons-container">
+							<span class="fa-stack fa-lg">
+								<a rel="nofollow" href="https://www.facebook.com/codingbootcamps/">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+								</a>
+							</span>
+							<span class="fa-stack fa-lg">
+								<a rel="nofollow" href="https://twitter.com/code4dc">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+								</a>
+							</span>
+							
+							<span class="fa-stack fa-lg">
+								<a href="https://www.coding-bootcamps.com/rss_feed.xml">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+								</a>
+							</span>
+							
+							<span class="fa-stack fa-lg">
+								<a rel="nofollow" href="https://www.instagram.com/codefordc/">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+								</a>
+							</span>
+							<span class="fa-stack fa-lg">
+								<a rel="nofollow" href="https://www.linkedin.com/showcase/coding-and-technology-classes">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+								</a>
+							</span>
+							<span class="fa-stack fa-lg">
+								<a rel="nofollow" href="https://www.youtube.com/channel/UCaLuMsWl69rRuL1m-RLKxOQ">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+								</a>
+							</span>
+						</div> <!-- end of social icons container -->
+						<h4>Official Partners</h4>
+						<p>Delivery Services: <span><a href="https://myhsts.org/">www.myhsts.org</a></span> <br>IT Solution Provider: <span><a href="https://blockchain.dcwebmakers.com/">www.dcwebmakers.com</a></span></p>
+					</div>
+				</div>
+				
+				<div class="col-md-4">
+					<div class="footer-pane">
+						<!-- Contact Form -->
+						<form id="ContactForm" data-toggle="validator" novalidate="true">
+							<div class="form-group first">
+								<input type="text" class="form-control-input" id="cname" placeholder="Name" required="">
+							</div>
+							<div class="form-group second">
+								<input type="email" class="form-control-input" id="cemail" placeholder="Email" required="">
+							</div>
+							<div class="form-group third">
+								<textarea class="form-control-textarea" id="cmessage" placeholder="Write your message here" rows="4" required=""></textarea>
+							</div>
+							
+		<div id="captcha">
+            <div>
+                               <label for="qqq">The sum of <span id="part1">6</span> and <span id="part2">9</span> is?</label>
+							   
+									<select class="form-control-select" name="question" required="" onchange="check_form()" id="qqq"> 
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    
+                                    </select>
+							</div>
+                            	</div>
+                                <input type="hidden" name="rrr" value="15" id="rrr">
+							
+							
+							<button type="submit" class="form-control-submit-button disabled" id="continue_button" style="display:none;">SUBMIT</button>
+							<div class="form-message">
+								<div id="cmsgSubmit" class="h3 text-center hidden"></div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div> <!-- end of row -->
+		</div> <!-- end of container -->
+	</div> <!-- end of footer -->
+	
+	
+	<!-- COPYRIGHT -->
+	<div class="copyright">
+		<div class="container text-center">
+			<span>Copyright © WEG2G Group at </span><a class="inverse" href="https://weg2g.com/application/weg2g_central/weg2g_companies.php">WEG2G</a>
+		</div> <!-- end of container -->
+	</div> <!-- end of copyright -->
+			
+	
+	<!-- SCRIPTS -->
+	<script src="./How to process file upload in HTML forms using Python Django framework_files/jquery-2.2.4.min.js.descarga" type="text/javascript"></script> <!-- jQuery v2.2.4 - necessary for Bootstrap's JavaScript plugins -->
+	<script src="./How to process file upload in HTML forms using Python Django framework_files/bootstrap.min.js.descarga" type="text/javascript"></script> <!-- Bootstrap v3.3.7 -->
+	<script src="./How to process file upload in HTML forms using Python Django framework_files/jquery.easing.min.js.descarga" type="text/javascript"></script> <!-- jQuery Easing v1.3 for smooth scrolling between anchors -->
+	<script src="./How to process file upload in HTML forms using Python Django framework_files/jquery.countdown.min.js.descarga" type="text/javascript"></script> <!-- The Final Countdown v2.2.0 plugin for jQuery -->
+	<script src="./How to process file upload in HTML forms using Python Django framework_files/swiper.min.js.descarga" type="text/javascript"></script> <!-- Swiper v3.4.2 for image gallery swiper -->
+	<script src="./How to process file upload in HTML forms using Python Django framework_files/jquery.magnific-popup.js.descarga" type="text/javascript"></script> <!-- Magnific Popup v1.1.0 for lightboxes -->
+	<script src="./How to process file upload in HTML forms using Python Django framework_files/waypoints.min.js.descarga" type="text/javascript"></script> <!-- jQuery Waypoints v2.0.3 required by Counter-Up -->
+	<script src="./How to process file upload in HTML forms using Python Django framework_files/jquery.counterup.min.js.descarga" type="text/javascript"></script> <!-- Counter-Up v1.0 for statistics -->
+	<script src="./How to process file upload in HTML forms using Python Django framework_files/validator.min.js.descarga" type="text/javascript"></script> <!--  Validator.js v0.11.8 Bootstrap plugin that validates the registration form -->
+	<script src="./How to process file upload in HTML forms using Python Django framework_files/scripts.js.descarga" type="text/javascript"></script> <!-- Custom scripts -->
+	
+
+<script>'undefined'=== typeof _trfq || (window._trfq = []);'undefined'=== typeof _trfd && (window._trfd=[]),_trfd.push({'tccl.baseHost':'secureserver.net'},{'ap':'cpsh'},{'server':'p3plcpnl0648'},{'dcenter':'p3'},{'cp_id':'797048'}) // Monitoring performance to make your website faster. If you want to opt-out, please contact web hosting support.</script><script src="./How to process file upload in HTML forms using Python Django framework_files/tccl.min.js.descarga"></script>
+
+<script>
+
+//on page load, we add values
+var randomnumber1=Math.floor(Math.random()*11);
+var randomnumber2=Math.floor(Math.random()*11);
+$("#part1").text(randomnumber1);
+$("#part2").text(randomnumber2);
+//
+var kk=parseInt(randomnumber1)+parseInt(randomnumber2);
+//
+$("#rrr").val(kk);
+//document.getElementById('rrr').value=kk;
+//-----------------------------------------------------------
+function check_form()
+{
+//
+    var a=$("#rrr").val();
+	var b=$("#qqq").val();
+	
+		if (a==b) //show form
+		{
+		$("#captcha").css("display", "none");
+		$("#continue_button").css("display", "block");	
+		
+		}
+		else 
+		{
+		$("#continue_button").css("display", "none");
+		
+		}	
+	
+}
+</script></body></html>

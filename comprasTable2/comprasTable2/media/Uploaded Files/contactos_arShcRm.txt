@@ -1,0 +1,14 @@
+AdminBD@clinicamedical.com.co/Medical2022
+medical.2022
+M3d1c4l2018
+BD_m3d1c4l
+
+
+sshpass -p "BD_m3d1c4l" scp /mnt/sda3/PostgreSQL/9.4/histo postgres@192.168.0.225:/mnt/sda3/PostgreSQL/9.4/data
+sshpass -p "M3d1c4l2018" scp /mnt/sda3/PostgreSQL/9.4/data/alberto postgres@192.168.0.225:/mnt/sda3/PostgreSQL/9.4/data
+
+sshpass -p "BD_m3d1c4l" scp /mnt/sda3/PostgreSQL/9.4/bebe postgres@192.168.0.225:/mnt/sda3/PostgreSQL/9.4/
+s3tPa$$w0rd!
+
+
+admon2023?? clave usuario Administrador, compras aplicativo bd_siolicitudes3

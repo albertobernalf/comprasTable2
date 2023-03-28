@@ -1,0 +1,1 @@
+httpd.exe -k install -n "Apache 8085" -f "C:\Apache24\conf\httpd_8085.conf"

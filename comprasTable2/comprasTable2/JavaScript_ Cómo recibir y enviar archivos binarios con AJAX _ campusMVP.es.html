@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<!-- saved from url=(0103)https://www.campusmvp.es/recursos/post/javascript-como-recibir-y-enviar-archivos-binarios-con-ajax.aspx -->
+<html lang="es" itemscope="" itemtype="//schema.org/Article"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="contents" title="Archive" href="https://www.campusmvp.es/recursos/archive.aspx">
+<link rel="start" title="campusMVP.es" href="https://www.campusmvp.es/recursos/">
+<link type="application/rsd+xml" rel="edituri" title="RSD" href="https://www.campusmvp.es/recursos/rsd.axd">
+<link type="application/rdf+xml" rel="meta" title="SIOC" href="https://www.campusmvp.es/recursos/sioc.axd">
+<link type="application/apml+xml" rel="meta" title="APML" href="https://www.campusmvp.es/recursos/apml.axd">
+<link type="application/rdf+xml" rel="meta" title="FOAF" href="https://www.campusmvp.es/recursos/foaf.axd">
+<link type="application/rss+xml" rel="alternate" title="campusMVP.es (RSS)" href="https://www.campusmvp.es/recursos/syndication.axd">
+<link type="application/atom+xml" rel="alternate" title="campusMVP.es (ATOM)" href="https://www.campusmvp.es/recursos/syndication.axd?format=atom">
+<link type="application/opensearchdescription+xml" rel="search" title="campusMVP.es" href="https://www.campusmvp.es/recursos/opensearch.axd">
+<link href="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/Global.css" rel="stylesheet" type="text/css"><link href="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/css" rel="stylesheet" type="text/css"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><link href="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/core.css" rel="stylesheet"><link href="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/styles.min.css" rel="stylesheet"><link href="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/recursosstyles.css" rel="stylesheet"><link href="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/responsive.css" rel="stylesheet" media="all"><link href="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/destacados.css" rel="stylesheet" media="all"><link href="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/botonesRRSS.css" rel="stylesheet" media="all"><link href="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/jquery.pan.css" rel="stylesheet" media="all"><link href="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/print-blog.css" type="text/css" media="print" rel="stylesheet">
+<!--[if lt IE 9]>
+	<script type="text/javascript" src="https://www.campusmvp.es/recursos/Custom/Themes//campusMVP/include/html5.js"></script>
+	<![endif]-->
+<link rel="apple-touch-icon" sizes="57x57" href="https://www.campusmvp.es/img/favicons/apple-touch-icon-57x57.png?v=OmmnjwQerQ"><link rel="apple-touch-icon" sizes="60x60" href="https://www.campusmvp.es/img/favicons/apple-touch-icon-60x60.png?v=OmmnjwQerQ"><link rel="apple-touch-icon" sizes="72x72" href="https://www.campusmvp.es/img/favicons/apple-touch-icon-72x72.png?v=OmmnjwQerQ"><link rel="apple-touch-icon" sizes="76x76" href="https://www.campusmvp.es/img/favicons/apple-touch-icon-76x76.png?v=OmmnjwQerQ"><link rel="apple-touch-icon" sizes="114x114" href="https://www.campusmvp.es/img/favicons/apple-touch-icon-114x114.png?v=OmmnjwQerQ"><link rel="apple-touch-icon" sizes="120x120" href="https://www.campusmvp.es/img/favicons/apple-touch-icon-120x120.png?v=OmmnjwQerQ"><link rel="apple-touch-icon" sizes="144x144" href="https://www.campusmvp.es/img/favicons/apple-touch-icon-144x144.png?v=OmmnjwQerQ"><link rel="apple-touch-icon" sizes="152x152" href="https://www.campusmvp.es/img/favicons/apple-touch-icon-152x152.png?v=OmmnjwQerQ"><link rel="apple-touch-icon" sizes="180x180" href="https://www.campusmvp.es/img/favicons/apple-touch-icon-180x180.png?v=OmmnjwQerQ">
+<script defer="" referrerpolicy="origin" src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/s.js.descarga"></script><script type="text/javascript" async="" src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/dc.js.descarga"></script><script type="text/javascript" src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/es.res.axd"></script>
+<script type="text/javascript" src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/01-jquery-3.6.1.min.js.descarga"></script>
+<script type="text/javascript" src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/02-jquery.cookie.js.descarga"></script>
+<script type="text/javascript" src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/04-jquery-jtemplates.js.descarga"></script>
+<script type="text/javascript" src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/05-json2.min.js.descarga"></script>
+<script type="text/javascript" src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/blog.js.descarga"></script><link rel="icon" type="image/png" href="https://www.campusmvp.es/img/favicons/favicon-32x32.png?v=OmmnjwQerQ" sizes="32x32"><link rel="icon" type="image/png" href="https://www.campusmvp.es/img/favicons/android-chrome-192x192.png?v=OmmnjwQerQ" sizes="192x192"><link rel="icon" type="image/png" href="https://www.campusmvp.es/img/favicons/favicon-96x96.png?v=OmmnjwQerQ" sizes="96x96"><link rel="icon" type="image/png" href="https://www.campusmvp.es/img/favicons/favicon-16x16.png?v=OmmnjwQerQ" sizes="16x16"><link rel="manifest" href="https://www.campusmvp.es/img/favicons/manifest.json?v=OmmnjwQerQ"><link rel="mask-icon" href="https://www.campusmvp.es/img/favicons/safari-pinned-tab.svg?v=OmmnjwQerQ" color="#5bbad5"><link rel="shortcut icon" href="https://www.campusmvp.es/img/favicons/favicon.ico?v=OmmnjwQerQ"><meta name="msapplication-TileColor" content="#042038"><meta name="msapplication-TileImage" content="/img/favicons/mstile-144x144.png?v=OmmnjwQerQ"><meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=OmmnjwQerQ"><meta name="theme-color" content="#042038">
+<meta name="keywords" content="JavaScript,Evergreen">
+<meta name="author" content="José Manuel Alarcón">
+<link rel="last" title="Actualidad: GPT-4 y compañía, Typescript 5.0, ChatGPT entraría en Google, .NET 8 preview 2, Visual Studio 2022 y Copilot for business" href="https://www.campusmvp.es/recursos/post/actualidad-gpt-4-y-compania-typescript-5-0-chatgpt-entraria-en-google-net-8-preview-2-visual-studio-2022-y-copilot-for-business.aspx">
+<link rel="first" title="Modern.IE: la herramienta para testeo web de Microsoft " href="https://www.campusmvp.es/recursos/post/Microsoft-lanza-una-nueva-herramienta-de-testeo-Web.aspx">
+<link type="application/rss+xml" rel="alternate" title="JavaScript: Cómo recibir y enviar archivos binarios con AJAX (RSS)" href="https://www.campusmvp.es/recursos/post/feed/javascript-como-recibir-y-enviar-archivos-binarios-con-ajax.aspx?format=ATOM">
+<link type="application/rss+xml" rel="alternate" title="JavaScript: Cómo recibir y enviar archivos binarios con AJAX (ATOM)" href="https://www.campusmvp.es/recursos/post/feed/javascript-como-recibir-y-enviar-archivos-binarios-con-ajax.aspx?format=ATOM">
+<meta name="description" content="Los objetos XHR (XmlHttpRequest) del navegador son la base de AJAX, y sirven para realizar llamadas asíncronas a nuestra propia web o a webs externas. Estamos muy acostumbrados a ver este tipo de llamadas para obtener un valor de texto desde un servicio. Pero no es tan habitual usarlo para recibir otro tipo de datos binarios, por ejemplo archivos completos de imágenes o vídeo. Para lograrlo antiguamente era muy complejo. Por fortuna, hoy en día es mucho más sencillo pero nos implica conocer al menos dos tipos de datos específicos de JavaScript: ArrayBuffer y Blob. Vamos a verlos..."><meta itemprop="name" content="JavaScript: Cómo recibir y enviar archivos binarios con AJAX - campusMVP.es"><meta itemprop="description" content="Los objetos XHR (XmlHttpRequest) del navegador son la base de AJAX, y sirven para realizar llamadas asíncronas a nuestra propia web o a webs externas. Estamos muy acostumbrados a ver este tipo de llamadas para obtener un valor de texto desde un servicio. Pero no es tan habitual usarlo para recibir otro tipo de datos binarios, por ejemplo archivos completos de imágenes o vídeo. Para lograrlo antiguamente era muy complejo. Por fortuna, hoy en día es mucho más sencillo pero nos implica conocer al menos dos tipos de datos específicos de JavaScript: ArrayBuffer y Blob. Vamos a verlos..."><meta itemprop="url" content="https://www.campusmvp.es/recursos/post/javascript-como-recibir-y-enviar-archivos-binarios-con-ajax.aspx"><meta itemprop="author" content="JMAlarcon"><meta property="image" content="https://www.campusmvp.es/recursos/image.axd?picture=/2022/2T/archivos-binarios-javascript-ajax.png"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="JavaScript: Cómo recibir y enviar archivos binarios con AJAX - campusMVP.es"><meta name="twitter:site" content="@campusmvp"><meta name="twitter:creator" content="@campusmvp"><meta name="twitter:url" content="https://www.campusmvp.es/recursos/post/javascript-como-recibir-y-enviar-archivos-binarios-con-ajax.aspx"><meta name="twitter:description" content="Los objetos XHR (XmlHttpRequest) del navegador son la base de AJAX, y sirven para realizar llamadas asíncronas a nuestra propia web o a webs externas. Estamos muy acostumbrados a ver este tipo de llamadas para obtener un valor de texto desde un servicio. Pero no es tan habitual usarlo para recibir otro tipo de datos binarios, por ejemplo archivos completos de imágenes o vídeo. Para lograrlo antiguamente era muy complejo. Por fortuna, hoy en día es mucho más sencillo pero nos implica conocer al menos dos tipos de datos específicos de JavaScript: ArrayBuffer y Blob. Vamos a verlos..."><meta name="twitter:image" content="https://www.campusmvp.es/recursos/image.axd?picture=/2022/2T/archivos-binarios-javascript-ajax.png"><meta property="og:title" content="JavaScript: Cómo recibir y enviar archivos binarios con AJAX - campusMVP.es"><meta property="og:type" content="website"><meta property="og:site_name" content="campusMVP.es"><meta property="og:url" content="https://www.campusmvp.es/recursos/post/javascript-como-recibir-y-enviar-archivos-binarios-con-ajax.aspx"><meta property="og:description" content="Los objetos XHR (XmlHttpRequest) del navegador son la base de AJAX, y sirven para realizar llamadas asíncronas a nuestra propia web o a webs externas. Estamos muy acostumbrados a ver este tipo de llamadas para obtener un valor de texto desde un servicio. Pero no es tan habitual usarlo para recibir otro tipo de datos binarios, por ejemplo archivos completos de imágenes o vídeo. Para lograrlo antiguamente era muy complejo. Por fortuna, hoy en día es mucho más sencillo pero nos implica conocer al menos dos tipos de datos específicos de JavaScript: ArrayBuffer y Blob. Vamos a verlos..."><meta property="article:author" content="JMAlarcon"><meta name="og:image" content="https://www.campusmvp.es/recursos/image.axd?picture=/2022/2T/archivos-binarios-javascript-ajax.png"><title>
+	JavaScript: Cómo recibir y enviar archivos binarios con AJAX | campusMVP.es
+</title><style>.klaro .cookie-modal,.klaro .cookie-notice{font-size:14px}.klaro .cookie-modal .cm-switch-container,.klaro .cookie-notice .cm-switch-container{display:block;position:relative;padding:10px;padding-left:66px;line-height:20px;vertical-align:middle;min-height:40px;border-bottom:1px solid #ccc}.klaro .cookie-modal .cm-switch-container:last-child,.klaro .cookie-notice .cm-switch-container:last-child{border-bottom:0}.klaro .cookie-modal .cm-switch-container:first-child,.klaro .cookie-notice .cm-switch-container:first-child{margin-top:0}.klaro .cookie-modal .cm-switch-container p,.klaro .cookie-notice .cm-switch-container p{margin-top:0}.klaro .cookie-modal .cm-switch,.klaro .cookie-notice .cm-switch{position:relative;display:inline-block;width:50px;height:30px}.klaro .cookie-modal .cm-list-input:checked+.cm-list-label .slider,.klaro .cookie-notice .cm-list-input:checked+.cm-list-label .slider{background-color:#1a936f;background-color:var(--green1, #1a936f)}.klaro .cookie-modal .cm-list-input.half-checked:checked+.cm-list-label .slider,.klaro .cookie-notice .cm-list-input.half-checked:checked+.cm-list-label .slider{background-color:#1a936f;background-color:var(--green1, #1a936f);opacity:0.6}.klaro .cookie-modal .cm-list-input.half-checked:checked+.cm-list-label .slider::before,.klaro .cookie-notice .cm-list-input.half-checked:checked+.cm-list-label .slider::before{-ms-transform:translateX(10px);transform:translateX(10px)}.klaro .cookie-modal .cm-list-input.only-required+.cm-list-label .slider,.klaro .cookie-notice .cm-list-input.only-required+.cm-list-label .slider{background-color:#24cc9a;background-color:var(--green2, #24cc9a);opacity:0.8}.klaro .cookie-modal .cm-list-input.only-required+.cm-list-label .slider::before,.klaro .cookie-notice .cm-list-input.only-required+.cm-list-label .slider::before{-ms-transform:translateX(10px);transform:translateX(10px)}.klaro .cookie-modal .cm-list-input.required:checked+.cm-list-label .slider,.klaro .cookie-notice .cm-list-input.required:checked+.cm-list-label .slider{background-color:#24cc9a;background-color:var(--green2, #24cc9a);opacity:0.8;cursor:not-allowed}.klaro .cookie-modal .slider,.klaro .cookie-notice .slider{box-shadow:0 4px 6px 0 rgba(0,0,0,0.2),5px 5px 10px 0 rgba(0,0,0,0.19)}.klaro .cookie-modal .cm-list-input,.klaro .cookie-notice .cm-list-input{position:absolute;top:0;left:0;opacity:0;width:50px;height:30px}.klaro .cookie-modal .cm-list-title,.klaro .cookie-notice .cm-list-title{font-size:14px;font-weight:600}.klaro .cookie-modal .cm-list-description,.klaro .cookie-notice .cm-list-description{font-size:14px;padding-top:4px;color:#666}.klaro .cookie-modal .cm-list-label .cm-switch,.klaro .cookie-notice .cm-list-label .cm-switch{position:absolute;left:0}.klaro .cookie-modal .cm-list-label .slider,.klaro .cookie-notice .cm-list-label .slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:#ccc;transition:0.4s;width:50px;display:inline-block}.klaro .cookie-modal .cm-list-label .slider::before,.klaro .cookie-notice .cm-list-label .slider::before{position:absolute;content:'';height:20px;width:20px;left:5px;bottom:5px;background-color:#fff;transition:0.4s}.klaro .cookie-modal .cm-list-label .slider.round,.klaro .cookie-notice .cm-list-label .slider.round{border-radius:30px}.klaro .cookie-modal .cm-list-label .slider.round::before,.klaro .cookie-notice .cm-list-label .slider.round::before{border-radius:50%}.klaro .cookie-modal .cm-list-label input:focus+.slider,.klaro .cookie-notice .cm-list-label input:focus+.slider{box-shadow-color:#48dfb2;box-shadow-color:var(--green3, #48dfb2);box-shadow:0 0 1px #48dfb2}.klaro .cookie-modal .cm-list-label input:checked+.slider::before,.klaro .cookie-notice .cm-list-label input:checked+.slider::before{-ms-transform:translateX(20px);transform:translateX(20px)}.klaro .cookie-modal .cm-list-input:focus+.cm-list-label .slider,.klaro .cookie-notice .cm-list-input:focus+.cm-list-label .slider{box-shadow:0 4px 6px 0 rgba(125,125,125,0.2),5px 5px 10px 0 rgba(125,125,125,0.19)}.klaro .cookie-modal .cm-list-input:checked+.cm-list-label .slider::before,.klaro .cookie-notice .cm-list-input:checked+.cm-list-label .slider::before{-ms-transform:translateX(20px);transform:translateX(20px)}.klaro .cookie-modal .slider,.klaro .cookie-notice .slider{box-shadow:0 4px 6px 0 rgba(0,0,0,0.2),5px 5px 10px 0 rgba(0,0,0,0.19)}.klaro .cookie-modal a,.klaro .cookie-notice a{color:#1a936f;color:var(--green1, #1a936f);text-decoration:none}.klaro .cookie-modal p,.klaro .cookie-modal strong,.klaro .cookie-modal h1,.klaro .cookie-modal h2,.klaro .cookie-modal ul,.klaro .cookie-modal li,.klaro .cookie-notice p,.klaro .cookie-notice strong,.klaro .cookie-notice h1,.klaro .cookie-notice h2,.klaro .cookie-notice ul,.klaro .cookie-notice li{color:#eee;color:var(--font-color-dark, #eee)}.klaro .cookie-modal p,.klaro .cookie-modal h1,.klaro .cookie-modal h2,.klaro .cookie-modal ul,.klaro .cookie-modal li,.klaro .cookie-notice p,.klaro .cookie-notice h1,.klaro .cookie-notice h2,.klaro .cookie-notice ul,.klaro .cookie-notice li{display:block;text-align:left;margin:0;padding:0;margin-top:0.7em}.klaro .cookie-modal .cm-link,.klaro .cookie-notice .cm-link{margin-right:0.5em;vertical-align:middle}.klaro .cookie-modal .cm-btn,.klaro .cookie-notice .cm-btn{color:#eee;color:var(--font-color-dark, #eee);background:#555;border-radius:6px;padding:6px 10px;margin-right:.5em;border:0;padding:0.4em;font-size:1em}.klaro .cookie-modal .cm-btn:disabled,.klaro .cookie-notice .cm-btn:disabled{opacity:0.5}.klaro .cookie-modal .cm-btn.cm-btn-close,.klaro .cookie-notice .cm-btn.cm-btn-close{background:#aaa;color:#000}.klaro .cookie-modal .cm-btn.cm-btn-success,.klaro .cookie-notice .cm-btn.cm-btn-success{background:#1a936f;background:var(--green1, #1a936f)}.klaro .cookie-modal .cm-btn.cm-btn-info,.klaro .cookie-notice .cm-btn.cm-btn-info{background:#2581c4;background:var(--blue1, #2581c4)}.klaro .cookie-modal{width:100%;height:100%;position:fixed;overflow:hidden;left:0;top:0;z-index:1000}.klaro .cookie-modal.cm-embedded{position:relative;height:inherit;width:inherit;left:inherit;right:inherit;z-index:0}.klaro .cookie-modal.cm-embedded .cm-modal.cm-klaro{position:relative;-ms-transform:none;transform:none}.klaro .cookie-modal .cm-bg{background:rgba(0,0,0,0.5);height:100%;width:100%;position:fixed;top:0;left:0}.klaro .cookie-modal .cm-modal.cm-klaro{z-index:1001;box-shadow:0 4px 6px 0 rgba(0,0,0,0.2),5px 5px 10px 0 rgba(0,0,0,0.19);width:100%;max-height:98%;top:50%;-ms-transform:translateY(-50%);transform:translateY(-50%);position:fixed;overflow:auto;background:#333;color:#eee}@media (min-width: 660px){.klaro .cookie-modal .cm-modal.cm-klaro{border-radius:4px;position:relative;margin:0 auto;max-width:640px;height:auto;width:auto}}.klaro .cookie-modal .cm-modal .hide{border-style:none;background:none;position:absolute;top:20px;right:20px;z-index:1}.klaro .cookie-modal .cm-modal .hide svg{stroke:#eee}.klaro .cookie-modal .cm-modal .cm-footer{padding:1em;border-top:1px solid #555}.klaro .cookie-modal .cm-modal .cm-footer-buttons{display:flex;flex-flow:row;justify-content:space-between}.klaro .cookie-modal .cm-modal .cm-footer .cm-powered-by{font-size:0.8em;padding-top:4px;text-align:right;padding-right:8px}.klaro .cookie-modal .cm-modal .cm-footer .cm-powered-by a{color:#999}.klaro .cookie-modal .cm-modal .cm-header{padding:1em;padding-right:24px;border-bottom:1px solid #555}.klaro .cookie-modal .cm-modal .cm-header h1{margin:0;font-size:2em;display:block}.klaro .cookie-modal .cm-modal .cm-header h1.title{padding-right:20px}.klaro .cookie-modal .cm-modal .cm-body{padding:1em}.klaro .cookie-modal .cm-modal .cm-body ul{display:block}.klaro .cookie-modal .cm-modal .cm-body span{display:inline-block;width:auto}.klaro .cookie-modal .cm-modal .cm-body ul.cm-services,.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes{padding:0;margin:0}.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-purpose .cm-services .cm-caret,.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-purpose .cm-services .cm-caret{color:#888}.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-purpose .cm-services .cm-content,.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-purpose .cm-services .cm-content{margin-left:-40px;display:none}.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-purpose .cm-services .cm-content.expanded,.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-purpose .cm-services .cm-content.expanded{margin-top:10px;display:block}.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-service,.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-purpose,.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-service,.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-purpose{position:relative;line-height:20px;vertical-align:middle;padding-left:60px;min-height:40px}.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-service:first-child,.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-purpose:first-child,.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-service:first-child,.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-purpose:first-child{margin-top:0}.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-service p,.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-purpose p,.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-service p,.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-purpose p{margin-top:0}.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-service p.purposes,.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-purpose p.purposes,.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-service p.purposes,.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-purpose p.purposes{font-size:0.8em;color:#999}.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-service.cm-toggle-all,.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-purpose.cm-toggle-all,.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-service.cm-toggle-all,.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-purpose.cm-toggle-all{border-top:1px solid #555;padding-top:1em}.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-service span.cm-list-title,.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-purpose span.cm-list-title,.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-service span.cm-list-title,.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-purpose span.cm-list-title{font-weight:600}.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-service span.cm-opt-out,.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-service span.cm-required,.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-purpose span.cm-opt-out,.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-purpose span.cm-required,.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-service span.cm-opt-out,.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-service span.cm-required,.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-purpose span.cm-opt-out,.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-purpose span.cm-required{padding-left:0.2em;font-size:0.8em;color:#999}.klaro .cookie-notice:not(.cookie-modal-notice){background:#333;z-index:999;position:fixed;width:100%;bottom:0;right:0}@media (min-width: 1024px){.klaro .cookie-notice:not(.cookie-modal-notice){box-shadow:0 4px 6px 0 rgba(0,0,0,0.2),5px 5px 10px 0 rgba(0,0,0,0.19);border-radius:4px;position:fixed;bottom:20px;right:20px;max-width:400px}}@media (max-width: 1023px){.klaro .cookie-notice:not(.cookie-modal-notice){border-style:none;border-radius:0}}.klaro .cookie-notice:not(.cookie-modal-notice).cn-embedded{position:relative;height:inherit;width:inherit;left:inherit;right:inherit;bottom:inherit;z-index:0}.klaro .cookie-notice:not(.cookie-modal-notice).cn-embedded .cn-body{padding-top:0.5em}.klaro .cookie-notice:not(.cookie-modal-notice) .cn-body{margin-bottom:0;margin-right:0;bottom:0;padding:1em;padding-top:0}.klaro .cookie-notice:not(.cookie-modal-notice) .cn-body p{margin-bottom:0.5em}.klaro .cookie-notice:not(.cookie-modal-notice) .cn-body p.cn-changes{text-decoration:underline}.klaro .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-learn-more{display:inline-block;flex-grow:1}.klaro .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-buttons{display:inline-block;margin-top:-0.5em}@media (max-width: 384px){.klaro .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-buttons{width:100%}}.klaro .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-buttons button.cm-btn{margin-top:0.5em}@media (max-width: 384px){.klaro .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-buttons button.cm-btn{width:calc(50% - .5em)}}.klaro .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok{margin-top:-0.5em;display:flex;flex-flow:row;flex-wrap:wrap;justify-content:right;align-items:baseline}.klaro .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok a,.klaro .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok div{margin-top:0.5em}.klaro .cookie-modal-notice{z-index:1001;box-shadow:0 4px 6px 0 rgba(0,0,0,0.2),5px 5px 10px 0 rgba(0,0,0,0.19);width:100%;max-height:98%;top:50%;-ms-transform:translateY(-50%);transform:translateY(-50%);position:fixed;overflow:auto;background:#333;color:#eee;padding:1em;padding-top:0.2em}@media (min-width: 400px){.klaro .cookie-modal-notice{border-radius:4px;position:relative;margin:0 auto;max-width:400px;height:auto;width:auto}}.klaro .cookie-modal-notice .cn-ok{display:flex;flex-flow:row;justify-content:space-between;align-items:center;margin-top:1em}.klaro .cookie-notice-hidden{display:none !important}
+</style><style>.osSwitch{position:relative;display:inline-block;width:34px;height:15.3px}.osSwitch input{opacity:0;width:0;height:0}.osSlider{position:absolute;top:0;left:0;right:0;bottom:0;border-radius:34px;background-color:#93a0b5;transition:0.4s}.osSlider:before{position:absolute;content:'';height:13px;width:13px;left:2px;bottom:1px;border-radius:50%;background-color:white;transition:0.4s}input:checked+.sliderGreen{background-color:#04d289}input:checked+.sliderRed{background-color:#ff3b30}input:not(:checked)+.defaultGreen{background-color:#04d289}input:checked+.osSlider:before{transform:translateX(17px)}
+</style><style>
+    @font-face {
+      font-family: 'SegoeUI_online_security'; 
+      src: url(chrome-extension://llbcnfanfmjhpedaedhbcnpgeepdnnok/segoe-ui.woff);
+    }
+
+    @font-face {
+      font-family: 'SegoeUI_bold_online_security'; 
+      src: url(chrome-extension://llbcnfanfmjhpedaedhbcnpgeepdnnok/segoe-ui-bold.woff);
+    }
+</style><link type="text/css" rel="stylesheet" href="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/prism.css"></head>
+<body class="ltr">
+<a class="skip-link" href="https://www.campusmvp.es/recursos/post/javascript-como-recibir-y-enviar-archivos-binarios-con-ajax.aspx#content">Saltar al contenido</a>
+<form method="post" action="https://www.campusmvp.es/recursos/post/javascript-como-recibir-y-enviar-archivos-binarios-con-ajax.aspx?id=b6012e33-b275-43b6-a483-4a64ffc20108" id="aspnetForm">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="Dgt0d2CHYtrLHsPjX/Cs57/ZqIVJUsGEVbV8zP4K9JdZBAKAzPRO9jU05pNpMxDqVW/u356+enuj2ZteBKy5YJGTtVlVPZuRe+OZbNaF1w7szzdT3icqf0qXNphgmj99Rp5P54ZCBeoWAQoP9H1aVgMOdvuQBYNo5rWJO/FQmGDdOZDL7tsvbKfBZIJNCjsqCw90NteLYYGc2XdbLp3yvNpdeVPsoskj7mj7ug2sP+neKv4BqGZ1mldRUsZEARDzWb2H1OHjKC1DRvtULTMWNnpLcTX8RYTikML4ZnXjAG3a6UBdTHsQsgA/CCR1ljS1jgRsuw==">
+</div>
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+<script src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/res-540627514.js.axd" type="text/javascript"></script>
+<script src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/AdEngine.js.descarga"></script>
+<div id="header-wrapper">
+<a class="display" id="nav-toggle" href="https://www.campusmvp.es/recursos/post/javascript-como-recibir-y-enviar-archivos-binarios-con-ajax.aspx#" title="menú navegaci?n principal"> <img class="nav-toggle-icon" src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/nav-toggle-icon.png" alt="Menú de navegación"><span>Menú</span></a>
+
+<div class="Header">
+<div id="inner-header" class="col-full">
+
+<div id="Div2" class="header-search">
+<div id="buscador" class="widget-container widget_search">
+<iframe id="buscador-google" height="40px" frameborder="0" onload="this.style.visibility=&#39;visible&#39;;" style="visibility: visible;" src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/search-iframe.html" scrolling="no">   </iframe>
+</div>
+
+</div>
+
+<div id="logo"><a title="logotipo de campusmvp.es" href="https://www.campusmvp.es/">CampusMVP.es</a></div>
+<span id="tagline">Los mejores <a title="Catálogo de cursos online para programadores en español" href="https://www.campusmvp.es/catalogo/">cursos online</a>
+para programadores</span>
+
+<div id="main-nav" class="col-full" role="navigation">
+<div class="menus">
+<span id="close-area"><a id="logoMenu" title="inicio" href="https://www.campusmvp.es/"><span>Inicio</span></a><a id="close-menu" class="close" title="cerrar" href="https://www.campusmvp.es/recursos/post/javascript-como-recibir-y-enviar-archivos-binarios-con-ajax.aspx#">X</a></span>
+
+<ul id="navigation">
+<li class="menu-item home-boton"><a class="Navegation1 iconoInicio" href="https://www.campusmvp.es/" title="Inicio CampusMVP"><img class="Ico-full-size-screen" alt="Inicio" src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/home-ico.png"> <img class="Ico-responisve" alt="Inicio" src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/home-ico-responsive.png"></a></li>
+<li class="menu-item "><span><a class="Navegation1" href="https://www.campusmvp.es/catalogo/" title="Catálogo de cursos online para programadores en español">Catálogo</a></span></li>
+<li class="menu-item"><span><a class="Navegation1" href="https://www.campusmvp.es/conocenos">Conócenos</a></span></li>
+<li class="menu-item"><span><a class="Navegation1" href="https://www.campusmvp.es/opiniones-campusmvp" title="Opiniones de alumnos">Opiniones</a></span> </li>
+<li class="menu-item"><span><a class="Navegation1" href="https://www.campusmvp.es/empresas">Empresas</a></span> </li>
+<li class="menu-item selected"><span><a class="NavegationSelect1" href="https://www.campusmvp.es/recursos/">Recursos</a></span> </li>
+<li class="menu-item"><span><a class="Navegation1" href="https://www.campusmvp.es/contacto/">Contacto</a></span> </li>
+</ul>
+
+<span class="to-display-responsive">
+<ul class="usuario">
+<li> <iframe id="iframe-user" scrolling="no" frameborder="0" src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/userstatus.html" height="40px" style="visibility: visible;" onload="this.style.visibility=&#39;visible&#39;;"></iframe></li>
+</ul>
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="lista-categorias">
+<div id="categoriasToggle">
+<span id="backToggle" class="responsiveCategorias">Categorías</span>
+</div>
+<ul id="categorylist"><li><a href="https://www.campusmvp.es/recursos/category/Acceso-a-Datos.aspx" title="Categoría: Acceso a Datos">Acceso a Datos</a></li><li><a href="https://www.campusmvp.es/recursos/category/AI-ML-y-analisis-de-datos.aspx" title="Categoría: AI, ML y análisis de datos">AI, ML y análisis de datos</a></li><li><a href="https://www.campusmvp.es/recursos/category/Desarrollo-movil.aspx" title="Categoría: Desarrollo móvil">Desarrollo móvil</a></li><li><a href="https://www.campusmvp.es/recursos/category/Desarrollo-Web.aspx" title="Categoría: Desarrollo Web">Desarrollo Web</a></li><li><a href="https://www.campusmvp.es/recursos/category/DevFacts.aspx" title="Categoría: DevFacts">DevFacts</a></li><li><a href="https://www.campusmvp.es/recursos/category/General.aspx" title="Categoría: General">General</a></li><li><a href="https://www.campusmvp.es/recursos/category/Herramientas.aspx" title="Categoría: Herramientas">Herramientas</a></li><li><a href="https://www.campusmvp.es/recursos/category/Lenguajes-y-plataformas.aspx" title="Categoría: Lenguajes y plataformas">Lenguajes y plataformas</a></li><li><a href="https://www.campusmvp.es/recursos/category/Trucos.aspx" title="Categoría: Trucos">Trucos</a></li></ul>
+</div>
+<div class="Page-Wrapper Container">
+<div id="logo-print">
+<img src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/logo-campusmvp-print.jpg">
+ <p>La mejor forma de Aprender Programación online y en español <span>www.campusmvp.es</span></p>
+</div>
+<section class="Content-Wrapper" id="content">
+
+
+<div id="postnavigation">
+<a href="https://www.campusmvp.es/recursos/post/como-manejar-json-en-net-con-system-text-json.aspx" class="nav-next">Cómo manejar JSON en .NET con System.Text.Json</a> |
+<a href="https://www.campusmvp.es/recursos/post/reconocimiento-y-clasificacion-de-imagenes-con-deep-learning.aspx" class="nav-prev">Reconocimiento y clasificación de imágenes con Deep Learning</a>
+</div>
+<article class="post" id="post0">
+
+<span style="display:none;">?id=b6012e33-b275-43b6-a483-4a64ffc20108</span>
+<h1 class="PostTitle">
+JavaScript: Cómo recibir y enviar archivos binarios con AJAX
+</h1>
+
+
+<div class="PostInfo Clear">
+Por <span class="AuthorName"><a href="https://www.campusmvp.es/recursos/author/JMAlarcon.aspx">José Manuel Alarcón</a></span>.
+<span class="PubDate">Publicado el <time datetime="2022-04-11" itemprop="dateCreated">11 de abril de 2022 a las 08:00</time></span>
+</div>
+
+
+<div class="bloquepubli" id="publi" style="display: block;"><a class="AdLink AdLink--txt" href="https://www.campusmvp.es/catalogo/Product-Desarrollo-de-aplicaciones-web-con-Angular-15_232.aspx" target="_blank" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Anuncios Contenido Recursos&#39;, &#39;/catalogo/Product-Desarrollo-de-aplicaciones-web-con-Angular-15_232.aspx&#39;, &#39;Angular txt 01 en publi&#39;]);">👉 El mejor framework de JavaScript es el que mejor conoces. 👍 Haz que sea Angular <strong>Ver curso</strong></a></div>
+
+
+<div class="PostBody text">
+<p style="text-align: center;"><img src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/image.axd" alt="Logo de JavaScript procesando una cola de archivos binarios"></p>
+<p>Los objetos XHR (<code>XmlHttpRequest</code>) del navegador son la base de AJAX, y sirven para realizar llamadas asíncronas a nuestra propia web o a webs externas (si los <a href="https://www.campusmvp.es/recursos/post/5-conceptos-que-todo-programador-JavaScript-deberia-conocer.aspx" target="_blank">permisos</a> lo permiten), aunque en la actualidad disponemos también del método <code>fetch</code> para lo mismo.</p>
+<div id="ad_5443" class="innerAd" style="display: block;"><a class="AdLink AdLink--txt" href="https://www.campusmvp.es/catalogo/Product-Fundamentos-de-desarrollo-web-con-JavaScript-y-jQuery_207.aspx" target="_blank" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Anuncios Contenido Recursos&#39;, &#39;/catalogo/Product-Fundamentos-de-desarrollo-web-con-JavaScript-y-jQuery_207.aspx&#39;, &#39;Fund JavaScript txt 01 en ad_5443&#39;]);">Fundamentos de desarrollo web con 👉 <strong>JavaScript</strong>. Aprende desde cero</a></div><p>Estamos muy acostumbrados a ver este tipo de llamadas para obtener un valor de texto desde un servicio. Pero <strong>no es tan habitual usarlo para recibir otro tipo de datos binarios</strong>, por ejemplo archivos completos de imágenes o vídeo. Para lograrlo antiguamente, había que recurrir a técnicas complejas y tediosas de transformación de los datos recibidos: se recibían como texto con una codificación propia y se procesaba byte a byte para lograr obtener el archivo, obteniendo una cadena de texto con el contenido binario del archivo 🤯 Un "hack" en toda regla solo para cuando no quedaba más remedio.</p>
+<p>Hoy en día todo es mucho más fácil puesto que ya <strong>hace muchos años se le añadieron al objeto XHR</strong> sendas propiedades para lograr procesar este tipo de información:</p>
+<ul>
+<li><strong><code>responseType</code></strong>: por defecto sigue siendo <code>text</code>, pero podemos especificar otros valores (que veremos ahora mismo) para recibir datos binarios de manera que podamos procesarlos directamente.</li>
+<li><strong><code>response</code></strong>: que contrasta con la tradicional propiedad <code>responseText</code> que devolvía tan solo texto, y permite recibir los datos binarios en el formato adecuado.</li>
+</ul>
+<p>Cuando queremos recibir <strong>datos binarios</strong> desde una petición, básicamente tenemos <strong>dos maneras</strong> de poder <strong>convertirlos en información procesable</strong> directamente desde JavaScript:</p>
+<ul>
+<li><strong><code>ArrayBuffer</code></strong>: es un contenedor de datos (<em>buffer</em>) que podemos consumir en forma de matriz (<em>array</em>) tipada. Esto nos permite procesarlos directamente y de forma eficiente, y además tienen la capacidad de poder crearse tantas "vistas" de estos datos como necesitemos, en forma de <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray" target="_blank"><em>arrays</em> de bytes tipadas</a>, que abarquen la parte de los datos que nos interese.</li>
+<li><strong><code>Blob</code></strong>: este es un viejo conocido si has utilizado la <a href="https://w3c.github.io/FileAPI/" target="_blank">File API</a> de HTML5, que te proporciona la capacidad de leer y escribir archivos, pero es más moderno. Un <em>blob</em> es un <em>Binary Large OBject</em>, y representa también un conjunto de datos binarios <strong>inmutables</strong> sin procesar (<em>raw</em>, tal cual están), y nos ofrece un método (<code>slice</code>) para leer bloques concretos de la información como Blobs independientes.</li>
+</ul>
+<blockquote>
+<p><strong>Nota</strong>: para <code>responseType</code> también existen los valores <code>"json"</code> para recibir datos ya en ese formato, o <code>"document"</code> para recibir el contenido en formato HTML o XML y poder procesarlo con facilidad.</p>
+</blockquote>
+<p>Así, por ejemplo, podemos descargar un archivo binario mediante AJAX usando un código como este:</p>
+<div class="code-toolbar"><pre class="line-numbers language- language-javascript"><code class=" language-javascript" lang="javascript"><span class="token keyword">var</span> xhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+xhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'/imgs/logo-empresa.png'</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+xhr<span class="token punctuation">.</span>responseType <span class="token operator">=</span> <span class="token string">'blob'</span><span class="token punctuation">;</span>
+
+xhr<span class="token punctuation">.</span><span class="token function-variable function">onload</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">==</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> blob <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>response<span class="token punctuation">;</span>
+	<span class="token keyword">var</span> img <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'img'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    img<span class="token punctuation">.</span><span class="token function-variable function">onload</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      window<span class="token punctuation">.</span><span class="token constant">URL</span><span class="token punctuation">.</span><span class="token function">revokeObjectURL</span><span class="token punctuation">(</span>img<span class="token punctuation">.</span>src<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    img<span class="token punctuation">.</span>src <span class="token operator">=</span> window<span class="token punctuation">.</span><span class="token constant">URL</span><span class="token punctuation">.</span><span class="token function">createObjectURL</span><span class="token punctuation">(</span>blob<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>img<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+xhr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"></div></div>
+<p>En este caso lo estamos descargando como Blob, para lo cual establecemos el <code>responseType</code> como <code>'blob'</code>. Al asignar la respuesta a una variable, la obtenemos directamente como Blob al llamar a <code>response</code>, ya que el propio objeto XHR es el que se encarga de hacerlo (debido al <code>responseType</code> que le hemos indicado). Lo que hacemos con él en este caso es crear un nuevo objeto en memoria a partir del Blob con <code>createObjectURL</code>, el cual limpiamos mediante <code>revokeObjectUrl</code> tras haberlo asignado a una imagen (una vez haya cargado).</p>
+<blockquote>
+<p><strong>Nota</strong>: estos "URL de objeto" son direcciones especiales del navegador que apuntan a los objetos que hemos creado y que están en memoria. Suelen tener un formato muy sencillo de tipo: <code>blob:https://midominio.com/dba53d8e9638-4421-878b-8d41-f5c2f1b7</code>, siendo el GUID de la dirección el que identifica al objeto creado en memoria. En cuanto cerramos la pestaña del navegador en donde se han creado, se eliminan de memoria por lo que no vuelven a estar disponibles. Esto es útil para muchas cosas, como por ejemplo para mostrar imágenes que están previamente en disco o que recibimos desde otro servicio como en nuestro ejemplo.</p>
+</blockquote>
+<p>Aunque podemos enviar y recibir datos usando tanto un <code>ArrayBuffer</code> como un <code>Blob</code>, tienen varias diferencias entre sí que conviene conocer.</p>
+<h2>ArrayBuffer</h2>
+<p><strong>Un <code>ArrayBuffer</code></strong> es el objeto binario más básico que podemos construir con JavaScript y es una referencia a un área de memoria determinada. O sea, es un puntero a un número determinado de posiciones de memoria (<em>bytes</em>) con los que podemos trabajar.</p>
+<p>Para poder usarlo <strong>tenemos que crear una "vista" sobre estos datos</strong>, de modo que podamos manipularlos directamente. Para ello necesitaremos <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray" target="_blank">un array tipado de JavaScript</a> que puede ser de varios tipos. Por ejemplo, para leer el contenido del <code>ArrayBuffer</code> byte a byte podemos usar un <code>Uint8Array</code>, así:</p>
+<div class="code-toolbar"><pre class="line-numbers language- language-javascript"><code class=" language-javascript" lang="javascript"><span class="token keyword">var</span> xhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+xhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'/imgs/logo-empresa.png'</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+xhr<span class="token punctuation">.</span>responseType <span class="token operator">=</span> <span class="token string">'arraybuffer'</span><span class="token punctuation">;</span>
+
+xhr<span class="token punctuation">.</span><span class="token function-variable function">onload</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> arrBuff <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>response<span class="token punctuation">;</span>
+    <span class="token keyword">var</span> ui8Arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Uint8Array</span><span class="token punctuation">(</span>arrBuff<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">...</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+xhr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"></div></div>
+<p>Ahora podríamos manipular byte a byte los datos de esa imagen para hacer con ella lo que necesitásemos. Incluso podríamos tener "vistas" diferentes al mismo tiempo a partir del mismo <code>ArrayBuffer</code> para manipularlos de manera diferente según la "vista" que creemos.</p>
+<p>Estos <em>arrays</em> tipados se parecen mucho a los <em>arrays</em> normales de JavaScript pero no soportan los métodos <code>splice</code> (no se pueden eliminar elementos) ni <code>concat</code> (no se pueden juntar), pero sí podemos iterar por ellos y modificarlos, usar <code>map</code>/<code>reduce</code>, extraer trozos con <code>slice</code>, localizarlos con <code>find</code>, etc...</p>
+<p>Adicionalmente tienen dos métodos <code>set</code> y <code>subarray</code> para copiar y extraer elementos entre vistas tipadas. Disponen del método <code>length</code> que te dará su longitud como en cualquier <em>array</em>, pero también un método <code>byteLength</code> que siempre devuelve el tamaño en <em>bytes</em> de los datos (tú puedes estar usando una vista de 32 bits, y su longitud en bytes sería 4 veces mayor, claro).</p>
+<p>También podemos usar un objeto especial llamado <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView" target="_blank">DataView</a> que permite acceder a los contenidos del <code>ArrayBuffer</code> desde cualquier posición y longitud (<code>new DataView(buffer, [byteOffset], [byteLength])</code>), pudiendo además extraer los datos en varios tamaños (<code>.getUint8()</code>, <code>.getUint16()</code>, <code>.getUint32()</code>...) sin tener que crear vistas diferentes para cada caso, pudiendo escribirlos también <code>.setUtin8()</code>, <code>.setUint16()</code>, <code>.setUint32()</code>.</p>
+<h2>Blobs</h2>
+<p><strong>Un <code>Blob</code></strong>, es un <strong>elemento inmutable</strong> de longitud fija que normalmente representa un archivo y que de hecho no tiene ni siquiera por qué contener datos representables en JavaScript. Puede estar en disco, en una caché, en memoria o incluso no estar disponible por completo hasta que lo utilicemos. Llevan asociado también un tipo MIME, como cualquier archivo o recurso.</p>
+<p>Generalmente no manipulamos un Blob de ninguna manera, sino que lo pasamos directamente a algún método para que trabaje con él. Por ejemplo, lo podemos obtener a partir de un archivo en disco con la File API y pasarlo a un XHR para enviarlo al servidor.</p>
+<p>Los <em>blobs</em> tienen un método <code>slice()</code> que permite extraer trozos del mismo en forma de un nuevo blob. Por ejemplo, este método se puede utilizar para <strong>trocear un <em>blob</em> muy grande e ir enviándolo al servidor por trozos</strong>, poco a poco, con lo que conseguimos mayor velocidad (porque pueden enviarse en paralelo, como hace GMail por ejemplo) y saltarnos posibles limitaciones de tamaño máximo de archivo recibido en el servidor:</p>
+<div class="code-toolbar"><pre class="line-numbers language- language-javascript"><code class=" language-javascript" lang="javascript">document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'input[type="file"]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'change'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> blob <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>files<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> filename <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>files<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>name<span class="token punctuation">;</span>
+
+    <span class="token keyword">const</span> <span class="token constant">CHUNK_SIZE</span> <span class="token operator">=</span> <span class="token number">1024</span><span class="token operator">*</span><span class="token number">1024</span><span class="token punctuation">;</span> <span class="token comment">//Lo troceamos de 1Mb en 1Mb.</span>
+
+    <span class="token keyword">var</span> start <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> end <span class="token operator">=</span> <span class="token constant">CHUNK_SIZE</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> chunkNmbr <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>	<span class="token comment">//Contará el trozo en el que vamos</span>
+    <span class="token comment">//El número de trozos en los que se va a dividir el archivo</span>
+    <span class="token keyword">var</span> numberOfChunks <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">Floor</span><span class="token punctuation">(</span>blob<span class="token punctuation">.</span>size<span class="token operator">/</span><span class="token constant">CHUNK_SIZE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>blob<span class="token punctuation">.</span>size <span class="token operator">%</span> <span class="token constant">CHUNK_SIZE</span> <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token punctuation">)</span> numberOfChunks<span class="token operator">++</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">while</span><span class="token punctuation">(</span>start <span class="token operator">&lt;</span> blob<span class="token punctuation">.</span>size<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">uploadChunk</span><span class="token punctuation">(</span>filename<span class="token punctuation">,</span> blob<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">,</span> chunkNmbr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      start <span class="token operator">=</span> end<span class="token punctuation">;</span>  <span class="token comment">//Comienzo del siguiente trozo</span>
+      end <span class="token operator">=</span> start <span class="token operator">+</span> <span class="token constant">CHUNK_SIZE</span><span class="token punctuation">;</span> <span class="token comment">//Final del siguiente trozo</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">uploadChunk</span><span class="token punctuation">(</span><span class="token parameter">filename<span class="token punctuation">,</span> blobChunk<span class="token punctuation">,</span> chunkNumber</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//Generamos los datos e enviar que llevan...</span>
+    <span class="token keyword">var</span> frmData <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FormData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//...el archivo con su nombre, y...</span>
+    frmData<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'file'</span><span class="token punctuation">,</span> blobchunk<span class="token punctuation">,</span> filename<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//...el número de trozo que se recibe, para guardarlo en el orden adecuado</span>
+    frmData<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'chunkNum'</span><span class="token punctuation">,</span> chunkNumber<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">var</span> xhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    xhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">'POST'</span><span class="token punctuation">,</span> <span class="token string">'/receiveFile'</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    xhr<span class="token punctuation">.</span>data
+    xhr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>frmData<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"></div></div>
+<p>En este fragmento se localizan todos los campos de tipo <code>file</code> que hay, en los que el usuario puede elegir archivos para subir, y cuando elija alguno (evento <code>change</code>) lo que hace el código es trocearlos en fragmentos de 1Mb (máximo) e ir enviándolos uno a uno al servidor, indicando el nombre del archivo y el orden de cada trozo. Obviamente el servidor tiene que actuar en consecuencia y al recibir esos trozos juntarlos y almacenarlos donde proceda (lo cual dependerá del lenguaje de servidor que utilices).</p>
+<blockquote>
+<p>Por supuesto, el código anterior se podría haber hecho con la API de <code>fetch</code> de manera muy parecida.</p>
+</blockquote>
+<h2>¿ArrayBuffer o Blob?</h2>
+<p>Salvo que necesitemos hacer un procesamiento extra con la información, <strong>por regla general lo que utilizaremos serán Blobs</strong>. Si quisiésemos transformar los datos de alguna manera tras haberlos recibido o antes de enviarlos, necesitaríamos un <code>ArrayBuffer</code> que permite su manipulación a través de un <code>DataView</code> o permite leerlo de diversas maneras con un <em>array</em> tipado como hemos visto.</p>
+<p>Por otro lado, siempre podemos transformar un <code>Blob</code> en un <code>ArrayBuffer</code> y viceversa si lo necesitamos:</p>
+<ul>
+<li>Los <code>Blob</code> tienen un método <strong>asíncrono</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Blob/arrayBuffer" target="_blank"><code>arrayBuffer()</code></a> que permite obtener un <code>ArrayBuffer</code> a partir del <code>Blob</code>.</li>
+<li>Podemos obtener un <code>Blob</code> a partir de una vista de un <code>ArrayBuffer</code> simplemente instanciándolo: <code>var arrBuf = new Blob(new Uint8Array(datosEnUnArrayBuffer));</code>.</li>
+</ul>
+<p>¡Espero que te resulte útil!</p>
+</div>
+
+
+<div class="bloquepubli" id="publi2" style="display: block;"><a class="AdLink AdLink--txt" href="https://www.campusmvp.es/catalogo/Product-Fundamentos-de-desarrollo-web-con-JavaScript-y-jQuery_207.aspx" target="_blank" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Anuncios Contenido Recursos&#39;, &#39;/catalogo/Product-Fundamentos-de-desarrollo-web-con-JavaScript-y-jQuery_207.aspx&#39;, &#39;Fund JavaScript txt 02 en publi2&#39;]);">Aprende desde cero las bases fundamentales de desarrollo web con 👉 <strong>JavaScript</strong></a></div>
+
+
+<div class="Avatar-nombre-autor">
+<span class="authorInfo">
+<img width="80" class="photo" height="80" alt="José Manuel Alarcón" src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/a1054d03c22fb4933be169c47bb99513.jpeg">
+Fundador de <a href="https://www.campusmvp.es/">campusMVP</a>, es ingeniero industrial y especialista en consultoría de empresa. Ha escrito diversos libros, habiendo publicado hasta la fecha cientos de artículos sobre informática e ingeniería en publicaciones especializadas. Microsoft lo ha reconocido como MVP (Most Valuable Professional) en desarrollo web desde el año 2004 hasta la actualidad. Puedes seguirlo en Twitter en <a href="https://twitter.com/jm_alarcon" target="_blank">@jm_alarcon</a> o leer sus blog <a target="_blank" href="http://www.jasoft.org/blog/">técnico</a> o <a target="_blank" href="https://jmalarcon.es/">personal</a>.
+<span class="todos-los-articulos"><a href="https://www.campusmvp.es/recursos/author/JMAlarcon.aspx">Ver todos los posts de José Manuel Alarcón</a></span>
+</span>
+</div>
+
+
+<div class="PostCategories" title="Categorías">
+Archivado en: <a href="https://www.campusmvp.es/recursos/category/Desarrollo-Web.aspx">Desarrollo Web</a>
+</div>
+
+<div class="AdminLine">
+<div class="AdminLinks"></div>
+</div>
+
+<div class="CommentCount" title="Comentarios">
+<strong><a class="commentslink" rel="nofollow" href="https://www.campusmvp.es/recursos/post/javascript-como-recibir-y-enviar-archivos-binarios-con-ajax.aspx#commentlist"> 0 comentarios</a></strong>
+</div>
+
+
+<div class="cmvp-post-cta">
+<h3>¿Te ha gustado este post? <br>Pues espera a ver nuestro boletín...</h3>
+<div class="cmvp-post-cta__boletin">
+<p><a class="cmvp-post-cta__cta-boletin" href="https://www.campusmvp.es/boletin/" target="_blank" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;clic_boton&#39;, &#39;CTAs_finPost&#39;, &#39;CTA_finPost--boletin&#39;]);"><img src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/boton-destello-newsletter.gif" alt="Suscríbete a la newsletter"></a></p>
+</div>
+</div>
+
+
+<div id="compartir-redes-sociales">
+<p class="social-cta">¿Te ha gustado este artículo? ¡Compártelo!</p>
+<div id="Sharing" title="Compartir">
+<div id="ShareTwitter">
+<a class="resp-sharing-button__link" rel="nofollow" href="https://twitter.com/intent/tweet/?text=JavaScript%3a+C%c3%b3mo+recibir+y+enviar+archivos+binarios+con+AJAX&amp;url=https://www.campusmvp.es/recursos/post/javascript-como-recibir-y-enviar-archivos-binarios-con-ajax.aspx" target="_blank" aria-label="Twitter">
+<div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--medium">
+<div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
+<svg version="1.1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+<path d="M12,0C5.383,0,0,5.383,0,12s5.383,12,12,12s12-5.383,12-12S18.617,0,12,0z M17.262,9.385 c0.006,0.113,0.008,0.226,0.008,0.34c0,3.478-2.647,7.489-7.488,7.489c-1.486,0-2.87-0.437-4.035-1.184 c1.374,0.161,2.771-0.207,3.896-1.089c-1.151-0.022-2.123-0.783-2.458-1.829c0.396,0.075,0.803,0.061,1.188-0.046 c-1.204-0.24-2.111-1.305-2.111-2.579c0-0.011,0-0.023,0-0.035c0.355,0.197,0.762,0.315,1.192,0.33 c-0.706-0.473-1.171-1.277-1.171-2.19c0-0.482,0.13-0.934,0.356-1.324c1.298,1.593,3.237,2.642,5.425,2.75 c-0.045-0.191-0.068-0.394-0.068-0.599c0-1.454,1.179-2.632,2.633-2.632c0.757,0,1.44,0.319,1.921,0.832 c0.6-0.119,1.95-0.266,1.95-0.266C18.147,7.882,17.776,9.013,17.262,9.385z"></path>
+</svg>
+</div>
+</div>
+</a>
+</div>
+<div id="ShareFacebook">
+<a class="resp-sharing-button__link" rel="nofollow" href="https://facebook.com/sharer/sharer.php?u=https://www.campusmvp.es/recursos/post/javascript-como-recibir-y-enviar-archivos-binarios-con-ajax.aspx" target="_blank" aria-label="Facebook">
+<div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--medium">
+<div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
+<svg version="1.1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+<path d="M12,0C5.383,0,0,5.383,0,12s5.383,12,12,12s12-5.383,12-12S18.617,0,12,0z M15.595,11.5H13.5c0,3.013,0,7,0,7h-3 c0,0,0-3.951,0-7h-2v-2h2V8.336c0-1.1,0.352-2.819,2.649-2.819L15.5,5.524V7.83c0,0-1.163,0-1.408,0 c-0.244,0-0.592,0.124-0.592,0.647V9.5h2.339L15.595,11.5z"></path>
+</svg>
+</div>
+</div>
+</a>
+</div>
+<div id="ShareLinkedIn">
+<a class="resp-sharing-button__link" rel="nofollow" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.campusmvp.es/recursos/post/javascript-como-recibir-y-enviar-archivos-binarios-con-ajax.aspx&amp;title=JavaScript%3a+C%c3%b3mo+recibir+y+enviar+archivos+binarios+con+AJAX" target="_blank" aria-label="LinkedIn">
+<div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--medium">
+<div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
+<svg version="1.1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+<path d="M12,0C5.383,0,0,5.383,0,12s5.383,12,12,12s12-5.383,12-12S18.617,0,12,0z M9.5,16.5h-2v-7h2V16.5z M8.5,7.5 c-0.553,0-1-0.448-1-1c0-0.552,0.447-1,1-1s1,0.448,1,1C9.5,7.052,9.053,7.5,8.5,7.5z M18.5,16.5h-3V13c0-0.277-0.225-0.5-0.5-0.5 c-0.276,0-0.5,0.223-0.5,0.5v3.5h-3c0,0,0.031-6.478,0-7h3v0.835c0,0,0.457-0.753,1.707-0.753c1.55,0,2.293,1.12,2.293,3.296V16.5z"></path>
+</svg>
+</div>
+</div>
+</a>
+</div>
+<div id="SharePocket">
+<a class="resp-sharing-button__link" rel="nofollow" href="https://getpocket.com/edit?url=https://www.campusmvp.es/recursos/post/javascript-como-recibir-y-enviar-archivos-binarios-con-ajax.aspx" target="_blank" aria-label="Pocket">
+<div class="resp-sharing-button resp-sharing-button--pocket resp-sharing-button--medium">
+<div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+<svg enable-background="new 0 0 128 128" version="1.1" viewBox="0 0 128 128" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="_x37__stroke">
+<g>
+<rect clip-rule="evenodd" fill="none" fill-rule="evenodd" height="128" width="128"></rect>
+<path clip-rule="evenodd" d="M64.089,65.128    c-0.324-0.301-0.57-0.523-0.809-0.752c-7.747-7.442-15.485-14.893-23.243-22.323c-3.554-3.403-9.008-3.278-12.394,0.24    c-3.335,3.465-3.289,8.953,0.218,12.342c10.053,9.712,20.135,19.395,30.234,29.06c3.365,3.22,8.546,3.187,11.959,0.008    c1.367-1.273,2.7-2.582,4.047-3.877c8.635-8.299,17.265-16.604,25.909-24.893c2.077-1.992,3.165-4.398,2.892-7.263    c-0.347-3.643-2.268-6.265-5.717-7.521c-3.438-1.252-6.565-0.496-9.218,2.038c-4.342,4.147-8.664,8.317-12.994,12.478    C71.37,58.128,67.765,61.594,64.089,65.128z M64.067,6.688c17.398,0,34.796-0.005,52.194,0.003    c5.391,0.003,10.025,3.481,11.368,8.535c0.212,0.798,0.345,1.643,0.346,2.467c0.008,13.594,0.075,27.189-0.048,40.782    c-0.125,13.888-4.326,26.462-12.875,37.441c-9.513,12.219-21.782,20.266-36.903,23.761c-34.72,8.023-67.887-14.386-76.074-45.75    c-1.091-4.181-1.835-8.424-1.871-12.742C0.084,46.724-0.006,32.263,0,17.803C0.003,11.716,5.433,6.696,11.773,6.691    C29.204,6.68,46.636,6.688,64.067,6.688z" fill="#FFF" fill-rule="evenodd" id="Pocket_1_"></path>
+</g>
+</g>
+</svg>
+</div>
+</div>
+</a>
+</div>
+</div>
+</div>
+
+</article>
+
+<link rel="stylesheet" href="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/bar.css">
+<div class="cta-bar" style="display: block;">
+<div class="cta-bar__content">
+<div class="cta-bar__logo">
+<img src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/logo-campusmvp.svg" alt="logo de campusMVP">
+</div>
+<div class="cta-bar__claim">
+
+<span class="cta-bar__claim-text">Si nuestro blog te parece interesante, espera a ver nuestros cursos</span>
+</div>
+<div class="cta-bar__button">
+<a href="https://www.campusmvp.es/catalogo/?link=CTA-bar" class="cta-bar__link" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;clic_boton&#39;, &#39;CTA_bar_recursos&#39;]);">Ver cursos</a>
+</div>
+</div>
+</div>
+
+
+<script type="text/javascript">
+
+    function getQSParam(name) {
+        var params = document.location.search.substr(1).split('&');
+        for(var i=0; i<params.length; i++) {
+            var param = params[i].split('=');
+            if (param[0].toLowerCase() == name.toLowerCase())
+            {
+                return param[1] ? param[1] : "true";
+            }
+        }
+        return null;
+    }
+    //Si está presente el parámetro "np" en el querystring, no sacamos la publi
+    if (getQSParam('np')) {
+        //Eliminamos la publi del contenido (no la del lateral, que no tiene que ver)
+        $('.bloquepubli, .innerAd').css('display', 'none');
+    }
+    else {
+        //cargamos los anuncios en-línea
+        var currentTags = "JavaScript,Evergreen";
+        var currentCategs = "Desarrollo Web";
+        var adEngine = new AdEngine('/recursos/publi/enlinea.json?v=1.0.101',
+                             currentTags,
+                             currentCategs, function() {
+            var cuerpoPost = document.getElementsByClassName('PostBody')[0];
+            if (cuerpoPost.getElementsByClassName('innerAd').length == 0) {
+                adEngine.injectRandomAdPlaceholder(cuerpoPost, null, 'innerAd');
+                adEngine.insertAdsByClassName('innerAd');
+            }
+            //Se cargan los anuncios en los elementos con la clase indicada
+            adEngine.insertAdsByClassName('bloquepubli');
+        });
+    }
+</script>
+<rdf:rdf xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:description rdf:about="https://www.campusmvp.es/recursos/post/javascript-como-recibir-y-enviar-archivos-binarios-con-ajax.aspx" dc:identifier="https://www.campusmvp.es/recursos/post/javascript-como-recibir-y-enviar-archivos-binarios-con-ajax.aspx" dc:title="JavaScript: Cómo recibir y enviar archivos binarios con AJAX" trackback:ping="https://www.campusmvp.es/recursos/trackback.axd?id=b6012e33-b275-43b6-a483-4a64ffc20108">
+</rdf:description></rdf:rdf>
+<div id="relatedPosts"><h3>Publicaciones relacionadas</h3><div><a href="https://www.campusmvp.es/recursos/post/como-manejar-trazas-en-net-core-con-serilog.aspx">Cómo manejar trazas en .Net Core con Serilog</a><span>Cuando desarrollas en tu equipo tienes a mano el entorno de desarrollo con todas las herramientas de...</span><a href="https://www.campusmvp.es/recursos/post/como-gestionar-diferentes-entornos-para-python-con-conda.aspx">Cómo gestionar diferentes entornos para Python con conda</a><span>Ahora que ya sabes montar tu entorno de trabajo con Python basado en miniconda, vamos a ver cómo pue...</span><a href="https://www.campusmvp.es/recursos/post/como-concatenar-subconsultas-en-un-solo-campo-con-sql-server.aspx">Cómo concatenar subconsultas en un solo campo con SQL Server</a><span>Una situación típica pero complicada de resolver es cuando tenemos registros en una base de datos qu...</span></div></div>
+<div class="well-global">
+<div id="commentlist" style="display: block">
+</div>
+</div>
+<div id="comment-form">
+<img src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/ajax-loader.gif" width="24" height="24" alt="Saving the comment" style="display: none" id="ajaxLoader">
+<span id="status"></span>
+<div class="commentForm">
+<h3 id="addcomment">Agregar comentario</h3>
+<p>
+<label for="txtName" class="lbl-user">Nombre*</label>
+<input type="text" class="txt-user" name="txtName" id="txtName">
+</p>
+<p>
+<label for="txtEmail" class="lbl-email">Correo Electrónico*</label>
+<input type="text" class="txt-email" id="txtEmail">
+<span id="gravatarmsg"></span>
+</p>
+<p>
+<label for="txtWebsite" class="lbl-website">Sitio Web</label>
+<input type="text" class="txt-website" id="txtWebsite">
+</p>
+<p>
+<label for="txtContent" class="lbl-content">Comentario*</label>
+<textarea class="txt-content" id="txtContent" cols="50" rows="10" name="txtContent"></textarea>
+</p>
+<p>
+<input type="checkbox" id="cbNotify" class="cmnt-frm-notify" style="width: auto">
+<label for="cbNotify" style="width: auto; float: none; display: inline; padding-left: 5px">Notificarme cuando se publiquen nuevos comentarios</label>
+</p>
+<p style="font-size:small;padding-top:10px;padding-left:10px;">Los datos anteriores se utilizarán exclusivamente para permitirte hacer el comentario y, si lo seleccionas, notificarte de nuevos comentarios en este artículo, pero no se procesarán ni se utilizarán para ningún otro propósito. Lee nuestra <a href="https://www.krasis.com/aviso_legal.htm" target="_blank">política de privacidad</a>.
+</p>
+<p>
+<input type="button" id="btnSaveAjax" class="btn-save" style="margin-top: 10px;margin-bottom:20px;position: absolute;top: 100%;right: 0;" value="Guardar comentario " onclick="return BlogEngine.validateAndSubmitCommentForm()">
+</p>
+</div><input type="hidden" name="ctl00$cphBody$ucCommentList$hiddenReplyTo" id="ctl00_cphBody_ucCommentList_hiddenReplyTo">
+<p id="cancelReply" style="display: none;">
+<a href="javascript:void(0);" onclick="BlogEngine.cancelReply();">Cancelar respuesta al comentario</a>
+</p>
+<p><label for="simpleCaptchaValue" style="margin-right: 5px;">Huevo, perro, abeja o viernes, ¿cuál es un día de la semana?</label><input id="simpleCaptchaValue" name="simpleCaptchaValue" type="text" tabindex="0" maxlength="30" value=""><span id="spnSimpleCaptchaIncorrect" style="display:none;color:Red;">The captcha value you provided is incorrect.
+</span></p><input type="hidden" name="ctl00$cphBody$ucCommentList$hfCaptcha" id="ctl00_cphBody_ucCommentList_hfCaptcha" value="bf59fb61-19a6-4f10-9be9-75834c0cc149">
+</div>
+<script type="text/javascript">
+        BlogEngine.comments.flagImage = BlogEngine.$("imgFlag");
+        BlogEngine.comments.contentBox = BlogEngine.$("txtContent");
+        BlogEngine.comments.moderation = true;
+	    BlogEngine.comments.checkName = true;
+	    BlogEngine.comments.postAuthor = "JMAlarcon";
+	    BlogEngine.comments.nameBox = BlogEngine.$("txtName");
+	    BlogEngine.comments.emailBox = BlogEngine.$("txtEmail");
+	    BlogEngine.comments.websiteBox = BlogEngine.$("txtWebsite");
+	    BlogEngine.comments.countryDropDown = BlogEngine.$("ddlCountry");
+	    BlogEngine.comments.controlId = 'ctl00$cphBody$ucCommentList';
+	    BlogEngine.comments.captchaField = BlogEngine.$('ctl00_cphBody_ucCommentList_hfCaptcha');
+        BlogEngine.comments.replyToId = BlogEngine.$("ctl00_cphBody_ucCommentList_hiddenReplyTo");
+    </script>
+<script type="text/javascript">
+    function toggle_visibility(id, id2) {
+        var e = document.getElementById(id);
+        var h = document.getElementById(id2);
+        if (e.style.display == 'block') {
+            e.style.display = 'none';
+            h.innerHTML = "+";
+        }
+        else {
+            e.style.display = 'block';
+            h.innerHTML = "-";
+        }
+    }
+</script>
+</section>
+<aside class="Widgets-Wrapper">
+
+<img src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/logo.jpg" style="display:none;">
+<div id="widgetzone_be_WIDGET_ZONE" class="widgetzone">
+<div class="Widget textbox" id="widgetdc6be479-febc-449e-8260-9bf802067fcb">
+<div class="WidgetContent">
+<div id="banner-arriba" class="banner-lateral" style="display: block;"><a class="AdLink AdLink--img" href="https://www.campusmvp.es/catalogo/Product-Programaci%C3%B3n-avanzada-con-JavaScript-y-ECMAScript_206.aspx" target="_blank" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Anuncios Lateral Blog&#39;, &#39;/catalogo/Product-Programación-avanzada-con-JavaScript-y-ECMAScript_206.aspx&#39;, &#39;Curso JS/ES en banner-arriba&#39;]);"><img style="border:0;" src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/banner-curso_14.gif"></a></div>
+</div>
+</div>
+<div class="Widget recentposts" id="widgetb1cde929-98d5-443b-9611-6857d6b4bf05">
+<div class="WidgetHeader">
+Artículos recientes</div>
+<div class="WidgetContent">
+<ul class="recentPosts" id="recentPosts"><li><a href="https://www.campusmvp.es/recursos/post/actualidad-gpt-4-y-compania-typescript-5-0-chatgpt-entraria-en-google-net-8-preview-2-visual-studio-2022-y-copilot-for-business.aspx">Actualidad: GPT-4 y compañía, Typescript 5.0, ChatGPT entraría en Google, .NET 8 preview 2, Visual Studio 2022 y Copilot for business</a></li><li><a href="https://www.campusmvp.es/recursos/post/openai-gpt-4-ya-esta-aqui-que-ofrece-peligra-tu-trabajo.aspx">OpenAI GPT-4 ya está aquí: ¿Qué ofrece? ¿Peligra tu trabajo?</a></li><li><a href="https://www.campusmvp.es/recursos/post/actualidad-vb-zombie-preview-de-net-8-al-caer-open-ai-en-azure-copilot-code-brushes-y-como-crear-tu-propio-chat-gpt.aspx">Actualidad: VB zombie, preview de .NET 8 al caer, Open AI en Azure, Copilot Code Brushes y cómo crear tu propio Chat GPT</a></li><li><a href="https://www.campusmvp.es/recursos/post/cambios-importantes-en-la-licencia-de-java-hay-que-pagar-por-usar-java.aspx">Cambios importantes en la licencia de Java ¿Hay que pagar por usar Java?</a></li><li><a href="https://www.campusmvp.es/recursos/post/que-es-la-ia-generativa.aspx">Qué es la IA Generativa</a></li></ul>
+</div>
+</div>
+<div class="Widget linklist" id="widget54c76c80-9f35-47b5-8b7e-040da77299b8">
+<div class="WidgetHeader">
+Nuestros Cursos y Libros</div>
+<div class="WidgetContent">
+<ul id="ctl00_widgetContainer54c76c809f3547b58b7e040da77299b8_54c76c809f3547b58b7e040da77299b8_ulLinks"><li><a href="https://www.campusmvp.es/catalogo/#.Programaci%C3%B3n-Web">Cursos de Programación Web</a></li><li><a href="https://www.campusmvp.es/catalogo/#.Acceso-a-Datos">Cursos de Acceso a Datos</a></li><li><a href="https://www.campusmvp.es/catalogo/#.Lenguajes-y-plataformas">Cursos de Lenguajes y Plataformas</a></li><li><a href="https://www.campusmvp.es/catalogo/#.Ex%C3%A1menes-Oficiales">Preparación de Exámenes Oficiales</a></li><li><a href="https://www.campusmvp.es/catalogo/#.Libros">Libros de programación</a></li></ul>
+</div>
+</div>
+<div class="Widget textbox" id="widget0e1aa815-2eeb-4ab8-9b64-ccc882bbf6c4">
+<div class="WidgetHeader">
+Últimos vídeos</div>
+<div class="WidgetContent">
+<div id="YouTubeRecentVideos"><iframe width="300" height="200" src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/_29JOV9wYWY.html" frameborder="0" allowfullscreen=""></iframe><br><iframe width="300" height="200" src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/mNxzQvdVSQI.html" frameborder="0" allowfullscreen=""></iframe><br><iframe width="300" height="200" src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/5xQs1TbpbLM.html" frameborder="0" allowfullscreen=""></iframe><br></div>
+<script src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/ytrvjson.js.descarga"></script>
+<script defer="" src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/videosCampusMVP.js.descarga"></script>
+</div>
+</div>
+<div class="Widget recentcomments" id="widgetbd962c99-4ea8-47fa-a171-dde4b808a2c8">
+<div class="WidgetHeader">
+Comentarios Recientes</div>
+<div class="WidgetContent">
+<ul id="recentComments" class="recentComments"><li><a href="https://www.campusmvp.es/recursos/post/como-enviar-correo-electronico-con-java-a-traves-de-gmail.aspx" class="postTitle">Cómo enviar correo electrónico con Java a través de GMail</a> (47)<br>José Manuel Alarcón escribió: Habla con el hosting. Es bastante probable que el ... <a href="https://www.campusmvp.es/recursos/post/como-enviar-correo-electronico-con-java-a-traves-de-gmail.aspx#id_0ca633c3-5580-4695-84c8-e86058d8f1f6" class="moreLink">[Más]</a></li><li><a href="https://www.campusmvp.es/recursos/post/como-enviar-correo-electronico-con-java-a-traves-de-gmail.aspx" class="postTitle">Cómo enviar correo electrónico con Java a través de GMail</a> (47)<br>Lucrecia escribió: Hola. Te cuento que yo he creado la password de ap... <a href="https://www.campusmvp.es/recursos/post/como-enviar-correo-electronico-con-java-a-traves-de-gmail.aspx#id_acf852cf-e3bb-4fcf-b8bf-b25dc9fdf50b" class="moreLink">[Más]</a></li><li><a href="https://www.campusmvp.es/recursos/post/typescript-contra-javascript-cual-deberias-utilizar.aspx" class="postTitle">TypeScript contra JavaScript: ¿cuál deberías utilizar?</a> (5)<br>agustin escribió: En 2023, prefiero javascript. Me resulta muy conve... <a href="https://www.campusmvp.es/recursos/post/typescript-contra-javascript-cual-deberias-utilizar.aspx#id_a624d142-53bb-418c-8caa-cffdd1bb9ca9" class="moreLink">[Más]</a></li><li><a href="https://www.campusmvp.es/recursos/post/las-7-grandes-tendencias-de-programacion-para-2022.aspx" class="postTitle">Las 7 grandes tendencias de programación para 2022</a> (2)<br>José Manuel Alarcón escribió: Hola Julian:
+Gracias, me alegro de que te parez... <a href="https://www.campusmvp.es/recursos/post/las-7-grandes-tendencias-de-programacion-para-2022.aspx#id_4d5647eb-edcd-469a-9b0b-888ccbecda81" class="moreLink">[Más]</a></li><li><a href="https://www.campusmvp.es/recursos/post/las-7-grandes-tendencias-de-programacion-para-2022.aspx" class="postTitle">Las 7 grandes tendencias de programación para 2022</a> (2)<br>Julian escribió: Hola, he leído sobre todo lo escrito y es tremenda... <a href="https://www.campusmvp.es/recursos/post/las-7-grandes-tendencias-de-programacion-para-2022.aspx#id_d939466e-9310-439e-882a-45d11b90ce0b" class="moreLink">[Más]</a></li></ul><a href="https://www.campusmvp.es/recursos/syndication.axd?comments=true">Comment RSS <img src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/rssButton.png" alt=""></a>
+</div>
+</div>
+<div class="Widget textbox" id="widget8448517f-c6af-41f9-aab4-67013faf890e">
+<div class="WidgetContent">
+<ul id="social-widget">
+<li><a class="linkedin-widget" href="https://www.linkedin.com/company/campusmvp" target="_blank"> Linkedin</a></li>
+<li><a class="tw-widget" href="https://twitter.com/campusmvp" target="_blank"> Twitter</a></li>
+<li><a class="fb-widget" href="https://www.facebook.com/campusMVP" target="_blank"> Facebook</a></li>
+<li><a class="YT-widget" href="https://www.youtube.com/campusMVPes" target="_blank"> YouTube</a></li>
+<li><a class="rss-widget" href="https://www.campusmvp.es/recursos/syndication.axd" target="_blank"> RSS</a></li>
+</ul>
+</div>
+</div>
+<div class="Widget textbox" id="widget30c87489-2890-4cf1-8708-88ce0ead5f8c">
+<div class="WidgetContent">
+<div id="banner-abajo" class="banner-lateral" style="display: block;"><a class="AdLink AdLink--img" href="https://www.campusmvp.es/catalogo/Product-Fundamentos-de-desarrollo-web-con-JavaScript-y-jQuery_207.aspx" target="_blank" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Anuncios Lateral Blog&#39;, &#39;/catalogo/Product-Fundamentos-de-desarrollo-web-con-JavaScript-y-jQuery_207.aspx&#39;, &#39;Curso JS/jQuery en banner-abajo&#39;]);"><img style="border:0;" src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/banner-curso_15.gif"></a></div>
+</div>
+</div></div>
+</aside>
+</div>
+
+<footer class="cmvp-footer">
+<div class="cmvp-footer-main">
+<div class="cmvp-footer__zona-1">
+<h3>¿Qué vas a <a class="cmvp-footer__link-aprender-a-programar" href="https://www.campusmvp.es/aprender-a-programar-online">aprender a programar</a> hoy?</h3>
+<div class="cmvp-footer__zona-1__inner">
+<ul class="cmvp-footer__zona-1__bloque cmvp-footer__zona-1__bloque--1">
+<li><a href="https://www.campusmvp.es/catalogo/Product-Desarrollo-de-aplicaciones-con-la-plataforma-Java_231.aspx">Curso Java (Plataforma + Lenguaje)</a></li>
+<li><a href="https://www.campusmvp.es/catalogo/Product-Docker-y-Kubernetes-desarrollo-y-despliegue-de-aplicaciones-basadas-en-contenedores_237.aspx">Curso Kubernetes y Docker (DevOps)</a></li>
+<li><a href="https://www.campusmvp.es/catalogo/Product-Desarrollo-de-aplicaciones-Web-con-ASP.NET-Core-y-MVC_227.aspx">Curso ASP.NET Core MVC (Backend)</a></li>
+<li><a href="https://www.campusmvp.es/catalogo/Product-Desarrollo-con-la-plataforma-.NET-6-y-C-10_242.aspx">Curso de Plataforma .NET y C#</a></li>
+<li><a href="https://www.campusmvp.es/catalogo/Product-Desarrollo-de-aplicaciones-de-gesti%C3%B3n-empresariales-con-Velneo---Curso-Oficial_238.aspx">Curso Creación de Aplicaciones De Gestión</a></li>
+<li><a href="https://www.campusmvp.es/catalogo/Product-Especialista-en-programaci%C3%B3n-de-bases-de-datos-con-SQL-Server_236.aspx">Curso SQL Server (Especialista Base Datos)</a></li>
+</ul>
+<ul class="cmvp-footer__zona-1__bloque cmvp-footer__zona-1__bloque--2">
+<li><a href="https://www.campusmvp.es/catalogo/Product-HTML5-y-CSS3-a-fondo-para-desarrolladores_185.aspx">Curso HTML5 y CSS3 para programación</a></li>
+<li><a href="https://www.campusmvp.es/catalogo/Product-Programaci%C3%B3n-avanzada-con-JavaScript-y-ECMAScript_206.aspx">Curso JavaScript/ECMAScript (Avanzado)</a></li>
+<li><a href="https://www.campusmvp.es/catalogo/Product-Interfaces-web-responsive-con-HTML5,-Flexbox,-CSS-Grid-y-Bootstrap_212.aspx">Curso Interfaces Responsive y Bootstrap</a></li>
+<li><a href="https://www.campusmvp.es/catalogo/Product-Desarrollo-de-aplicaciones-web-con-Angular-15_232.aspx">Curso Angular (Aplicaciones Web)</a></li>
+<li><a href="https://www.campusmvp.es/catalogo/Product-Desarrollo-de-aplicaciones-y-servicios-Web-en-Java-con-Spring-Boot_248.aspx">Curso Spring Boot</a></li>
+<li><a class="cmvp-footer__link-catalogo" href="https://www.campusmvp.es/catalogo/">Ver todos los cursos</a></li>
+</ul>
+<ul class="cmvp-footer__zona-1__bloque cmvp-footer__zona-1__bloque--3">
+<li><a class="cmvp-footer__link-asesor" href="https://www.campusmvp.es/asesor/">¿Te ayudamos a decidir?</a></li>
+</ul>
+</div>
+</div>
+<div class="cmvp-footer__zona-2">
+<a href="https://www.campusmvp.es/" class="cmvp-footer__logo" title="A la portada de campusMVP" rel="nofollow"><img src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/logo-campusmvp(1).svg" alt="logo campusMVP"></a>
+<ul class="cmvp-footer__zona-2__bloque-1">
+<li class="cmvp-footer-rrss-wrap"><a class="cmvp-footer-rrss cmvp-footer-rrss--twitter" href="https://twitter.com/campusmvp" target="_blank" rel="nofollow" title="Twitter">Twitter</a></li>
+<li class="cmvp-footer-rrss-wrap"><a class="cmvp-footer-rrss cmvp-footer-rrss--facebook" href="https://facebook.com/campusmvp" target="_blank" rel="nofollow" title="Facebook">Facebook</a></li>
+<li class="cmvp-footer-rrss-wrap"><a class="cmvp-footer-rrss cmvp-footer-rrss--linkedin" href="https://www.linkedin.com/company/campusmvp/" target="_blank" rel="nofollow" title="LinkedIn">LinkedIn</a></li>
+<li class="cmvp-footer-rrss-wrap"><a class="cmvp-footer-rrss cmvp-footer-rrss--youtube" href="https://www.youtube.com/@campusMVP" target="_blank" rel="nofollow" title="YouTube">YouTube</a></li>
+<li class="cmvp-footer-rrss-wrap"><a class="cmvp-footer-rrss cmvp-footer-rrss--podcast" href="https://go.campusmvp.es/podcast" target="_blank" rel="nofollow" title="Cosas de programadores, el podcast de campusMVP">Podcast</a></li>
+</ul>
+<ul class="cmvp-footer__zona-2__bloque-2">
+<li><a href="https://www.campusmvp.es/conocenos" rel="nofollow">¿Por qué campusMVP?</a></li>
+<li><a href="https://www.campusmvp.es/recursos" rel="nofollow">Recursos para programadores</a></li>
+<li><a href="https://www.campusmvp.es/descuentos/formacion-bonificada">Bonifica tu curso</a></li>
+<li><a href="https://www.campusmvp.es/empresas">Servicios para empresas</a></li>
+<li><a href="https://www.campusmvp.es/descuentos/" rel="nofollow">Descuentos</a></li>
+<li><a href="https://www.campusmvp.es/faq/">Preguntas frecuentes</a></li>
+<li><a href="https://www.campusmvp.es/contacto/" rel="nofollow">Contacto</a></li>
+</ul>
+</div>
+</div>
+<div class="cmvp-footer__zona-3">
+<div class="cmvp-footer__zona-3__links">
+<p><span class="copy">© Krasis Consulting S.L.U.</span> - <a href="https://www.campusmvp.es/aviso_legal" target="_blank" rel="nofollow">Aviso Legal y Política de privacidad</a> - <a href="https://www.campusmvp.es/politica-cookies" target="_blank" rel="nofollow">Política de Cookies</a> - <a href="https://www.campusmvp.es/recursos/post/javascript-como-recibir-y-enviar-archivos-binarios-con-ajax.aspx#" onclick="return klaro.show(null, true);">Gestionar cookies</a></p>
+</div>
+</div>
+</footer>
+
+
+<span class="scrollup"></span>
+<script src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/jquery.pan.min.js.descarga"></script>
+<script src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/jquery.YACSSTooltip.min.js.descarga"></script>
+<script src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/scripts.js.descarga"></script>
+<script src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/newsletter.js.descarga"></script>
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="C751377C">
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="mbvPqBVT3T0KnX7EcM5qqrKdzvJ65Fv/XNmCwTi0n/vdsYhHc51K1rvKmM6Hy3XkUVaNpbq5lnWDVRjVVojFEqxTkCht+tFkFKUOkzuFXZogStwDUIM5iC4pVHC6Zd5KqNFMWA==">
+</div>
+<script type="text/javascript">
+//<![CDATA[
+
+var callBackFrameUrl='/recursos/WebResource.axd?d=beToSAE3vdsL1QUQUxjWdbqv_vsrVPNz5iJHVLj4a15-W6AG51mW0EakKiepjfuzRoi0AQ2&t=637814689746327080';
+WebForm_InitCallback();//]]>
+</script>
+</form>
+
+<script>
+
+        function AddCodeClassesToPrismPlugin() {
+
+            $(".PostBody pre").each(function () {
+                //Si dentro de los posts (.PostBody) hay etiquetas <pre> que no contengan un hijo <code> se les inyecta uno que envuelva el contenido del <pre>
+                if ((!$(this).children().is('code'))) $(this).wrapInner( "<code></code>");
+            });
+
+            $("pre > code").each(function () {
+                //Se controla que si se ha añadido el atributo para resaltar líneas a la etiqueta CODE se añada a la PRE que la envuelva ya que el plugin requiere que se establezca en ella para que funcione
+                if (($(this).data('line')) && ($(this).data('line') != '') && (!$(this).parent().data('line'))) $(this).parent().attr('data-line', $(this).data('line'));
+
+                //Para que actúe el plugin de numeración de línea de prism hay que añadir la clase "line-numbers" al tag pre
+                $(this).parent().addClass('line-numbers');
+
+                //Se asegura de que las regiones de código al menos lleven la clase de lenguaje por defecto
+                if ((!$(this).is('[class*="language-"]')) && (!$(this).is('[class*="lang-"]'))) $(this).addClass('language-');
+
+                //Si el padre de <code> (PRE) no tiene la clase de lenguaje se le pone la clase por defecto
+                if ((!$(this).parent().is('[class*="language-"]')) && (!$(this).parent().is('[class*="lang-"]'))) $(this).parent().addClass('language-');
+            });
+
+        }
+
+        $(function () {
+            AddCodeClassesToPrismPlugin();
+            // llamamos y ejecutamos Prism desde aquí para asegurarnos que están aplicadas las clases necesarias en <pre> y <code>
+            $.getScript('/recursos/Custom/Themes/campusMVP/include/prism/prism.js?ver=0.0.2', function() {
+                if (Prism) {
+
+                    //Carga el path donde se encuentran las gramáticas para el autoloader
+                    Prism.plugins.autoloader.languages_path = '/recursos/Custom/Themes/campusMVP/include/prism/components/';
+
+                    //Si existe el objeto Prism cargamos su css para asegurarnos de que, si no funciona, todos los bloques de código se vean con los estilos básicos por defecto
+                    $('<link>')
+                    .appendTo('head')
+                    .attr({
+                        type: 'text/css',
+                        rel: 'stylesheet',
+                        href: '/recursos/Custom/Themes/campusMVP/include/prism/prism.css?ver=0.0.2'
+                        });
+                }
+            });
+        });
+
+    </script>
+
+
+<a id="BackToTop" class="back_to_top" href="https://www.campusmvp.es/recursos/post/javascript-como-recibir-y-enviar-archivos-binarios-con-ajax.aspx#top" title="Volver a arriba" style="display: block;">
+<svg xmlns="http://www.w3.org/2000/svg" width="40px" height="32px" id="back-icon">
+<rect x="0" y="0" width="40px" height="32px" id="back-wrapper"></rect>
+<polyline id="arrow_top" points="10 22,20 10, 30 22" stroke="white" stroke-width="3" fill="transparent"></polyline>
+</svg>
+</a>
+
+<script src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/app.js.descarga"></script>
+
+<script type="application/javascript" data-type="application/javascript" data-name="ga">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-264978-6']);
+    _gaq.push(['_gat._anonymizeIp']);
+    _gaq.push(['_setDomainName', 'campusmvp.es']);
+    _gaq.push(['_setAllowLinker', true]);
+    _gaq.push(['_addIgnoredOrganic', 'krasis']);
+    _gaq.push(['_addIgnoredOrganic', 'krasis.com']);
+    _gaq.push(['_addIgnoredOrganic', 'krasis press']);
+    _gaq.push(['_addIgnoredOrganic', 'krasispress']);
+    _gaq.push(['_addIgnoredOrganic', 'campusmvp']);
+    _gaq.push(['_addIgnoredOrganic', 'campus mvp']);
+    _gaq.push(['_addIgnoredOrganic', 'campusmvp.es']);
+    _gaq.push(['_addIgnoredOrganic', 'www.campusmvp.es']);
+    _gaq.push(['_addIgnoredOrganic', 'campus mvp.es']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+<script type="application/javascript" src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/i.js.descarga" referrerpolicy="origin" data-type="application/javascript" data-name="ga"></script>
+
+
+<script>
+    //Las tags y categorías solo se cargan previamente si estamos en un post
+    var cTags = null, cCategs = null;
+    if (typeof currentTags !== 'undefined') cTags = currentTags;
+    if (typeof currentCategs !== 'undefined') cCategs = currentCategs;
+    //Cargar anuncio aleatorio para el lateral
+    var adEngineLateral = new AdEngine('/recursos/publi/lateral.json?v=1.0.91', cTags, cCategs, function(){
+        adEngineLateral.insertAdsByClassName('banner-lateral');
+    });
+</script>
+<script src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/figlet.js.descarga"></script>
+
+<link rel="stylesheet" href="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/klaro.min.css">
+<link rel="stylesheet" href="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/klaro-extras.css">
+<script defer="" type="application/javascript" src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/config.js.descarga"></script>
+<script defer="" type="application/javascript" src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/klaro.js.descarga"></script>
+
+<script defer="" src="./JavaScript_ Cómo recibir y enviar archivos binarios con AJAX _ campusMVP.es_files/vb26e4fa9e5134444860be286fd8771851679335129114" integrity="sha512-M3hN/6cva/SjwrOtyXeUa5IuCT0sedyfT+jK/OV+s+D0RnzrTfwjwJHhd+wYfMm9HJSrZ1IKksOdddLuN6KOzw==" data-cf-beacon="{&quot;rayId&quot;:&quot;7ae847971e9bf7a4&quot;,&quot;version&quot;:&quot;2023.3.0&quot;,&quot;r&quot;:1,&quot;token&quot;:&quot;f0aa520dc035432cb9fe5438c4f03b8b&quot;,&quot;si&quot;:100}" crossorigin="anonymous"></script>
+
+
+<div id="klaro"><div lang="es" class="klaro"><div></div></div></div><div class="panWrapper"><div id="loading" class="loading"></div><a class="controls close"></a><img class="i" style="position: absolute;"><div class="buttonsWrapper"><a class="controls in"></a><a class="controls rc"></a><a class="controls link"></a><a class="controls ra"></a><a class="controls out"></a></div></div><div id="CSSTooltip8558" class="YACSSTooltip" style="position: absolute; border: 1px solid rgb(51, 51, 51); background-color: rgb(22, 22, 22); border-radius: 5px; padding: 5px; color: rgb(255, 255, 255); max-width: 250px; line-break: auto; word-break: break-word; word-spacing: 0px; white-space: normal; text-align: center; overflow-wrap: normal; display: none;">Logo de JavaScript procesando una cola de archivos binarios</div></body></html>

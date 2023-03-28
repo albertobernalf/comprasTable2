@@ -1,0 +1,3 @@
+function mostrarVideos(videos,max){max=max||videos.length;if(max>videos.length)max=videos.length;if(videos&&videos.length>0){var videoHTML="";for(i=0;i<max;i++){var item=videos[i];var videoid="https://www.youtube-nocookie.com/embed/"+item.id;videoHTML+="<iframe width='300' height='200' src='"+videoid+"' frameborder='0' allowfullscreen></iframe><br/>";}
+document.getElementById("YouTubeRecentVideos").innerHTML=videoHTML;}}
+mostrarVideos(videosJsonStr,3);

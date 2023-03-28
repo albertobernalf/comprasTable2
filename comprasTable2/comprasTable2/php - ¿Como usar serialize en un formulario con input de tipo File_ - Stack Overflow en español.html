@@ -1,0 +1,2233 @@
+<!DOCTYPE html>
+<!-- saved from url=(0105)https://es.stackoverflow.com/questions/151707/como-usar-serialize-en-un-formulario-con-input-de-tipo-file -->
+<html itemscope="" itemtype="https://schema.org/QAPage" class="html__responsive " lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <title>php - ¿Como usar serialize en un formulario con input de tipo File? - Stack Overflow en español</title>
+        <link rel="shortcut icon" href="https://cdn.sstatic.net/Sites/es/Img/favicon.ico?v=9c017e88b153">
+        <link rel="apple-touch-icon" href="https://cdn.sstatic.net/Sites/es/Img/apple-touch-icon.png?v=7739871010e6">
+        <link rel="image_src" href="https://cdn.sstatic.net/Sites/es/Img/apple-touch-icon.png?v=7739871010e6"> 
+        <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow en español" href="https://es.stackoverflow.com/opensearch.xml">
+        <link rel="canonical" href="https://es.stackoverflow.com/questions/151707/como-usar-serialize-en-un-formulario-con-input-de-tipo-file">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://es.stackoverflow.com/questions/151707/como-usar-serialize-en-un-formulario-con-input-de-tipo-file">
+        <meta property="og:site_name" content="Stack Overflow en español">
+        <meta property="og:image" itemprop="image primaryImageOfPage" content="https://cdn.sstatic.net/Sites/es/Img/apple-touch-icon@2.png?v=62634cce9d6c">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:domain" content="es.stackoverflow.com">
+        <meta name="twitter:title" property="og:title" itemprop="name" content="¿Como usar serialize en un formulario con input de tipo File?">
+        <meta name="twitter:description" property="og:description" itemprop="description" content="Tengo un formulario en html para registrar un producto para ello uso ajax, cuando hago un serialize al formulario logro obtener todos los campos del mismo a excepción del campo de tipo file se que ...">
+    <script async="" src="./php - ¿Como usar serialize en un formulario con input de tipo File_ - Stack Overflow en español_files/analytics.js.descarga"></script><script id="webpack-public-path" type="text/uri-list">https://cdn.sstatic.net/</script>
+    <script src="./php - ¿Como usar serialize en un formulario con input de tipo File_ - Stack Overflow en español_files/jquery.min.js.descarga"></script>
+    <script defer="" src="./php - ¿Como usar serialize en un formulario con input de tipo File_ - Stack Overflow en español_files/stacks.min.js.descarga"></script>
+    <script src="./php - ¿Como usar serialize en un formulario con input de tipo File_ - Stack Overflow en español_files/stub.es.js.descarga"></script>
+
+    <link rel="stylesheet" type="text/css" href="./php - ¿Como usar serialize en un formulario con input de tipo File_ - Stack Overflow en español_files/stacks.css">
+    <link rel="stylesheet" type="text/css" href="./php - ¿Como usar serialize en un formulario con input de tipo File_ - Stack Overflow en español_files/primary.css">
+
+
+    
+            <link rel="alternate" type="application/atom+xml" title="Fuente de la pregunta&quot;¿Como usar serialize en un formulario con input de tipo File?&quot;" href="https://es.stackoverflow.com/feeds/question/151707">
+        <script>
+            StackExchange.ready(function () {
+
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:3,shownCommentCount:3,enableTables:true,questionId:151707});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('637', '151707');
+                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.js-post-body'); });
+
+
+            });
+        </script>
+
+        
+        
+        
+        <link rel="stylesheet" type="text/css" href="./php - ¿Como usar serialize en un formulario con input de tipo File_ - Stack Overflow en español_files/channels.css">
+
+        
+        
+
+
+    <script>
+        StackExchange.ready(function () {
+            StackExchange.realtime.init('wss://qa.sockets.stackexchange.com');
+                StackExchange.realtime.subscribeToReputationNotifications('637');
+        StackExchange.realtime.subscribeToTopBarNotifications('637');
+        });
+    </script>
+    <script type="application/json" data-role="module-args" data-module-name="Shared/options.mod">{"options":{"locale":"es","serverTime":1679593410,"routeName":"Questions/Show","stackAuthUrl":"https://stackauth.com","networkMetaHostname":"meta.stackexchange.com","site":{"name":"Stack Overflow en español","description":"Preguntas y respuestas para programadores y profesionales de la informática","isNoticesTabEnabled":true,"enableNewTagCreationWarning":false,"insertSpaceAfterNameTabCompletion":false,"id":637,"cookieDomain":".stackoverflow.com","childUrl":"https://es.meta.stackoverflow.com","negativeVoteScoreFloor":null,"enableSocialMediaInSharePopup":true,"protocol":"https"},"user":{"fkey":"6385016bf3d7f3216daa4953c130a3dd94adc9453ec4969cb8a0b1fed585ce85","tid":"601192ff-4b47-6f9a-3ba1-e5c9027bf8b2","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true},"realtime":{"newest":true,"active":true,"tagged":true,"staleDisconnectIntervalInHours":0},"events":{"postType":{"question":1},"postEditionSection":{"title":1,"body":2,"tags":3}}}}</script>
+<script type="application/json" data-role="module-args" data-module-name="Shared/settings.mod">{"settings":{"userMessaging":{"showNewFeatureNotice":true},"tags":{"allowNonAsciiTags":true},"subscriptions":{"defaultBasicMaxTrueUpSeats":250,"defaultFreemiumMaxTrueUpSeats":50,"defaultMaxTrueUpSeats":1000},"snippets":{"renderDomain":"stacksnippets.net","snippetsEnabled":true},"site":{"allowImageUploads":true,"enableImgurHttps":true,"enableUserHovercards":true,"forceHttpsImages":true,"stacksEditorPreviewEnabled":true,"styleCode":true},"search":{},"questions":{"enableQuestionTitleLengthLiveWarning":true,"enableSavesFeature":true,"maxTitleSize":150,"questionTitleLengthStartLiveWarningChars":50},"intercom":{"appId":"inf0secd","hostBaseUrl":"https://stacksnippets.net"},"paths":{"jQueryUICSSPath":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/smoothness/jquery-ui.css","jQueryUIJSPath":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"},"mentions":{"maxNumUsersInDropdown":50},"markdown":{"enableTables":true},"legal":{"oneTrustConfigId":"c3d9f1e3-55f3-4eba-b268-46cee4c6789c"},"flags":{"allowRetractingCommentFlags":true,"allowRetractingFlags":true},"elections":{"opaVoteResultsBaseUrl":"https://www.opavote.com/results/"},"comments":{},"accounts":{"currentPasswordRequiredForChangingStackIdPassword":true}}}</script>
+<script>StackExchange.init();</script>
+
+    <script>
+        StackExchange.using.setCacheBreakers({"Js/adops.es.js":"6da43f5e0a84","Js/ask.es.js":"","Js/begin-edit-event.es.js":"20edbaccceae","Js/copy-transpiled.es.js":"2beafae5021b","Js/events.es.js":"","Js/explore-qlist.es.js":"2b1f34938b8b","Js/full-anon.es.js":"f6c87c4b8306","Js/full.es.js":"50b0edd38818","Js/highlightjs-loader.es.js":"036aae3dd40c","Js/inline-tag-editing.es.js":"cb82c5eb1c78","Js/keyboard-shortcuts.es.js":"5adabce8659b","Js/markdown-it-loader.es.js":"5818ef89ff9d","Js/mentions-transpiled.es.js":"8a6c0f39352b","Js/moderator.es.js":"7f12b31c70ec","Js/postCollections-transpiled.es.js":"969747bccfe0","Js/post-validation.es.js":"b518b233985b","Js/question-editor.es.js":"","Js/review-v2-transpiled.es.js":"9852380620df","Js/revisions.es.js":"c465b1eb8fd0","Js/stacks-editor.es.js":"146127461783","Js/tageditor.es.js":"4f1a58f4af2f","Js/tageditornew.es.js":"cc2b22db706a","Js/tagsuggestions.es.js":"77d202c64057","Js/unlimited-transpiled.es.js":"7ed67670b600","Js/wmd.es.js":"e0ee00630f19","Js/snippet-javascript-codemirror.es.js":"73fce5cc7219"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    <noscript id="noscript-css"><style>body,.s-topbar{margin-top:1.9em}</style></noscript>
+    <script async="" src="./php - ¿Como usar serialize en un formulario con input de tipo File_ - Stack Overflow en español_files/full-anon.es.js.descarga"></script><meta http-equiv="origin-trial" content="A0VQgOQvA+kwCj319NCwgf8+syUgEQ8/LLpB8RxxlRC3AkJ9xx8IAvVuQ/dcwy0ok7sGKufLLu6WhsXbQR9/UwwAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjg4MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A6kRo9zXJhOvsR4D/VeZ9CiApPAxnOGzBkW88d8eIt9ex2oOzlX+AoUk/BS50Y9Ysy2jwyHR49Mb7XwP+l9yygIAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjg4MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A3mbHZoS4VJtJ8j1aE8+Z9vaGf/oMV1eTNIWMrvGqWgNnOmvaxnRGliqKIZU2eiTzCj5Qpz8B1/UTTLuony5bAAAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjg4MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="As0hBNJ8h++fNYlkq8cTye2qDLyom8NddByiVytXGGD0YVE+2CEuTCpqXMDxdhOMILKoaiaYifwEvCRlJ/9GcQ8AAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3MTk1MzI3OTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="AgRYsXo24ypxC89CJanC+JgEmraCCBebKl8ZmG7Tj5oJNx0cmH0NtNRZs3NB5ubhpbX/bIt7l2zJOSyO64NGmwMAAACCeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3MTk1MzI3OTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><script src="./php - ¿Como usar serialize en un formulario con input de tipo File_ - Stack Overflow en español_files/pubads_impl_2023032001.js.descarga" async=""></script><script async="" src="./php - ¿Como usar serialize en un formulario con input de tipo File_ - Stack Overflow en español_files/post-validation.es.js.descarga"></script><script async="" src="./php - ¿Como usar serialize en un formulario con input de tipo File_ - Stack Overflow en español_files/highlightjs-loader.es.js.descarga"></script><style>.osSwitch{position:relative;display:inline-block;width:34px;height:15.3px}.osSwitch input{opacity:0;width:0;height:0}.osSlider{position:absolute;top:0;left:0;right:0;bottom:0;border-radius:34px;background-color:#93a0b5;transition:0.4s}.osSlider:before{position:absolute;content:'';height:13px;width:13px;left:2px;bottom:1px;border-radius:50%;background-color:white;transition:0.4s}input:checked+.sliderGreen{background-color:#04d289}input:checked+.sliderRed{background-color:#ff3b30}input:not(:checked)+.defaultGreen{background-color:#04d289}input:checked+.osSlider:before{transform:translateX(17px)}
+</style><style>
+    @font-face {
+      font-family: 'SegoeUI_online_security'; 
+      src: url(chrome-extension://llbcnfanfmjhpedaedhbcnpgeepdnnok/segoe-ui.woff);
+    }
+
+    @font-face {
+      font-family: 'SegoeUI_bold_online_security'; 
+      src: url(chrome-extension://llbcnfanfmjhpedaedhbcnpgeepdnnok/segoe-ui-bold.woff);
+    }
+</style><link rel="preload" href="./php - ¿Como usar serialize en un formulario con input de tipo File_ - Stack Overflow en español_files/f.txt" as="script"><script type="text/javascript" src="./php - ¿Como usar serialize en un formulario con input de tipo File_ - Stack Overflow en español_files/f.txt"></script><link rel="preload" href="./php - ¿Como usar serialize en un formulario con input de tipo File_ - Stack Overflow en español_files/f(1).txt" as="script"><script type="text/javascript" src="./php - ¿Como usar serialize en un formulario con input de tipo File_ - Stack Overflow en español_files/f(1).txt"></script></head>
+    <body class="question-page unified-theme">
+    <div id="notify-container"></div>
+    <div id="custom-header"></div>
+        
+<header class="s-topbar ps-fixed t0 l0 js-top-bar">
+	<div class="s-topbar--container">
+			<a href="https://es.stackoverflow.com/questions/151707/como-usar-serialize-en-un-formulario-con-input-de-tipo-file#" class="s-topbar--menu-btn js-left-sidebar-toggle" role="menuitem" aria-haspopup="true" aria-controls="left-sidebar" aria-expanded="false"><span></span></a>
+			<div class="topbar-dialog leftnav-dialog js-leftnav-dialog dno">
+				<div class="left-sidebar js-unpinned-left-sidebar" data-can-be="left-sidebar" data-is-here-when="sm"></div>
+			</div>
+				<a href="https://es.stackoverflow.com/" class="s-topbar--logo js-gps-track" data-gps-track="top_nav.click({is_current:false, location:2, destination:8})">
+					<span class="-img _glyph">Stack Overflow en español</span>
+				</a>
+
+
+
+
+
+		        <form id="search" role="search" action="https://es.stackoverflow.com/search" class="s-topbar--searchbar js-searchbar " autocomplete="off">
+                        <div class="s-topbar--searchbar--input-group">
+                            <input name="q" type="text" role="combobox" placeholder="Buscar…" value="" autocomplete="off" maxlength="240" class="s-input s-input__search js-search-field " aria-label="Buscar" aria-controls="top-search" data-controller="s-popover" data-action="focus-&gt;s-popover#show" data-s-popover-placement="bottom-start" aria-expanded="false">
+                            <svg aria-hidden="true" class="s-input-icon s-input-icon__search svg-icon iconSearch" width="18" height="18" viewBox="0 0 18 18"><path d="m18 16.5-5.14-5.18h-.35a7 7 0 1 0-1.19 1.19v.35L16.5 18l1.5-1.5ZM12 7A5 5 0 1 1 2 7a5 5 0 0 1 10 0Z"></path></svg>
+                            <div class="s-popover p0 wmx100 wmn4 sm:wmn-initial js-top-search-popover" id="top-search" role="menu">
+    <div class="s-popover--arrow"></div>
+    <div class="js-spinner p24 d-flex ai-center jc-center d-none">
+        <div class="s-spinner s-spinner__sm fc-orange-400">
+            <div class="v-visible-sr">Loading…</div>
+        </div>
+    </div>
+
+    <span class="v-visible-sr js-screen-reader-info"></span>
+    <div class="js-ac-results overflow-y-auto hmx3 d-none"></div>
+
+    <div class="js-search-hints" aria-describedby="Tips for searching"></div>
+</div>
+                        </div>
+                </form>
+		
+<nav class="h100 ml-auto overflow-x-auto pr12">
+    <ol class="s-topbar--content" role="menubar">
+    
+        <li role="none">
+            <a href="https://es.stackoverflow.com/help" class="s-topbar--item js-help-button" role="menuitem" title="Centro de ayuda y otros recursos" aria-haspopup="true" aria-controls="topbar-help-dialog" data-ga="[&quot;top navigation&quot;,&quot;help menu click&quot;,null,null,null]"><svg aria-hidden="true" class="svg-icon iconHelp" width="18" height="18" viewBox="0 0 18 18"><path d="M9 1C4.64 1 1 4.64 1 9c0 4.36 3.64 8 8 8 4.36 0 8-3.64 8-8 0-4.36-3.64-8-8-8Zm.81 12.13c-.02.71-.55 1.15-1.24 1.13-.66-.02-1.17-.49-1.15-1.2.02-.72.56-1.18 1.22-1.16.7.03 1.2.51 1.17 1.23ZM11.77 8c-.59.66-1.78 1.09-2.05 1.97a4 4 0 0 0-.09.75c0 .05-.03.16-.18.16H7.88c-.16 0-.18-.1-.18-.15.06-1.35.66-2.2 1.83-2.88.39-.29.7-.75.7-1.24.01-1.24-1.64-1.82-2.35-.72-.21.33-.18.73-.18 1.1H5.75c0-1.97 1.03-3.26 3.03-3.26 1.75 0 3.47.87 3.47 2.83 0 .57-.2 1.05-.48 1.44Z"></path></svg></a>
+        </li>
+        <div class="topbar-dialog help-dialog js-help-dialog dno" id="topbar-help-dialog" role="menu">
+            <div class="modal-content">
+                <ul>
+                        <li>
+                            <a href="https://es.stackoverflow.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })" data-ga="[&quot;top navigation&quot;,&quot;tour submenu click&quot;,null,null,null]">
+                                Recorrido
+                                <span class="item-summary">
+                                    Comienza aquí para acceder a una breve descripción general del sitio
+                                </span>
+                            </a>
+                        </li>
+                    <li>
+                        <a href="https://es.stackoverflow.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })" data-ga="[&quot;top navigation&quot;,&quot;help center&quot;,null,null,null]">
+                            Centro de Ayuda
+                            <span class="item-summary">
+                                Respuestas detalladas para cualquier pregunta que puedas tener
+                            </span>
+                        </a>
+                    </li>
+                                <li>
+                                    <a href="https://es.meta.stackoverflow.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })" data-ga="[&quot;top navigation&quot;,&quot;meta submenu click&quot;,null,null,null]">
+                                        Meta
+                                        <span class="item-summary">
+                                            Analizar el funcionamiento y las políticas de este sitio
+                                        </span>
+                                    </a>
+                                </li>
+                            <li>
+                                <a href="https://stackoverflow.co/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:6 })" data-ga="[&quot;top navigation&quot;,&quot;about us submenu click&quot;,null,null,null]">
+                                    Sobre nosotros
+                                    <span class="item-summary">
+                                        Learn more about Stack Overflow the company, and our products.
+                                    </span>
+                                </a>
+                            </li>
+                </ul>
+            </div>
+        </div>
+        <li role="none">
+            <a href="https://stackexchange.com/" class="s-topbar--item js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" aria-label="Site switcher" role="menuitem" title="Lista de los 181 sitios de Stack Exchange" aria-haspopup="true" aria-expanded="false" data-ga="[&quot;top navigation&quot;,&quot;stack exchange click&quot;,null,null,null]">
+                <svg aria-hidden="true" class="svg-icon iconStackExchange" width="18" height="18" viewBox="0 0 18 18"><path d="M15 1H3a2 2 0 0 0-2 2v2h16V3a2 2 0 0 0-2-2ZM1 13c0 1.1.9 2 2 2h8v3l3-3h1a2 2 0 0 0 2-2v-2H1v2Zm16-7H1v4h16V6Z"></path></svg>
+            </a>
+        </li>
+    
+    
+        <li class="js-topbar-dialog-corral" role="presentation">
+                
+
+    <div class="topbar-dialog siteSwitcher-dialog dno" role="menu">
+        <div class="header fw-wrap">
+            <h3 class="flex--item">
+                <a href="https://es.stackoverflow.com/">comunidad actual</a>
+            </h3>
+            <div class="flex--item fl1">
+                <div class="ai-center d-flex jc-end">
+                    <button class="js-close-button s-btn s-btn__muted p0 ml8 d-none sm:d-block" type="button" aria-label="Close">
+                        <svg aria-hidden="true" class="svg-icon iconClear" width="18" height="18" viewBox="0 0 18 18"><path d="M15 4.41 13.59 3 9 7.59 4.41 3 3 4.41 7.59 9 3 13.59 4.41 15 9 10.41 13.59 15 15 13.59 10.41 9 15 4.41Z"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content bg-powder-050 current-site-container">
+            <ul class="current-site ">
+                    <li class="d-flex">
+                            <div class="fl1">
+                <a href="https://es.stackoverflow.com/" class="current-site-link site-link js-gps-track d-flex gs8 gsx" data-id="637" data-gps-track="site_switcher.click({ item_type:3 })">
+        <div class="favicon favicon-es site-icon flex--item" title="Stack Overflow en español"></div>
+        <span class="flex--item fl1">
+            Stack Overflow en español
+        </span>
+    </a>
+
+    </div>
+    <div class="related-links">
+            <a href="https://es.stackoverflow.com/help" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:14 })">ayuda</a>
+            <a href="https://chat.stackexchange.com/?tab=site&amp;host=es.stackoverflow.com" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:6 })">chat</a>
+    </div>
+
+                    </li>
+                    <li class="related-site d-flex">
+                            <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                            <a href="https://es.meta.stackoverflow.com/" class=" site-link js-gps-track d-flex gs8 gsx" data-id="638" data-gps-track="site.switch({ target_site:638, item_type:3 }),site_switcher.click({ item_type:4 })">
+        <div class="favicon favicon-esmeta site-icon flex--item" title="Stack Overflow Meta en español"></div>
+        <span class="flex--item fl1">
+            Stack Overflow Meta en español
+        </span>
+    </a>
+
+                    </li>
+            </ul>
+        </div>
+
+        <div class="header" id="your-communities-header">
+            <h3>
+tus comunidades            </h3>
+
+        </div>
+        <div class="modal-content" id="your-communities-section">
+
+                <div class="call-to-login">
+<a href="https://es.stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=https%3a%2f%2fes.stackoverflow.com%2fquestions%2f151707%2fcomo-usar-serialize-en-un-formulario-con-input-de-tipo-file" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:10 })">Regístrate</a> o <a href="https://es.stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=https%3a%2f%2fes.stackoverflow.com%2fquestions%2f151707%2fcomo-usar-serialize-en-un-formulario-con-input-de-tipo-file" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:11 })">inicia sesión</a> para personalizar tu lista.                </div>
+        </div>
+
+        <div class="header">
+            <h3><a href="https://stackexchange.com/sites">más comunidades Stack Exchange</a>
+            </h3>
+            <a href="https://stackoverflow.blog/" class="float-right">blog de la empresa</a>
+        </div>
+        <div class="modal-content">
+                <div class="child-content"></div>
+        </div>        
+    </div>
+
+        </li>
+    
+            <li role="none"><button class="s-topbar--item s-btn s-btn__icon s-btn__muted d-none sm:d-inline-flex js-searchbar-trigger" role="menuitem" aria-label="Buscar" aria-haspopup="true" aria-controls="search" title="Clic para mostrar la búsqueda"><svg aria-hidden="true" class="svg-icon iconSearch" width="18" height="18" viewBox="0 0 18 18"><path d="m18 16.5-5.14-5.18h-.35a7 7 0 1 0-1.19 1.19v.35L16.5 18l1.5-1.5ZM12 7A5 5 0 1 1 2 7a5 5 0 0 1 10 0Z"></path></svg></button></li>
+                        <li role="none">
+                            <a href="https://es.stackoverflow.com/users/login?ssrc=head&amp;returnurl=https%3a%2f%2fes.stackoverflow.com%2fquestions%2f151707%2fcomo-usar-serialize-en-un-formulario-con-input-de-tipo-file" class="s-topbar--item s-topbar--item__unset s-btn s-btn__filled ws-nowrap js-gps-track" role="menuitem" rel="nofollow" data-gps-track="login.click" data-ga="[&quot;top navigation&quot;,&quot;login button click&quot;,null,null,null]">Iniciar sesión</a>
+                        </li>
+                        <li role="none"><a href="https://es.stackoverflow.com/users/signup?ssrc=head&amp;returnurl=https%3a%2f%2fes.stackoverflow.com%2fquestions%2f151707%2fcomo-usar-serialize-en-un-formulario-con-input-de-tipo-file" class="s-topbar--item s-topbar--item__unset ml4 s-btn s-btn__primary ws-nowrap" role="menuitem" rel="nofollow" data-ga="[&quot;sign up&quot;,&quot;Sign Up Navigation&quot;,&quot;Header&quot;,null,null]">Registrarse</a></li>
+    </ol>
+</nav>
+
+
+	</div>
+</header>
+
+	<script>
+		StackExchange.ready(function () { StackExchange.topbar.init(); });
+		StackExchange.scrollPadding.setPaddingTop(50, 10); 
+	</script>
+
+
+
+            
+
+        
+    
+<div class="sm:d-none py24 bg-black-750 fc-black-200 ps-relative js-dismissable-hero">
+    <div class="px12 d-flex ai-center jc-center mx-auto wmx12">
+        <div class="flex--item wmx3 fs-body2 mr64 md:mr32">
+            <p>Stack Overflow en español es un sitio de preguntas y respuestas para programadores y profesionales de la informática. Solo te toma un minuto registrarte.</p>
+
+            <a href="https://es.stackoverflow.com/users/signup?ssrc=hero&amp;returnurl=https%3a%2f%2fes.stackoverflow.com%2fquestions%2f151707%2fcomo-usar-serialize-en-un-formulario-con-input-de-tipo-file" class="s-btn s-btn__primary">Regístrate para unirte a esta comunidad</a>
+        </div>
+        <div class="d-flex fd-column ai-center wmn3 hero-background">
+            <div class="d-flex ai-center mb24">
+                <div class="flex--item mr16">
+                    <img width="31" src="./php - ¿Como usar serialize en un formulario con input de tipo File_ - Stack Overflow en español_files/anonymousHeroQuestions.svg" alt="">
+                </div>
+                <div class="flex--item">
+                    Cualquiera puede formular una pregunta
+                </div>
+            </div>
+            <div class="d-flex ai-center mb24">
+                <div class="flex--item mr16">
+                    <img width="35" src="./php - ¿Como usar serialize en un formulario con input de tipo File_ - Stack Overflow en español_files/anonymousHeroAnswers.svg" alt="">
+                </div>
+                <div class="flex--item">
+                    Cualquiera puede responder
+                </div>
+            </div>
+            <div class="d-flex ai-center">
+                <div class="flex--item mr16">
+                    <img width="24" src="./php - ¿Como usar serialize en un formulario con input de tipo File_ - Stack Overflow en español_files/anonymousHeroUpvote.svg" alt="">
+                </div>
+                <div class="flex--item wmx2">
+                    Se vota a favor de las mejores respuestas, y éstas suben a los primeros puestos
+                </div>
+            </div>
+        </div>
+            <div class="flex--item as-start md:ps-absolute t8 r8">
+                <button class="s-btn s-btn__muted p8 js-dismiss">
+                    <svg aria-hidden="true" class="svg-icon iconClear" width="18" height="18" viewBox="0 0 18 18"><path d="M15 4.41 13.59 3 9 7.59 4.41 3 3 4.41 7.59 9 3 13.59 4.41 15 9 10.41 13.59 15 15 13.59 10.41 9 15 4.41Z"></path></svg>
+                </button>
+            </div>
+    </div>
+</div>
+
+<script>
+    StackExchange.ready(function () {
+        StackExchange.Hero.init("nso", "a");
+
+        var location = 0;
+        if ($("body").hasClass("questions-page")) {
+            location = 1;
+        } else if ($("body").hasClass("question-page")) {
+            location = 1;
+        } else if ($("body").hasClass("faq-page")) {
+            location = 5;
+        } else if ($("body").hasClass("home-page")) {
+            location = 3;
+        }
+
+        $('.js-cta-button').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: 'cta', location: location }, true);
+            });
+        });
+
+        // TODO: we should review the class names and whatnot in use here. Older heroes use id selectors, the newer
+        // sticky question hero on SO has a .js-dismiss class instead, but it's apparently not used anywhere... 
+        // It's not great. Ideally we'd have a set of classes in the partials above that would correspond to 
+        // the behaviours we want here in a more clear way. 
+
+        // sticky question-page hero at the bottom of the page on SO
+        $('.js-dismiss').on('click', function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "close", location: location }, true);
+            });
+            StackExchange.Hero.dismiss();
+            $(".js-dismissable-hero").fadeOut("fast");
+        });
+    });
+</script>
+
+
+
+    <div class="container">
+                
+
+<div id="left-sidebar" data-is-here-when="md lg" class="left-sidebar js-pinned-left-sidebar ps-relative">
+    <div class="left-sidebar--sticky-container js-sticky-leftnav">
+        <nav role="navigation">
+
+            <ol class="nav-links">
+                
+
+<li class="ps-relative" aria-current="false">
+
+
+    <a href="https://es.stackoverflow.com/" class="pl8 js-gps-track nav-links--link" data-gps-track="top_nav.click({is_current: false, location:2, destination:8})" aria-controls="" data-controller="" data-s-popover-placement="right" aria-current="false" data-s-popover-auto-show="true" data-s-popover-hide-on-outside-click="never">
+            <div class="d-flex ai-center">
+                <div class="flex--item truncate">
+                    Inicio
+                </div>
+            </div>
+    </a>
+</li>
+
+                
+                <li>
+                    <ol class="nav-links">
+
+                        <li class="fs-fine tt-uppercase ml8 mt16 mb4 fc-light">Público</li>
+
+                            
+
+<li class="ps-relative  youarehere" aria-current="true">
+
+
+    <a id="nav-questions" href="https://es.stackoverflow.com/questions" class="pl8 js-gps-track nav-links--link -link__with-icon" data-gps-track="top_nav.click({is_current: true, location:2, destination:1})" aria-controls="" data-controller="" data-s-popover-placement="right" aria-current="false" data-s-popover-auto-show="true" data-s-popover-hide-on-outside-click="never">
+<svg aria-hidden="true" class="svg-icon iconGlobe" width="18" height="18" viewBox="0 0 18 18"><path d="M9 1C4.64 1 1 4.64 1 9c0 4.36 3.64 8 8 8 4.36 0 8-3.64 8-8 0-4.36-3.64-8-8-8ZM8 15.32a6.46 6.46 0 0 1-4.3-2.74 6.46 6.46 0 0 1-.93-5.01L7 11.68v.8c0 .88.12 1.32 1 1.32v1.52Zm5.72-2c-.2-.66-1-1.32-1.72-1.32h-1v-2c0-.44-.56-1-1-1H6V7h1c.44 0 1-.56 1-1V5h2c.88 0 1.4-.72 1.4-1.6v-.33a6.45 6.45 0 0 1 3.83 4.51 6.45 6.45 0 0 1-1.51 5.73v.01Z"></path></svg>            <span class="-link--channel-name">Preguntas</span>
+    </a>
+</li>
+
+                        
+
+                        
+
+<li class="ps-relative" aria-current="false">
+
+
+    <a id="nav-tags" href="https://es.stackoverflow.com/tags" class=" js-gps-track nav-links--link" data-gps-track="top_nav.click({is_current: false, location:2, destination:2})" aria-controls="" data-controller="" data-s-popover-placement="right" aria-current="false" data-s-popover-auto-show="true" data-s-popover-hide-on-outside-click="never">
+            <div class="d-flex ai-center">
+                <div class="flex--item truncate">
+                    Etiquetas
+                </div>
+            </div>
+    </a>
+</li>
+
+
+                        
+
+<li class="ps-relative" aria-current="false">
+
+
+    <a id="nav-users" href="https://es.stackoverflow.com/users" class=" js-gps-track nav-links--link" data-gps-track="top_nav.click({is_current: false, location:2, destination:3})" aria-controls="" data-controller="" data-s-popover-placement="right" aria-current="false" data-s-popover-auto-show="true" data-s-popover-hide-on-outside-click="never">
+            <div class="d-flex ai-center">
+                <div class="flex--item truncate">
+                    Usuarios
+                </div>
+            </div>
+    </a>
+</li>
+
+
+
+                            
+
+<li class="ps-relative" aria-current="false">
+
+
+    <a id="nav-unanswered" href="https://es.stackoverflow.com/unanswered" class=" js-gps-track nav-links--link" data-gps-track="top_nav.click({is_current: false, location:2, destination:5})" aria-controls="" data-controller="" data-s-popover-placement="right" aria-current="false" data-s-popover-auto-show="true" data-s-popover-hide-on-outside-click="never">
+            <div class="d-flex ai-center">
+                <div class="flex--item truncate">
+                    Sin responder
+                </div>
+            </div>
+    </a>
+</li>
+
+
+                        
+                    </ol>
+                </li>
+                
+                
+
+
+
+            </ol>
+        </nav>
+    </div>
+
+
+
+
+
+</div>
+
+
+
+        <div id="content" class="snippet-hidden">
+
+            
+
+<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question">
+    <link itemprop="image" href="https://cdn.sstatic.net/Sites/es/Img/apple-touch-icon.png?v=7739871010e6">
+
+    <div class="inner-content clearfix">
+
+        
+
+            <div id="question-header" class="d-flex sm:fd-column">
+                        <h1 itemprop="name" class="fs-headline1 ow-break-word mb8 flex--item fl1"><a href="https://es.stackoverflow.com/questions/151707/como-usar-serialize-en-un-formulario-con-input-de-tipo-file" class="question-hyperlink">¿Como usar serialize en un formulario con input de tipo File?</a></h1>
+                <div class="ml12 aside-cta flex--item print:d-none sm:ml0 sm:mb12 sm:order-first sm:as-end">
+                        <a href="https://es.stackoverflow.com/questions/ask" class="ws-nowrap s-btn s-btn__primary">
+        Formular una pregunta
+    </a>
+
+                </div>
+            </div>
+            <div class="d-flex fw-wrap pb8 mb16 bb bc-black-075">
+                    <div class="flex--item ws-nowrap mr16 mb8" title="2018-03-30 10:30:42Z">
+                        <span class="fc-light mr2">Formulada</span>
+                        <time itemprop="dateCreated" datetime="2018-03-30T10:30:42">hace 4 años y 11 meses</time>
+                    </div>
+                    <div class="flex--item ws-nowrap mr16 mb8">
+                        <span class="fc-light mr2">Modificada</span>
+                        <a href="https://es.stackoverflow.com/questions/151707/como-usar-serialize-en-un-formulario-con-input-de-tipo-file?lastactivity" class="s-link s-link__inherit" title="2022-09-28 17:44:43Z">hace 5 meses</a>
+                    </div>
+                    <div class="flex--item ws-nowrap mb8" title="Vista 4,609 veces">
+                        <span class="fc-light mr2">Vista</span>
+                        5k veces
+                    </div>
+            </div>
+            <div id="mainbar" role="main" aria-label="preguntas y respuestas">
+
+                
+<div class="question js-question" data-questionid="151707" data-position-on-page="0" data-score="3" id="question">
+    <style>
+    </style>
+<div class="js-zone-container zone-container-main">
+    <div id="dfp-tlb" class="everyonelovesstackoverflow everyoneloves__top-leaderboard everyoneloves__leaderboard" data-dfp-zone="true" style="min-height: auto; height: auto; display: none;" data-google-query-id="CP2Vs4XN8v0CFRnphwodOmoJ2Q"><div id="google_ads_iframe_/248424177/es.stackoverflow.com/lb/question-pages_0__container__" style="border: 0pt none; width: 728px; height: 0px;"></div></div>
+		<div class="js-report-ad-button-container " style="width: 728px"></div>
+</div>
+
+    <div class="post-layout ">
+        <div class="votecell post-layout--left">
+            <div class="js-voting-container d-flex jc-center fd-column ai-stretch gs4 fc-black-200" data-post-id="151707">
+        <button class="js-vote-up-btn flex--item s-btn s-btn__unset c-pointer " data-controller="s-tooltip" data-s-tooltip-placement="right" aria-pressed="false" aria-label="Up vote" data-selected-classes="fc-theme-primary" data-unselected-classes="" aria-describedby="--stacks-s-tooltip-0g1k9vep">
+            <svg aria-hidden="true" class="svg-icon iconArrowUpLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 25h32L18 9 2 25Z"></path></svg>
+        </button><div id="--stacks-s-tooltip-0g1k9vep" class="s-popover s-popover__tooltip" role="tooltip">Esta pregunta demuestra trabajo de investigación; es útil y clara<div class="s-popover--arrow"></div></div>
+        <div class="js-vote-count flex--item d-flex fd-column ai-center fc-black-500 fs-title" itemprop="upvoteCount" data-value="3">
+            3
+        </div>
+        <button class="js-vote-down-btn flex--item s-btn s-btn__unset c-pointer " data-controller="s-tooltip" data-s-tooltip-placement="right" aria-pressed="false" aria-label="Down vote" data-selected-classes="fc-theme-primary" data-unselected-classes="" aria-describedby="--stacks-s-tooltip-ll9hk0pp">
+            <svg aria-hidden="true" class="svg-icon iconArrowDownLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 11h32L18 27 2 11Z"></path></svg>
+        </button><div id="--stacks-s-tooltip-ll9hk0pp" class="s-popover s-popover__tooltip" role="tooltip">Esta pregunta no parece tener un trabajo de investigación; es confusa o poco útil<div class="s-popover--arrow"></div></div>
+
+
+        
+<button class="js-saves-btn s-btn s-btn__unset c-pointer py4" type="button" id="saves-btn-151707" data-controller="s-tooltip" data-s-tooltip-placement="right" data-s-popover-placement="" aria-pressed="false" data-post-id="151707" data-post-type-id="1" data-user-privilege-for-post-click="0" aria-controls="" data-s-popover-auto-show="false" aria-describedby="--stacks-s-tooltip-1dqfev6y">
+    <svg aria-hidden="true" class="fc-theme-primary-500 js-saves-btn-selected d-none svg-icon iconBookmark" width="18" height="18" viewBox="0 0 18 18"><path d="M3 17V3c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v14l-6-4-6 4Z"></path></svg>
+    <svg aria-hidden="true" class="js-saves-btn-unselected svg-icon iconBookmarkAlt" width="18" height="18" viewBox="0 0 18 18"><path d="m9 10.6 4 2.66V3H5v10.26l4-2.66ZM3 17V3c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v14l-6-4-6 4Z"></path></svg>
+</button><div id="--stacks-s-tooltip-1dqfev6y" class="s-popover s-popover__tooltip" role="tooltip">Guarda esta pregunta.<div class="s-popover--arrow"></div></div>
+
+
+
+
+
+
+
+
+    
+        <a class="js-post-issue flex--item s-btn s-btn__unset c-pointer py6 mx-auto" href="https://es.stackoverflow.com/posts/151707/timeline" data-shortcut="T" data-ks-title="línea de tiempo" data-controller="s-tooltip" data-s-tooltip-placement="right" aria-label="Línea de tiempo" aria-describedby="--stacks-s-tooltip-t1scbx0n"><svg aria-hidden="true" class="mln2 mr0 svg-icon iconHistory" width="19" height="18" viewBox="0 0 19 18"><path d="M3 9a8 8 0 1 1 3.73 6.77L8.2 14.3A6 6 0 1 0 5 9l3.01-.01-4 4-4-4h3L3 9Zm7-4h1.01L11 9.36l3.22 2.1-.6.93L10 10V5Z"></path></svg></a><div id="--stacks-s-tooltip-t1scbx0n" class="s-popover s-popover__tooltip" role="tooltip">Mostrar actividad de esta publicación.<div class="s-popover--arrow"></div></div>
+
+</div>
+
+        </div>
+
+        
+
+<div class="postcell post-layout--right">
+    
+    <div class="s-prose js-post-body" itemprop="text">
+                
+<p>Tengo un formulario en html para registrar un producto para ello uso ajax, cuando hago un serialize al formulario logro obtener todos los campos del mismo a excepción del campo de tipo file se que con FormData(), puedo obtener este campo pero me gustaría saber hay un manera con serialize para obtenerlo. </p>
+
+<pre class="lang-php s-code-block"><code class="hljs language-php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ajaxRequest</span>(<span class="hljs-params">url, method, data, datatype, successCallback, errorCallback</span>) </span>{
+  $.<span class="hljs-title function_ invoke__">ajax</span>({
+    <span class="hljs-attr">url</span>: url,
+    <span class="hljs-attr">data</span>: data,
+    <span class="hljs-attr">dataType</span>: datatype,
+    <span class="hljs-attr">type</span>: method,
+    // <span class="hljs-attr">cache</span>: <span class="hljs-literal">false</span>,
+    // <span class="hljs-attr">contentType</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">processData</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">success</span>: function (response) {
+      <span class="hljs-keyword">eval</span>(successCallback + <span class="hljs-string">'('</span> + JSON.<span class="hljs-title function_ invoke__">stringify</span>(response) + <span class="hljs-string">')'</span>);
+    },
+    error: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>)</span>{
+      <span class="hljs-keyword">eval</span>(successCallback + <span class="hljs-string">'('</span> + JSON.<span class="hljs-title function_ invoke__">stringify</span>(error) + <span class="hljs-string">')'</span>);
+    }
+  });
+}
+
+$(<span class="hljs-string">'#crear-producto'</span>).<span class="hljs-title function_ invoke__">click</span>(function(){
+    let data = $(<span class="hljs-string">'#nuevo-producto'</span>).<span class="hljs-title function_ invoke__">serialize</span>();
+    <span class="hljs-comment">// let file = new FormData();</span>
+    <span class="hljs-comment">// data = {</span>
+    <span class="hljs-comment">//   'datos': $('#nuevo-producto').serialize(),</span>
+    <span class="hljs-comment">//   'file': file.append('imagen', $('#imagen-producto')[0])</span>
+    <span class="hljs-comment">// };</span>
+    <span class="hljs-title function_ invoke__">ajaxRequest</span>(constants.URL.PRODUCTOS.CREAR, <span class="hljs-string">'POST'</span>, data, <span class="hljs-string">'json'</span>, <span class="hljs-string">'successRequest'</span>, <span class="hljs-string">'errorRequest'</span>);
+  });
+
+&lt;form enctype=<span class="hljs-string">"multipart/form-data"</span> id=<span class="hljs-string">"nuevo-producto"</span>&gt;
+          &lt;div <span class="hljs-class"><span class="hljs-keyword">class</span>="<span class="hljs-title">row</span>"&gt;
+            &lt;<span class="hljs-title">div</span> <span class="hljs-title">class</span>="<span class="hljs-title">col</span>-<span class="hljs-title">md</span>-6"&gt;
+              &lt;<span class="hljs-title">label</span> <span class="hljs-title">for</span>="<span class="hljs-title">producto</span>" <span class="hljs-title">class</span>="<span class="hljs-title">control</span>-<span class="hljs-title">label</span>"&gt;<span class="hljs-title">Producto</span>:&lt;/<span class="hljs-title">label</span>&gt;
+              &lt;<span class="hljs-title">input</span> <span class="hljs-title">type</span>="<span class="hljs-title">text</span>" <span class="hljs-title">name</span>="<span class="hljs-title">producto</span>" <span class="hljs-title">id</span>="<span class="hljs-title">producto</span>" <span class="hljs-title">class</span>="<span class="hljs-title">form</span>-<span class="hljs-title">control</span> <span class="hljs-title">border</span>-<span class="hljs-title">green</span>" <span class="hljs-title">value</span>="</span>{% <span class="hljs-keyword">if</span> p is defined %}{{ p.nombre }} {% <span class="hljs-keyword">endif</span> %}<span class="hljs-string">"/&gt;
+            &lt;/div&gt;
+            &lt;div class="</span>col-md-<span class="hljs-number">6</span><span class="hljs-string">"&gt;
+              &lt;label for="</span>marca<span class="hljs-string">" class="</span>control-label<span class="hljs-string">"&gt;Marca:&lt;/label&gt;
+              &lt;select class="</span>form-control get-dependency border-green<span class="hljs-string">" name="</span>marca<span class="hljs-string">" id="</span>marca<span class="hljs-string">" data-element="</span>referencia<span class="hljs-string">" &gt;
+                &lt;option selected disabled&gt;--Seleccionar--&lt;/option&gt;
+                {% for marca in marcas %}
+                    &lt;option value="</span>{{ marca.id }}<span class="hljs-string">"&gt;{{ marca.nombre }}&lt;/option&gt;
+                {% endfor %}
+              &lt;/select&gt;
+            &lt;/div&gt;
+            &lt;div class="</span>col-md-<span class="hljs-number">6</span><span class="hljs-string">"&gt;
+              &lt;label for="</span>referencia<span class="hljs-string">" class="</span>control-label<span class="hljs-string">"&gt;Referencia:&lt;/label&gt;
+              &lt;select class="</span>form-control border-green<span class="hljs-string">" name="</span>referencia<span class="hljs-string">" id="</span>referencia<span class="hljs-string">"&gt;
+                &lt;option selected disabled&gt;--Seleccionar--&lt;/option&gt;
+              &lt;/select&gt;
+            &lt;/div&gt;
+            &lt;div class="</span>col-md-<span class="hljs-number">6</span><span class="hljs-string">"&gt;
+              &lt;label for="</span>precio<span class="hljs-string">" class="</span>control-label<span class="hljs-string">"&gt;Valor Unidad&lt;/label&gt;
+              &lt;input type="</span>number<span class="hljs-string">" name="</span>precio<span class="hljs-string">" id="</span>precio<span class="hljs-string">" class="</span>form-control border-green<span class="hljs-string">" /&gt;
+            &lt;/div&gt;
+            &lt;div class="</span>col-md-<span class="hljs-number">6</span><span class="hljs-string">"&gt;
+              &lt;label for="</span>unidades<span class="hljs-string">" class="</span>control-label<span class="hljs-string">"&gt;Unidades:&lt;/label&gt;
+              &lt;input type="</span>number<span class="hljs-string">" name="</span>unidades<span class="hljs-string">" id="</span>unidades<span class="hljs-string">" class="</span>form-control border-green<span class="hljs-string">" /&gt;
+            &lt;/div&gt;
+            &lt;div class="</span>col-md-<span class="hljs-number">12</span><span class="hljs-string">"&gt;&lt;/div&gt;
+            &lt;div class="</span>col-md-<span class="hljs-number">6</span><span class="hljs-string">"&gt;
+              &lt;label for="</span>genero<span class="hljs-string">" class="</span>control-label<span class="hljs-string">"&gt;Genero:&lt;/label&gt;
+              &lt;select class="</span>form-control border-blue<span class="hljs-string">" name="</span>genero<span class="hljs-string">" id="</span>genero<span class="hljs-string">" &gt;
+                &lt;option selected disabled&gt;--Seleccionar--&lt;/option&gt;
+                {% for genero in generos %}
+                    &lt;option value="</span>{{ genero.id }}<span class="hljs-string">"&gt;{{ genero.nombre }}&lt;/option&gt;
+                {% endfor %}
+              &lt;/select&gt;
+            &lt;/div&gt;
+            &lt;div class="</span>col-md-<span class="hljs-number">6</span><span class="hljs-string">"&gt;
+              &lt;label for="</span>estado<span class="hljs-string">" class="</span>control-label<span class="hljs-string">"&gt;Estado:&lt;/label&gt;
+              &lt;select class="</span>form-control border-blue<span class="hljs-string">" name="</span>estado<span class="hljs-string">" id="</span>estado<span class="hljs-string">" &gt;
+                &lt;option selected disabled&gt;--Seleccionar--&lt;/option&gt;
+                {% for estado in estados %}
+                    &lt;option value="</span>{{ estado.id }}<span class="hljs-string">"&gt;{{ estado.nombre }}&lt;/option&gt;
+                {% endfor %}
+              &lt;/select&gt;
+            &lt;/div&gt;
+            &lt;div class="</span>col-md-<span class="hljs-number">6</span><span class="hljs-string">"&gt;
+              &lt;label for="</span>lanzamiento<span class="hljs-string">" class="</span>control-label<span class="hljs-string">"&gt;Lanzamiento:&lt;/label&gt;
+              &lt;input type="</span>date<span class="hljs-string">" name="</span>lanzamiento<span class="hljs-string">" id="</span>lanzamiento<span class="hljs-string">" class="</span>form-control border-blue<span class="hljs-string">" /&gt;
+            &lt;/div&gt;
+            &lt;div class="</span>col-md-<span class="hljs-number">6</span><span class="hljs-string">"&gt;
+              &lt;label for="</span><span class="hljs-string">" class="</span>control-label<span class="hljs-string">" style="</span>margin-bottom: <span class="hljs-number">0</span> !important;<span class="hljs-string">"&gt;Calificación:&lt;/label&gt;&lt;br&gt;
+              &lt;span class="</span>clasificacion<span class="hljs-string">"&gt;
+                &lt;input class="</span>estrella<span class="hljs-string">" id="</span>radio1<span class="hljs-string">" name="</span>estrellas<span class="hljs-string">" value="</span><span class="hljs-number">5</span><span class="hljs-string">" type="</span>radio<span class="hljs-string">"&gt;
+                &lt;label for="</span>radio1<span class="hljs-string">" class="</span>label-estrella<span class="hljs-string">"&gt;&amp;#9733;&lt;/label&gt;
+                &lt;input class="</span>estrella<span class="hljs-string">" id="</span>radio2<span class="hljs-string">" name="</span>estrellas<span class="hljs-string">" value="</span><span class="hljs-number">4</span><span class="hljs-string">" type="</span>radio<span class="hljs-string">"&gt;
+                &lt;label for="</span>radio2<span class="hljs-string">" class="</span>label-estrella<span class="hljs-string">"&gt;★&lt;/label&gt;
+                &lt;input class="</span>estrella<span class="hljs-string">" id="</span>radio3<span class="hljs-string">" name="</span>estrellas<span class="hljs-string">" value="</span><span class="hljs-number">3</span><span class="hljs-string">" type="</span>radio<span class="hljs-string">"&gt;
+                &lt;label for="</span>radio3<span class="hljs-string">" class="</span>label-estrella<span class="hljs-string">"&gt;★&lt;/label&gt;
+                &lt;input class="</span>estrella<span class="hljs-string">" id="</span>radio4<span class="hljs-string">" name="</span>estrellas<span class="hljs-string">" value="</span><span class="hljs-number">2</span><span class="hljs-string">" type="</span>radio<span class="hljs-string">"&gt;
+                &lt;label for="</span>radio4<span class="hljs-string">" class="</span>label-estrella<span class="hljs-string">"&gt;★&lt;/label&gt;
+                &lt;input class="</span>estrella<span class="hljs-string">" id="</span>radio5<span class="hljs-string">" name="</span>estrellas<span class="hljs-string">" value="</span><span class="hljs-number">1</span><span class="hljs-string">" type="</span>radio<span class="hljs-string">"&gt;
+                &lt;label for="</span>radio5<span class="hljs-string">" class="</span>label-estrella<span class="hljs-string">"&gt;★&lt;/label&gt;
+              &lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="</span>col-md-<span class="hljs-number">12</span><span class="hljs-string">"&gt;
+              &lt;label for="</span>imagen-producto<span class="hljs-string">" class="</span>control-label<span class="hljs-string">"&gt;Imagen del producto&lt;/label&gt;
+              &lt;input type="</span>file<span class="hljs-string">" name="</span>imagen-producto<span class="hljs-string">" id="</span>imagen-producto<span class="hljs-string">" class="</span>form-control<span class="hljs-string">" /&gt;
+            &lt;/div&gt;
+            &lt;div class="</span>col-md-<span class="hljs-number">12</span><span class="hljs-string">"&gt;
+              &lt;input type="</span>button<span class="hljs-string">" value="</span>Crear Producto<span class="hljs-string">" class="</span>btn btn-success pull-right enviar<span class="hljs-string">" id="</span>crear-producto<span class="hljs-string">"/&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/form&gt;
+</span></code></pre>
+    </div>
+
+        <div class="mt24 mb12">
+            <div class="post-taglist d-flex gs4 gsy fd-column">
+                <div class="d-flex ps-relative fw-wrap">
+                    <ul class="ml0 list-ls-none js-post-tag-list-wrapper d-inline"><li class="d-inline mr4 js-post-tag-list-item"><a href="https://es.stackoverflow.com/questions/tagged/php" class="post-tag js-gps-track" title="mostrar preguntas con la etiqueta &quot;php&quot;" aria-label="mostrar preguntas con la etiqueta &quot;php&quot;" rel="tag" aria-labelledby="tag-php-tooltip-container">php</a></li><li class="d-inline mr4 js-post-tag-list-item"><a href="https://es.stackoverflow.com/questions/tagged/javascript" class="post-tag js-gps-track" title="mostrar preguntas con la etiqueta &quot;javascript&quot;" aria-label="mostrar preguntas con la etiqueta &quot;javascript&quot;" rel="tag" aria-labelledby="tag-javascript-tooltip-container">javascript</a></li><li class="d-inline mr4 js-post-tag-list-item"><a href="https://es.stackoverflow.com/questions/tagged/jquery" class="post-tag js-gps-track" title="mostrar preguntas con la etiqueta &quot;jquery&quot;" aria-label="mostrar preguntas con la etiqueta &quot;jquery&quot;" rel="tag" aria-labelledby="tag-jquery-tooltip-container">jquery</a></li><li class="d-inline mr4 js-post-tag-list-item"><a href="https://es.stackoverflow.com/questions/tagged/ajax" class="post-tag js-gps-track" title="mostrar preguntas con la etiqueta &quot;ajax&quot;" aria-label="mostrar preguntas con la etiqueta &quot;ajax&quot;" rel="tag" aria-labelledby="tag-ajax-tooltip-container">ajax</a></li></ul>
+                </div>
+            </div>
+        </div>
+
+    <div class="mb0 ">
+        <div class="mt16 d-flex gs8 gsy fw-wrap jc-end ai-start pt4 mb16">
+            <div class="flex--item mr16 fl1 w96">
+                
+
+
+<div class="js-post-menu pt2" data-post-id="151707" data-post-type-id="1">
+
+    <div class="d-flex gs8 s-anchors s-anchors__muted fw-wrap">
+
+        <div class="flex--item">
+            <a href="https://es.stackoverflow.com/q/151707" rel="nofollow" itemprop="url" class="js-share-link js-gps-track" title="Enlace corto permanente a esta pregunta" data-gps-track="post.click({ item: 2, priv: 0, post_type: 1 })" data-controller="se-share-sheet s-popover" data-se-share-sheet-title="Comparte un enlace a esta pregunta" data-se-share-sheet-subtitle="" data-se-share-sheet-post-type="question" data-se-share-sheet-social="facebook twitter " data-se-share-sheet-location="1" data-se-share-sheet-license-url="https%3a%2f%2fcreativecommons.org%2flicenses%2fby-sa%2f3.0%2f" data-se-share-sheet-license-name="CC BY-SA 3.0" data-s-popover-placement="bottom-start" aria-controls="se-share-sheet-0" data-action=" s-popover#toggle se-share-sheet#preventNavigation s-popover:show-&gt;se-share-sheet#willShow s-popover:shown-&gt;se-share-sheet#didShow" aria-expanded="false">Compartir</a><div class="s-popover z-dropdown s-anchors s-anchors__default" style="width: unset; max-width: 28em;" id="se-share-sheet-0"><div class="s-popover--arrow"></div><div><label class="js-title fw-bold" for="share-sheet-input-se-share-sheet-0">Comparte un enlace a esta pregunta</label> <span class="js-subtitle"></span></div><div class="my8"><input type="text" id="share-sheet-input-se-share-sheet-0" class="js-input s-input wmn3 sm:wmn-initial bc-black-200 bg-white fc-dark" readonly=""></div><div class="d-flex jc-space-between ai-center mbn4"><button class="js-copy-link-btn s-btn s-btn__link js-gps-track" data-gps-track="">Copiar enlace</button><a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license" class="js-license s-block-link w-auto" target="_blank" title="La licencia actual para esta publicación: CC BY-SA 3.0">CC BY-SA 3.0</a><div class="js-social-container d-none"></div></div></div>
+        </div>
+
+
+                    <div class="flex--item">
+                        <a href="https://es.stackoverflow.com/posts/151707/edit" class="js-suggest-edit-post js-gps-track" data-gps-track="post.click({ item: 6, priv: 0, post_type: 1 })" title="">Mejora esta pregunta</a>
+                    </div>
+
+            <div class="flex--item">
+                <button type="button" id="btnFollowPost-151707" class="s-btn s-btn__link js-follow-post js-follow-question js-gps-track" data-gps-track="post.click({ item: 14, priv: 0, post_type: 1 })" data-controller="s-tooltip " data-s-tooltip-placement="bottom" data-s-popover-placement="bottom" aria-controls="" aria-describedby="--stacks-s-tooltip-dk0y3bvm">
+                    Seguir
+                </button><div id="--stacks-s-tooltip-dk0y3bvm" class="s-popover s-popover__tooltip" role="tooltip">Sigue esta pregunta para recibir notificaciones<div class="s-popover--arrow"></div></div>
+            </div>
+
+
+
+
+
+
+    </div>
+    <div class="js-menu-popup-container"></div>
+</div>
+            </div>
+
+                <div class="post-signature flex--item">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="https://es.stackoverflow.com/posts/151707/revisions" title="mostrar todas las ediciones realizadas a esta publicación" class="js-gps-track" data-gps-track="post.click({ item: 4, priv: 0, post_type: 1 })">editada <span title="2018-03-30 23:11:02Z" class="relativetime">el 30 mar. 2018 a las 23:11</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span class="d-none" itemprop="name">user22090</span>
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>
+                </div>
+            <div class="post-signature owner flex--item">
+                <div class="user-info user-hover">
+    <div class="user-action-time">
+        formulada <span title="2018-03-30 10:30:42Z" class="relativetime">el 30 mar. 2018 a las 10:30</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://es.stackoverflow.com/users/22090/user22090"><div class="gravatar-wrapper-32"><img src="./php - ¿Como usar serialize en un formulario con input de tipo File_ - Stack Overflow en español_files/3kEba.jpg" alt="user22090&#39;s user avatar" width="32" height="32" class="bar-sm"></div></a>
+    </div>
+    <div class="user-details" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <a href="https://es.stackoverflow.com/users/22090/user22090">user22090</a><span class="d-none" itemprop="name">user22090</span>
+        <div class="-flair">
+            <span class="reputation-score" title="puntuación de reputación de " dir="ltr">181</span><span title="3 medallas de plata" aria-hidden="true"><span class="badge2"></span><span class="badgecount">3</span></span><span class="v-visible-sr">3 medallas de plata</span><span title="18 medallas de bronce" aria-hidden="true"><span class="badge3"></span><span class="badgecount">18</span></span><span class="v-visible-sr">18 medallas de bronce</span>
+        </div>
+    </div>
+</div>
+
+
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+
+
+            <span class="d-none" itemprop="commentCount">3</span> 
+    <div class="post-layout--right js-post-comments-component">
+        <div id="comments-151707" class="comments js-comments-container bt bc-black-075 mt12 " data-post-id="151707" data-min-length="15">
+            <ul class="comments-list js-comments-list" data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <li id="comment-284337" class="comment js-comment " data-comment-id="284337" data-comment-owner-id="77776" data-comment-score="0">
+        <div class="js-comment-actions comment-actions">
+            <div class="comment-score js-comment-score js-comment-edit-hide">
+            </div>
+        </div>
+        <div class="comment-text  js-comment-text-and-form">
+            <div class="comment-body js-comment-edit-hide">
+                
+                <span class="comment-copy">Yo quería hacer lo mismo pero no logre, termine usando un plugin de JQuery,  <a href="http://plugins.krajee.com/file-input/demo" rel="nofollow noreferrer">Bootstrap File Input</a></span>
+                
+                <div class="d-inline-flex ai-center">
+–&nbsp;<a href="https://es.stackoverflow.com/users/77776/stilgar" title="126 reputación" class="comment-user">Stilgar</a>
+                </div>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://es.stackoverflow.com/questions/151707/como-usar-serialize-en-un-formulario-con-input-de-tipo-file#comment284337_151707" aria-label="Link to comment"><span title="2018-03-30 12:35:55Z, Licencia: CC BY-SA 3.0" class="relativetime-clean">el 30 mar. 2018 a las 12:35</span></a></span>
+                        <span title="este comentario se editó 1 vez">
+                            <svg aria-hidden="true" class="va-text-bottom o50 svg-icon iconPencilSm" width="14" height="14" viewBox="0 0 14 14"><path d="m11.1 1.71 1.13 1.12c.2.2.2.51 0 .71L11.1 4.7 9.21 2.86l1.17-1.15c.2-.2.51-.2.71 0ZM2 10.12l6.37-6.43 1.88 1.88L3.88 12H2v-1.88Z"></path></svg>
+                        </span>
+            </div>
+        </div>
+    </li>
+    <li id="comment-284347" class="comment js-comment " data-comment-id="284347" data-comment-owner-id="-1" data-comment-score="0">
+        <div class="js-comment-actions comment-actions">
+            <div class="comment-score js-comment-score js-comment-edit-hide">
+            </div>
+        </div>
+        <div class="comment-text  js-comment-text-and-form">
+            <div class="comment-body js-comment-edit-hide">
+                
+                <span class="comment-copy">¿Podrías poner tienes tu función <code>ajaxRequest</code>? Por lo general jQuery procesa los datos antes de enviarlos, para evitar que esto suceda tienes que pasarle la opción <code>processData: false</code></span>
+                
+                <div class="d-inline-flex ai-center">
+–&nbsp;<span class="comment-user">user22721</span>
+                </div>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://es.stackoverflow.com/questions/151707/como-usar-serialize-en-un-formulario-con-input-de-tipo-file#comment284347_151707" aria-label="Link to comment"><span title="2018-03-30 14:18:35Z, Licencia: CC BY-SA 3.0" class="relativetime-clean">el 30 mar. 2018 a las 14:18</span></a></span>
+            </div>
+        </div>
+    </li>
+    <li id="comment-284555" class="comment js-comment " data-comment-id="284555" data-comment-owner-id="22090" data-comment-score="0">
+        <div class="js-comment-actions comment-actions">
+            <div class="comment-score js-comment-score js-comment-edit-hide">
+            </div>
+        </div>
+        <div class="comment-text  js-comment-text-and-form">
+            <div class="comment-body js-comment-edit-hide">
+                
+                <span class="comment-copy">Si mi función ajaxRequest ya tiene esta opción...</span>
+                
+                <div class="d-inline-flex ai-center">
+–&nbsp;<a href="https://es.stackoverflow.com/users/22090/user22090" title="181 reputación" class="comment-user owner">user22090</a>
+                </div>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://es.stackoverflow.com/questions/151707/como-usar-serialize-en-un-formulario-con-input-de-tipo-file#comment284555_151707" aria-label="Link to comment"><span title="2018-03-30 23:08:57Z, Licencia: CC BY-SA 3.0" class="relativetime-clean">el 30 mar. 2018 a las 23:08</span></a></span>
+            </div>
+        </div>
+    </li>
+
+            </ul>
+	    </div>
+
+        <div id="comments-link-151707" data-rep="50" data-anon="true">
+                    <a class="js-add-link comments-link disabled-link" title="Utiliza los comentarios para pedir más información o para sugerir mejoras. Evita responder a preguntas en los comentarios." href="https://es.stackoverflow.com/questions/151707/como-usar-serialize-en-un-formulario-con-input-de-tipo-file#" role="button">Añade un comentario</a>
+                <span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expandir para mostrar todos los comentarios de esta publicación" href="https://es.stackoverflow.com/questions/151707/como-usar-serialize-en-un-formulario-con-input-de-tipo-file#" onclick="" role="button"></a>
+        </div>         
+    </div>
+    </div>
+
+</div>
+
+
+
+
+                <div id="answers">
+                    <a name="tab-top"></a>
+                    <div id="answers-header">
+                        <div class="answers-subheader d-flex ai-center mb8">
+                            <div class="flex--item fl1">
+                                <h2 class="mb0" data-answercount="3">
+                                        3 respuestas
+                                    <span style="display:none;" itemprop="answerCount">3</span>
+                                </h2>
+                            </div>
+                            <div class="flex--item">
+                                
+
+<div class="d-flex g4 gsx ai-center sm:fd-column sm:ai-start">
+    <div class="d-flex fd-column ai-end sm:ai-start">
+        <label class="flex--item fs-caption" for="answer-sort-dropdown-select-menu">
+            Ordenado por:
+        </label>
+        <a class="js-sort-preference-change s-link flex--item fs-fine d-none" data-value="ScoreDesc" href="https://es.stackoverflow.com/questions/151707/como-usar-serialize-en-un-formulario-con-input-de-tipo-file?answertab=scoredesc#tab-top">
+            Restablecer a predeterminado
+        </a>
+    </div>
+    <div class="flex--item s-select">
+        <select id="answer-sort-dropdown-select-menu">
+                    <option value="scoredesc" selected="selected">
+                        Mayor puntuación (por defecto)
+                    </option>
+                    <option value="modifieddesc">
+                        Fecha de modificación (lo más nuevo primero)
+                    </option>
+                    <option value="createdasc">
+                        Fecha de creación (lo más antiguo primero)
+                    </option>
+        </select>
+    </div>
+</div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                                        
+<a name="152164"></a>
+<div id="answer-152164" class="answer js-answer accepted-answer js-accepted-answer" data-answerid="152164" data-parentid="151707" data-score="1" data-position-on-page="1" data-highest-scored="1" data-question-has-accepted-highest-score="1" itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+    <div class="post-layout">
+        <div class="votecell post-layout--left">
+            <div class="js-voting-container d-flex jc-center fd-column ai-stretch gs4 fc-black-200" data-post-id="152164">
+        <button class="js-vote-up-btn flex--item s-btn s-btn__unset c-pointer " data-controller="s-tooltip" data-s-tooltip-placement="right" aria-pressed="false" aria-label="Up vote" data-selected-classes="fc-theme-primary" data-unselected-classes="" aria-describedby="--stacks-s-tooltip-t67t7hsj">
+            <svg aria-hidden="true" class="svg-icon iconArrowUpLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 25h32L18 9 2 25Z"></path></svg>
+        </button><div id="--stacks-s-tooltip-t67t7hsj" class="s-popover s-popover__tooltip" role="tooltip">Esta respuesta es útil<div class="s-popover--arrow"></div></div>
+        <div class="js-vote-count flex--item d-flex fd-column ai-center fc-black-500 fs-title" itemprop="upvoteCount" data-value="1">
+            1
+        </div>
+        <button class="js-vote-down-btn flex--item s-btn s-btn__unset c-pointer " data-controller="s-tooltip" data-s-tooltip-placement="right" aria-pressed="false" aria-label="Down vote" data-selected-classes="fc-theme-primary" data-unselected-classes="" aria-describedby="--stacks-s-tooltip-yo7b7c97">
+            <svg aria-hidden="true" class="svg-icon iconArrowDownLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 11h32L18 27 2 11Z"></path></svg>
+        </button><div id="--stacks-s-tooltip-yo7b7c97" class="s-popover s-popover__tooltip" role="tooltip">Esta respuesta no es útil<div class="s-popover--arrow"></div></div>
+
+
+        
+<button class="js-saves-btn s-btn s-btn__unset c-pointer py4" type="button" id="saves-btn-152164" data-controller="s-tooltip" data-s-tooltip-placement="right" data-s-popover-placement="" aria-pressed="false" data-post-id="152164" data-post-type-id="2" data-user-privilege-for-post-click="0" aria-controls="" data-s-popover-auto-show="false" aria-describedby="--stacks-s-tooltip-cah4grhs">
+    <svg aria-hidden="true" class="fc-theme-primary-500 js-saves-btn-selected d-none svg-icon iconBookmark" width="18" height="18" viewBox="0 0 18 18"><path d="M3 17V3c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v14l-6-4-6 4Z"></path></svg>
+    <svg aria-hidden="true" class="js-saves-btn-unselected svg-icon iconBookmarkAlt" width="18" height="18" viewBox="0 0 18 18"><path d="m9 10.6 4 2.66V3H5v10.26l4-2.66ZM3 17V3c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v14l-6-4-6 4Z"></path></svg>
+</button><div id="--stacks-s-tooltip-cah4grhs" class="s-popover s-popover__tooltip" role="tooltip">Guarda esta respuesta.<div class="s-popover--arrow"></div></div>
+
+
+
+
+
+
+
+            <div class="js-accepted-answer-indicator flex--item fc-green-700 py6 mtn8" data-s-tooltip-placement="right" title="Loading when this answer was accepted…" tabindex="0" role="note" aria-label="Aceptado">
+                <div class="ta-center">
+                    <svg aria-hidden="true" class="svg-icon iconCheckmarkLg" width="36" height="36" viewBox="0 0 36 36"><path d="m6 14 8 8L30 6v8L14 30l-8-8v-8Z"></path></svg>
+                </div>
+            </div>
+
+    
+        <a class="js-post-issue flex--item s-btn s-btn__unset c-pointer py6 mx-auto" href="https://es.stackoverflow.com/posts/152164/timeline" data-shortcut="T" data-ks-title="línea de tiempo" data-controller="s-tooltip" data-s-tooltip-placement="right" aria-label="Línea de tiempo" aria-describedby="--stacks-s-tooltip-djmbx424"><svg aria-hidden="true" class="mln2 mr0 svg-icon iconHistory" width="19" height="18" viewBox="0 0 19 18"><path d="M3 9a8 8 0 1 1 3.73 6.77L8.2 14.3A6 6 0 1 0 5 9l3.01-.01-4 4-4-4h3L3 9Zm7-4h1.01L11 9.36l3.22 2.1-.6.93L10 10V5Z"></path></svg></a><div id="--stacks-s-tooltip-djmbx424" class="s-popover s-popover__tooltip" role="tooltip">Mostrar actividad de esta publicación.<div class="s-popover--arrow"></div></div>
+
+</div>
+
+        </div>
+
+        
+
+<div class="answercell post-layout--right">
+    
+    <div class="s-prose js-post-body" itemprop="text">
+<p>Al parecer no hay forma de hacerlo con <code>serialize()</code>, para tu caso se puede hacer con <code>FormData</code> de la siguiente manera:</p>
+
+<pre class="lang-php s-code-block"><code class="hljs language-php">$(<span class="hljs-string">'#crear-producto'</span>).<span class="hljs-title function_ invoke__">click</span>(function(){
+    let data = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormData</span>($(<span class="hljs-string">'#nuevo-producto'</span>)[<span class="hljs-number">0</span>]);
+    <span class="hljs-title function_ invoke__">ajaxRequest</span>(constants.URL.PRODUCTOS.CREAR, <span class="hljs-string">'POST'</span>, data, <span class="hljs-string">'json'</span>, <span class="hljs-string">'successRequest'</span>, <span class="hljs-string">'errorRequest'</span>);
+});
+</code></pre>
+
+<p>La información del form la podrás obtener de <code>$_POST</code> y la de los archivos de <code>$_FILES</code>.<br>
+Es importante también asignarle a los parámetros el valor de <code>contentType: false</code> porque si no jQuery lo enviará como <code>application/x-www-form-urlencoded; charset=UTF-8</code> que es su valor por defecto.</p>
+
+<p>Tu función <code>ajaxRequest</code> quedaría así:</p>
+
+<pre class="lang-php s-code-block"><code class="hljs language-php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ajaxRequest</span>(<span class="hljs-params">url, method, data, datatype, successCallback, errorCallback</span>) </span>{
+  $.<span class="hljs-title function_ invoke__">ajax</span>({
+    <span class="hljs-attr">url</span>: url,
+    <span class="hljs-attr">data</span>: data,
+    <span class="hljs-attr">dataType</span>: datatype,
+    <span class="hljs-attr">type</span>: method,
+    // Ambos importantes para que jQuery no transforme la información
+    <span class="hljs-attr">contentType</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">processData</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">success</span>: function (response) {
+      <span class="hljs-keyword">eval</span>(successCallback + <span class="hljs-string">'('</span> + JSON.<span class="hljs-title function_ invoke__">stringify</span>(response) + <span class="hljs-string">')'</span>);
+    },
+    error: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>)</span>{
+      <span class="hljs-keyword">eval</span>(successCallback + <span class="hljs-string">'('</span> + JSON.<span class="hljs-title function_ invoke__">stringify</span>(error) + <span class="hljs-string">')'</span>);
+    }
+  });
+}
+</code></pre>
+    </div>
+    <div class="mt24">
+        <div class="d-flex fw-wrap ai-start jc-end gs8 gsy">
+            <time itemprop="dateCreated" datetime="2018-04-02T01:32:41"></time>
+            <div class="flex--item mr16" style="flex: 1 1 100px;">
+                
+
+
+<div class="js-post-menu pt2" data-post-id="152164" data-post-type-id="2">
+
+    <div class="d-flex gs8 s-anchors s-anchors__muted fw-wrap">
+
+        <div class="flex--item">
+            <a href="https://es.stackoverflow.com/a/152164" rel="nofollow" itemprop="url" class="js-share-link js-gps-track" title="Enlace corto permanente a esta respuesta" data-gps-track="post.click({ item: 2, priv: 0, post_type: 2 })" data-controller="se-share-sheet s-popover" data-se-share-sheet-title="Comparte un enlace a esta respuesta" data-se-share-sheet-subtitle="" data-se-share-sheet-post-type="answer" data-se-share-sheet-social="facebook twitter " data-se-share-sheet-location="2" data-se-share-sheet-license-url="https%3a%2f%2fcreativecommons.org%2flicenses%2fby-sa%2f3.0%2f" data-se-share-sheet-license-name="CC BY-SA 3.0" data-s-popover-placement="bottom-start" aria-controls="se-share-sheet-1" data-action=" s-popover#toggle se-share-sheet#preventNavigation s-popover:show-&gt;se-share-sheet#willShow s-popover:shown-&gt;se-share-sheet#didShow" aria-expanded="false">Compartir</a><div class="s-popover z-dropdown s-anchors s-anchors__default" style="width: unset; max-width: 28em;" id="se-share-sheet-1"><div class="s-popover--arrow"></div><div><label class="js-title fw-bold" for="share-sheet-input-se-share-sheet-1">Comparte un enlace a esta respuesta</label> <span class="js-subtitle"></span></div><div class="my8"><input type="text" id="share-sheet-input-se-share-sheet-1" class="js-input s-input wmn3 sm:wmn-initial bc-black-200 bg-white fc-dark" readonly=""></div><div class="d-flex jc-space-between ai-center mbn4"><button class="js-copy-link-btn s-btn s-btn__link js-gps-track" data-gps-track="">Copiar enlace</button><a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license" class="js-license s-block-link w-auto" target="_blank" title="La licencia actual para esta publicación: CC BY-SA 3.0">CC BY-SA 3.0</a><div class="js-social-container d-none"></div></div></div>
+        </div>
+
+
+                    <div class="flex--item">
+                        <a href="https://es.stackoverflow.com/posts/152164/edit" class="js-suggest-edit-post js-gps-track" data-gps-track="post.click({ item: 6, priv: 0, post_type: 2 })" title="">Mejora esta respuesta</a>
+                    </div>
+
+            <div class="flex--item">
+                <button type="button" id="btnFollowPost-152164" class="s-btn s-btn__link js-follow-post js-follow-answer js-gps-track" data-gps-track="post.click({ item: 14, priv: 0, post_type: 2 })" data-controller="s-tooltip " data-s-tooltip-placement="bottom" data-s-popover-placement="bottom" aria-controls="" aria-describedby="--stacks-s-tooltip-pfzpfmuo">
+                    Seguir
+                </button><div id="--stacks-s-tooltip-pfzpfmuo" class="s-popover s-popover__tooltip" role="tooltip">Sigue esta respuesta para recibir notificaciones<div class="s-popover--arrow"></div></div>
+            </div>
+
+
+
+
+
+
+    </div>
+    <div class="js-menu-popup-container"></div>
+</div>
+            </div>
+
+
+            <div class="post-signature flex--item fl0">
+                <div class="user-info ">
+    <div class="user-action-time">
+        respondida <span title="2018-04-02 01:32:41Z" class="relativetime">el 2 abr. 2018 a las 1:32</span>
+    </div>
+    <div class="user-gravatar32">
+        <span class="anonymous-gravatar"></span>
+    </div>
+    <div class="user-details" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        user22721<span class="d-none" itemprop="name">user22721</span>
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>
+
+
+            </div>
+        </div>
+        
+    
+    </div>
+    
+</div>
+
+
+
+
+            <span class="d-none" itemprop="commentCount">3</span> 
+    <div class="post-layout--right js-post-comments-component">
+        <div id="comments-152164" class="comments js-comments-container bt bc-black-075 mt12 " data-post-id="152164" data-min-length="15">
+            <ul class="comments-list js-comments-list" data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <li id="comment-285270" class="comment js-comment " data-comment-id="285270" data-comment-owner-id="22090" data-comment-score="0">
+        <div class="js-comment-actions comment-actions">
+            <div class="comment-score js-comment-score js-comment-edit-hide">
+            </div>
+        </div>
+        <div class="comment-text  js-comment-text-and-form">
+            <div class="comment-body js-comment-edit-hide">
+                
+                <span class="comment-copy">Vale entiendo pero según veo los otros datos del formulario como los enviaría?</span>
+                
+                <div class="d-inline-flex ai-center">
+–&nbsp;<a href="https://es.stackoverflow.com/users/22090/user22090" title="181 reputación" class="comment-user owner">user22090</a>
+                </div>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://es.stackoverflow.com/questions/151707/como-usar-serialize-en-un-formulario-con-input-de-tipo-file#comment285270_152164" aria-label="Link to comment"><span title="2018-04-02 04:39:43Z, Licencia: CC BY-SA 3.0" class="relativetime-clean">el 2 abr. 2018 a las 4:39</span></a></span>
+            </div>
+        </div>
+    </li>
+    <li id="comment-285351" class="comment js-comment " data-comment-id="285351" data-comment-owner-id="-1" data-comment-score="1">
+        <div class="js-comment-actions comment-actions">
+            <div class="comment-score js-comment-score js-comment-edit-hide">
+                    <span title="cantidad de votos de &#39;comentario útil&#39; recibidos" class="cool">1</span>
+            </div>
+        </div>
+        <div class="comment-text  js-comment-text-and-form">
+            <div class="comment-body js-comment-edit-hide">
+                
+                <span class="comment-copy">@user22090 al hacer <code>new FormData($('#nuevo-producto')[0])</code> todos los valores de los inputs están dentro de <code>data</code></span>
+                
+                <div class="d-inline-flex ai-center">
+–&nbsp;<span class="comment-user">user22721</span>
+                </div>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://es.stackoverflow.com/questions/151707/como-usar-serialize-en-un-formulario-con-input-de-tipo-file#comment285351_152164" aria-label="Link to comment"><span title="2018-04-02 13:47:08Z, Licencia: CC BY-SA 3.0" class="relativetime-clean">el 2 abr. 2018 a las 13:47</span></a></span>
+                        <span title="este comentario se editó 1 vez">
+                            <svg aria-hidden="true" class="va-text-bottom o50 svg-icon iconPencilSm" width="14" height="14" viewBox="0 0 14 14"><path d="m11.1 1.71 1.13 1.12c.2.2.2.51 0 .71L11.1 4.7 9.21 2.86l1.17-1.15c.2-.2.51-.2.71 0ZM2 10.12l6.37-6.43 1.88 1.88L3.88 12H2v-1.88Z"></path></svg>
+                        </span>
+            </div>
+        </div>
+    </li>
+    <li id="comment-285729" class="comment js-comment " data-comment-id="285729" data-comment-owner-id="22090" data-comment-score="0">
+        <div class="js-comment-actions comment-actions">
+            <div class="comment-score js-comment-score js-comment-edit-hide">
+            </div>
+        </div>
+        <div class="comment-text  js-comment-text-and-form">
+            <div class="comment-body js-comment-edit-hide">
+                
+                <span class="comment-copy">Gracias @user22090 fuiste de gran ayuda.</span>
+                
+                <div class="d-inline-flex ai-center">
+–&nbsp;<a href="https://es.stackoverflow.com/users/22090/user22090" title="181 reputación" class="comment-user owner">user22090</a>
+                </div>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://es.stackoverflow.com/questions/151707/como-usar-serialize-en-un-formulario-con-input-de-tipo-file#comment285729_152164" aria-label="Link to comment"><span title="2018-04-02 23:54:40Z, Licencia: CC BY-SA 3.0" class="relativetime-clean">el 2 abr. 2018 a las 23:54</span></a></span>
+            </div>
+        </div>
+    </li>
+
+            </ul>
+	    </div>
+
+        <div id="comments-link-152164" data-rep="50" data-anon="true">
+                    <a class="js-add-link comments-link disabled-link" title="Utiliza los comentarios para pedir una aclaración o para añadir más información.  Evita los comentarios como “+1” o “gracias”. Utiliza @nombre para responder a otras personas que hayan comentado, si quieres que sean notificadas." href="https://es.stackoverflow.com/questions/151707/como-usar-serialize-en-un-formulario-con-input-de-tipo-file#" role="button">Añade un comentario</a>
+                <span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expandir para mostrar todos los comentarios de esta publicación" href="https://es.stackoverflow.com/questions/151707/como-usar-serialize-en-un-formulario-con-input-de-tipo-file#" onclick="" role="button"></a>
+        </div>         
+    </div>
+    </div>
+</div>
+
+<div class="js-zone-container zone-container-main">
+    <div id="dfp-mlb" class="everyonelovesstackoverflow everyoneloves__mid-leaderboard everyoneloves__leaderboard" style="min-height: auto; height: auto; display: none;" data-google-query-id="CIqrs4XN8v0CFczkhwodb40Ehg"><div id="google_ads_iframe_/248424177/es.stackoverflow.com/mlb/question-pages_0__container__" style="border: 0pt none; width: 728px; height: 0px;"></div></div>
+		<div class="js-report-ad-button-container " style="width: 728px"></div>
+</div>
+                                        
+<a name="152029"></a>
+<div id="answer-152029" class="answer js-answer" data-answerid="152029" data-parentid="151707" data-score="1" data-position-on-page="2" data-highest-scored="1" data-question-has-accepted-highest-score="1" itemprop="suggestedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+    <div class="post-layout">
+        <div class="votecell post-layout--left">
+            <div class="js-voting-container d-flex jc-center fd-column ai-stretch gs4 fc-black-200" data-post-id="152029">
+        <button class="js-vote-up-btn flex--item s-btn s-btn__unset c-pointer " data-controller="s-tooltip" data-s-tooltip-placement="right" aria-pressed="false" aria-label="Up vote" data-selected-classes="fc-theme-primary" data-unselected-classes="" aria-describedby="--stacks-s-tooltip-k507u04k">
+            <svg aria-hidden="true" class="svg-icon iconArrowUpLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 25h32L18 9 2 25Z"></path></svg>
+        </button><div id="--stacks-s-tooltip-k507u04k" class="s-popover s-popover__tooltip" role="tooltip">Esta respuesta es útil<div class="s-popover--arrow"></div></div>
+        <div class="js-vote-count flex--item d-flex fd-column ai-center fc-black-500 fs-title" itemprop="upvoteCount" data-value="1">
+            1
+        </div>
+        <button class="js-vote-down-btn flex--item s-btn s-btn__unset c-pointer " data-controller="s-tooltip" data-s-tooltip-placement="right" aria-pressed="false" aria-label="Down vote" data-selected-classes="fc-theme-primary" data-unselected-classes="" aria-describedby="--stacks-s-tooltip-p5s3ifva">
+            <svg aria-hidden="true" class="svg-icon iconArrowDownLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 11h32L18 27 2 11Z"></path></svg>
+        </button><div id="--stacks-s-tooltip-p5s3ifva" class="s-popover s-popover__tooltip" role="tooltip">Esta respuesta no es útil<div class="s-popover--arrow"></div></div>
+
+
+        
+<button class="js-saves-btn s-btn s-btn__unset c-pointer py4" type="button" id="saves-btn-152029" data-controller="s-tooltip" data-s-tooltip-placement="right" data-s-popover-placement="" aria-pressed="false" data-post-id="152029" data-post-type-id="2" data-user-privilege-for-post-click="0" aria-controls="" data-s-popover-auto-show="false" aria-describedby="--stacks-s-tooltip-a1gj1u2g">
+    <svg aria-hidden="true" class="fc-theme-primary-500 js-saves-btn-selected d-none svg-icon iconBookmark" width="18" height="18" viewBox="0 0 18 18"><path d="M3 17V3c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v14l-6-4-6 4Z"></path></svg>
+    <svg aria-hidden="true" class="js-saves-btn-unselected svg-icon iconBookmarkAlt" width="18" height="18" viewBox="0 0 18 18"><path d="m9 10.6 4 2.66V3H5v10.26l4-2.66ZM3 17V3c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v14l-6-4-6 4Z"></path></svg>
+</button><div id="--stacks-s-tooltip-a1gj1u2g" class="s-popover s-popover__tooltip" role="tooltip">Guarda esta respuesta.<div class="s-popover--arrow"></div></div>
+
+
+
+
+
+
+
+            <div class="js-accepted-answer-indicator flex--item fc-green-700 py6 mtn8 d-none" data-s-tooltip-placement="right" title="Loading when this answer was accepted…" tabindex="0" role="note" aria-label="Aceptado">
+                <div class="ta-center">
+                    <svg aria-hidden="true" class="svg-icon iconCheckmarkLg" width="36" height="36" viewBox="0 0 36 36"><path d="m6 14 8 8L30 6v8L14 30l-8-8v-8Z"></path></svg>
+                </div>
+            </div>
+
+    
+        <a class="js-post-issue flex--item s-btn s-btn__unset c-pointer py6 mx-auto" href="https://es.stackoverflow.com/posts/152029/timeline" data-shortcut="T" data-ks-title="línea de tiempo" data-controller="s-tooltip" data-s-tooltip-placement="right" aria-label="Línea de tiempo" aria-describedby="--stacks-s-tooltip-pqc23p93"><svg aria-hidden="true" class="mln2 mr0 svg-icon iconHistory" width="19" height="18" viewBox="0 0 19 18"><path d="M3 9a8 8 0 1 1 3.73 6.77L8.2 14.3A6 6 0 1 0 5 9l3.01-.01-4 4-4-4h3L3 9Zm7-4h1.01L11 9.36l3.22 2.1-.6.93L10 10V5Z"></path></svg></a><div id="--stacks-s-tooltip-pqc23p93" class="s-popover s-popover__tooltip" role="tooltip">Mostrar actividad de esta publicación.<div class="s-popover--arrow"></div></div>
+
+</div>
+
+        </div>
+
+        
+
+<div class="answercell post-layout--right">
+    
+    <div class="s-prose js-post-body" itemprop="text">
+<blockquote>
+  <p>No se puede cargar un archivo y utilizar <code>serialize()</code> con <strong>AJAX</strong> porque no puede acceder al contenido de un archivo almacenado en la computadora cliente y enviarlo en la solicitud utilizando javascript. </p>
+</blockquote>
+
+<p>Te recomiendo utilizar <strong>FormData objects</strong> te dejo un ejemplo que yo utilizo mucho. </p>
+
+<pre class="lang-php s-code-block"><code class="hljs language-php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">upload_files</span>(<span class="hljs-params">url, inputFile, input_text, another_variable, form</span>)</span>{
+    <span class="hljs-comment">//Obtenemos el campo de file del formulario </span>
+    <span class="hljs-keyword">var</span> archivos = $(inputFile)[<span class="hljs-number">0</span>];
+    <span class="hljs-keyword">var</span> archivo = archivos.files; 
+    <span class="hljs-keyword">var</span> archivos = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormData</span>();
+
+    <span class="hljs-comment">//Para múltiples archivos </span>
+    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;archivo.length; i++){
+        archivos.<span class="hljs-title function_ invoke__">append</span>(<span class="hljs-string">'archivo'</span>+i,archivo[i]); <span class="hljs-comment">//Añadimos cada archivo a el arreglo con un indice direfente</span>
+    }
+    <span class="hljs-comment">/**
+     * Si queremos añadir alguna variable extra, por ejemplo algun campo tipo text
+     */</span>
+    archivos.<span class="hljs-title function_ invoke__">append</span>(<span class="hljs-string">'input_text'</span>, input_text);
+    <span class="hljs-comment">//Otra variable</span>
+    archivos.<span class="hljs-title function_ invoke__">append</span>(<span class="hljs-string">'another_variable'</span>, another_variable);
+
+    $.<span class="hljs-title function_ invoke__">ajax</span>({
+        //Url_destino
+        <span class="hljs-attr">url</span>:url,
+        //Progress Bar
+        <span class="hljs-attr">xhr</span>: function(){
+            <span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> window.<span class="hljs-title function_ invoke__">XMLHttpRequest</span>();
+            <span class="hljs-comment">//Upload progress</span>
+            xhr.upload.<span class="hljs-title function_ invoke__">addEventListener</span>(<span class="hljs-string">"progress"</span>, function(evt){
+                <span class="hljs-keyword">if</span> (evt.lengthComputable) {
+                    <span class="hljs-keyword">var</span> percentComplete = (evt.loaded / evt.total)*<span class="hljs-number">100</span>;
+                    <span class="hljs-comment">//Do something with upload progress</span>
+                    form.<span class="hljs-title function_ invoke__">find</span>(<span class="hljs-string">'.progress'</span>).<span class="hljs-title function_ invoke__">removeClass</span>(<span class="hljs-string">'hidden'</span>);
+                    form.<span class="hljs-title function_ invoke__">find</span>(<span class="hljs-string">'.bar'</span>).<span class="hljs-title function_ invoke__">css</span>(<span class="hljs-string">'width'</span>,percentComplete+<span class="hljs-string">'%'</span>);
+
+                    <span class="hljs-keyword">if</span>(percentComplete == <span class="hljs-number">100</span>){
+                        <span class="hljs-title function_ invoke__">setTimeout</span>(function(){ 
+                            <span class="hljs-comment">//Progress Bar effect</span>
+                            form.<span class="hljs-title function_ invoke__">find</span>(<span class="hljs-string">'.progress'</span>).<span class="hljs-title function_ invoke__">addClass</span>(<span class="hljs-string">'hidden'</span>);
+                            form.<span class="hljs-title function_ invoke__">find</span>(<span class="hljs-string">'.bar'</span>).<span class="hljs-title function_ invoke__">css</span>(<span class="hljs-string">'width'</span>,<span class="hljs-string">'0%'</span>); 
+                        }, <span class="hljs-number">1000</span>);
+                    }
+                }
+            }, <span class="hljs-literal">false</span>);
+            <span class="hljs-comment">//Download progress</span>
+            xhr.<span class="hljs-title function_ invoke__">addEventListener</span>(<span class="hljs-string">"progress"</span>, function(evt){
+                <span class="hljs-keyword">if</span> (evt.lengthComputable) {
+                    <span class="hljs-keyword">var</span> percentComplete = evt.loaded / evt.total;
+                    <span class="hljs-comment">//Do something with download progress</span>
+                }
+            }, <span class="hljs-literal">false</span>);
+            <span class="hljs-keyword">return</span> xhr;
+        },
+        type:<span class="hljs-string">'POST'</span>,
+        contentType:<span class="hljs-literal">false</span>, <span class="hljs-comment">//Debe estar en false para que pase el objeto sin procesar</span>
+        data:archivos, <span class="hljs-comment">//Le pasamos el objeto que creamos con los archivos</span>
+        processData:<span class="hljs-literal">false</span>, <span class="hljs-comment">//Debe estar en false para que JQuery no procese los datos a enviar</span>
+        cache:<span class="hljs-literal">false</span>,
+        success: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>{
+            <span class="hljs-comment">//Hacer algo con la data</span>
+       },
+       error: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">jqXHR, exception</span>) </span>{
+            <span class="hljs-keyword">var</span> msg = <span class="hljs-string">''</span>;
+            <span class="hljs-keyword">if</span> (jqXHR.status === <span class="hljs-number">0</span>) {
+                msg = <span class="hljs-string">'Not connect.\n Verify Network.'</span>;
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (jqXHR.status == <span class="hljs-number">404</span>) {
+                msg = <span class="hljs-string">'Requested page not found. [404]'</span>;
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (jqXHR.status == <span class="hljs-number">500</span>) {
+                msg = <span class="hljs-string">'Internal Server Error [500].'</span>;
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (exception === <span class="hljs-string">'parsererror'</span>) {
+                msg = <span class="hljs-string">'Requested JSON parse failed.'</span>;
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (exception === <span class="hljs-string">'timeout'</span>) {
+                msg = <span class="hljs-string">'Time out error.'</span>;
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (exception === <span class="hljs-string">'abort'</span>) {
+                msg = <span class="hljs-string">'Ajax request aborted.'</span>;
+            } <span class="hljs-keyword">else</span> {
+                msg = <span class="hljs-string">'Uncaught Error.\n'</span> + jqXHR.responseText;
+            }
+            console.<span class="hljs-title function_ invoke__">log</span>(msg);
+        },
+    });
+}
+</code></pre>
+
+<p>Se utiliza de la siguiente manera:</p>
+
+<pre class="lang-php s-code-block"><code class="hljs language-php">$(<span class="hljs-string">'#upload_files'</span>).<span class="hljs-title function_ invoke__">submit</span>(function(e) {
+            e.<span class="hljs-title function_ invoke__">preventDefault</span>();
+            <span class="hljs-keyword">var</span> url = <span class="hljs-string">'url/to/action.php'</span>;
+            <span class="hljs-keyword">var</span> input_text =  $(<span class="hljs-string">'input[type=text]'</span>).<span class="hljs-title function_ invoke__">val</span>();
+            <span class="hljs-keyword">var</span> action_event =  $(this).<span class="hljs-title function_ invoke__">find</span>(<span class="hljs-string">'.action_event'</span>).<span class="hljs-title function_ invoke__">val</span>();
+            <span class="hljs-title function_ invoke__">upload_files</span>(url, <span class="hljs-string">'#files'</span>, input_text, action_event, $(<span class="hljs-string">'#upload_files'</span>));
+            <span class="hljs-comment">//Para borrar el formulario después de envíarlo y que todo salga ok</span>
+            $(this)[<span class="hljs-number">0</span>].<span class="hljs-title function_ invoke__">reset</span>();
+        });
+</code></pre>
+
+<p>El Html seria algo como:</p>
+
+<pre class="lang-php s-code-block"><code class="hljs language-php">&lt;form  id=<span class="hljs-string">"upload_files"</span>&gt;
+    &lt;input type=<span class="hljs-string">"file"</span> id=<span class="hljs-string">"files"</span> name=<span class="hljs-string">"files"</span> multiple=<span class="hljs-string">"multiple"</span> required&gt;
+    &lt;input type=<span class="hljs-string">"text"</span> autocomplete=<span class="hljs-string">"off"</span> required&gt;
+&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span>="<span class="hljs-title">progress</span> <span class="hljs-title">progress</span>-<span class="hljs-title">striped</span> <span class="hljs-title">active</span>" <span class="hljs-title">style</span>="<span class="hljs-title">height</span>: 10<span class="hljs-title">px</span>; <span class="hljs-title">box</span>-<span class="hljs-title">shadow</span>: <span class="hljs-title">none</span>; <span class="hljs-title">margin</span>: 0; <span class="hljs-title">background</span>-<span class="hljs-title">color</span>:<span class="hljs-title">white</span>;" <span class="hljs-title">class</span>="<span class="hljs-title">hidden</span>"&gt;
+                                &lt;<span class="hljs-title">div</span> <span class="hljs-title">class</span>="<span class="hljs-title">bar</span>"&gt;&lt;/<span class="hljs-title">div</span>&gt;
+                            &lt;/<span class="hljs-title">div</span>&gt;
+&lt;<span class="hljs-title">input</span> <span class="hljs-title">type</span>="<span class="hljs-title">submit</span>" <span class="hljs-title">value</span>="<span class="hljs-title">Guardar</span>"&gt;
+&lt;/<span class="hljs-title">form</span>&gt;
+</span></code></pre>
+    </div>
+    <div class="mt24">
+        <div class="d-flex fw-wrap ai-start jc-end gs8 gsy">
+            <time itemprop="dateCreated" datetime="2018-04-01T05:24:40"></time>
+            <div class="flex--item mr16" style="flex: 1 1 100px;">
+                
+
+
+<div class="js-post-menu pt2" data-post-id="152029" data-post-type-id="2">
+
+    <div class="d-flex gs8 s-anchors s-anchors__muted fw-wrap">
+
+        <div class="flex--item">
+            <a href="https://es.stackoverflow.com/a/152029" rel="nofollow" itemprop="url" class="js-share-link js-gps-track" title="Enlace corto permanente a esta respuesta" data-gps-track="post.click({ item: 2, priv: 0, post_type: 2 })" data-controller="se-share-sheet s-popover" data-se-share-sheet-title="Comparte un enlace a esta respuesta" data-se-share-sheet-subtitle="" data-se-share-sheet-post-type="answer" data-se-share-sheet-social="facebook twitter " data-se-share-sheet-location="2" data-se-share-sheet-license-url="https%3a%2f%2fcreativecommons.org%2flicenses%2fby-sa%2f3.0%2f" data-se-share-sheet-license-name="CC BY-SA 3.0" data-s-popover-placement="bottom-start" aria-controls="se-share-sheet-2" data-action=" s-popover#toggle se-share-sheet#preventNavigation s-popover:show-&gt;se-share-sheet#willShow s-popover:shown-&gt;se-share-sheet#didShow" aria-expanded="false">Compartir</a><div class="s-popover z-dropdown s-anchors s-anchors__default" style="width: unset; max-width: 28em;" id="se-share-sheet-2"><div class="s-popover--arrow"></div><div><label class="js-title fw-bold" for="share-sheet-input-se-share-sheet-2">Comparte un enlace a esta respuesta</label> <span class="js-subtitle"></span></div><div class="my8"><input type="text" id="share-sheet-input-se-share-sheet-2" class="js-input s-input wmn3 sm:wmn-initial bc-black-200 bg-white fc-dark" readonly=""></div><div class="d-flex jc-space-between ai-center mbn4"><button class="js-copy-link-btn s-btn s-btn__link js-gps-track" data-gps-track="">Copiar enlace</button><a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license" class="js-license s-block-link w-auto" target="_blank" title="La licencia actual para esta publicación: CC BY-SA 3.0">CC BY-SA 3.0</a><div class="js-social-container d-none"></div></div></div>
+        </div>
+
+
+                    <div class="flex--item">
+                        <a href="https://es.stackoverflow.com/posts/152029/edit" class="js-suggest-edit-post js-gps-track" data-gps-track="post.click({ item: 6, priv: 0, post_type: 2 })" title="">Mejora esta respuesta</a>
+                    </div>
+
+            <div class="flex--item">
+                <button type="button" id="btnFollowPost-152029" class="s-btn s-btn__link js-follow-post js-follow-answer js-gps-track" data-gps-track="post.click({ item: 14, priv: 0, post_type: 2 })" data-controller="s-tooltip " data-s-tooltip-placement="bottom" data-s-popover-placement="bottom" aria-controls="" aria-describedby="--stacks-s-tooltip-oif2qby2">
+                    Seguir
+                </button><div id="--stacks-s-tooltip-oif2qby2" class="s-popover s-popover__tooltip" role="tooltip">Sigue esta respuesta para recibir notificaciones<div class="s-popover--arrow"></div></div>
+            </div>
+
+
+
+
+
+
+    </div>
+    <div class="js-menu-popup-container"></div>
+</div>
+            </div>
+
+
+            <div class="post-signature flex--item fl0">
+                <div class="user-info user-hover">
+    <div class="user-action-time">
+        respondida <span title="2018-04-01 05:24:40Z" class="relativetime">el 1 abr. 2018 a las 5:24</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://es.stackoverflow.com/users/11313/cignius"><div class="gravatar-wrapper-32"><img src="./php - ¿Como usar serialize en un formulario con input de tipo File_ - Stack Overflow en español_files/eeqJU.jpg" alt="cignius&#39;s user avatar" width="32" height="32" class="bar-sm"></div></a>
+    </div>
+    <div class="user-details" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <a href="https://es.stackoverflow.com/users/11313/cignius">cignius</a><span class="d-none" itemprop="name">cignius</span>
+        <div class="-flair">
+            <span class="reputation-score" title="puntuación de reputación de " dir="ltr">951</span><span title="5 medallas de plata" aria-hidden="true"><span class="badge2"></span><span class="badgecount">5</span></span><span class="v-visible-sr">5 medallas de plata</span><span title="18 medallas de bronce" aria-hidden="true"><span class="badge3"></span><span class="badgecount">18</span></span><span class="v-visible-sr">18 medallas de bronce</span>
+        </div>
+    </div>
+</div>
+
+
+            </div>
+        </div>
+        
+    
+    </div>
+    
+</div>
+
+
+
+
+            <span class="d-none" itemprop="commentCount">1</span> 
+    <div class="post-layout--right js-post-comments-component">
+        <div id="comments-152029" class="comments js-comments-container bt bc-black-075 mt12 " data-post-id="152029" data-min-length="15">
+            <ul class="comments-list js-comments-list" data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <li id="comment-672481" class="comment js-comment " data-comment-id="672481" data-comment-owner-id="9974" data-comment-score="0">
+        <div class="js-comment-actions comment-actions">
+            <div class="comment-score js-comment-score js-comment-edit-hide">
+            </div>
+        </div>
+        <div class="comment-text  js-comment-text-and-form">
+            <div class="comment-body js-comment-edit-hide">
+                
+                <span class="comment-copy">Entiendola lógica y me gustaría ahorrar un poco de líneas. Si yo envío todo el formulario de esta manera dentro dej ajax en la sección data: $('#formTerminarPerfil').serialize(), ¿Puedo obtener el mismo resultado?</span>
+                
+                <div class="d-inline-flex ai-center">
+–&nbsp;<a href="https://es.stackoverflow.com/users/9974/neftali-acosta" title="762 reputación" class="comment-user">Neftali Acosta</a>
+                </div>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://es.stackoverflow.com/questions/151707/como-usar-serialize-en-un-formulario-con-input-de-tipo-file#comment672481_152029" aria-label="Link to comment"><span title="2020-07-19 23:45:51Z, Licencia: CC BY-SA 4.0" class="relativetime-clean">el 19 jul. 2020 a las 23:45</span></a></span>
+            </div>
+        </div>
+    </li>
+
+            </ul>
+	    </div>
+
+        <div id="comments-link-152029" data-rep="50" data-anon="true">
+                    <a class="js-add-link comments-link disabled-link" title="Utiliza los comentarios para pedir una aclaración o para añadir más información.  Evita los comentarios como “+1” o “gracias”. Utiliza @nombre para responder a otras personas que hayan comentado, si quieres que sean notificadas." href="https://es.stackoverflow.com/questions/151707/como-usar-serialize-en-un-formulario-con-input-de-tipo-file#" role="button">Añade un comentario</a>
+                <span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expandir para mostrar todos los comentarios de esta publicación" href="https://es.stackoverflow.com/questions/151707/como-usar-serialize-en-un-formulario-con-input-de-tipo-file#" onclick="" role="button"></a>
+        </div>         
+    </div>
+    </div>
+</div>
+
+                                        
+<a name="559429"></a>
+<div id="answer-559429" class="answer js-answer" data-answerid="559429" data-parentid="151707" data-score="1" data-position-on-page="3" data-highest-scored="1" data-question-has-accepted-highest-score="1" itemprop="suggestedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+    <div class="post-layout">
+        <div class="votecell post-layout--left">
+            <div class="js-voting-container d-flex jc-center fd-column ai-stretch gs4 fc-black-200" data-post-id="559429">
+        <button class="js-vote-up-btn flex--item s-btn s-btn__unset c-pointer " data-controller="s-tooltip" data-s-tooltip-placement="right" aria-pressed="false" aria-label="Up vote" data-selected-classes="fc-theme-primary" data-unselected-classes="" aria-describedby="--stacks-s-tooltip-x85amt29">
+            <svg aria-hidden="true" class="svg-icon iconArrowUpLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 25h32L18 9 2 25Z"></path></svg>
+        </button><div id="--stacks-s-tooltip-x85amt29" class="s-popover s-popover__tooltip" role="tooltip">Esta respuesta es útil<div class="s-popover--arrow"></div></div>
+        <div class="js-vote-count flex--item d-flex fd-column ai-center fc-black-500 fs-title" itemprop="upvoteCount" data-value="1">
+            1
+        </div>
+        <button class="js-vote-down-btn flex--item s-btn s-btn__unset c-pointer " data-controller="s-tooltip" data-s-tooltip-placement="right" aria-pressed="false" aria-label="Down vote" data-selected-classes="fc-theme-primary" data-unselected-classes="" aria-describedby="--stacks-s-tooltip-spa02yzm">
+            <svg aria-hidden="true" class="svg-icon iconArrowDownLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 11h32L18 27 2 11Z"></path></svg>
+        </button><div id="--stacks-s-tooltip-spa02yzm" class="s-popover s-popover__tooltip" role="tooltip">Esta respuesta no es útil<div class="s-popover--arrow"></div></div>
+
+
+        
+<button class="js-saves-btn s-btn s-btn__unset c-pointer py4" type="button" id="saves-btn-559429" data-controller="s-tooltip" data-s-tooltip-placement="right" data-s-popover-placement="" aria-pressed="false" data-post-id="559429" data-post-type-id="2" data-user-privilege-for-post-click="0" aria-controls="" data-s-popover-auto-show="false" aria-describedby="--stacks-s-tooltip-7ru1gk6y">
+    <svg aria-hidden="true" class="fc-theme-primary-500 js-saves-btn-selected d-none svg-icon iconBookmark" width="18" height="18" viewBox="0 0 18 18"><path d="M3 17V3c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v14l-6-4-6 4Z"></path></svg>
+    <svg aria-hidden="true" class="js-saves-btn-unselected svg-icon iconBookmarkAlt" width="18" height="18" viewBox="0 0 18 18"><path d="m9 10.6 4 2.66V3H5v10.26l4-2.66ZM3 17V3c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v14l-6-4-6 4Z"></path></svg>
+</button><div id="--stacks-s-tooltip-7ru1gk6y" class="s-popover s-popover__tooltip" role="tooltip">Guarda esta respuesta.<div class="s-popover--arrow"></div></div>
+
+
+
+
+
+
+
+            <div class="js-accepted-answer-indicator flex--item fc-green-700 py6 mtn8 d-none" data-s-tooltip-placement="right" title="Loading when this answer was accepted…" tabindex="0" role="note" aria-label="Aceptado">
+                <div class="ta-center">
+                    <svg aria-hidden="true" class="svg-icon iconCheckmarkLg" width="36" height="36" viewBox="0 0 36 36"><path d="m6 14 8 8L30 6v8L14 30l-8-8v-8Z"></path></svg>
+                </div>
+            </div>
+
+    
+        <a class="js-post-issue flex--item s-btn s-btn__unset c-pointer py6 mx-auto" href="https://es.stackoverflow.com/posts/559429/timeline" data-shortcut="T" data-ks-title="línea de tiempo" data-controller="s-tooltip" data-s-tooltip-placement="right" aria-label="Línea de tiempo" aria-describedby="--stacks-s-tooltip-34msf9zu"><svg aria-hidden="true" class="mln2 mr0 svg-icon iconHistory" width="19" height="18" viewBox="0 0 19 18"><path d="M3 9a8 8 0 1 1 3.73 6.77L8.2 14.3A6 6 0 1 0 5 9l3.01-.01-4 4-4-4h3L3 9Zm7-4h1.01L11 9.36l3.22 2.1-.6.93L10 10V5Z"></path></svg></a><div id="--stacks-s-tooltip-34msf9zu" class="s-popover s-popover__tooltip" role="tooltip">Mostrar actividad de esta publicación.<div class="s-popover--arrow"></div></div>
+
+</div>
+
+        </div>
+
+        
+
+<div class="answercell post-layout--right">
+    
+    <div class="s-prose js-post-body" itemprop="text">
+<p>en lugar de serialize se usa FomData de la siguiente forma:</p>
+<p>let data = new FormData($('#formImagen')[0]);</p>
+<p>donde #formImagen es el id del formulario que recibe el archivo</p>
+<p>adjunto código que me ayudo a resolver el problema</p>
+<pre class="lang-php s-code-block"><code class="hljs language-php">  $(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">var</span> url = $(<span class="hljs-string">"#formImagen"</span>).<span class="hljs-title function_ invoke__">attr</span>(<span class="hljs-string">"action"</span>); <span class="hljs-comment">//obtener url del action del form</span>
+
+    $(<span class="hljs-string">"#formImagen"</span>).<span class="hljs-title function_ invoke__">submit</span>(function(e) { <span class="hljs-comment">//si se presiono el botón del formulario</span>
+      e.<span class="hljs-title function_ invoke__">preventDefault</span>();
+
+      <span class="hljs-keyword">var</span> input = document.<span class="hljs-title function_ invoke__">getElementById</span>(<span class="hljs-string">"archivo_imagen"</span>).value; <span class="hljs-comment">//obtener valor de input</span>
+
+      <span class="hljs-keyword">if</span> (input != <span class="hljs-string">""</span>) {
+        <span class="hljs-keyword">if</span> ( input.<span class="hljs-title function_ invoke__">endsWith</span>(<span class="hljs-string">".jpg"</span>) || input.<span class="hljs-title function_ invoke__">endsWith</span>(<span class="hljs-string">".png"</span>)) {
+
+          let data = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormData</span>($(<span class="hljs-string">'#formImagen'</span>)[<span class="hljs-number">0</span>]); <span class="hljs-comment">//obtener dato de formulario tipo archivo</span>
+          $.<span class="hljs-title function_ invoke__">ajax</span>({
+              <span class="hljs-attr">url</span>: url,
+              <span class="hljs-attr">method</span>: <span class="hljs-string">"POST"</span>,
+              <span class="hljs-attr">data</span>: data,
+              <span class="hljs-attr">contentType</span>: <span class="hljs-literal">false</span>, //para archivos
+              <span class="hljs-attr">processData</span>: <span class="hljs-literal">false</span> //para archivos
+            })
+            .<span class="hljs-title function_ invoke__">done</span>(function(r, textStatus, xhr) { <span class="hljs-comment">//si se logro ejecutar</span>
+              <span class="hljs-keyword">if</span> (xhr.status == <span class="hljs-number">200</span>) {
+                location.<span class="hljs-title function_ invoke__">reload</span>(<span class="hljs-literal">true</span>); <span class="hljs-comment">//recargar la pagina</span>
+              } <span class="hljs-keyword">else</span> {
+                <span class="hljs-title function_ invoke__">swal</span>(<span class="hljs-string">"error al enviar datos"</span>, <span class="hljs-string">""</span>, <span class="hljs-string">"error"</span>);
+              }
+            }).<span class="hljs-title function_ invoke__">fail</span>(function(error) {
+              <span class="hljs-title function_ invoke__">swal</span>(<span class="hljs-string">''</span>, error.response, <span class="hljs-string">'error'</span>);
+            });
+
+        } <span class="hljs-keyword">else</span> {
+          <span class="hljs-title function_ invoke__">swal</span>(<span class="hljs-string">"ERROR, Formato invalido"</span>, <span class="hljs-string">"el archivo debe tener extensión .jpg/.png"</span>, <span class="hljs-string">"error"</span>);
+        }
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-title function_ invoke__">swal</span>(<span class="hljs-string">"ERROR"</span>, <span class="hljs-string">"campos vacios"</span>, <span class="hljs-string">"error"</span>);
+      }
+    })
+  });
+</code></pre>
+    </div>
+    <div class="mt24">
+        <div class="d-flex fw-wrap ai-start jc-end gs8 gsy">
+            <time itemprop="dateCreated" datetime="2022-09-28T17:35:54"></time>
+            <div class="flex--item mr16" style="flex: 1 1 100px;">
+                
+
+
+<div class="js-post-menu pt2" data-post-id="559429" data-post-type-id="2">
+
+    <div class="d-flex gs8 s-anchors s-anchors__muted fw-wrap">
+
+        <div class="flex--item">
+            <a href="https://es.stackoverflow.com/a/559429" rel="nofollow" itemprop="url" class="js-share-link js-gps-track" title="Enlace corto permanente a esta respuesta" data-gps-track="post.click({ item: 2, priv: 0, post_type: 2 })" data-controller="se-share-sheet s-popover" data-se-share-sheet-title="Comparte un enlace a esta respuesta" data-se-share-sheet-subtitle="" data-se-share-sheet-post-type="answer" data-se-share-sheet-social="facebook twitter " data-se-share-sheet-location="2" data-se-share-sheet-license-url="https%3a%2f%2fcreativecommons.org%2flicenses%2fby-sa%2f4.0%2f" data-se-share-sheet-license-name="CC BY-SA 4.0" data-s-popover-placement="bottom-start" aria-controls="se-share-sheet-3" data-action=" s-popover#toggle se-share-sheet#preventNavigation s-popover:show-&gt;se-share-sheet#willShow s-popover:shown-&gt;se-share-sheet#didShow" aria-expanded="false">Compartir</a><div class="s-popover z-dropdown s-anchors s-anchors__default" style="width: unset; max-width: 28em;" id="se-share-sheet-3"><div class="s-popover--arrow"></div><div><label class="js-title fw-bold" for="share-sheet-input-se-share-sheet-3">Comparte un enlace a esta respuesta</label> <span class="js-subtitle"></span></div><div class="my8"><input type="text" id="share-sheet-input-se-share-sheet-3" class="js-input s-input wmn3 sm:wmn-initial bc-black-200 bg-white fc-dark" readonly=""></div><div class="d-flex jc-space-between ai-center mbn4"><button class="js-copy-link-btn s-btn s-btn__link js-gps-track" data-gps-track="">Copiar enlace</button><a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license" class="js-license s-block-link w-auto" target="_blank" title="La licencia actual para esta publicación: CC BY-SA 4.0">CC BY-SA 4.0</a><div class="js-social-container d-none"></div></div></div>
+        </div>
+
+
+                    <div class="flex--item">
+                        <a href="https://es.stackoverflow.com/posts/559429/edit" class="js-suggest-edit-post js-gps-track" data-gps-track="post.click({ item: 6, priv: 0, post_type: 2 })" title="">Mejora esta respuesta</a>
+                    </div>
+
+            <div class="flex--item">
+                <button type="button" id="btnFollowPost-559429" class="s-btn s-btn__link js-follow-post js-follow-answer js-gps-track" data-gps-track="post.click({ item: 14, priv: 0, post_type: 2 })" data-controller="s-tooltip " data-s-tooltip-placement="bottom" data-s-popover-placement="bottom" aria-controls="" aria-describedby="--stacks-s-tooltip-4s2z4zj7">
+                    Seguir
+                </button><div id="--stacks-s-tooltip-4s2z4zj7" class="s-popover s-popover__tooltip" role="tooltip">Sigue esta respuesta para recibir notificaciones<div class="s-popover--arrow"></div></div>
+            </div>
+
+
+
+
+
+
+    </div>
+    <div class="js-menu-popup-container"></div>
+</div>
+            </div>
+            <div class="post-signature flex--item fl0">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="https://es.stackoverflow.com/posts/559429/revisions" title="mostrar todas las ediciones realizadas a esta publicación" class="js-gps-track" data-gps-track="post.click({ item: 4, priv: 0, post_type: 2 })">editada <span title="2022-09-28 17:44:43Z" class="relativetime">el 28 sep. 2022 a las 17:44</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>
+            </div>
+
+
+            <div class="post-signature flex--item fl0">
+                <div class="user-info ">
+    <div class="user-action-time">
+        respondida <span title="2022-09-28 17:35:54Z" class="relativetime">el 28 sep. 2022 a las 17:35</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://es.stackoverflow.com/users/305193/jafet-daniel"><div class="gravatar-wrapper-32"><img src="./php - ¿Como usar serialize en un formulario con input de tipo File_ - Stack Overflow en español_files/ed050d258e31027bdbb4fd3dff6a50e8" alt="jafet daniel&#39;s user avatar" width="32" height="32" class="bar-sm"></div></a>
+    </div>
+    <div class="user-details" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <a href="https://es.stackoverflow.com/users/305193/jafet-daniel">jafet daniel</a><span class="d-none" itemprop="name">jafet daniel</span>
+        <div class="-flair">
+            <span class="reputation-score" title="puntuación de reputación de " dir="ltr">11</span><span title="2 medallas de bronce" aria-hidden="true"><span class="badge3"></span><span class="badgecount">2</span></span><span class="v-visible-sr">2 medallas de bronce</span>
+        </div>
+    </div>
+</div>
+
+
+            </div>
+        </div>
+        
+    
+    </div>
+    
+</div>
+
+
+
+
+            <span class="d-none" itemprop="commentCount"></span> 
+    <div class="post-layout--right js-post-comments-component">
+        <div id="comments-559429" class="comments js-comments-container bt bc-black-075 mt12  dno" data-post-id="559429" data-min-length="15">
+            <ul class="comments-list js-comments-list" data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+            </ul>
+	    </div>
+
+        <div id="comments-link-559429" data-rep="50" data-anon="true">
+                    <a class="js-add-link comments-link disabled-link" title="Utiliza los comentarios para pedir una aclaración o para añadir más información.  Evita los comentarios como “+1” o “gracias”. Utiliza @nombre para responder a otras personas que hayan comentado, si quieres que sean notificadas." href="https://es.stackoverflow.com/questions/151707/como-usar-serialize-en-un-formulario-con-input-de-tipo-file#" role="button">Añade un comentario</a>
+                <span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expandir para mostrar todos los comentarios de esta publicación" href="https://es.stackoverflow.com/questions/151707/como-usar-serialize-en-un-formulario-con-input-de-tipo-file#" onclick="" role="button"></a>
+        </div>         
+    </div>
+    </div>
+</div>
+
+
+                        <a name="new-answer"></a>
+                            <form id="post-form" action="https://es.stackoverflow.com/questions/151707/answer/submit" method="post" class="js-add-answer-component post-form">
+                                <input type="hidden" id="post-id" value="151707">
+                                <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false">
+                                <input type="hidden" name="referrer" value="https://www.google.com/">
+                                <h2 class="space" id="your-answer-header">
+                                    Tu Respuesta
+                                </h2>
+                                    
+
+    <script>
+        StackExchange.ifUsing("editor", function () {
+            StackExchange.using("externalEditor", function () {
+                StackExchange.using("snippets", function () {
+                    StackExchange.snippets.init();
+                });
+            });
+        }, "code-snippets");
+    </script>
+
+
+<script>
+    StackExchange.ready(function() {
+        var channelOptions = {
+            tags: "".split(" "),
+            id: "637"
+        };
+        initTagRenderer("".split(" "), "".split(" "), channelOptions);
+
+        StackExchange.using("externalEditor", function() {
+            // Have to fire editor after snippets, if snippets enabled
+            if (StackExchange.settings.snippets.snippetsEnabled) {
+                StackExchange.using("snippets", function() {
+                    createEditor();
+                });
+            }
+            else {
+                createEditor();
+            }
+        });
+
+        function createEditor() {
+            StackExchange.prepareEditor({
+                useStacksEditor: false,
+                heartbeatType: 'answer',
+                autoActivateHeartbeat: false,
+                convertImagesToLinks: false,
+                noModals: true,
+                showLowRepImageUploadWarning: true,
+                reputationToPostImages: null,
+                bindNavPrevention: true,
+                postfix: "",
+                imageUploader: {
+                    brandingHtml: "Con tecnolog\u0026#237;a de \u003ca href=\"https://imgur.com/\"\u003e\u003csvg class=\"svg-icon\" width=\"50\" height=\"18\" viewBox=\"0 0 50 18\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"\u003e\u003ctitle\u003eImgur Logo\u003c/title\u003e\u003cpath d=\"M46.1709 9.17788C46.1709 8.26454 46.2665 7.94324 47.1084 7.58816C47.4091 7.46349 47.7169 7.36433 48.0099 7.26993C48.9099 6.97997 49.672 6.73443 49.672 5.93063C49.672 5.22043 48.9832 4.61182 48.1414 4.61182C47.4335 4.61182 46.7256 4.91628 46.0943 5.50789C45.7307 4.9328 45.2525 4.66231 44.6595 4.66231C43.6264 4.66231 43.1481 5.28821 43.1481 6.59048V11.9512C43.1481 13.2535 43.6264 13.8962 44.6595 13.8962C45.6924 13.8962 46.1709 13.2535 46.1709 11.9512V9.17788Z\"/\u003e\u003cpath d=\"M32.492 10.1419C32.492 12.6954 34.1182 14.0484 37.0451 14.0484C39.9723 14.0484 41.5985 12.6954 41.5985 10.1419V6.59049C41.5985 5.28821 41.1394 4.66232 40.1061 4.66232C39.0732 4.66232 38.5948 5.28821 38.5948 6.59049V9.60062C38.5948 10.8521 38.2696 11.5455 37.0451 11.5455C35.8209 11.5455 35.4954 10.8521 35.4954 9.60062V6.59049C35.4954 5.28821 35.0173 4.66232 34.0034 4.66232C32.9703 4.66232 32.492 5.28821 32.492 6.59049V10.1419Z\" /\u003e\u003cpath fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M25.6622 17.6335C27.8049 17.6335 29.3739 16.9402 30.2537 15.6379C30.8468 14.7755 30.9615 13.5579 30.9615 11.9512V6.59049C30.9615 5.28821 30.4833 4.66231 29.4502 4.66231C28.9913 4.66231 28.4555 4.94978 28.1109 5.50789C27.499 4.86533 26.7335 4.56087 25.7005 4.56087C23.1369 4.56087 21.0134 6.57349 21.0134 9.27932C21.0134 11.9852 23.003 13.913 25.3754 13.913C26.5612 13.913 27.4607 13.4902 28.1109 12.6616C28.1109 12.7229 28.1161 12.7799 28.121 12.8346C28.1256 12.8854 28.1301 12.9342 28.1301 12.983C28.1301 14.4373 27.2502 15.2321 25.777 15.2321C24.8349 15.2321 24.1352 14.9821 23.5661 14.7787C23.176 14.6393 22.8472 14.5218 22.5437 14.5218C21.7977 14.5218 21.2429 15.0123 21.2429 15.6887C21.2429 16.7375 22.9072 17.6335 25.6622 17.6335ZM24.1317 9.27932C24.1317 7.94324 24.9928 7.09766 26.1024 7.09766C27.2119 7.09766 28.0918 7.94324 28.0918 9.27932C28.0918 10.6321 27.2311 11.5116 26.1024 11.5116C24.9737 11.5116 24.1317 10.6491 24.1317 9.27932Z\"/\u003e\u003cpath d=\"M16.8045 11.9512C16.8045 13.2535 17.2637 13.8962 18.2965 13.8962C19.3298 13.8962 19.8079 13.2535 19.8079 11.9512V8.12928C19.8079 5.82936 18.4879 4.62866 16.4027 4.62866C15.1594 4.62866 14.279 4.98375 13.3609 5.88013C12.653 5.05154 11.6581 4.62866 10.3573 4.62866C9.34336 4.62866 8.57809 4.89931 7.9466 5.5079C7.58314 4.9328 7.10506 4.66232 6.51203 4.66232C5.47873 4.66232 5.00066 5.28821 5.00066 6.59049V11.9512C5.00066 13.2535 5.47873 13.8962 6.51203 13.8962C7.54479 13.8962 8.0232 13.2535 8.0232 11.9512V8.90741C8.0232 7.58817 8.44431 6.91179 9.53458 6.91179C10.5104 6.91179 10.893 7.58817 10.893 8.94108V11.9512C10.893 13.2535 11.3711 13.8962 12.4044 13.8962C13.4375 13.8962 13.9157 13.2535 13.9157 11.9512V8.90741C13.9157 7.58817 14.3365 6.91179 15.4269 6.91179C16.4027 6.91179 16.8045 7.58817 16.8045 8.94108V11.9512Z\"/\u003e\u003cpath d=\"M3.31675 6.59049C3.31675 5.28821 2.83866 4.66232 1.82471 4.66232C0.791758 4.66232 0.313354 5.28821 0.313354 6.59049V11.9512C0.313354 13.2535 0.791758 13.8962 1.82471 13.8962C2.85798 13.8962 3.31675 13.2535 3.31675 11.9512V6.59049Z\" /\u003e\u003cpath d=\"M1.87209 0.400291C0.843612 0.400291 0 1.1159 0 1.98861C0 2.87869 0.822846 3.57676 1.87209 3.57676C2.90056 3.57676 3.7234 2.87869 3.7234 1.98861C3.7234 1.1159 2.90056 0.400291 1.87209 0.400291Z\" fill=\"#1BB76E\"/\u003e\u003c/svg\u003e\u003c/a\u003e",
+                    contentPolicyHtml: "Contribuciones de los usuarios licenciadas bajo \u003ca href=\"https://stackoverflow.com/help/licensing\"\u003eCC BY-SA\u003c/a\u003e \u003ca href=\"https://stackoverflow.com/legal/content-policy\"\u003e(pol\u0026#237;tica de contenido)\u003c/a\u003e",
+                    allowUrls: true
+                },
+                onDemand: true,
+                discardSelector: ".discard-answer",
+                enableTables: true,
+                isStacksEditorPreviewEnabled: false
+                ,immediatelyShowMarkdownHelp:true,enableTables:true,enableSnippets:true
+            });
+                    }
+    });
+</script>
+<div id="post-editor" class="post-editor js-post-editor">
+
+
+        <div class="ps-relative">
+            <div class="wmd-container mb8">
+                <div id="wmd-button-bar" class="wmd-button-bar btr-sm"><ul id="wmd-button-row" class="wmd-button-row"><li id="wmd-bold-button" class="wmd-button" style="left: 0px;"><span style="background-position: 0px -20px;"></span></li><li id="wmd-italic-button" class="wmd-button" style="left: 25px;"><span style="background-position: -20px -20px;"></span></li><li id="wmd-spacer1" class="wmd-spacer" style="left: 50px;"><span style="background-position: -40px -20px;"></span></li><li id="wmd-link-button" class="wmd-button" style="left: 75px;"><span style="background-position: -40px -20px;"></span></li><li id="wmd-quote-button" class="wmd-button" style="left: 100px;"><span style="background-position: -60px -20px;"></span></li><li id="wmd-code-button" class="wmd-button" style="left: 125px;"><span style="background-position: -80px -20px;"></span></li><li id="wmd-image-button" class="wmd-button" style="left: 150px;"><span style="background-position: -100px -20px;"></span></li><li id="wmd-spacer2" class="wmd-spacer" style="left: 175px;"><span style="background-position: -120px -20px;"></span></li><li id="wmd-olist-button" class="wmd-button" style="left: 200px;"><span style="background-position: -120px -20px;"></span></li><li id="wmd-ulist-button" class="wmd-button" style="left: 225px;"><span style="background-position: -140px -20px;"></span></li><li id="wmd-heading-button" class="wmd-button" style="left: 250px;"><span style="background-position: -160px -20px;"></span></li><li id="wmd-hr-button" class="wmd-button" style="left: 275px;"><span style="background-position: -180px -20px;"></span></li><li id="wmd-spacer3" class="wmd-spacer" style="left: 300px;"><span style="background-position: -200px -20px;"></span></li><li id="wmd-undo-button" class="wmd-button" style="left: 325px;"><span style="background-position: -200px -20px;"></span></li><li id="wmd-redo-button" class="wmd-button" style="left: 350px;"><span style="background-position: -220px -20px;"></span></li><li class="wmd-spacer wmd-spacer-max"></li></ul></div>
+                <div class="js-stacks-validation">
+                    <div class="ps-relative">
+                        <textarea id="wmd-input" name="post-text" class="wmd-input s-input bar0 js-post-body-field" data-editor-type="wmd" data-post-type-id="2" cols="92" rows="15" aria-labelledby="your-answer-header" tabindex="101" data-min-length=""></textarea>
+                    </div>
+                    <div class="s-input-message mt4 d-none js-stacks-validation-message"></div>
+                </div>
+            </div>
+        </div>
+
+    <aside class="d-flex ai-start jc-space-between js-answer-help s-notice s-notice__warning pb0 pr4 pt4 mb8 d-none" role="status" aria-hidden="true">
+    <div class="flex--item pt8">
+        <p>¡Gracias por contribuir en StackOverflow en español con una respuesta!</p>
+<ul><li>Por favor, asegúrate de  <em>responder a la pregunta</em>. ¡Proporciona información y comparte tu investigación!</li></ul>
+<p>Pero <em>evita</em>…</p>
+<ul><li>Pedir ayuda o aclaraciones, o responder a otras respuestas.</li>
+<li>Hacer declaraciones basadas en opiniones; asegúrate de respaldarlas con referencias o con tu propia experiencia personal.</li></ul>
+<p>Para obtener más información, consulta nuestros <a href="https://es.stackoverflow.com/help/how-to-answer">consejos sobre cómo escribir grandes respuestas</a>.</p>
+    </div>
+    <button class="flex--item js-answer-help-close-btn s-btn s-btn__muted fc-dark">
+        <svg aria-hidden="true" class="svg-icon iconClear" width="18" height="18" viewBox="0 0 18 18"><path d="M15 4.41 13.59 3 9 7.59 4.41 3 3 4.41 7.59 9 3 13.59 4.41 15 9 10.41 13.59 15 15 13.59 10.41 9 15 4.41Z"></path></svg>
+    </button>
+</aside>
+
+
+
+    <div>
+        <div id="draft-saved" class="fc-success h24" style="display:none;">Borrador guardado</div>
+        <div id="draft-discarded" class="fc-error h24" style="display:none;">Borrador descartado</div>
+    </div>
+
+
+            <div id="wmd-preview" class="s-prose mb16 wmd-preview js-wmd-preview"></div>
+            <div></div>
+
+        <div class="edit-block">
+            <input id="fkey" name="fkey" type="hidden" value="6385016bf3d7f3216daa4953c130a3dd94adc9453ec4969cb8a0b1fed585ce85">
+            <input id="author" name="author" type="text">
+        </div>
+
+</div>
+
+
+                                <div class="ps-relative">
+                                                <div class="form-item new-post-login p0 my16">
+                <div class="d-flex gs16 md:fd-column new-login-form">
+                    <div class="d-flex fd-column w50 md:w-auto gsy gs8 jc-space-between new-login-left">
+                        <h3 class="flex--item fs-title">Registrarse o <a id="login-link" href="https://es.stackoverflow.com/users/login?ssrc=question_page&amp;returnurl=https%3a%2f%2fes.stackoverflow.com%2fquestions%2f151707%2fcomo-usar-serialize-en-un-formulario-con-input-de-tipo-file%23new-answer">iniciar sesión</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="flex--item s-btn s-btn__muted s-btn__outlined s-btn__icon google-login" data-ga="[&quot;sign up&quot;,&quot;Sign Up Started - Google&quot;,&quot;New Post&quot;,null,null]">
+                            <svg aria-hidden="true" class="native svg-icon iconGoogle" width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M16.51 8H8.98v3h4.3c-.18 1-.74 1.48-1.6 2.04v2.01h2.6a7.8 7.8 0 0 0 2.38-5.88c0-.57-.05-.66-.15-1.18Z"></path><path fill="#34A853" d="M8.98 17c2.16 0 3.97-.72 5.3-1.94l-2.6-2a4.8 4.8 0 0 1-7.18-2.54H1.83v2.07A8 8 0 0 0 8.98 17Z"></path><path fill="#FBBC05" d="M4.5 10.52a4.8 4.8 0 0 1 0-3.04V5.41H1.83a8 8 0 0 0 0 7.18l2.67-2.07Z"></path><path fill="#EA4335" d="M8.98 4.18c1.17 0 2.23.4 3.06 1.2l2.3-2.3A8 8 0 0 0 1.83 5.4L4.5 7.49a4.77 4.77 0 0 1 4.48-3.3Z"></path></svg> Regístrate mediante Google
+                        </div>
+                        <div class="flex--item s-btn s-btn__muted s-btn__icon facebook-login" data-ga="[&quot;sign up&quot;,&quot;Sign Up Started - Facebook&quot;,&quot;New Post&quot;,null,null]">
+                            <svg aria-hidden="true" class="svg-icon iconFacebook" width="18" height="18" viewBox="0 0 18 18"><path fill="#4167B2" d="M3 1a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H3Zm6.55 16v-6.2H7.46V8.4h2.09V6.61c0-2.07 1.26-3.2 3.1-3.2.88 0 1.64.07 1.87.1v2.16h-1.29c-1 0-1.19.48-1.19 1.18V8.4h2.39l-.31 2.42h-2.08V17h-2.5Z"></path></svg> Regístrate mediante Facebook
+                        </div>
+                        <div class="flex--item s-btn s-btn__muted s-btn__outlined s-btn__icon stackexchange-login" data-ga="[&quot;sign up&quot;,&quot;Sign Up Navigation&quot;,&quot;New Post&quot;,null,null]">
+                            <svg aria-hidden="true" class="native svg-icon iconLogoGlyphXSm" width="18" height="18" viewBox="0 0 18 18"><path d="M14 16v-5h2v7H2v-7h2v5h10Z" fill="#BCBBBB"></path><path d="m12.09.72-1.21.9 4.5 6.07 1.22-.9L12.09.71ZM5 15h8v-2H5v2Zm9.15-5.87L8.35 4.3l.96-1.16 5.8 4.83-.96 1.16Zm-7.7-1.47 6.85 3.19.63-1.37-6.85-3.2-.63 1.38Zm6.53 5L5.4 11.39l.38-1.67 7.42 1.48-.22 1.46Z" fill="#F48024"></path></svg> Regístrate con email y contraseña
+                        </div>
+                    </div>
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false">
+                    <input type="hidden" name="use-google" class="use-google" value="false">
+                    <button type="button" class="d-none js-submit-openid">Submit</button>
+                    <div class="d-flex gsy gs8 fd-column w50 md:w-auto new-login-right form-item p0">
+                                <h3 class="flex--item fs-title">Publicar como invitado</h3>
+            <div class="flex--item">
+                <div class="d-flex gs4 gsy fd-column">
+                    <label class="s-label" for="display-name">Nombre</label>
+                    <div class="d-flex ps-relative">
+                        <input class="s-input" id="display-name" name="display-name" maxlength="30" type="text" value="" tabindex="105" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <div class="flex--item">
+                <div class="d-flex gs4 gsy fd-column">
+                    <div class="flex--item">
+                        <div class="d-flex gs2 gsy fd-column">
+                            <label class="flex--item s-label" for="m-address">Correo electrónico</label>
+                            <p class="flex--item s-description">Requerido, nunca se muestra</p>
+                        </div>
+                    </div>
+                    <div class="d-flex ps-relative">
+                        <input class="s-input js-post-email-field" id="m-address" name="m-address" type="text" value="" size="40" tabindex="106" placeholder="">
+                    </div>
+                </div>
+            </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', 'https%3a%2f%2fes.stackoverflow.com%2fquestions%2f151707%2fcomo-usar-serialize-en-un-formulario-con-input-de-tipo-file%23new-answer', 'question_page');
+                    }
+                );
+            </script>
+            <noscript>
+                        <h3 class="flex--item fs-title">Publicar como invitado</h3>
+            <div class="flex--item">
+                <div class="d-flex gs4 gsy fd-column">
+                    <label class="s-label" for="display-name">Nombre</label>
+                    <div class="d-flex ps-relative">
+                        <input class="s-input" id="display-name" name="display-name" maxlength="30" type="text" value="" tabindex="105" placeholder="" />
+                    </div>
+                </div>
+            </div>
+            <div class="flex--item">
+                <div class="d-flex gs4 gsy fd-column">
+                    <div class="flex--item">
+                        <div class="d-flex gs2 gsy fd-column">
+                            <label class="flex--item s-label" for="m-address">Correo electr&#xF3;nico</label>
+                            <p class="flex--item s-description">Requerido, nunca se muestra</p>
+                        </div>
+                    </div>
+                    <div class="d-flex ps-relative">
+                        <input class="s-input js-post-email-field" id="m-address" name="m-address" type="text" value="" size="40" tabindex="106" placeholder="" />
+                    </div>
+                </div>
+            </div>
+
+            </noscript>
+
+                                </div>
+
+                                    <div class="form-submit clear-both d-flex gsx gs4">
+                                        <button id="submit-button" class="flex--item s-btn s-btn__primary s-btn__icon" type="submit" tabindex="120" autocomplete="off">
+                                            Publica tu respuesta
+                                        </button>
+                                        <button class="flex--item s-btn s-btn__danger discard-answer dno">
+                                            Descartar
+                                        </button>
+                                            <p class="privacy-policy-agreement">
+                                                Al pulsar en “Publica tu respuesta”, muestras tu consentimiento a nuestros <a href="https://stackoverflow.com/legal/terms-of-service/public" name="tos" target="_blank" class="-link">términos de servicio</a>, <a href="https://stackoverflow.com/legal/privacy-policy" name="privacy" target="_blank" class="-link">política de privacidad</a> y <a href="https://stackoverflow.com/legal/cookie-policy" name="cookie" target="_blank" class="-link">política de cookies</a><input type="hidden" name="legalLinksShown" value="1">
+                                            </p>
+                                    </div>
+                                    <div class="js-general-error general-error clear-both d-none" aria-live="polite"></div>
+                            </form>
+
+
+                            <h2 class="bottom-notice" data-loc="1">
+                                <div>
+¿No es la respuesta que buscas? Examina otras preguntas con la etiqueta <ul class="ml0 list-ls-none js-post-tag-list-wrapper d-inline"><li class="d-inline mr4 js-post-tag-list-item"><a href="https://es.stackoverflow.com/questions/tagged/php" class="post-tag" title="mostrar preguntas con la etiqueta &quot;php&quot;" aria-label="mostrar preguntas con la etiqueta &quot;php&quot;" rel="tag" aria-labelledby="tag-php-tooltip-container">php</a></li><li class="d-inline mr4 js-post-tag-list-item"><a href="https://es.stackoverflow.com/questions/tagged/javascript" class="post-tag" title="mostrar preguntas con la etiqueta &quot;javascript&quot;" aria-label="mostrar preguntas con la etiqueta &quot;javascript&quot;" rel="tag" aria-labelledby="tag-javascript-tooltip-container">javascript</a></li><li class="d-inline mr4 js-post-tag-list-item"><a href="https://es.stackoverflow.com/questions/tagged/jquery" class="post-tag" title="mostrar preguntas con la etiqueta &quot;jquery&quot;" aria-label="mostrar preguntas con la etiqueta &quot;jquery&quot;" rel="tag" aria-labelledby="tag-jquery-tooltip-container">jquery</a></li><li class="d-inline mr4 js-post-tag-list-item"><a href="https://es.stackoverflow.com/questions/tagged/ajax" class="post-tag" title="mostrar preguntas con la etiqueta &quot;ajax&quot;" aria-label="mostrar preguntas con la etiqueta &quot;ajax&quot;" rel="tag" aria-labelledby="tag-ajax-tooltip-container">ajax</a></li></ul> o <a href="https://es.stackoverflow.com/questions/ask">formula tu propia pregunta</a>.                                </div>
+                            </h2>
+                </div>
+            </div>
+
+            
+<div id="sidebar" class="show-votes" role="complementary" aria-label="barra lateral">
+        
+
+    
+    <div class="s-sidebarwidget s-sidebarwidget__yellow s-anchors s-anchors__grayscale mb16" data-tracker="cb=1">
+        <ul class="d-block p0 m0">
+                        <li class="s-sidebarwidget--header s-sidebarwidget__small-bold-text d-flex fc-black-600 d:fc-black-900 bb bbw1">
+                            Destacado en Meta
+                        </li>
+        <li class="s-sidebarwidget--item d-flex px16">
+            <div class="flex--item1 fl-shrink0">
+<div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>            </div>
+            <div class="flex--item wmn0 ow-break-word">
+                <a href="https://meta.stackexchange.com/questions/386727/weve-added-a-necessary-cookies-only-option-to-the-cookie-consent-popup?cb=1" class="js-gps-track" data-ga="[&quot;community bulletin board&quot;,&quot;Destacado en Meta&quot;,&quot;https://meta.stackexchange.com/questions/386727/weve-added-a-necessary-cookies-only-option-to-the-cookie-consent-popup&quot;,null,null]" data-gps-track="communitybulletin.click({ priority: 3, position: 0 })">We've added a "Necessary cookies only" option to the cookie consent popup</a>
+            </div>
+        </li>
+        </ul>
+    </div>
+
+
+<div class="js-zone-container zone-container-sidebar">
+    <div id="dfp-tsb" class="everyonelovesstackoverflow everyoneloves__top-sidebar" data-dfp-zone="true" style="min-height: auto; height: auto; display: none;" data-google-query-id="CMaQs4XN8v0CFQfXhwodFRkJkw"><div id="google_ads_iframe_/248424177/es.stackoverflow.com/sb/question-pages_0__container__" style="border: 0pt none; width: 300px; height: 0px;"></div></div>
+		<div class="js-report-ad-button-container " style="width: 300px"></div>
+</div>
+        
+
+    
+
+        <div class="module sidebar-related">
+            <h4 id="h-related">Relacionados</h4>
+            <div class="related js-gps-related-questions" data-tracker="rq=1">
+                    <div class="spacer js-gps-track">
+                        <a href="https://es.stackoverflow.com/q/52232?rq=1" title="Puntuación de la pregunta (votos a favor - votos en contra)">
+                            <div class="answer-votes default">0</div>
+                        </a>
+                        <a href="https://es.stackoverflow.com/questions/52232/problema-con-control-de-tipo-datetime-local-de-html5-me-devuelve-la-hora-adelant?rq=1" class="question-hyperlink">Problema con control de tipo DATETIME-LOCAL de HTML5 me devuelve la hora adelantada</a>
+                    </div>
+                    <div class="spacer js-gps-track">
+                        <a href="https://es.stackoverflow.com/q/53145?rq=1" title="Puntuación de la pregunta (votos a favor - votos en contra)">
+                            <div class="answer-votes answered-accepted default">1</div>
+                        </a>
+                        <a href="https://es.stackoverflow.com/questions/53145/como-resetear-un-input-tipo-file?rq=1" class="question-hyperlink">¿Como resetear un input tipo file?</a>
+                    </div>
+                    <div class="spacer js-gps-track">
+                        <a href="https://es.stackoverflow.com/q/204835?rq=1" title="Puntuación de la pregunta (votos a favor - votos en contra)">
+                            <div class="answer-votes default">2</div>
+                        </a>
+                        <a href="https://es.stackoverflow.com/questions/204835/ocultar-mostrar-campo-kartik-select2?rq=1" class="question-hyperlink">Ocultar/Mostrar campo Kartik Select2</a>
+                    </div>
+                    <div class="spacer js-gps-track">
+                        <a href="https://es.stackoverflow.com/q/308688?rq=1" title="Puntuación de la pregunta (votos a favor - votos en contra)">
+                            <div class="answer-votes answered-accepted default">0</div>
+                        </a>
+                        <a href="https://es.stackoverflow.com/questions/308688/serialize-01-input-y-01-select-con-jquery?rq=1" class="question-hyperlink">serialize() 01 input y 01 select con JQUERY</a>
+                    </div>
+                    <div class="spacer js-gps-track">
+                        <a href="https://es.stackoverflow.com/q/352838?rq=1" title="Puntuación de la pregunta (votos a favor - votos en contra)">
+                            <div class="answer-votes default">0</div>
+                        </a>
+                        <a href="https://es.stackoverflow.com/questions/352838/input-type-radio-problemas-con-id-php-y-jvscript?rq=1" class="question-hyperlink">INPUT TYPE RADIO PROBLEMAS CON ID PHP Y JVSCRIPT</a>
+                    </div>
+                    <div class="spacer js-gps-track">
+                        <a href="https://es.stackoverflow.com/q/515216?rq=1" title="Puntuación de la pregunta (votos a favor - votos en contra)">
+                            <div class="answer-votes default">1</div>
+                        </a>
+                        <a href="https://es.stackoverflow.com/questions/515216/formulario-para-editar-un-input-file-en-php?rq=1" class="question-hyperlink">formulario para editar un input file en php</a>
+                    </div>
+                    <div class="spacer js-gps-track">
+                        <a href="https://es.stackoverflow.com/q/516283?rq=1" title="Puntuación de la pregunta (votos a favor - votos en contra)">
+                            <div class="answer-votes default">0</div>
+                        </a>
+                        <a href="https://es.stackoverflow.com/questions/516283/validar-un-formulario-con-los-datos-en-serialize?rq=1" class="question-hyperlink">Validar un formulario con los datos en .serialize()</a>
+                    </div>
+            </div>
+        </div>
+
+
+
+
+
+    <div id="hot-network-questions" class="module tex2jax_ignore">
+    <h4>
+        <a href="https://stackexchange.com/questions?tab=hot" class="js-gps-track s-link s-link__inherit" data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Preguntas populares en la red
+        </a>
+    </h4>
+    <ul>
+            <li>
+                <div class="favicon favicon-datascience" title="Data Science Stack Exchange"></div><a href="https://datascience.stackexchange.com/questions/120426/how-can-i-ensure-anonymity-with-queries-to-small-datasets" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:557 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can I ensure anonymity with queries to small datasets?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-writing" title="Writing Stack Exchange"></div><a href="https://writing.stackexchange.com/questions/65909/is-it-possible-to-write-a-character-that-remains-mysterious-until-the-very-end-w" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:166 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it possible to write a character that remains mysterious until the very end without sacrificing character development?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="https://physics.stackexchange.com/questions/756204/do-black-holes-have-a-size" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Do black holes have a size?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-music" title="Music: Practice &amp; Theory Stack Exchange"></div><a href="https://music.stackexchange.com/questions/129033/is-there-a-way-to-rehearse-being-in-a-stressful-performance-situation" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:240 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is there a way to rehearse being in a stressful performance situation?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-politics" title="Politics Stack Exchange"></div><a href="https://politics.stackexchange.com/questions/78847/why-is-the-us-under-biden-so-strongly-supporting-ukraine-in-the-war" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:475 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why is the US under Biden so strongly supporting Ukraine in the war?
+                </a>
+
+            </li>
+            <li class="js-hidden" style="">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="https://security.stackexchange.com/questions/269265/established-tcp-connections-after-opening-browser-in-linux" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    ESTABLISHED TCP connections after opening browser in linux
+                </a>
+
+            </li>
+            <li class="js-hidden" style="">
+                <div class="favicon favicon-mathoverflow" title="MathOverflow"></div><a href="https://mathoverflow.net/questions/443231/subgroup-membership-problem-in-simple-groups" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:504 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Subgroup membership problem in simple groups
+                </a>
+
+            </li>
+            <li class="js-hidden" style="">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="https://rpg.stackexchange.com/questions/205316/how-can-a-dm-communicate-to-the-players-that-subtlety-is-needed-in-a-mystery-adv" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can a DM communicate to the players that subtlety is needed in a mystery adventure?
+                </a>
+
+            </li>
+            <li class="js-hidden" style="">
+                <div class="favicon favicon-bicycles" title="Bicycles Stack Exchange"></div><a href="https://bicycles.stackexchange.com/questions/88056/what-do-these-tire-markings-mean" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:126 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What do these tire markings mean?
+                </a>
+
+            </li>
+            <li class="js-hidden" style="">
+                <div class="favicon favicon-mathoverflow" title="MathOverflow"></div><a href="https://mathoverflow.net/questions/443303/top-integer-homology-of-compact-analytic-variety" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:504 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Top integer homology of compact analytic variety
+                </a>
+
+            </li>
+            <li class="js-hidden" style="">
+                <div class="favicon favicon-latin" title="Latin Language Stack Exchange"></div><a href="https://latin.stackexchange.com/questions/20660/can-latin-do-noun-noun-adjuncts" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:644 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can Latin do Noun-Noun Adjuncts?
+                </a>
+
+            </li>
+            <li class="js-hidden" style="">
+                <div class="favicon favicon-diy" title="Home Improvement Stack Exchange"></div><a href="https://diy.stackexchange.com/questions/269455/can-i-cover-my-breaker-panel-and-wires-with-a-frame" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:73 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can I cover my breaker panel and wires with a frame?
+                </a>
+
+            </li>
+            <li class="js-hidden" style="">
+                <div class="favicon favicon-ham" title="Amateur Radio Stack Exchange"></div><a href="https://ham.stackexchange.com/questions/21774/why-do-single-band-10-meter-radios-exist" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:520 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why do single band 10 meter radios exist?
+                </a>
+
+            </li>
+            <li class="js-hidden" style="">
+                <div class="favicon favicon-electronics" title="Electrical Engineering Stack Exchange"></div><a href="https://electronics.stackexchange.com/questions/659790/where-do-i-hook-up-a-speaker-in-this-schematic" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:135 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Where do I hook up a speaker in this schematic?
+                </a>
+
+            </li>
+            <li class="js-hidden" style="">
+                <div class="favicon favicon-stats" title="Cross Validated"></div><a href="https://stats.stackexchange.com/questions/610342/is-the-bayesian-approach-about-prior-beliefs-viewing-parameters-as-random-var" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:65 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is the "Bayesian approach" about prior beliefs, viewing parameters as random variables, or both?
+                </a>
+
+            </li>
+            <li class="js-hidden" style="">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="https://english.stackexchange.com/questions/605045/word-for-separating-a-group-of-similar-but-not-the-same-things-into-categories" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Word for "separating a group of similar-but-not-the-same things into categories"?
+                </a>
+
+            </li>
+            <li class="js-hidden" style="">
+                <div class="favicon favicon-travel" title="Travel Stack Exchange"></div><a href="https://travel.stackexchange.com/questions/180227/travel-by-sea-from-kochi-to-new-york" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:273 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Travel by sea from Kochi to New York
+                </a>
+
+            </li>
+            <li class="js-hidden" style="">
+                <div class="favicon favicon-bicycles" title="Bicycles Stack Exchange"></div><a href="https://bicycles.stackexchange.com/questions/88030/spokes-damaged-by-chain-should-they-be-replaced" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:126 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Spokes damaged by chain – should they be replaced?
+                </a>
+
+            </li>
+            <li class="js-hidden" style="">
+                <div class="favicon favicon-bricks" title="Bricks"></div><a href="https://bricks.stackexchange.com/questions/17814/compatibility-of-sports-ramps" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:336 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Compatibility of sports ramps
+                </a>
+
+            </li>
+            <li class="js-hidden" style="">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="https://worldbuilding.stackexchange.com/questions/244432/how-could-an-iron-planet-be-geologically-active" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How could an Iron Planet be geologically active?
+                </a>
+
+            </li>
+            <li class="js-hidden" style="">
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="https://ell.stackexchange.com/questions/334423/what-s-the-difference-between-errands-and-shopping" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What’s the difference between errands and shopping?
+                </a>
+
+            </li>
+            <li class="js-hidden" style="">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="https://worldbuilding.stackexchange.com/questions/244402/practicality-of-building-a-space-station-in-the-tail-of-a-comet" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Practicality of building a space station in the tail of a comet
+                </a>
+
+            </li>
+            <li class="js-hidden" style="">
+                <div class="favicon favicon-politics" title="Politics Stack Exchange"></div><a href="https://politics.stackexchange.com/questions/78858/depleted-uranium-shells-in-the-russian-nuclear-doctrine" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:475 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Depleted uranium shells in the Russian nuclear doctrine
+                </a>
+
+            </li>
+            <li class="js-hidden" style="">
+                <div class="favicon favicon-matheducators" title="Mathematics Educators Stack Exchange"></div><a href="https://matheducators.stackexchange.com/questions/26255/how-to-give-exercises-when-students-can-use-chatgpt" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:548 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to give exercises when students can use ChatGPT
+                </a>
+
+            </li>
+    </ul>
+
+        
+</div>
+
+                <div id="feed-link" class="js-feed-link">
+        <a href="https://es.stackoverflow.com/feeds/question/151707" title="Fuente de esta pregunta y sus respuestas">
+            <svg aria-hidden="true" class="fc-orange-400 svg-icon iconRss" width="18" height="18" viewBox="0 0 18 18"><path d="M3 1a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H3Zm0 1.5c6.9 0 12.5 5.6 12.5 12.5H13C13 9.55 8.45 5 3 5V2.5Zm0 5c4.08 0 7.5 3.41 7.5 7.5H8c0-2.72-2.28-5-5-5V7.5Zm0 5c1.36 0 2.5 1.14 2.5 2.5H3v-2.5Z"></path></svg>
+            Fuente de la pregunta
+        </a>
+    </div>
+    <aside class="s-modal js-feed-link-modal" tabindex="-1" role="dialog" aria-labelledby="feed-modal-title" aria-describedby="feed-modal-description" aria-hidden="true">
+        <div class="s-modal--dialog js-modal-dialog wmx4" role="document" data-controller="se-draggable">
+            <h1 class="s-modal--header fw-bold js-first-tabbable c-move" id="feed-modal-title" data-se-draggable-target="handle" tabindex="0">
+                Suscribirte al RSS
+            </h1>
+            <div class="d-flex gs4 gsy fd-column">
+                <div class="flex--item">
+                    <label class="d-block s-label c-default" for="feed-url">
+                        Fuente de la pregunta
+                        <p class="s-description mt2" id="feed-modal-description">Para suscribirte a esta fuente RSS, copia y pega esta URL en tu lector RSS.</p>
+                    </label>
+                </div>
+                <div class="d-flex ps-relative">
+                    <input class="s-input" type="text" name="feed-url" id="feed-url" readonly="readonly" value="https://es.stackoverflow.com/feeds/question/151707">
+                    <svg aria-hidden="true" class="s-input-icon fc-orange-400 svg-icon iconRss" width="18" height="18" viewBox="0 0 18 18"><path d="M3 1a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H3Zm0 1.5c6.9 0 12.5 5.6 12.5 12.5H13C13 9.55 8.45 5 3 5V2.5Zm0 5c4.08 0 7.5 3.41 7.5 7.5H8c0-2.72-2.28-5-5-5V7.5Zm0 5c1.36 0 2.5 1.14 2.5 2.5H3v-2.5Z"></path></svg>
+                </div>
+            </div>
+            <a class="s-modal--close s-btn s-btn__muted js-modal-close js-last-tabbable" href="https://es.stackoverflow.com/questions/151707/como-usar-serialize-en-un-formulario-con-input-de-tipo-file#" aria-label="Cerrar">
+                <svg aria-hidden="true" class="svg-icon iconClearSm" width="14" height="14" viewBox="0 0 14 14"><path d="M12 3.41 10.59 2 7 5.59 3.41 2 2 3.41 5.59 7 2 10.59 3.41 12 7 8.41 10.59 12 12 10.59 8.41 7 12 3.41Z"></path></svg>
+            </a>
+        </div>
+    </aside>
+
+</div>
+
+    </div>
+<script>StackExchange.ready(function(){$.get('/posts/151707/ivc/0ffc?prg=052e16a9-a83c-4d01-9c47-ca6a2f7502fa');});</script>
+<noscript><div><img src="/posts/151707/ivc/0ffc?prg=052e16a9-a83c-4d01-9c47-ca6a2f7502fa" class="dno" alt="" width="0" height="0"></div></noscript><div style="display:none" id="js-codeblock-lang">lang-php</div></div>
+
+                        
+
+        </div>
+    </div>
+
+        
+    <script type="text/javascript">
+    var cam = cam || { opt: {} };
+    var clcGamLoaderOptions = cam || { opt: {} };
+    var opt = clcGamLoaderOptions.opt;
+
+
+    opt.sf = !1;
+    opt.hb = !1;
+    opt.ll = !0;
+    opt.tlb_position = 0;
+    opt.personalization_consent = !0;
+    opt.targeting_consent = !0;
+    opt.performance_consent = !0;
+
+    opt.targeting = {Registered:['false'],'es.so-tag':['php','javascript','jquery','ajax'],NumberOfAnswers:['3']};
+    opt.adReportEnabled = !1;
+    opt.adReportUrl = '/ads/report-ad';
+    opt.adReportText = 'Reportar este anuncio';
+	opt.adReportFileTypeErrorMessage = 'Please select a PNG or JPG file.';
+    opt.adReportFileSizeErrorMessage = 'The file must be under 2 MiB.';
+	opt.adReportErrorText = 'Error uploading ad report.';
+	opt.adReportThanksText = 'Gracias por tus comentarios. Revisaremos esto contra nuestro código de conducta y tomaremos medidas si es necesario.';
+    opt.adReportLoginExpiredMessage = 'Your login session has expired, please login and try again.';
+    opt.adReportLoginErrorMessage = 'An error occurred when loading the report form - please try again';
+	opt.adReportModalClass = 'js-ad-report';
+
+    opt.requestGuid = '052e16a9-a83c-4d01-9c47-ca6a2f7502fa';
+
+
+    opt.targeting.TargetingConsent = ['True'];
+
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('dfptestads')) {
+        const dfptestads = urlParams.get('dfptestads');
+        opt.targeting.DfpTestAds = dfptestads;
+    }
+</script>
+<script>;(()=>{"use strict";var __webpack_modules__={23:(e,t,o)=>{o.d(t,{Z7:()=>l,eq:()=>r,kG:()=>n});const a=/^\/tags\//.test(location.pathname)||/^\/questions\/tagged\//.test(location.pathname)?"tag-pages":/^\/$/.test(location.pathname)||/^\/home/.test(location.pathname)?"home-page":"question-pages";let s=location.hostname;const i={slots:{lb:[[728,90]],mlb:[[728,90]],smlb:[[728,90]],bmlb:[[728,90]],sb:e=>"dfp-tsb"===e?[[300,250],[300,600]]:[[300,250]],"tag-sponsorship":[[730,135]],"mobile-below-question":[[320,50],[300,250]],msb:[[300,250],[300,600]],"talent-conversion-tracking":[[1,1]],"site-sponsorship":[[230,60]]},ids:{"dfp-tlb":"lb","dfp-mlb":"mlb","dfp-smlb":"smlb","dfp-bmlb":"bmlb","dfp-tsb":"sb","dfp-isb":"sb","dfp-tag":"tag-sponsorship","dfp-msb":"msb","dfp-sspon":"site-sponsorship","dfp-m-aq":"mobile-below-question"},idsToExcludeFromAdReports:["dfp-sspon"]};function n(){return Object.keys(i.ids)}function r(e){return i.idsToExcludeFromAdReports.indexOf(e)<0}function l(e){var t=e.split("_")[0];const o=i.ids[t];let n=i.slots[o];return"function"==typeof n&&(n=n(t)),{path:`/248424177/${s}/${o}/${a}`,sizes:n,zone:o}}},865:(e,t,o)=>{function a(e){return"string"==typeof e?document.getElementById(e):e}function s(e){return!!(e=a(e))&&"none"===getComputedStyle(e).display}function i(e){return!s(e)}function n(e){return!!e}function r(e){return/^\s*$/.test(a(e).innerHTML)}function l(e){const{style:t}=e;t.height=t.maxHeight=t.minHeight="auto",t.display="none"}function d(e){const{style:t}=e;t.height=t.maxHeight=t.minHeight="auto",t.display="none",[].forEach.call(e.children,d)}function c(e){const{style:t}=e;t.height=t.maxHeight=t.minHeight="auto",t.removeProperty("display")}function p(e){const t=document.createElement("script");t.src=e,document.body.appendChild(t)}function g(e){return o=e,(t=[]).push=function(e){return o(),delete this.push,this.push(e)},t;var t,o}function h(e){let t="function"==typeof HTMLTemplateElement;var o=document.createElement(t?"template":"div");return e=e.trim(),o.innerHTML=e,t?o.content.firstChild:o.firstChild}o.d(t,{$Z:()=>c,Bv:()=>h,Gx:()=>p,Nj:()=>a,QZ:()=>g,cf:()=>l,pn:()=>i,wo:()=>d,xb:()=>r,xj:()=>s,yb:()=>n})},763:(__unused_webpack_module,__webpack_exports__,__webpack_require__)=>{__webpack_require__.d(__webpack_exports__,{t:()=>AdReports});var _common_helper__WEBPACK_IMPORTED_MODULE_2__=__webpack_require__(865),_console__WEBPACK_IMPORTED_MODULE_1__=__webpack_require__(276),_ad_units__WEBPACK_IMPORTED_MODULE_0__=__webpack_require__(23);class AdReports{constructor(e,t){if(this.googletag=e,this.cam=t,this.allowedFileTypes=["image/png","image/jpg","image/jpeg"],this.ignoreValidation=!1,_console__WEBPACK_IMPORTED_MODULE_1__.cM("Ad reporting init"),this.cam=t,this.callOnButtonClick=e=>this.onButtonClick(e),this.googletag.pubads().addEventListener("slotRenderEnded",e=>this.handleSlotRendered(e)),Array.isArray(t.slotsRenderedEvents)){_console__WEBPACK_IMPORTED_MODULE_1__.cM("Adding report button to "+t.slotsRenderedEvents.length+" events that have transpired");for(var o=0;o<t.slotsRenderedEvents.length;o++)this.handleSlotRendered(t.slotsRenderedEvents[o])}}handleSlotRendered(e){if(e&&e.slot&&!e.isEmpty&&(e.creativeId||e.lineItemId||!e.isEmpty)){var t=e.slot.getSlotElementId();if(t){var o=document.getElementById(t);if(o)if((0,_ad_units__WEBPACK_IMPORTED_MODULE_0__.eq)(t)){var a=o?.closest(".js-zone-container")?.querySelector(".js-report-ad-button-container");a.append(this.createButton(e)),a.style.height="24px",_console__WEBPACK_IMPORTED_MODULE_1__.cM("Added report button to the bottom of "+t)}else _console__WEBPACK_IMPORTED_MODULE_1__.cM("Not adding report button to the bottom of "+t+": shouldHaveReportButton = false");else _console__WEBPACK_IMPORTED_MODULE_1__.cM("Not adding report button to the bottom of "+t+": resolved invalid adUnit element")}else _console__WEBPACK_IMPORTED_MODULE_1__.cM("Not adding report button to the bottom of element: invalid adUnitElementId")}else _console__WEBPACK_IMPORTED_MODULE_1__.cM("Not adding report button to the bottom of element: invalid SlotRenderEndedEvent")}async onButtonClick(e){e.preventDefault();let t=e.target;const o=t.dataset.modalUrl,a=t.dataset.googleEventData;return await this.loadModal(o,t,a),!1}createButton(e){let t=document.createElement("button");var o=JSON.stringify(e);return t.dataset.googleEventData=o,t.dataset.modalUrl=this.cam.opt.adReportUrl,t.dataset.adUnit=e.slot.getSlotElementId(),t.classList.add("js-report-ad","s-btn","s-btn__link","fs-fine","mt2","float-right"),t.append(document.createTextNode(this.cam.opt.adReportText)),t.removeEventListener("click",this.callOnButtonClick),t.addEventListener("click",this.callOnButtonClick),t}async loadModal(url,$link,googleEventData){try{await window.StackExchange.helpers.loadModal(url,{returnElements:window.$($link)}),this.initForm(googleEventData)}catch(e){var message="",response=e.responseText?eval(`(${e.responseText})`):null;message=response&&response.isLoggedOut?this.cam.opt.adReportLoginExpiredMessage:this.cam.opt.adReportLoginErrorMessage,window.StackExchange.helpers.showToast(message,{type:"danger"})}}removeModal(){window.StackExchange.helpers.closePopups(document.querySelectorAll("."+this.cam.opt.adReportModalClass),"dismiss")}initForm(e,t=!1){this.ignoreValidation=t,this.$form=document.querySelector(".js-ad-report-form"),this.$googleEventData=this.$form.querySelector(".js-json-data"),this.$adReportReasons=this.$form.querySelectorAll(".js-ad-report-reason"),this.$adReportReasonOther=this.$form.querySelector(".js-ad-report-reason-other"),this.$fileUploaderInput=this.$form.querySelector(".js-file-uploader-input"),this.$imageUploader=this.$form.querySelector(".js-image-uploader"),this.$clearImageUpload=this.$form.querySelector(".js-clear-image-upload"),this.$imageUploaderText=this.$form.querySelector(".js-image-uploader-text"),this.$imageUploaderPreview=this.$form.querySelector(".js-image-uploader-preview"),this.$fileErrorMessage=this.$form.querySelector(".js-file-error");const o=this.$form.querySelector(".js-drag-drop-enabled"),a=this.$form.querySelector(".js-drag-drop-disabled");this.$googleEventData.value=e,this.$adReportReasons.forEach((e,t)=>e.addEventListener("change",e=>{this.$adReportReasonOther.classList.toggle("d-none","3"!==e.target.value)})),this.$fileUploaderInput.addEventListener("change",()=>{this.validateFileInput()&&this.updateImagePreview(this.$fileUploaderInput.files)}),this.$clearImageUpload.addEventListener("click",e=>{e.preventDefault(),this.clearImageUpload()});try{this.$fileUploaderInput[0].value="",this.$imageUploader.addEventListener("dragenter dragover dragleave drop",this.preventDefaults),this.$imageUploader.addEventListener("dragenter dragover",this.handleDragStart),this.$imageUploader.addEventListener("dragleave drop",this.handleDragEnd),this.$imageUploader.addEventListener("drop",this.handleDrop)}catch(e){o.classList.add("d-none"),a.classList.remove("d-none")}this.$form.removeEventListener("",this.handleDragEnd),this.$form.addEventListener("submit",async e=>(e.preventDefault(),this.submitForm(),!1))}clearImageUpload(){this.$fileUploaderInput.value="",this.$imageUploaderPreview.setAttribute("src",""),this.$imageUploaderPreview.classList.add("d-none"),this.$clearImageUpload.classList.add("d-none"),this.$imageUploaderText.classList.remove("d-none"),this.$imageUploader.classList.add("p16","ba","bas-dashed","bc-black-100")}preventDefaults(e){e.preventDefault(),e.stopPropagation()}handleDragStart(e){this.$imageUploader.classList.remove("bas-dashed"),this.$imageUploader.classList.add("bas-solid","bc-black-100")}handleDragEnd(e){this.$imageUploader.classList.remove("bas-solid","bc-black-100"),this.$imageUploader.classList.add("bas-dashed")}handleDrop(e){var t=e.originalEvent.dataTransfer.files;FileReader&&t&&1===t.length&&(this.$fileUploaderInput.files=t,this.validateFileInput()&&this.updateImagePreview(t))}setError(e){this.$fileErrorMessage.parentElement.classList.toggle("has-error",e)}updateImagePreview(e){this.$imageUploader.classList.remove("p16","ba","bas-dashed","bc-black-100"),this.$clearImageUpload.classList.remove("d-none"),this.$imageUploaderText.classList.add("d-none");var t=new FileReader;t.onload=e=>{null!=e.target&&(this.$imageUploaderPreview.setAttribute("src",e.target.result),this.$imageUploaderPreview.classList.remove("d-none"))},t.readAsDataURL(e[0])}validateFileInput(){if(this.ignoreValidation)return!0;const e=this.cam.opt.adReportFileTypeErrorMessage,t=this.cam.opt.adReportFileSizeErrorMessage;if(null==this.$fileUploaderInput.files)return!1;var o=this.$fileUploaderInput.files[0];return null==o?(this.setError(!0),!1):this.allowedFileTypes.indexOf(o.type)<0?(this.$fileErrorMessage.textContent=e,this.$fileErrorMessage.classList.remove("d-none"),this.setError(!0),!1):o.size>2097152?(this.$fileErrorMessage.textContent=t,this.$fileErrorMessage.classList.remove("d-none"),this.setError(!0),!1):(this.$fileErrorMessage.classList.add("d-none"),this.setError(!1),!0)}async submitForm(){if(!this.validateFileInput())return!1;this.$form.querySelector("[type=submit]").setAttribute("disabled","true");var e=JSON.parse(this.$googleEventData.value||"{}");e.Reason=parseInt(this.$form.querySelector(".js-ad-report-reason:checked").value,10),e.Description=this.$adReportReasonOther.value,this.$googleEventData.value=JSON.stringify(e);var t=new FormData(this.$form);try{const e=await window.fetch(this.$form.getAttribute("action"),{method:this.$form.getAttribute("method"),body:t,cache:"no-cache"}),a=e.headers.get("content-type")||"",s=await e.text();if(!e.ok)throw new Error("response not valid");if(0===a.indexOf("text/html")){var o=(0,_common_helper__WEBPACK_IMPORTED_MODULE_2__.Bv)(s);const e=o?o.querySelector(".js-modal-content"):null;if(_console__WEBPACK_IMPORTED_MODULE_1__.cM("$popupContent"),_console__WEBPACK_IMPORTED_MODULE_1__.cM(e),!e)throw new Error(`Could not find .js-modal-content in response from ${this.$form.getAttribute("action")}`);document.querySelector(".js-modal-content").replaceWith(e)}else window.StackExchange.helpers.showToast(this.cam.opt.adReportThanksText,{type:"success"}),this.removeModal()}catch(e){window.StackExchange.helpers.showToast(this.cam.opt.adReportErrorText,{type:"danger"})}finally{let e=this.$form.querySelector("[type=submit]");e&&e.removeAttribute("disabled")}}}},276:(e,t,o)=>{function a(...e){}o.d(t,{cM:()=>a})}},__webpack_module_cache__={};function __webpack_require__(e){var t=__webpack_module_cache__[e];if(void 0!==t)return t.exports;var o=__webpack_module_cache__[e]={exports:{}};return __webpack_modules__[e](o,o.exports,__webpack_require__),o.exports}__webpack_require__.d=(e,t)=>{for(var o in t)__webpack_require__.o(t,o)&&!__webpack_require__.o(e,o)&&Object.defineProperty(e,o,{enumerable:!0,get:t[o]})},__webpack_require__.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t);var __webpack_exports__={};(()=>{var e=__webpack_require__(276),t=(e=>(e[e.Above=0]="Above",e[e.Below=1]="Below",e))(t||{});const o=Object.assign({},{"lib":"https://cdn.sstatic.net/clc/js/bundles/gam_loader_script/gam_loader_script.bundle.741.08bfea5f8f4d3e6902a1.min.js","style":null,"u":null,"wa":true,"kt":2000,"tto":true,"h":"clc.stackoverflow.com","allowed":"^(((talent\\.)?stackoverflow)|(blog\\.codinghorror)|(.*\\.googlesyndication)|(serverfault|askubuntu)|([^\\.]+\\.stackexchange))\\.com$","wv":true,"al":false,"abd":true,"cpa_liid":[5882654614],"cpa_cid":[138377597667],"dp":false});var a=__webpack_require__(23),s=__webpack_require__(865),i=__webpack_require__(763);window.cam=new class{constructor(){this.gptImported=!1,this.collapsed={},e.cM("constructor"),this.clc_options=o,window.clcGamLoaderOptions?Object.assign(this,window.clcGamLoaderOptions):void 0===this.opt&&(this.opt=window.opt)}init(){if(e.cM("init"),void 0===this.opt)throw new Error("opt not set, required by GAM Loader");e.cM("setup message handler"),window.addEventListener("message",e=>{this.onmessage(e)}),this.opt.targeting&&this.opt.targeting.ProductVariant&&"SystemDefault"===this.opt.targeting.ProductVariant[0]&&(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?this.opt.targeting.ProductVariant="Dark":this.opt.targeting.ProductVariant="Light")}handleSlotRenderedNoAdReport(){if(googletag.pubads().addEventListener("slotRenderEnded",e=>this.applyExtraMarginBottom(e)),Array.isArray(this.slotsRenderedEvents))for(var e=0;e<this.slotsRenderedEvents.length;e++)this.applyExtraMarginBottom(this.slotsRenderedEvents[e])}onmessage(t){let o="omni";if(t.data&&("string"==typeof t.data||t.data instanceof String)){if(0===t.data.indexOf("get-omni-")){e.cM("Recevied get-omni message, sending back omni");var a=t.source,i=this.opt.omni,n="string"==typeof i?i:"";a.postMessage([o,n,this.opt.requestGuid].join("|"),"*")}else if(0===t.data.indexOf("collapse-")){e.cM("Recevied collapse message, collapse ad iframe"),e.cM(t);for(var r=t.source.window,l=document.getElementsByTagName("IFRAME"),d=0;d<l.length;d++){var c=l[d];if(c.contentWindow==r)return void(0,s.wo)(c.parentElement.parentElement.parentElement)}}else if(0===t.data.indexOf("resize|")){e.cM("Recevied resize message, resize ad iframe"),e.cM(t);let o=this._getFrameByEvent(t),a=t.data.indexOf("|")+1,s=t.data.slice(a),i=parseFloat(s)+.5;e.cM("New iframe height "+i),o.height=i.toString(),o.parentElement.style.height=i.toString()+"px"}else if(0===t.data.indexOf("getmarkup|")){let o=t.data.indexOf("|")+1,a=t.data.slice(o);e.cM("Recevied get markup message: "+a);let s=this._getFrameByEvent(t).closest(".everyonelovesstackoverflow");const i=document.createElement("script");i.dataset.adZoneId=s.id,i.src=a,document.body.appendChild(i)}}else e.cM("Received unhandled message")}placeInIframe(t,o){e.cM("Received markup result in main frame");let a=document.getElementById(t.dataset.adZoneId),s=a.querySelector("iframe");if("string"==typeof o.prefixToIframeHtml){let e=document.createElement("div");e.innerHTML=o.prefixToIframeHtml,a.prepend(e.querySelector("img"))}s.contentWindow.postMessage(["markup",JSON.stringify(o)].join("|"),"*")}_getFrameByEvent(e){return Array.from(document.getElementsByTagName("iframe")).filter(t=>t.contentWindow===e.source)[0]}classifyZoneIds(e){const t=e.map(s.Nj).filter(s.yb);return{eligible:t.filter(s.xb).filter(s.pn),ineligible:t.filter(s.xj)}}applyExtraMarginBottom(t){if(t&&t.slot&&!t.isEmpty&&(t.creativeId||t.lineItemId||!t.isEmpty)){var o=t.slot.getSlotElementId();if(o){var s=document.getElementById(o);if(s)if((0,a.eq)(o)){var i=s?.closest(".js-zone-container");i.style.marginBottom="24px",e.cM("Applied extra margin to the bottom of "+o)}else e.cM("Not applying extra margin to the bottom of "+o+": shouldHaveReportButton = false");else e.cM("Not applying extra margin to the bottom of "+o+": resolved invalid adUnit element")}else e.cM("Not applying extra margin to the bottom of element: invalid adUnitElementId")}else e.cM("Not applying extra margin to the bottom of element: invalid SlotRenderEndedEvent")}load(o=(0,a.kG)()){const n=this.opt.tlb_position===t.Above?["dfp-mlb","dfp-smlb"]:["dfp-mlb","dfp-smlb","dfp-tlb"];if(!this.isGptReady())return e.cM("Initializing..."),this.initGpt(),void googletag.cmd.push(()=>this.load(o));this.opt.adReportEnabled?(e.cM("Ad reporting enabled"),this.adReports=new i.t(googletag,this)):(e.cM("Ad reporting not enabled"),this.handleSlotRenderedNoAdReport()),e.cM("Attempting to load ads into ids: ",o);const{eligible:r,ineligible:l}=this.classifyZoneIds(o);if(this.initDebugPanel(googletag,r.concat(l)),r.forEach(e=>(0,s.cf)(e)),l.forEach(s.wo),0===r.length)return void e.cM("Found no ad ids on page");e.cM("Eligible ids:",r),this.opt.abd&&this.appendAdblockDetector();var d=googletag.pubads().getSlots().filter(e=>o.indexOf(e.getSlotElementId())>=0);googletag.destroySlots(d),this.opt.sf&&(googletag.pubads().setForceSafeFrame(!0),googletag.pubads().setSafeFrameConfig({allowOverlayExpansion:!0,allowPushExpansion:!0,sandbox:!0})),e.cM("Targeting consent: Checking...");let c=!1,p=!1;void 0!==this.opt.targeting_consent&&(p=!0,e.cM("Targeting consent: Parameter set"),e.cM("Targeting consent: Consent given? ",this.opt.targeting_consent),c=this.opt.targeting_consent),void 0!==this.opt.personalization_consent&&(e.cM("Personalization consent: Parameter set"),e.cM("Personalization consent: Consent given? ",this.opt.personalization_consent),c=c&&this.opt.personalization_consent),c=c&&p,googletag.pubads().setRequestNonPersonalizedAds(c?0:1),c||googletag.pubads().setPrivacySettings({limitedAds:!0}),this.opt.ll||googletag.pubads().enableSingleRequest(),cam.sreEvent||(googletag.pubads().addEventListener("slotRenderEnded",e=>this.onSlotRendered(e)),cam.sreEvent=!0),this.setTargeting(googletag);var g=r.filter(e=>!this.opt.ll||n.indexOf(e.id)<0),h=r.filter(e=>!!this.opt.ll&&n.indexOf(e.id)>=0);e.cM("Up front ids:",g),e.cM("Lazy loaded ids:",h),g.forEach(t=>{e.cM(`Defining ad for element ${t.id}`),this.defineSlot(t.id,googletag),t.setAttribute("data-dfp-zone","true")}),googletag.enableServices(),g.forEach(t=>{e.cM(`Displaying ad for element ${t.id}`),googletag.cmd.push(()=>googletag.display(t.id))}),this.opt.ll&&(e.cM("Enabling lazy loading for GAM"),googletag.pubads().enableLazyLoad({fetchMarginPercent:0,renderMarginPercent:0}),e.cM("Setting up lazy loaded ad units"),h.forEach(t=>{e.cM(`Lazy loading - Defining Slot ${t.id}`),this.defineSlot(t.id,googletag)}),h.forEach(t=>{e.cM(`Lazy loading - Displaying ad for element ${t.id}`),googletag.cmd.push(()=>googletag.display(t.id))}))}setTargeting(t){let o=this.opt.targeting;if(!o)throw new Error("Targeting not defined");Object.keys(o).forEach(a=>{e.cM(`-> targeting - ${a}: ${o[a]}`),t.pubads().setTargeting(a,o[a])})}appendAdblockDetector(){const e=document.createElement("div");e.className="adsbox",e.id="clc-abd",e.style.position="absolute",e.style.pointerEvents="none",e.innerHTML="&nbsp;",document.body.appendChild(e)}onSlotRendered(o){try{const n=o.slot.getSlotElementId();let r=[];n||r.push("id=0");const l=document.getElementById(n);if(n&&!l&&r.push("el=0"),0!==r.length)return void this.stalled(r.join("&"));const{path:d,sizes:c,zone:p}=(0,a.Z7)(n);if(this.collapsed[p]&&o.isEmpty)return e.cM(`No line item for the element #${l.id}... collapsing.`),void(0,s.wo)(l);if(this.slotsRenderedEvents.push(o),o.lineItemId||o.creativeId||!o.isEmpty){e.cM(`Rendered ad for element #${l.id} [line item #${o.lineItemId}]`),e.cM(o);var i=l.parentElement;if(i.classList.contains("js-zone-container")){switch((0,s.cf)(i),n){case"dfp-tlb":this.opt.tlb_position===t.Above?i.classList.add("mb8"):i.classList.add("mt16");break;case"dfp-tag":i.classList.add("mb8");break;case"dfp-msb":i.classList.add("mt16");break;case"dfp-mlb":case"dfp-smlb":case"dfp-bmlb":i.classList.add("my8");break;case"dfp-isb":i.classList.add("mt24");break;case"dfp-m-aq":i.classList.add("my12"),i.classList.add("mx-auto")}(0,s.$Z)(i),(0,s.$Z)(l)}else e.cM(`No ad for element #${l.id}, collapsing`),e.cM(o),(0,s.wo)(l)}}catch(e){this.stalled("e=1")}}stalled(e){(new Image).src=`https://${this.clc_options.h}/stalled.gif?${e}`}defineSlot(t,o){"dfp-isb"===t&&(e.cM("-> targeting - Sidebar: Inline"),o.pubads().setTargeting("Sidebar",["Inline"])),"dfp-tsb"===t&&(e.cM("-> targeting - Sidebar: Right"),o.pubads().setTargeting("Sidebar",["Right"]));const{path:s,sizes:i,zone:n}=(0,a.Z7)(t);e.cM(`Defining slot for ${t}: ${s}, sizes: ${JSON.stringify(i)}`),o.defineSlot(s,i,t).addService(o.pubads())}importGptLibrary(){this.gptImported||(this.gptImported=!0,void 0===this.opt.targeting_consent||this.opt.targeting_consent?(0,s.Gx)("https://securepubads.g.doubleclick.net/tag/js/gpt.js"):(0,s.Gx)("https://pagead2.googlesyndication.com/tag/js/gpt.js"))}isGptReady(){return"undefined"!=typeof googletag&&!!googletag.apiReady}initGpt(){"undefined"==typeof googletag&&(window.googletag={cmd:(0,s.QZ)(()=>this.importGptLibrary())})}initDebugPanel(t,o){e.cM("initDebugPanel"),e.cM("Not showing debug panel")}},window.clcGamLoaderOptions&&(cam.init(),cam.load())})()})();</script><script src="./php - ¿Como usar serialize en un formulario con input de tipo File_ - Stack Overflow en español_files/gpt.js.descarga"></script>
+        
+    <footer id="footer" class="site-footer js-footer" role="contentinfo">
+        <div class="site-footer--container">
+            <nav class="site-footer--nav">
+                    <div class="site-footer--col">
+                        <h5 class="-title"><a href="https://es.stackoverflow.com/">Stack Overflow en español</a></h5>
+                        <ul class="-list js-primary-footer-links">
+                                    <li><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 2 })" href="https://es.stackoverflow.com/tour">Recorrido</a></li>
+                                <li><a href="https://es.stackoverflow.com/help" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 3 })">Ayuda</a></li>
+                                    <li><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 5 })" href="https://chat.stackexchange.com/?tab=site&amp;host=es.stackoverflow.com">Chat</a></li>
+                            <li><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 13 })" href="https://es.stackoverflow.com/contact">Contacto</a></li>
+                                <li><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 14 })" href="https://es.meta.stackoverflow.com/">Comentarios</a></li>
+                        </ul>
+                    </div>
+                <div class="site-footer--col">
+                    <h5 class="-title"><a class="js-gps-track" data-gps-track="footer.click({ location: 2, link: 1 })" href="https://stackoverflow.co/">Empresa</a></h5>
+                    <ul class="-list">
+                            <li><a href="https://stackoverflow.com/" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 15})">Stack Overflow</a></li>
+                            <li><a href="https://stackoverflow.co/teams" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 29 })">Teams</a></li>
+                            <li><a href="https://stackoverflow.co/advertising" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 21 })">Advertising</a></li>
+                            <li><a href="https://stackoverflow.co/collectives" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 40 })">Collectives</a></li>
+                            <li><a href="https://stackoverflow.co/talent" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 20 })">Talent</a></li>
+                                <li><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 1 })" href="https://stackoverflow.co/">Acerca de</a></li>
+                        <li><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 27 })" href="https://stackoverflow.co/company/press">Prensa</a></li>
+                        <li><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 7 })" href="https://stackoverflow.com/legal">Legal</a></li>
+                        <li><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 8 })" href="https://stackoverflow.com/legal/privacy-policy">Política de privacidad</a></li>
+                        <li><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 37 })" href="https://stackoverflow.com/legal/terms-of-service">Términos de Servicio</a></li>
+                            <li class="" id="consent-footer-link"><a class="js-gps-track -link js-cookie-settings" data-gps-track="footer.click({ location: 2, link: 38 })" href="https://es.stackoverflow.com/questions/151707/como-usar-serialize-en-un-formulario-con-input-de-tipo-file#" data-consent-popup-loader="footer">Configuración de las cookies</a></li>
+                        <li><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 39 })" href="https://stackoverflow.com/legal/cookie-policy">Política de las cookies</a></li>
+                    </ul>
+                </div>
+                <div class="site-footer--col site-footer--categories-nav">
+                    <div>
+                        <h5 class="-title"><a href="https://stackexchange.com/" data-gps-track="footer.click({ location: 2, link: 30 })">Red Stack Exchange</a></h5>
+                        <ul class="-list">
+                            <li>
+                                <a href="https://stackexchange.com/sites#technology" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })">
+                                    Tecnología
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://stackexchange.com/sites#culturerecreation" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })">
+                                    Cultura y recreación
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://stackexchange.com/sites#lifearts" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })">
+                                    Vida y arte
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://stackexchange.com/sites#science" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })">
+                                    Ciencia
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://stackexchange.com/sites#professional" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })">
+                                    Profesional
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://stackexchange.com/sites#business" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })">
+                                    Negocios
+                                </a>
+                            </li>
+
+                            <li class="mt16 md:mt0">
+                                <a href="https://api.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })">
+                                    API
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="https://data.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })">
+                                    Data
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="site-footer--copyright fs-fine md:mt24">
+                <ul class="-list -social md:mb8">
+                    <li><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link:4 })" href="https://stackoverflow.blog/?blb=1">Blog</a></li>
+                    <li><a href="https://www.facebook.com/officialstackoverflow/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 31 })">Facebook</a></li>
+                    <li><a href="https://twitter.com/stackoverflow" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 32 })">Twitter</a></li>
+                    <li><a href="https://linkedin.com/company/stack-overflow" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 33 })">LinkedIn</a></li>
+                    <li><a href="https://www.instagram.com/thestackoverflow" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 36 })">Instagram</a></li>
+                </ul>
+
+                <p class="md:mb0">
+Site design / logo © 2023 Stack Exchange Inc; user contributions licensed under <span class="td-underline"><a href="https://stackoverflow.com/help/licensing">CC BY-SA</a></span>.                    <span id="svnrev">rev&nbsp;2023.3.23.43344</span>
+                </p>
+            </div>
+        </div>
+
+    </footer>
+
+
+                <!-- Google tag (gtag.js) -->
+            <script async="" src="./php - ¿Como usar serialize en un formulario con input de tipo File_ - Stack Overflow en español_files/js"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag() { dataLayer.push(arguments); }
+            </script>
+            <script>
+                (function(i, s, o, g, r, a, m) {
+                    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function() { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+                })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+            </script>
+        <script>
+            StackExchange.ready(function() {
+
+                var ga3Settings = {
+                    autoLink: ["stackoverflow.blog","info.stackoverflowsolutions.com","stackoverflowsolutions.com"],
+                    sendTitles: true,
+                    tracker: window.ga,
+                    trackingCodes: [
+                        'UA-108242619-5'
+                    ],
+                    checkDimension: 'dimension42'
+                                                    };
+
+                var customGA4Dimensions = {};
+
+                        customGA4Dimensions["routename"] = "Questions/Show";
+                        customGA4Dimensions["tags"] = "|php|javascript|jquery|ajax|";
+
+                var ga4Settings = {
+                    tracker: gtag,
+                    trackingCodes: [
+                        'G-S812YQPLT2'
+                    ],
+                    consentsToPerformanceCookies: "granted",
+                    consentsToTargetingCookies: "granted",
+                    eventParameters: customGA4Dimensions,
+                    checkForAdBlock: true
+                };
+
+                StackExchange.ga.init({ GA3: ga3Settings, GA4: ga4Settings });
+
+
+                StackExchange.ga.setDimension('dimension2', '|php|javascript|jquery|ajax|');
+
+
+                StackExchange.ga.setDimension('dimension3', 'Questions/Show');
+
+
+                StackExchange.ga.setDimension('dimension7', "1679593410.1069543399");
+
+                StackExchange.ga.trackPageView();
+            });
+        </script><iframe src="./php - ¿Como usar serialize en un formulario con input de tipo File_ - Stack Overflow en español_files/container.html" style="visibility: hidden; display: none;"></iframe>
+
+        
+    <div id="onetrust-consent-sdk" class="d-none"></div>
+    <div id="onetrust-banner-sdk" data-controller="s-modal"></div>
+    <div id="ot-pc-content" class="d-none"></div>
+    <div id="onetrust-style" class="d-none">&nbsp;</div>
+    <div class="d-none js-consent-banner-version" data-consent-banner-version="1"></div>
+
+
+    
+    
+    
+<iframe src="./php - ¿Como usar serialize en un formulario con input de tipo File_ - Stack Overflow en español_files/aframe.html" width="0" height="0" style="display: none;"></iframe></body></html>
