@@ -1,27 +1,34 @@
-﻿--52973594
--- 12345
- 
-
--- otro
-1013605270
+﻿
+1013605270  coord cartera
 1234
 
-select * from solicitud_usuarios WHERE NOM_USUARIO LIKE ('%MOLINA%');
-select * from solicitud_solicitudes;
-select * from solicitud_estadosvalidacion;
 
- 
 80760858  "JEISON MOLINA"   VALIDACION
 1234
 
+
 52973594   --CORELLY   COMPRAS
 12345
+
+79717519   --"EDWIN JAIR CUBIDES PIRAMANRIQUE"  ALMACEN
+1234
+
+select * from solicitud_usuarios;
+
+
+select * from solicitud_usuarios WHERE NOM_USUARIO LIKE ('%MOLINA%');
+select * from solicitud_solicitudes;	
+select * from solicitud_estadosvalidacion;
+
+ 
+
 select * from solicitud_proveedores where id= 7;
 select * from solicitud_usuarios  where id in (11,21,18)
 "Uploaded Files/Diccionario_Datos_imhotep_IGr16nW.xlsx"
 select * from solicitud_ordenesCompra;
-select * from solicitud_solicitudesdetalle where solicitud_id=15;
-select * from solicitud_solicitudesdetalle where id=26;
+select * from solicitud_solicitudesdetalle where solicitud_id=21;
+select * from solicitud_solicitudesdetalle where id=21;
+
 update solicitud_solicitudesdetalle set "tipoAdjuntoCompras"='Csv' where id=26;
 update solicitud_solicitudesdetalle set "estadosCompras_id"=1 where id=22;
 
@@ -35,8 +42,7 @@ select * from solicitud_usuarios;
 select * from solicitud_ordenesCompra;
 1013605270
 
-79717519   --"EDWIN JAIR CUBIDES PIRAMANRIQUE"  ALMACEN
-1234
+
 
 
 
@@ -202,3 +208,16 @@ INNER JOIN solicitud_Staff usu1 on (usu1.id = ord."aproboCompraStaff_id")
 WHERE ord."fechaElab" >= '2023-01-01' and ord."fechaElab" <= '2023-03-27' 
 ORDER BY ord."fechaElab", sol.item
   
+
+
+select * from solicitud_solicitudes;
+select * from solicitud_solicitudesdetalle where  solicitud_id =  19;
+
+select sol.usuarios_id idSol, sol.usuarios_id usuSolicita,sol0."usuarioResponsableCompra_id" usuCompras, sol0."usuarioResponsableCompra_id" respCompras, 
+areas.id area 
+from solicitud_solicitudes sol 
+inner join solicitud_solicitudesdetalle sol0 ON (sol0.solicitud_id = sol.id) 
+inner join solicitud_areas areas on (areas.id = sol.area_id) 
+inner join solicitud_usuarios usu on (usu.id = sol.usuarios_id) 
+inner join solicitud_usuarios usu1 on (usu1.id = sol0."usuarioResponsableCompra_id") 
+where sol.id = 18 limit 1

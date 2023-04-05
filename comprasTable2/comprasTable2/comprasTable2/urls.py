@@ -76,8 +76,8 @@ urlpatterns = [
     # Ordenes de Compras
     path('ordenesCompra/<str:username>, <str:sedeSeleccionada>,<str:nombreUsuario>, <str:nombreSede>,<str:perfil>', views.OrdenesCompraConsulta1, name='Compras_Consulta'),
     path('ordenesCompra/OrdenesCompraBusca/', views.PostStoreOrdenesCompra.as_view(),name='post_storeOrdenesCompra' ),
-    path('ordenesCompra/OrdenesCompraBusca/<str:solicitudId>,<str:btnEnviarSol>,<str:username>,<str:sedeSeleccionada>,<str:nombreUsuario>,<str:nombreSede>,<str:perfil>/', views.PostStoreOrdenesCompra.as_view(),name='post_storeOrdenesCompra'),
-    path('/ordenesCompra/OrdenesCompraBusca/<str:solicitudId>,<str:btnEnviarSol>,<str:username>,<str:sedeSeleccionada>,<str:nombreUsuario>,<str:nombreSede>,<str:perfil>/', views.PostStoreOrdenesCompra.as_view(),name='post_storeOrdenesCompra'),
+    path('ordenesCompra/OrdenesCompraBusca/<str:pk>,<str:btnEnviarSol>,<str:username>,<str:sedeSeleccionada>,<str:nombreUsuario>,<str:nombreSede>,<str:perfil>/', views.PostStoreOrdenesCompra.as_view(),name='post_storeOrdenesCompra'),
+    path('/ordenesCompra/OrdenesCompraBusca/<str:pk>,<str:btnEnviarSol>,<str:username>,<str:sedeSeleccionada>,<str:nombreUsuario>,<str:nombreSede>,<str:perfil>/', views.PostStoreOrdenesCompra.as_view(),name='post_storeOrdenesCompra'),
     path('load_dataOrdenesCompra/<str:solicitudId>', views.load_dataOrdenesCompra, name='load_dataOrdenesCompra'),
     path('descargaArchivo/<str:archivo>', views.descargaArchivo),
 

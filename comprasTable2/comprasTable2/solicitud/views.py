@@ -210,7 +210,6 @@ def validaAcceso(request):
             miConexion.close()
 
 
-
             if permitido == []:
 
                 context['Error'] = "Usuario no tiene autorizacion para la sede seleccionada y/o Reportes no asignados ! "
@@ -219,8 +218,10 @@ def validaAcceso(request):
             else:
                 pass
                 print("Paso Autenticacion")
+    ## el render aquip /solicitudesConsultaTrae/{{Username}}, {{SedeSeleccionada}}, {{NombreUsuario}} , {{NombreSede}}, {{Perfil}}
 
     print("Asi quedo el nombre del usuario", context['NombreUsuario'])
+    #return render(request, "Reportes/cabeza.html", context)
     return render(request, "Reportes/cabeza.html", context)
 
 
@@ -771,8 +772,8 @@ def load_dataSolicitudesConsulta(request, data):
     #data = request.GET['data']
     print ("data = ", data)
     d = json.loads(data)
-    desdeFechaSolicitud = d['desdeFechaSolicitud']
-    hastaFechaSolicitud = d['hastaFechaSolicitud']
+    #desdeFechaSolicitud = d['desdeFechaSolicitud']
+    #hastaFechaSolicitud = d['hastaFechaSolicitud']
 
     username = d['username']
     nombreSede = d['nombreSede']
@@ -781,8 +782,8 @@ def load_dataSolicitudesConsulta(request, data):
     solicitudId = d['solicitudId']
     perfil = d['perfil']
 
-    print("desdeFechaSolicitud = ", d['desdeFechaSolicitud'])
-    print("hastaFechaSolicitud = ", d['hastaFechaSolicitud'])
+    #print("desdeFechaSolicitud = ", d['desdeFechaSolicitud'])
+    #print("hastaFechaSolicitud = ", d['hastaFechaSolicitud'])
     print("voy a context0")
     # Ahora SolicitudDetalle
     print("voy a context1")
@@ -794,8 +795,8 @@ def load_dataSolicitudesConsulta(request, data):
     context['NombreUsuario'] = nombreUsuario
     context['NombreSede'] = nombreSede
     context['solicitudId'] = solicitudId
-    context['desdeFechaSolicitud'] = desdeFechaSolicitud
-    context['hastaFechaSolicitud'] = hastaFechaSolicitud
+    #context['desdeFechaSolicitud'] = desdeFechaSolicitud
+    #context['hastaFechaSolicitud'] = hastaFechaSolicitud
     context['Perfil'] = perfil
 
     # Abro Conexion
@@ -809,7 +810,8 @@ def load_dataSolicitudesConsulta(request, data):
     print("voy comando")
     #comando = 'SELECT sol0.id id,substring(to_char(sol0.fecha,' + "'" + 'yyyy-mm-dd' + "'" + '),1,10)  fecha,sol.item item, sol.descripcion_id, des.nombre descripcion, tip.nombre tipo ,sol.producto producto,  art.articulo nombre_producto ,pres.nombre presentacion,sol.cantidad, sol.justificacion  , sol."especificacionesTecnicas" tec, est.nombre estValidacion, sol."estadosValidacion_id" estadosValidacion_id , usu.nom_usuario usuSolicitud FROM public.solicitud_solicitudes sol0, public.solicitud_solicitudesDetalle sol , public.solicitud_descripcioncompra des, public.solicitud_tiposcompra tip, public.solicitud_presentacion pres, public.mae_articulos art    , public.solicitud_usuarios usu , public.solicitud_estadosvalidacion est      WHERE sol0.fecha >= ' + "'" + desdeFechaSolicitud + "'" + ' and sol0.fecha <= ' + "'"  + hastaFechaSolicitud + "'" + '  and sol0.id = sol.solicitud_id and des.id = sol.descripcion_id and tip.id = sol."tiposCompra_id" and pres.id = sol.presentacion_id and art.codreg_articulo = sol.producto and usu.num_identificacion = ' + "'" + str(username) + "'" + ' AND usu.id = sol0."usuarios_id" and est.id = sol."estadosValidacion_id"  ORDER BY sol0.fecha, sol.item'
 
-    comando = 'SELECT sol0.id id,substring(to_char(sol0.fecha,' + "'" + 'yyyy-mm-dd' + "'" + '),1,10)  fecha,sol.item item, sol.descripcion_id, des.nombre descripcion, tip.nombre tipo ,sol.producto producto,  art.articulo nombre_producto ,pres.nombre presentacion,sol.cantidad, sol.justificacion  , sol."especificacionesTecnicas" tec, est.nombre estValidacion, sol."estadosValidacion_id" estadosValidacion_id , usu.nom_usuario usuSolicitud FROM public.solicitud_solicitudes sol0 LEFT JOIN public.solicitud_solicitudesDetalle sol ON (sol.solicitud_id = sol0.id ) LEFT JOIN public.solicitud_descripcioncompra des ON (des.id = sol.descripcion_id) LEFT JOIN public.solicitud_tiposcompra tip ON (tip.id = sol."tiposCompra_id") LEFT JOIN public.solicitud_presentacion pres ON (pres.id = sol.presentacion_id) LEFT JOIN public.mae_articulos art ON (art.codreg_articulo = sol.producto ) LEFT JOIN public.solicitud_usuarios usu ON (usu.id = sol0."usuarios_id") LEFT JOIN public.solicitud_estadosvalidacion est ON (est.id = sol."estadosValidacion_id") WHERE sol0.fecha >= ' + "'" + desdeFechaSolicitud + "'" + ' and sol0.fecha <= ' + "'"  + hastaFechaSolicitud + "'" + ' and usu.num_identificacion = ' + "'" + str(username) + "' ORDER BY sol0.fecha, sol.item "
+    #comando = 'SELECT sol0.id id,substring(to_char(sol0.fecha,' + "'" + 'yyyy-mm-dd' + "'" + '),1,10)  fecha,sol.item item, sol.descripcion_id, des.nombre descripcion, tip.nombre tipo ,sol.producto producto,  art.articulo nombre_producto ,pres.nombre presentacion,sol.cantidad, sol.justificacion  , sol."especificacionesTecnicas" tec, est.nombre estValidacion, sol."estadosValidacion_id" estadosValidacion_id , usu.nom_usuario usuSolicitud FROM public.solicitud_solicitudes sol0 LEFT JOIN public.solicitud_solicitudesDetalle sol ON (sol.solicitud_id = sol0.id ) LEFT JOIN public.solicitud_descripcioncompra des ON (des.id = sol.descripcion_id) LEFT JOIN public.solicitud_tiposcompra tip ON (tip.id = sol."tiposCompra_id") LEFT JOIN public.solicitud_presentacion pres ON (pres.id = sol.presentacion_id) LEFT JOIN public.mae_articulos art ON (art.codreg_articulo = sol.producto ) LEFT JOIN public.solicitud_usuarios usu ON (usu.id = sol0."usuarios_id") LEFT JOIN public.solicitud_estadosvalidacion est ON (est.id = sol."estadosValidacion_id") WHERE sol0.fecha >= ' + "'" + desdeFechaSolicitud + "'" + ' and sol0.fecha <= ' + "'"  + hastaFechaSolicitud + "'" + ' and usu.num_identificacion = ' + "'" + str(username) + "' ORDER BY sol0.fecha, sol.item "
+    comando = 'SELECT sol0.id id,substring(to_char(sol0.fecha,' + "'" + 'yyyy-mm-dd' + "'" + '),1,10)  fecha,sol.item item, sol.descripcion_id, des.nombre descripcion, tip.nombre tipo ,sol.producto producto,  art.articulo nombre_producto ,pres.nombre presentacion,sol.cantidad, sol.justificacion  , sol."especificacionesTecnicas" tec, est.nombre estValidacion, sol."estadosValidacion_id" estadosValidacion_id , usu.nom_usuario usuSolicitud FROM public.solicitud_solicitudes sol0 LEFT JOIN public.solicitud_solicitudesDetalle sol ON (sol.solicitud_id = sol0.id ) LEFT JOIN public.solicitud_descripcioncompra des ON (des.id = sol.descripcion_id) LEFT JOIN public.solicitud_tiposcompra tip ON (tip.id = sol."tiposCompra_id") LEFT JOIN public.solicitud_presentacion pres ON (pres.id = sol.presentacion_id) LEFT JOIN public.mae_articulos art ON (art.codreg_articulo = sol.producto ) LEFT JOIN public.solicitud_usuarios usu ON (usu.id = sol0."usuarios_id") LEFT JOIN public.solicitud_estadosvalidacion est ON (est.id = sol."estadosValidacion_id") WHERE usu.num_identificacion = ' + "'" + str(username) + "' ORDER BY sol0.fecha, sol.item "
 
     print("pase comando")
     cur.execute(comando)
@@ -862,19 +864,16 @@ class PostStoreSolicitudesConsulta(TemplateView):
         def get_context_data(self, **kwargs):
             print("ENTRE POR EL GET_CONTEXT DEL VIEW de PostStoreSolicitudesConsulta : ")
 
-            username = self.request.GET['username']
-            sedeSeleccionada = self.request.GET["sedeSeleccionada"]
-            nombreUsuario = self.request.GET["nombreUsuario"]
-            nombreSede = self.request.GET["nombreSede"]
-            perfil = self.request.GET['perfil']
-
-            #print("SolictudId =", solicitudId)
-            #print("username =", username)
-            #print("sedeSeleccionada =", sedeSeleccionada)
-            #print("nombreUsuario =", nombreUsuario)
-            #print("nombreSede =", nombreSede)
-
             context = super().get_context_data(**kwargs)
+            username = self.kwargs['username']
+            sedeSeleccionada = self.kwargs['sedeSeleccionada']
+            nombreUsuario = self.kwargs['nombreUsuario']
+            nombreSede = self.kwargs['nombreSede']
+            perfil =  self.kwargs['perfil']
+            print("username =", username)
+            print("sedeSeleccionada =", sedeSeleccionada)
+            print("nombreUsuario =", nombreUsuario)
+            print("nombreSede =", nombreSede)
 
             context['Username'] = username
             context['SedeSeleccionada'] = sedeSeleccionada
@@ -882,14 +881,14 @@ class PostStoreSolicitudesConsulta(TemplateView):
             context['NombreSede'] = nombreSede
             context['Perfil'] = perfil
             #context['SolicitudId'] = solicitudId
-            desdeFechaSolicitud = self.request.GET['desdeFechaSolicitud']
-            hastaFechaSolicitud = self.request.GET['hastaFechaSolicitud']
+            #desdeFechaSolicitud = self.request.GET['desdeFechaSolicitud']
+            #hastaFechaSolicitud = self.request.GET['hastaFechaSolicitud']
 
-            print("desdeFechaSolicitud = ", desdeFechaSolicitud)
-            print("hastaFechaSolicitud = ", hastaFechaSolicitud)
+            #print("desdeFechaSolicitud = ", desdeFechaSolicitud)
+            #print("hastaFechaSolicitud = ", hastaFechaSolicitud)
 
-            context['DesdeFechaSolicitud'] = desdeFechaSolicitud
-            context['HastaFechaSolicitud'] = hastaFechaSolicitud
+            #context['DesdeFechaSolicitud'] = desdeFechaSolicitud
+            #context['HastaFechaSolicitud'] = hastaFechaSolicitud
 
             return context
 
@@ -1714,14 +1713,21 @@ class PostStoreCompras(TemplateView):
 
                 estadosComprasAct = request.POST.get('estadosCompras')
                 observacionesComprasAct = request.POST.get('observacionesCompras')
+
                 adjuntoComprasAct = form.files
+
+
 
                 print ("adjuntoComprasAct = ", adjuntoComprasAct)
 
                 nombreArchivo=""
 
+                my_var = adjuntoComprasAct.get( 'adjuntoCompras', None)
+                print ("my_var = ", my_var)
+
+
                 #if self.form_class(request.FILES):
-                if (adjuntoComprasAct  == '<MultiValueDict: {}>'):
+                if (my_var  == None):
                     print("Entre Nulo")
                     nombreArchivo = ""
                 else:
@@ -1783,9 +1789,7 @@ class PostStoreCompras(TemplateView):
                     obj.estadosCompras_id = EstadosValidacion.objects.get(id=estadosComprasAct)
                     obj.observacionesCompras=observacionesComprasAct
                     obj.usuarioResponsableCompra_id = usuComprasAct
-
                     obj.adjuntoCompras = nombreArchivo
-
                     obj.save()
 
                 return JsonResponse({'success': True, 'message': 'Solicitud Detalle Updated Successfully!'})
@@ -1942,7 +1946,7 @@ def load_dataCompras(request, data):
     cur.execute("set client_encoding='LATIN1';")
 
     #comando =  'SELECT sol.id id,sol.item item, sol.descripcion_id, des.nombre descripcion, tip.nombre tipo ,sol.producto producto,  art.articulo nombre_producto ,pres.nombre presentacion,sol.cantidad, sol.justificacion  , sol."especificacionesTecnicas" tec,usu.nom_usuario usuResp  , est.nombre estValidacion,est1.nombre estadosAlmacen, sol."estadosValidacion_id" estadosValidacion_id, sol."especificacionesAlmacen" especificacionesAlmacen, sol."estadosAlmacen_id" estadosAlmacen_id ,   usu1.nom_usuario usuAlmacen , sol."observacionesCompras" observacionesCompras, sol."estadosCompras_id" estadosCompras_id, est2.nombre estadosCompras, usu2.nom_usuario usuCompras  FROM public.solicitud_solicitudesDetalle sol INNER JOIN public.solicitud_descripcioncompra des ON (des.id = sol.descripcion_id ) INNER JOIN public.solicitud_tiposcompra tip ON (tip.id = sol."tiposCompra_id" ) INNER JOIN public.solicitud_presentacion pres on (pres.id = sol.presentacion_id) INNER JOIN public.mae_articulos art   ON (art.codreg_articulo = sol.producto) LEFT JOIN  public.solicitud_usuarios usu ON (usu.id = sol."usuarioResponsableValidacion_id") LEFT JOIN public.solicitud_usuarios usu1 ON (usu1.id = sol."usuarioResponsableAlmacen_id") LEFT JOIN public.solicitud_usuarios usu2 ON (usu2.id = sol."usuarioResponsableCompra_id") INNER JOIN public.solicitud_estadosvalidacion est ON (est.id = sol."estadosValidacion_id" ) INNER JOIN public.solicitud_estadosvalidacion est1  ON (est1.id = sol."estadosAlmacen_id")  INNER JOIN public.solicitud_estadosvalidacion est2  ON (est2.id = "estadosCompras_id") WHERE sol.solicitud_id = ' + solicitudId + ' ORDER BY sol.item '
-    comando = 'SELECT sol0.id solicitudNo,to_char(sol0.fecha,' + "'YYYY - MM - DD HH: MM.SS'" + ') fecha, sol0.area_id area, areas.area nombre_area, sol0.usuarios_id idUsuarioCreaSol , usuariosCreaSol.nom_usuario usuariosCreaSol, sol.id id,sol.item item, sol.descripcion_id, des.nombre descripcion, tip.nombre tipo ,sol.producto producto,  art.articulo nombre_producto ,pres.nombre presentacion,sol.cantidad, sol.justificacion  , sol."especificacionesTecnicas" tec,usu.nom_usuario usuResp  , est.nombre estValidacion,est1.nombre estadosAlmacen, sol."estadosValidacion_id" estadosValidacion_id, sol."especificacionesAlmacen" especificacionesAlmacen, sol."estadosAlmacen_id" estadosAlmacen_id ,   usu1.nom_usuario usuAlmacen , sol."observacionesCompras" observacionesCompras, sol."estadosCompras_id" estadosCompras_id, est2.nombre estadosCompras, usu2.nom_usuario usuCompras , sol."adjuntoCompras"  adjuntoCompras  FROM public.solicitud_solicitudes sol0 INNER JOIN public.solicitud_solicitudesDetalle sol ON (sol.solicitud_id = sol0.id) INNER JOIN public.solicitud_descripcioncompra des ON (des.id = sol.descripcion_id ) INNER JOIN public.solicitud_tiposcompra tip ON (tip.id = sol."tiposCompra_id" ) INNER JOIN public.solicitud_presentacion pres on (pres.id = sol.presentacion_id)  INNER JOIN public.mae_articulos art ON (art.codreg_articulo = sol.producto) LEFT JOIN public.solicitud_usuarios usu ON (usu.id = sol."usuarioResponsableValidacion_id")  LEFT JOIN public.solicitud_usuarios usu1 ON (usu1.id = sol."usuarioResponsableAlmacen_id") LEFT JOIN public.solicitud_usuarios usu2 ON (usu2.id = sol."usuarioResponsableCompra_id")  INNER JOIN public.solicitud_estadosvalidacion est ON (est.id = sol."estadosValidacion_id" ) INNER JOIN public.solicitud_estadosAlmacen est1 ON (est1.id = sol."estadosAlmacen_id") INNER JOIN public.solicitud_estadosvalidacion est2 ON (est2.id = "estadosCompras_id") inner join public.solicitud_areas areas on (areas.id = sol0.area_id) inner join public.solicitud_usuarios usuariosCreaSol on (usuariosCreaSol.id = sol0.usuarios_id) WHERE sol0.estadoReg = ' + "'A'" + ' AND sol. "estadosCompras_id" = 1 ORDER BY sol.item'
+    comando = 'SELECT sol0.id solicitudNo,to_char(sol0.fecha,' + "'YYYY - MM - DD HH: MM.SS'" + ') fecha, sol0.area_id area, areas.area nombre_area, sol0.usuarios_id idUsuarioCreaSol , usuariosCreaSol.nom_usuario usuariosCreaSol, sol.id id,sol.item item, sol.descripcion_id, des.nombre descripcion, tip.nombre tipo ,sol.producto producto,  art.articulo nombre_producto ,pres.nombre presentacion,sol.cantidad, sol.justificacion  , sol."especificacionesTecnicas" tec,usu.nom_usuario usuResp  , est.nombre estValidacion,est1.nombre estadosAlmacen, sol."estadosValidacion_id" estadosValidacion_id, sol."especificacionesAlmacen" especificacionesAlmacen, sol."estadosAlmacen_id" estadosAlmacen_id ,   usu1.nom_usuario usuAlmacen , sol."observacionesCompras" observacionesCompras, sol."estadosCompras_id" estadosCompras_id, est2.nombre estadosCompras, usu2.nom_usuario usuCompras , sol."adjuntoCompras"  adjuntoCompras  FROM public.solicitud_solicitudes sol0 INNER JOIN public.solicitud_solicitudesDetalle sol ON (sol.solicitud_id = sol0.id) INNER JOIN public.solicitud_descripcioncompra des ON (des.id = sol.descripcion_id ) INNER JOIN public.solicitud_tiposcompra tip ON (tip.id = sol."tiposCompra_id" ) INNER JOIN public.solicitud_presentacion pres on (pres.id = sol.presentacion_id)  INNER JOIN public.mae_articulos art ON (art.codreg_articulo = sol.producto) LEFT JOIN public.solicitud_usuarios usu ON (usu.id = sol."usuarioResponsableValidacion_id")  LEFT JOIN public.solicitud_usuarios usu1 ON (usu1.id = sol."usuarioResponsableAlmacen_id") LEFT JOIN public.solicitud_usuarios usu2 ON (usu2.id = sol."usuarioResponsableCompra_id")  INNER JOIN public.solicitud_estadosvalidacion est ON (est.id = sol."estadosValidacion_id" ) INNER JOIN public.solicitud_estadosAlmacen est1 ON (est1.id = sol."estadosAlmacen_id") INNER JOIN public.solicitud_estadosvalidacion est2 ON (est2.id = "estadosCompras_id") inner join public.solicitud_areas areas on (areas.id = sol0.area_id) inner join public.solicitud_usuarios usuariosCreaSol on (usuariosCreaSol.id = sol0.usuarios_id) WHERE sol0.estadoReg = ' + "'A'" + ' AND sol. "estadosCompras_id" != 2 ORDER BY sol.item'
 
     cur.execute(comando)
     print(comando)
@@ -2139,14 +2143,51 @@ class PostStoreOrdenesCompra(CreateView):
               'area', 'contacto', 'entregarEn', 'telefono', 'proveedor', 'opciones', 'valorBruto',
              'descuento','valorParcial','iva','valorTotal','observaciones','responsableCompra','entragaMercancia','recibeMercancia','aproboCompraStaff']
 
+    #success_url = "/ordenesCompra/OrdenesCompraBusca/"
     success_url = "/ordenesCompra/OrdenesCompraBusca/"
 
 
     def get_initial(self):
-        print(" Entre initial = ", self.kwargs)
-        solicitudId = self.request.GET["solicitudId"]
+        print(" Entre initial  de PostStoreOrdenesCompra = ", self.kwargs)
+        pk = self.kwargs["pk"]
+
         # Leo la Solicitud
-        print(" Entre initial solicitudId = ", solicitudId)
+        print(" Entre initial pk = ", pk)
+
+        ## Primero con el Id que llega busco ahora si la solicitud
+
+
+        miConexion = psycopg2.connect(host="192.168.0.237", database="bd_solicitudes2", port="5432", user="postgres",
+                                      password="BD_m3d1c4l")
+        cur = miConexion.cursor()
+
+        comando = "SELECT DISTINCT sol0.solicitud_id valor FROM public.solicitud_solicitudesdetalle sol0 WHERE sol0.id = " + pk
+        print(comando)
+        cur.execute(comando)
+        print(comando)
+
+        solicitudx = []
+
+        for valor in cur.fetchall():
+            solicitudx.append({'valor': valor})
+
+        miConexion.close()
+        print("solicitudx ")
+        print(solicitudx)
+
+        for dato in solicitudx:
+            print(dato)
+            print(dato['valor'])
+            print(json.dumps(dato['valor']))
+            solicitudId = json.dumps(dato['valor'])
+
+        solicitudId = solicitudId.replace("[", "")
+        solicitudId = solicitudId.replace("]", "")
+
+        #context['SolicitudId '] = solicitudId
+        print("solicitudId = ", solicitudId)
+
+        ## Fin busco la SolicitudId
 
         # Traigo los datos para pasar los defaults en initial
 
@@ -2171,18 +2212,21 @@ class PostStoreOrdenesCompra(CreateView):
 
         initial = super(PostStoreOrdenesCompra, self).get_initial()
 
-        initial['elaboro'] = ordenCompra[0]['idSol']
-        initial['revizo'] = ordenCompra[0]['usuCompras']
-        #initial['aprobo'] = ordenCompra[0]['']
-        initial['responsableCompra'] = ordenCompra[0]['usuCompras']
-        initial['area'] = ordenCompra[0]['area']
-        initial['valorBruto'] = 0
-        initial['descuento'] = 0
-        initial['valorParcial'] = 0
-        initial['iva'] = 0.19
-        initial['valorTotal'] = 0
-        initial['valorParcial'] = initial['valorBruto'] - initial['descuento']
-        initial['valorTotal'] = initial['valorParcial'] * initial['iva']
+        if ordenCompra != []:
+
+            initial['elaboro'] = ordenCompra[0]['idSol']
+            initial['revizo'] = ordenCompra[0]['usuCompras']
+            #initial['revizo'] = 'readonly'
+            #initial['aprobo'] = ordenCompra[0]['']
+            initial['responsableCompra'] = ordenCompra[0]['usuCompras']
+            initial['area'] = ordenCompra[0]['area']
+            initial['valorBruto'] = 0
+            initial['descuento'] = 0
+            initial['valorParcial'] = 0
+            initial['iva'] = 0.19
+            initial['valorTotal'] = 0
+            initial['valorParcial'] = initial['valorBruto'] - initial['descuento']
+            initial['valorTotal'] = initial['valorParcial'] * initial['iva']
 
 
 
@@ -2628,18 +2672,15 @@ class PostStoreOrdenesCompra(CreateView):
             llavek.value = str(data6)
             # k23 = my_sheet['K23']
             # k23.value = str(data6)
-            print("Pase 570")
+            print ("Pase 570")
             llavel = 'l' + str(voy)
             llavel1 = 'L' + str(voy)
             llavel = my_sheet[llavel1]
             llavel.value = str(data7)
             # l23 = my_sheet['L23']
             # l23.value = str(data7)
-
+            print("Pase 571")
             voy = voy + 1
-
-
-
 
             ## Fin detalle Excel
 
@@ -2647,111 +2688,304 @@ class PostStoreOrdenesCompra(CreateView):
 
         # seguimos con la ultima parte del archivo excel
 
+        voy = voy + 2
         print("Pase 56")
-        b27 = my_sheet['B27']
-        b27.value = "FORMA DE PAGO"
-        b27.font = fuente1
-        b28 = my_sheet['B28']
-        b28.value = "OPCION 1"
-        b28.font = fuente1
-        c28 = my_sheet['C28']
-        c28.value = "CONTRA ENTREGA"
-        c28.font = fuente2
-        b29 = my_sheet['B29']
-        b29.value = "OPCION 2"
-        b29.font = fuente1
-        c29 = my_sheet['C29']
-        c29.value = "ANTICIPO"
-        c29.font = fuente2
-        e29 = my_sheet['E29']
-        e29.value = "50 %"
-        e29.font = fuente2
-        f29 = my_sheet['F29']
-        f29.value = str(form.cleaned_data['opciones'])
-        f29.font = fuente2
-        c30 = my_sheet['C30']
-        c30.value = "CONTRA ENTREGA"
-        c30.font = fuente2
-        e30 = my_sheet['E30']
-        e30.value = "50 %"
-        e30.font = fuente2
-        b31 = my_sheet['B31']
-        b31.value = "OPCION 3"
-        b31.font = fuente1
-        c31 = my_sheet['C31']
-        c31.value = "NOVENTA (90) DIAS"
-        c31.font = fuente2
-        b32 = my_sheet['B32']
-        b32.value = "OPCION 4"
-        b32.font = fuente1
-        h27 = my_sheet['H27']
-        h27.value = "VALOR BRUTO"
-        h27.font = fuente1
+
+        llaveb = 'b' + str(voy)
+        llaveb1 = 'B' + str(voy)
+        llaveb = my_sheet[llaveb1]
+        llaveb.value = "FORMA DE PAGO"
+        llaveb.font = fuente1
+        #b27 = my_sheet['B27']
+        #b27.value = "FORMA DE PAGO"
+        #b27.font = fuente1
+        llaveh = 'h' + str(voy)
+        llaveh1 = 'H' + str(voy)
+        llaveh = my_sheet[llaveh1]
+        llaveh.value = "VALOR BRUTO"
+        llaveh.font = fuente1
+        #h27 = my_sheet['H27']
+        #h27.value = "VALOR BRUTO"
+        #h27.font = fuente1
+        llavel = 'l' + str(voy)
+        llavel1 = 'L' + str(voy)
+        llavel = my_sheet[llavel1]
+        llavel.value = str(form.cleaned_data['valorBruto'])
         print("Pase 57")
-        l27 = my_sheet['L27']
-        l27.value = str(form.cleaned_data['valorBruto'])
-        h28 = my_sheet['H28']
-        h28.value = "DESCUENTO %"
-        h28.font = fuente1
-        l28 = my_sheet['L28']
-        l28.value = str(form.cleaned_data['descuento'])
-        h29 = my_sheet['H29']
-        h29.value = "VALOR PARCIAL"
-        h29.font = fuente1
-        l29 = my_sheet['L29']
-        l29.value = str(form.cleaned_data['valorParcial'])
-        h30 = my_sheet['H30']
-        h30.value = "IVA"
-        h30.font = fuente1
-        l30 = my_sheet['L30']
-        l30.value = str(form.cleaned_data['iva'])
+        #l27 = my_sheet['L27']
+        #l27.value = str(form.cleaned_data['valorBruto'])
+
+        voy = voy + 1
+
+        llaveb = 'b' + str(voy)
+        llaveb1 = 'B' + str(voy)
+        llaveb = my_sheet[llaveb1]
+        llaveb.value = "OPCION 1"
+        llaveb.font = fuente1
+        #b28 = my_sheet['B28']
+        #b28.value = "OPCION 1"
+        #b28.font = fuente1
+        llavec = 'c' + str(voy)
+        llavec1 = 'C' + str(voy)
+        llavec = my_sheet[llavec1]
+        llavec.value = "CONTRA ENTREGA"
+        llavec.font = fuente2
+        #c28 = my_sheet['C28']
+        #c28.value = "CONTRA ENTREGA"
+        #c28.font = fuente2
+        llaveh = 'h' + str(voy)
+        llaveh1 = 'H' + str(voy)
+        llaveh = my_sheet[llaveh1]
+        llaveh.value = "DESCUENTO %"
+        llaveh.font = fuente1
+        #h28 = my_sheet['H28']
+        #h28.value = "DESCUENTO %"
+        #h28.font = fuente1
+        llavel = 'l' + str(voy)
+        llavel1 = 'L' + str(voy)
+        llavel = my_sheet[llavel1]
+        llavel.value = str(form.cleaned_data['descuento'])
+        #l28 = my_sheet['L28']
+        #l28.value = str(form.cleaned_data['descuento'])
+
+        voy = voy + 1
+
+        llaveb = 'b' + str(voy)
+        llaveb1 = 'B' + str(voy)
+        llaveb = my_sheet[llaveb1]
+        llaveb.value = "OPCION 2"
+        llaveb.font = fuente1
+        #b29 = my_sheet['B29']
+        #b29.value = "OPCION 2"
+        #b29.font = fuente1
+        llavec = 'c' + str(voy)
+        llavec1 = 'C' + str(voy)
+        llavec = my_sheet[llavec1]
+        llavec.value = "ANTICIPO"
+        llavec.font = fuente2
+        #c29 = my_sheet['C29']
+        #c29.value = "ANTICIPO"
+        #c29.font = fuente2
+        llavee = 'e' + str(voy)
+        llavee1 = 'E' + str(voy)
+        llavee = my_sheet[llavee1]
+        llavee.value = "50 %"
+        llavee.font = fuente2
+        #e29 = my_sheet['E29']
+        #e29.value = "50 %"
+        #e29.font = fuente2
+        llavef = 'f' + str(voy)
+        llavef1 = 'F' + str(voy)
+        llavef = my_sheet[llavef1]
+        llavef.value = str(form.cleaned_data['opciones'])
+        llavef.font = fuente2
+        #f29 = my_sheet['F29']
+        #f29.value = str(form.cleaned_data['opciones'])
+        #f29.font = fuente2
+        llaveh = 'h' + str(voy)
+        llaveh1 = 'H' + str(voy)
+        llaveh = my_sheet[llaveh1]
+        llaveh.value = "VALOR PARCIAL"
+        llaveh.font = fuente1
+        #h29 = my_sheet['H29']
+        #h29.value = "VALOR PARCIAL"
+        #h29.font = fuente1
+        llavel = 'l' + str(voy)
+        llavel1 = 'L' + str(voy)
+        llavel = my_sheet[llavel1]
+        llavel.value = str(form.cleaned_data['valorParcial'])
+        #l29 = my_sheet['L29']
+        #l29.value = str(form.cleaned_data['valorParcial'])
+
+        voy = voy + 1
+
+        llavec = 'c' + str(voy)
+        llavec1 = 'C' + str(voy)
+        llavec = my_sheet[llavec1]
+        llavec.value = "CONTRA ENTREGA"
+        llavec.font = fuente2
+        #c30 = my_sheet['C30']
+        #c30.value = "CONTRA ENTREGA"
+        #c30.font = fuente2
+        llavee = 'e' + str(voy)
+        llavee1 = 'E' + str(voy)
+        llavee = my_sheet[llavee1]
+        llavee.value = "50 %"
+        llavee.font = fuente2
+        #e30 = my_sheet['E30']
+        #e30.value = "50 %"
+        #e30.font = fuente2
+        llaveh = 'h' + str(voy)
+        llaveh1 = 'H' + str(voy)
+        llaveh = my_sheet[llaveh1]
+        llaveh.value = "IVA"
+        llaveh.font = fuente1
+        #h30 = my_sheet['H30']
+        #h30.value = "IVA"
+        #h30.font = fuente1
+        llavel = 'l' + str(voy)
+        llavel1 = 'L' + str(voy)
+        llavel = my_sheet[llavel1]
+        llavel.value = str(form.cleaned_data['iva'])
+        #l30 = my_sheet['L30']
+        #l30.value = str(form.cleaned_data['iva'])
+
+        voy = voy + 1
+
+        llaveb = 'b' + str(voy)
+        llaveb1 = 'B' + str(voy)
+        llaveb = my_sheet[llaveb1]
+        llaveb.value =  "OPCION 3"
+        llaveb.font = fuente1
+        #b31 = my_sheet['B31']
+        #b31.value = "OPCION 3"
+        #b31.font = fuente1
+        llavec = 'c' + str(voy)
+        llavec1 = 'C' + str(voy)
+        llavec = my_sheet[llavec1]
+        llavec.value =  "NOVENTA (90) DIAS"
+        llavec.font = fuente2
+        #c31 = my_sheet['C31']
+        #c31.value = "NOVENTA (90) DIAS"
+        #c31.font = fuente2
         print("Pase 58")
-        h31 = my_sheet['H31']
-        h31.value = "VALOR TOTAL"
-        h31.font = fuente1
-        l31 = my_sheet['L31']
-        l31.value = form.cleaned_data['valorTotal']
+        llaveh = 'h' + str(voy)
+        llaveh1 = 'H' + str(voy)
+        llaveh = my_sheet[llaveh1]
+        llaveh.value = "VALOR TOTAL"
+        llaveh.font = fuente1
+        #h31 = my_sheet['H31']
+        #h31.value = "VALOR TOTAL"
+        #h31.font = fuente1
+        llavel = 'l' + str(voy)
+        llavel1 = 'L' + str(voy)
+        llavel = my_sheet[llavel1]
+        llavel.value = form.cleaned_data['valorTotal']
+        #l31 = my_sheet['L31']
+        #l31.value = form.cleaned_data['valorTotal']
+        llaveb = 'b' + str(voy)
+        llaveb1 = 'B' + str(voy)
+        llaveb = my_sheet[llaveb1]
+        llaveb.value = "OPCION 4"
+        llaveb.font = fuente1
+        #b32 = my_sheet['B32']
+        #b32.value = "OPCION 4"
+        #b32.font = fuente1
+        llaveh = 'h' + str(voy)
+        llaveh1 = 'H' + str(voy)
+        llaveh = my_sheet[llaveh1]
+        llaveh.value = "OBSERVACIONES"
+        llaveh.font = fuente1
+        #h32 = my_sheet['H32']
+        #h32.value = "OBSERVACIONES"
+        #h32.font = fuente1
 
-        h32 = my_sheet['H32']
-        h32.value = "OBSERVACIONES"
-        h32.font = fuente1
-        l32 = my_sheet['L32']
-        l32.value = str(form.cleaned_data['observaciones'])
+        llavel = 'l' + str(voy)
+        llavel1 = 'L' + str(voy)
+        llavel = my_sheet[llavel1]
+        llavel.value =  str(form.cleaned_data['observaciones'])
+        #l32 = my_sheet['L32']
+        #l32.value = str(form.cleaned_data['observaciones'])
 
-        b36 = my_sheet['B36']
-        b36.value = "RESPONSABLE ORDEN DE COMPRA:"
-        b36.font = fuente1
+        voy = voy + 4
+
+        llaveb = 'b' + str(voy)
+        llaveb1 = 'B' + str(voy)
+        llaveb = my_sheet[llaveb1]
+        llaveb.value = "RESPONSABLE ORDEN DE COMPRA:"
+        llaveb.font = fuente1
+        #b36 = my_sheet['B36']
+        #b36.value = "RESPONSABLE ORDEN DE COMPRA:"
+        #b36.font = fuente1
+        llaveg = 'g' + str(voy)
+        llaveg1 = 'G' + str(voy)
+        llaveg = my_sheet[llaveg1]
+        llaveg.value =  "QUIEN ENTREGA MERCANCIA:"
+        llaveg.font = fuente1
         print("Pase 59")
-        b38 = my_sheet['B38']
-        b38.value = str(form.cleaned_data['responsableCompra'])
+        #g36 = my_sheet['G36']
+        #g36.value = "QUIEN ENTREGA MERCANCIA:"
+        #g36.font = fuente1
+        llavek = 'k' + str(voy)
+        llavek1 = 'K' + str(voy)
+        llavek = my_sheet[llavek1]
+        llavek.value = "QUIEN RECIBE MERCANCIA:"
+        llavek.font = fuente1
+        #k36 = my_sheet['K36']
+        #k36.value = "QUIEN RECIBE MERCANCIA:"
+        #k36.font = fuente1
 
-        g36 = my_sheet['G36']
-        g36.value = "QUIEN ENTREGA MERCANCIA:"
-        g36.font = fuente1
+        voy = voy + 2
+
+        llaveb = 'b' + str(voy)
+        llaveb1 = 'B' + str(voy)
+        llaveb = my_sheet[llaveb1]
+        llaveb.value = str(form.cleaned_data['responsableCompra'])
+        #b38 = my_sheet['B38']
+        #b38.value = str(form.cleaned_data['responsableCompra'])
         print("Pase 60")
-        g38 = my_sheet['G38']
-        g38.value = str(form.cleaned_data['entragaMercancia'])
-        k36 = my_sheet['K36']
-        k36.value = "QUIEN RECIBE MERCANCIA:"
-        k36.font = fuente1
-        k38 = my_sheet['K38']
-        k38.value = str(form.cleaned_data['recibeMercancia'])
+        llaveg = 'g' + str(voy)
+        llaveg1 = 'G' + str(voy)
+        llaveg = my_sheet[llaveg1]
+        llaveg.value = str(form.cleaned_data['entragaMercancia'])
+        #g38 = my_sheet['G38']
+        #g38.value = str(form.cleaned_data['entragaMercancia'])
+        llavek = 'k' + str(voy)
+        llavek1 = 'K' + str(voy)
+        llavek = my_sheet[llavek1]
+        llavek.value = str(form.cleaned_data['recibeMercancia'])
+        #k38 = my_sheet['K38']
+        #k38.value = str(form.cleaned_data['recibeMercancia'])
+
+        voy = voy + 5
+
         print("Pase 61")
-        b43 = my_sheet['B43']
-        b43.value = "FIRMA Y SELLO"
-        b43.font = fuente2
-        g43 = my_sheet['G43']
-        g43.value = "FIRMA Y SELLO"
-        g43.font = fuente2
-        k43 = my_sheet['K43']
-        k43.value = "FIRMA Y SELLO"
-        k43.font = fuente2
-        b44 = my_sheet['B44']
-        b44.value = "NOTA ACLARATORIA. "
-        b44.font = fuente1
-        e44 = my_sheet['E44']
-        e44.value = "TODA CANTIDAD RECIBIDA, MAYOR A LA SOLICITADA EN LA ORDEN DE COMPRA NO SERÁ PAGADA POR LA CLÍNICA MEDICAL S.A.S"
-        e44.font = fuente2
+
+        llaveb = 'b' + str(voy)
+        llaveb1 = 'B' + str(voy)
+        llaveb = my_sheet[llaveb1]
+        llaveb.value = "FIRMA Y SELLO"
+        llaveb.font = fuente2
+        #b43 = my_sheet['B43']
+        #b43.value = "FIRMA Y SELLO"
+        #b43.font = fuente2
+        llaveg = 'g' + str(voy)
+        llaveg1 = 'G' + str(voy)
+        llaveg = my_sheet[llaveg1]
+        llaveg.value = "FIRMA Y SELLO"
+        llaveg.font = fuente2
+        #g43 = my_sheet['G43']
+        #g43.value = "FIRMA Y SELLO"
+        #g43.font = fuente2
+        llavek = 'k' + str(voy)
+        llavek1 = 'K' + str(voy)
+        llavek = my_sheet[llavek1]
+        llavek.value = "FIRMA Y SELLO"
+        llavek.font = fuente2
+        #k43 = my_sheet['K43']
+        #k43.value = "FIRMA Y SELLO"
+        #k43.font = fuente2
+
+        voy = voy + 1
+
+        llaveb = 'b' + str(voy)
+        llaveb1 = 'B' + str(voy)
+        llaveb = my_sheet[llaveb1]
+        llaveb.value = "NOTA ACLARATORIA. "
+        llaveb.font = fuente1
+        #b44 = my_sheet['B44']
+        #b44.value = "NOTA ACLARATORIA. "
+        #b44.font = fuente1
+
+        llavee = 'e' + str(voy)
+        llavee1 = 'E' + str(voy)
+        llavee = my_sheet[llavee1]
+        llavee.value = "TODA CANTIDAD RECIBIDA, MAYOR A LA SOLICITADA EN LA ORDEN DE COMPRA NO SERÁ PAGADA POR LA CLÍNICA MEDICAL S.A.S"
+        llavee.font = fuente1
+
+        #e44 = my_sheet['E44']
+        #e44.value = "TODA CANTIDAD RECIBIDA, MAYOR A LA SOLICITADA EN LA ORDEN DE COMPRA NO SERÁ PAGADA POR LA CLÍNICA MEDICAL S.A.S"
+        #e44.font = fuente2
         print("Pase Final")
 
         response = HttpResponse(content_type="application/ms-excel")
@@ -2770,7 +3004,7 @@ class PostStoreOrdenesCompra(CreateView):
         return render(self.request, "Reportes/cabeza.html", context)
 
     def get_context_data(self, **kwargs):
-        print("GET_CONTEXT DEL VIEW DE ORDENES DE COMPRA con ANTES kwars = ", self.kwargs)
+        print("GET_CONTEXT DEL VIEW DE POSTSTORE-ORDENES DE COMPRA con ANTES kwars = ", self.kwargs)
         context = super(PostStoreOrdenesCompra, self).get_context_data(**kwargs)
         print("GET_CONTEXT DEL VIEW DE ORDENES DE COMPRA con kwars = ", self.kwargs)
 
@@ -2778,14 +3012,14 @@ class PostStoreOrdenesCompra(CreateView):
         context['Aprobo'] = 'ALBERTO BERNAL'
         context['entregarEn'] = "JEISON MOLINA"
 
-        solicitudId = self.request.GET["solicitudId"]
-        username = self.request.GET["username"]
-        sedeSeleccionada = self.request.GET["sedeSeleccionada"]
-        nombreUsuario = self.request.GET["nombreUsuario"]
-        nombreSede = self.request.GET["nombreSede"]
-        perfil = self.request.GET["perfil"]
+        pk = self.kwargs["pk"]
+        username = self.kwargs["username"]
+        sedeSeleccionada = self.kwargs["sedeSeleccionada"]
+        nombreUsuario = self.kwargs["nombreUsuario"]
+        nombreSede = self.kwargs["nombreSede"]
+        perfil = self.kwargs["perfil"]
 
-        print("SolictudId =", solicitudId)
+        print("pk =", pk)
         print("username =", username)
         print("sedeSeleccionada =", sedeSeleccionada)
         print("nombreUsuario =", nombreUsuario)
@@ -2799,7 +3033,7 @@ class PostStoreOrdenesCompra(CreateView):
         context['NombreUsuario'] = nombreUsuario
         context['NombreSede'] = nombreSede
         context['Perfil'] = perfil
-        context['SolicitudId'] = solicitudId
+        #context['SolicitudId'] = solicitudId
         context['ordenesCompraForm'] = ordenesCompraForm
 
         #DESDE AQUIP
@@ -2872,6 +3106,41 @@ class PostStoreOrdenesCompra(CreateView):
         context['EstadosCompras'] = estadosCompras
 
         # Fin buscamos estados Almacen
+
+        ## Primero con el Id que llega busco ahora si la solicitud
+
+        miConexion = psycopg2.connect(host="192.168.0.237", database="bd_solicitudes2", port="5432", user="postgres",
+                                      password="BD_m3d1c4l")
+        cur = miConexion.cursor()
+
+        comando = "SELECT DISTINCT sol0.solicitud_id valor FROM public.solicitud_solicitudesdetalle sol0 WHERE sol0.id = " + pk
+        print(comando)
+        cur.execute(comando)
+        print(comando)
+
+        solicitudx = []
+
+        for valor in cur.fetchall():
+            solicitudx.append({'valor': valor})
+
+        miConexion.close()
+        print("solicitudx ")
+        print(solicitudx)
+
+        for dato in solicitudx:
+                print(dato)
+                print(dato['valor'])
+                print(json.dumps(dato['valor']))
+                solicitudId = json.dumps(dato['valor'])
+
+        solicitudId = solicitudId.replace("[","")
+        solicitudId = solicitudId.replace("]", "")
+
+        context['SolicitudId '] = solicitudId
+        print("solicitudId = ",solicitudId)
+
+
+        ## Fin busco la SolicitudId
 
         # Buscamos la solicitud
 
@@ -3265,6 +3534,11 @@ def Simple_Upload(request, pk):
         filename = archivost
 
         print ("filename = ", filename)
+
+        if (filename == ''):
+            print ("Entre nO hay archivo")
+            
+            return HttpResponse ("no hay archivo")
 
         #filepath = BASE_DIR + 'C:\\EntornosPython\\comprasTable2\\comprasTable2\\media\\Uploaded Files' + filename
         #filepath = 'C:\\EntornosPython\\comprasTable2\\comprasTable2\\media\\uploaded Files\\' + filename

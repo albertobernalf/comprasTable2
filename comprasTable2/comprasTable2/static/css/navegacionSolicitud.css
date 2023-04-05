@@ -116,3 +116,8 @@ span1 {
   display: inline-block;
   width: 500px;
 }
+
+.prueba:read-only {
+  background-color: red;
+  color: white;
+}

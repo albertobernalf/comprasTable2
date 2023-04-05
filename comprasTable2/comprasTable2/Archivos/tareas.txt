@@ -4,12 +4,12 @@ Tareas: comprasTable
 1. Rutina Correo
 2. Los deletes se bloquean cuano borra mas de uno. Verificar. Sino crear un nuevo programa con datas Tables
 3. Combo areas de pierde
-4. Ingresar a la .224 y crear el nuevo sitio web ejemplo 8085 que apunte a pruebas por el momento...
+4. Pedir clave administrador y Activar el servicio apache, subir 8085. Ingresar a la .224 y crear el nuevo sitio web ejemplo 8085 que apunte a pruebas por el momento...
 5. ojo con las cosas quemadas en el software como estado_id = 3 aprobado, etc. Revizar todo el codigo. Valores default = 1, etc OJOO IMPORTANTE
-6. LAS FORMULAS DE SUMAN EN CAMPOS VALOR TOTLA, ´PARCIAL
+6. LAS FORMULAS DE SUMAN EN CAMPOS VALOR TOTAL, PARCIAL
 7, en la impresion del excel no imprime correctamente el plazo, 
-8. oc en excel vaor bruto - descuento = parcial iva 19% hacer resta parcial -* iva = total
-9. ojo se bloquea cuando no va archivo adjunto
+8. oc en excel valor bruto - descuento = parcial iva 19% hacer resta parcial -* iva = total
+
 
 
        

@@ -81,13 +81,14 @@ class ordenesCompraForm(forms.ModelForm):
     class Meta:
         model = OrdenesCompra
 
+
         id = forms.IntegerField(label='Orde de Compra No', disabled=True, initial=0)
         fechaElab = forms.DateField(initial=datetime.date.today)
         fechaRevi = forms.DateField(initial=datetime.date.today)
         fechaApro = forms.DateField(initial=datetime.date.today)
         estadoOrden =  forms.CharField(label='estadoOrdenon', max_length=1)
         elaboro = forms.IntegerField(label='Usuario',  initial=0)
-        revizo = forms.IntegerField(label='Usuario',required=False)
+        revizo = forms.IntegerField(label='Revizo',  initial=0)
         aprobo = forms.IntegerField(label='Usuario', required=False, initial=0)
         area_id = forms.ModelChoiceField(queryset=Areas.objects.all())
         contacto =  forms.CharField(max_length=120)
@@ -114,10 +115,11 @@ class ordenesCompraForm(forms.ModelForm):
             self.fields['revizo_id'].required = False
 
 
+
         widgets = {
 
             'id': forms.TextInput(attrs={'readonly': 'readonly'}),
-
+            'revizo' : forms.Select(attrs={'readonly': 'readonly'})
 
         }
 

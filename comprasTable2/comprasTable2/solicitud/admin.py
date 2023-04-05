@@ -145,6 +145,8 @@ class ordenesCompraAdmin(admin.ModelAdmin):
     search_fields = ("id", "fechaElab", "fechaRevi", "fechaApro","estadoOrden","observaciones")
     list_filter = ("id", "fechaElab", "fechaRevi", "fechaApro","estadoOrden","observaciones")
 
+    readonly_fields = ["elaboro", "aprobo", "revizo","area"]
+
 
     def has_delete_permission(self, request, obj=None):
         return False
