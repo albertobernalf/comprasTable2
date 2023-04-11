@@ -1,0 +1,126 @@
+{% extends "Reportes/cabeza.html" %}
+{% load static %}
+<head>
+    <style type="text/css">
+        thead tr th {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background-color: #ffffff;
+        }
+
+        .table-responsive {
+            height:200px;
+            overflow:scroll;
+        }
+    </style>
+
+</head>
+
+{% block content %}
+
+
+<div class="row" style="width:1800px;height:1px;">
+    <div class="col-xl-8">   </div>
+    <div class="col-xl-4">
+        <!--    AQUI LOS ARCHIVOS  A SELECCIONAR Y PARAMETROS REGISTRADOS-->
+        <br>
+        <form id="Grilla" action="reportesConsultaTrae/username,sedeSeleccionada,nombreUsuario,nombreSede, perfil,  numeroReporte"
+              method="POST">
+
+            {% for reporteSeleccionado in ReporteSeleccionado %}
+
+        <input type="hidden" class="form-control" id="username" name="username" value={{Username}}>
+        <input type="hidden" class="form-control" id="sedeSeleccionada" name="sedeSeleccionada" value={{SedeSeleccionada}}>
+        <input type="hidden" class="form-control" id="nombreUsuario" name="nombreUsuario" value={{NombreUsuario}}>
+        <input type="hidden" class="form-control" id="perfil" name="perfil" value={{Perfil}}>
+        <input type="hidden" class="form-control" id="nombreSede" name="nombreSede" value={{NombreSede}}>
+        <input type="hidden" class="form-control" id="numeroReporte" name="numeroReporte" value="{{NumeroReporte}}">
+
+            <input type="hidden" id="parametrosSeleccionado" name="parametrosSeleccionado" value="{{Parametros}}">
+            {% for parametros1 in Parametros1 %}
+
+            <input type="hidden" id="{{parametros1.campo}}" name="{{parametros1.campo}}" value="{{parametros1.valor}}">
+
+            {% endfor %}
+
+
+            {% endfor %}
+              <p>
+<!--
+            <input type="radio" name="tipoArchivo" value="excel"></input>
+            <img src="{% static '/img/EXCEL.JPG' %}" class="figure-img img-fluid rounded"    style="width:70px;height:40px;" >
+
+            <input type="radio" name="tipoArchivo" value="pdf"></input>
+            <img src="{% static '/img/PDF1.JPG' %}" class="figure-img img-fluid rounded"    style="width:70px;height:40px;" >
+
+            <input type="radio" name="tipoArchivo" value="csv"></input>
+            <img src="{% static '/img/CSV.JPG' %}" class="figure-img img-fluid rounded"    style="width:70px;height:40px;" >
+
+            <input type="submit" value="DESCARGAR" onclick="return mandoEjecutar();">
+-->
+            </p>
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="col-xl-2">
+
+        <figure class="figure">
+            <br>
+            <img src="{% static '' %}" class="figure-img img-fluid rounded"
+                 style="width:50px;height:50px;" alt="...">
+            <figcaption class="figure-caption text-right">
+                 <a href=""> Retorno </a>
+            </figcaption>
+        </figure>
+    </div>
+
+</div>
+
+<div class="row" style=" height: 350px;">
+
+     <div class="col-xl-12">
+
+        <div class="card-block">
+            <div style="height: 530px; overflow: auto">
+                <table id="grilla" class="table table-hover"
+                       style="height: 650px , background-color:LightGray; border: 3px solid black; border-radius: 10px; width:99%;">
+                    <thead class="thead-dark">
+
+                    <bold>
+                        {% for lasColumnas in LasColumnas %}
+                        <th class="header" scope="col">
+                            {{lasColumnas}}
+                        </th>
+
+                        {% endfor %}
+                    </bold>
+                    </thead>
+
+                    {% for grilla in Grilla %}
+
+                    <tr style="color:blue; height:5px ; font-size: 12px">
+                        {% for value in grilla %}
+
+                        <td class="w-10" style="color:#3366BC; width:10 ; font-size: 12px; white-space: nowrap;"  >
+
+                            {{ value }}
+                        </td>
+                        {% endfor %}
+                    </tr>
+
+                    {% endfor %}
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}

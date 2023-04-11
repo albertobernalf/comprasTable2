@@ -228,4 +228,50 @@ inner join solicitud_usuarios usu on (usu.id = sol.usuarios_id)
 inner join solicitud_usuarios usu1 on (usu1.id = sol0."usuarioResponsableCompra_id") 
 where sol.id = 18 limit 1
 
-SELECT distinct sol0.solicitud_id valor FROM public.solicitud_solicitudesdetalle sol0 WHERE sol0.id = 140
+SELECT id id, fecha, fecha, area_id area_id, usuarios_id usuarios_id 
+from solicitud_solicitudes sol 
+WHERE sol.usuarios_id = 4 and fecha >= '2023-01-01' and fecha <= '2023-12-31'
+ORDER BY fecha
+
+select * from solicitud_solicitudes;
+select * from solicitud_solicitudesdetalle;
+select * from solicitud_usuarios;
+
+SELECT sol.id solicitud, sol.fecha fecha, area.area area,  usu.nom_usuario usuarioSolicitud, sol0.item item , des.nombre descripcion, pre.nombre presentacion,
+	tipo.nombre tipoCompra, sol0.producto producto ,art.articulo articulo,sol0.cantidad cantidad, est.nombre estado, usucomp.nom_usuario usuarioCompra, "ordenCompra_id" ordenCompra
+from solicitud_solicitudes sol 
+left join solicitud_solicitudesdetalle sol0 on (sol0.solicitud_id = sol.id)
+inner join solicitud_usuarios usu on (usu.id= sol.usuarios_id)
+inner join solicitud_areas area on (area.id = sol.area_id)
+inner join solicitud_descripcioncompra des on (des.id = sol0.descripcion_id)
+inner join solicitud_presentacion pre on (pre.id = sol0.presentacion_id)
+inner join solicitud_tiposcompra tipo on (tipo.id = sol0."tiposCompra_id")
+inner join mae_articulos art on (art.codreg_articulo = sol0.producto)
+inner join solicitud_usuarios usucomp on (usucomp.id= sol0."usuarioResponsableCompra_id")
+inner join solicitud_estadosvalidacion est on (est.id = sol0."estadosCompras_id")
+WHERE sol.usuarios_id = 4 and sol.fecha >= '2023-01-01' and sol.fecha <= '2023-12-31'
+ORDER BY sol.fecha, sol.id
+
+solicitud, fecha, area,usuarioSolicitud, item, descripcion,presentacion, tipoCompra, producto , articulo, cantidad, estado, usuarioCompra,  ordenCompra
+
+SELECT sol.id solicitud, sol.fecha fecha, area.area area,  usu.nom_usuario usuarioSolicitud, sol0.item item , des.nombre descripcion, pre.nombre presentacion,	tipo.nombre tipoCompra, sol0.producto producto ,art.articulo articulo,sol0.cantidad cantidad, est.nombre estado, usucomp.nom_usuario usuarioCompra, "ordenCompra_id" ordenCompra
+from solicitud_solicitudes sol  left join solicitud_solicitudesdetalle sol0 on (sol0.solicitud_id = sol.id) inner join solicitud_usuarios usu on (usu.id= sol.usuarios_id)
+inner join solicitud_areas area on (area.id = sol.area_id) inner join solicitud_descripcioncompra des on (des.id = sol0.descripcion_id) inner join solicitud_presentacion pre on (pre.id = sol0.presentacion_id)
+inner join solicitud_tiposcompra tipo on (tipo.id = sol0."tiposCompra_id") inner join mae_articulos art on (art.codreg_articulo = sol0.producto)
+inner join solicitud_usuarios usucomp on (usucomp.id= sol0."usuarioResponsableCompra_id") inner join solicitud_estadosvalidacion est on (est.id = sol0."estadosCompras_id")
+
+
+
+SELECT sol.id solicitud, sol.fecha fecha, area.area area,  usu.nom_usuario usuarioSolicitud, sol0.item item , des.nombre descripcion, pre.nombre presentacion, tipo.nombre tipoCompra, 
+sol0.producto producto ,art.articulo articulo,sol0.cantidad cantidad, est.nombre estado, usucomp.nom_usuario usuarioCompra, "ordenCompra_id" ordenCompra 
+from solicitud_solicitudes sol  
+left join solicitud_solicitudesdetalle sol0 on (sol0.solicitud_id = sol.id) 
+inner join solicitud_usuarios usu on (usu.id= sol.usuarios_id) 
+inner join solicitud_areas area on (area.id = sol.area_id) 
+inner join solicitud_descripcioncompra des on (des.id = sol0.descripcion_id) 
+inner join solicitud_presentacion pre on (pre.id = sol0.presentacion_id) 
+inner join solicitud_tiposcompra tipo on (tipo.id = sol0."tiposCompra_id") 
+inner join mae_articulos art on (art.codreg_articulo = sol0.producto) 
+inner join solicitud_usuarios usucomp on (usucomp.id= sol0."usuarioResponsableCompra_id") 
+inner join solicitud_estadosvalidacion est on (est.id = sol0."estadosCompras_id") 
+WHERE sol.usuarios_id = '4' and fecha >= '2023-04-11T00:00' and fecha <= '2023-04-11T00:00' ORDER BY fecha

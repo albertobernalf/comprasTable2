@@ -100,6 +100,22 @@ class TiposCompra(models.Model):
     def __str__(self):
         return self.nombre
 
+
+class Articulos(models.Model):
+    ACTIVO = 'A'
+    INACTIVO = 'I'
+    TIPO_CHOICES = (
+        (ACTIVO, 'Activo'),
+        (INACTIVO, 'Inactivo'),
+    )
+    id = models.AutoField(primary_key=True)
+    codregArticulo = models.CharField(max_length=30, unique = True)
+    articulo = models.CharField(max_length=300,blank= True, null=True, unique = False)
+    estadoreg = models.CharField(max_length=1, default='A', editable=True ,choices=TIPO_CHOICES,)
+
+    def __str__(self):
+        return self.articulo
+
 class EstadosValidacion(models.Model):
     ACTIVO = 'A'
     INACTIVO = 'I'

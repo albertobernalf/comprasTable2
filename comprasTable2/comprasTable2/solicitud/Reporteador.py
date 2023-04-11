@@ -37,6 +37,7 @@ columnas = 0
 
 class PostStoreReportesConsulta(TemplateView):
     print("Entre Reporte1")
+
     template_name = 'Reportes/ReportesConsulta.html'
     desdeFecha = '2022-01-01'
     hastaFecha = '2022-01-31'
@@ -223,7 +224,7 @@ class PostStoreReportesConsulta(TemplateView):
         miConexion = psycopg2.connect(host="192.168.0.237", database="bd_solicitudes2", port="5432", user="postgres",
                                       password="BD_m3d1c4l")
         cur = miConexion.cursor()
-        comando = "SELECT id,nom_usuario  FROM public.solicitud_usuarios WHERE estadoReg = '" + "A' and perfil  = 'S' ORDER BY nom_usuario"
+        comando = "SELECT id,nom_usuario  FROM public.solicitud_usuarios WHERE estadoReg = '" + "A'  ORDER BY nom_usuario"
         cur.execute(comando)
         print(comando)
 
@@ -239,9 +240,6 @@ class PostStoreReportesConsulta(TemplateView):
         miConexion.close()
 
         ## fin listado Coordinadores
-
-
-
 
         return context
 
@@ -277,11 +275,10 @@ class PostStoreReportesConsulta(TemplateView):
 
         if (numeroReporte=='1'):
             print ("Entre numeroReporte = 1")
-            nombreReporte = "SolicitadoCoordinador"
+            nombreReporte = "Solicitado Coordinador"
             hayParametros = 3
-            cuerpo_sql = "SELECT id id, fecha, fecha, area_id area_id, usuarios_id usuarios_id from solicitud_solicitudes sol WHERE sol.usuarios_id = ? and fecha >= ? and fecha <= ? ORDER BY fecha"
-            encabezados = "id, fecha, area_id, usuarios_id"
-            desdeFecha
+            cuerpo_sql = 'SELECT sol.id solicitud, sol.fecha fecha, area.area area,  usu.nom_usuario usuarioSolicitud, sol0.item item , des.nombre descripcion, pre.nombre presentacion, tipo.nombre tipoCompra, sol0.producto producto ,art.articulo articulo,sol0.cantidad cantidad, est.nombre estado, usucomp.nom_usuario usuarioCompra, "ordenCompra_id" ordenCompra from solicitud_solicitudes sol  left join solicitud_solicitudesdetalle sol0 on (sol0.solicitud_id = sol.id) inner join solicitud_usuarios usu on (usu.id= sol.usuarios_id) inner join solicitud_areas area on (area.id = sol.area_id) inner join solicitud_descripcioncompra des on (des.id = sol0.descripcion_id) inner join solicitud_presentacion pre on (pre.id = sol0.presentacion_id) inner join solicitud_tiposcompra tipo on (tipo.id = sol0."tiposCompra_id") inner join mae_articulos art on (art.codreg_articulo = sol0.producto) inner join solicitud_usuarios usucomp on (usucomp.id= sol0."usuarioResponsableCompra_id") inner join solicitud_estadosvalidacion est on (est.id = sol0."estadosCompras_id") WHERE sol.usuarios_id = ? and fecha >= ? and fecha <= ? ORDER BY fecha'
+            encabezados = "#, fecha, area,usuSolicitud, item, desc,present, tipoCompra, producto , articulo, cantidad, estado, usuCompra,  ordenNo"
             parametros.append(coordinador)
             parametros.append(desdeFecha)
             parametros.append(hastaFecha)
@@ -293,6 +290,16 @@ class PostStoreReportesConsulta(TemplateView):
                 print("Matriz parametros = ", parametros[i - 1])
                 dato = "'" + parametros[i - 1] + "'"
                 cuerpo_sql = cuerpo_sql.replace("?", dato, 1)
+
+        if (numeroReporte == '2'):
+            pass
+
+        if (numeroReporte == '3'):
+            pass
+
+        if (numeroReporte == '4'):
+            pass
+
 
         print("CuerpoSQl_FINAL = ", cuerpo_sql)
         print("cuerpo_sql = ", cuerpo_sql)

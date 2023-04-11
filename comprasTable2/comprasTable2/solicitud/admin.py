@@ -3,7 +3,8 @@ from django import forms
 
 # Register your models here.
 
-from solicitud.models import SedesCompra, Staff, Usuarios, TiposCompra, EstadosValidacion,EstadosAlmacen, Presentacion, DescripcionCompra, Proveedores, Areas, Solicitudes, SolicitudesDetalle, OrdenesCompra
+from solicitud.models import SedesCompra, Staff, Usuarios, TiposCompra, EstadosValidacion,EstadosAlmacen, Presentacion, DescripcionCompra, Proveedores, Areas, Solicitudes, SolicitudesDetalle, OrdenesCompra, Articulos
+from solicitud.models import SedesCompra, Staff, Usuarios, TiposCompra, EstadosValidacion,EstadosAlmacen, Presentacion, DescripcionCompra, Proveedores, Areas, Solicitudes, SolicitudesDetalle, OrdenesCompra, Articulos
 
 @admin.register(SedesCompra)
 class sedesCompraAdmin(admin.ModelAdmin):
@@ -117,6 +118,17 @@ class areasAdmin(admin.ModelAdmin):
 
     def has_delete_permission(self, request, obj=None):
         return False
+
+@admin.register(Articulos)
+class articulosAdmin(admin.ModelAdmin):
+
+    list_display = ("codregArticulo", "articulo", "estadoreg")
+    search_fields = ("codregArticulo", "articulo", "estadoreg")
+    list_filter = ("codregArticulo", "articulo", "estadoreg")
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
 
 @admin.register(Solicitudes)
 class solicitudesAdmin(admin.ModelAdmin):

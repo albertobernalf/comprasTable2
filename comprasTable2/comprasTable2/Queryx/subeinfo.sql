@@ -87,6 +87,8 @@ FROM dblink('mycon1', 'SELECT area   FROM mae_areas'::text)
 select * from public.solicitud_presentacion;
 select * from public.solicitud_tiposcompra;
 
+-- Primero trasteamos mae_articulos a local
+
 
 create table mae_articulos (codreg_articulo,articulo)
 AS
@@ -94,6 +96,21 @@ SELECT codreg_articulo codreg_articulo,  translate(btrim(articulo::text),'óÓá
 FROM dblink('mycon1', 'SELECT codreg_articulo, articulo , activo  FROM mae_articulos'::text)
  c(codreg_articulo character varying  (30), articulo  character varying  (300) , activo character(1))
 where activo='S' ;
+
+
+
+select * from solicitud_articulos;
+delete from solicitud_articulos;
+select codreg_articulo, articulo, length(articulo) from mae_articulos order by  length(articulo) desc;
+
+select codreg_articulo,to_ascii(articulo,'latin1') articulo, 'A' from mae_articulos;
+
+-- este es el query 2 tomado de mae_articulos local
+
+insert into solicitud_articulos ("codregArticulo",articulo,estadoReg) 
+select to_ascii(codreg_articulo, 'latin1') codreg_articulo ,to_ascii(articulo,'latin1') articulo, 'A' from mae_articulos 
+where to_ascii(codreg_articulo, 'latin1') not in ( 'SIFON002','ESPAT001','CANU001','BALO002')
+group by to_ascii(codreg_articulo, 'latin1') ,to_ascii(articulo,'latin1');
 
 
 

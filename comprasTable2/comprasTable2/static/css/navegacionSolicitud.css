@@ -91,6 +91,13 @@ ul.tabs li a .tab-text{
 	}
 }
 
+.scrollable0
+{
+    width: 1300px;
+    height: 130px;
+    overflow:scroll;
+}
+
 .scrollable
 {
     width: 1300px;
