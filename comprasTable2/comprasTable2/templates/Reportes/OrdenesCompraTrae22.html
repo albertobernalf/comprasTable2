@@ -5,6 +5,7 @@
 
 <script>
     window.onload = function(){
+            document.getElementById("prueba").readOnly = true;
       var fecha = new Date(); //Fecha actual
   var mes = fecha.getMonth()+1; //obteniendo mes
   var dia = fecha.getDate(); //obteniendo dia
@@ -141,7 +142,9 @@ function cargaImagen()
                             </div>
 
                             <div class="col-md-4">
-                                <h6>REVIZO: <span id="prueba" name="prueba" class="small">{{form.revizo}}</span></h6>
+                                <div contentEditable="false" id="prueba" name="prueba">
+                                <h6>REVIZO: <span contentEditable="false"  class="small">{{form.revizo}}</span></h6>
+                                    </div>
                             </div>
                             <div class="col-md-1"></div>
                             <div class="col-md-3">

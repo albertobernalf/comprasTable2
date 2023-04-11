@@ -10,6 +10,29 @@ Tareas: comprasTable
 7, en la impresion del excel no imprime correctamente el plazo, 
 8. oc en excel valor bruto - descuento = parcial iva 19% hacer resta parcial -* iva = total
 
+9. hacer campos readonly select como en tickets OJO ticketsForm3...
+10. Ver como sacar los reportes, como integrar com reporteador o meter rutinas adentro y sacar pdf, excel
+11. ojo al descargar adjunto al principio sale null error
+12. ojo probar el lunes si graba la orden de compra, genera el Excel... ya arregle lo de los read only de los campos select 
+13. Cuando yo edito y grabo sin nuingun cambio se pierde el adjunto ...
+14. ojo trabajar el reporteador de compras para diferentes eportes ver si se puede parametrizar en algo los parametros a ejecutar . no lo creo
+15. Ojo mañana probar d enuevo el errorr que tuve hoy de la descripcion creo que fue en la pantalla notif vompras o valiodacioomn umna de dos
+16. Ojo faltan los menus d eacuerdo al perfil bacan, Ah no de pronto todo esta bien salen los menus completos, pero solo tiene opcion a lo que necesita y yap.
+
+   bueno hay trabajito para toda la semana . De lo que hay debe estar fino todo OK. 
+
+    def __init__(self, *args, **kwargs):
+        super(ticketsForm3, self).__init__(*args, **kwargs)
+        instance = getattr(self, 'instance', None)
+        self.fields['tiposTicket'].disabled = True
+        self.fields['empleado'].disabled = True
+        self.fields['sedeInicial'].disabled = True
+        self.fields['tiposTurnoInicial'].disabled = True
+        self.fields['sedeFinal'].disabled = True
+        self.fields['tiposTurnoFinal'].disabled = True
+        self.fields['sedeReemplazo'].disabled = True
+        self.fields['reemplazo'].disabled = True
+
 
 
        

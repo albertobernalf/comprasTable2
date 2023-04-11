@@ -32,6 +32,8 @@
         --------------------------------------------*/
         <!--  alert("Cargue tabla"); -->
 
+
+
         solicitudId            = document.getElementById("solicitudId").value;
         var sedeSeleccionada = document.getElementById("sedeSeleccionada").value;
         var username = document.getElementById("username").value;
@@ -70,10 +72,10 @@
                     "render": function ( data, type, row ) {
                         var btn = '';
                 // <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
-                        btn = btn + " <button class='btn btn-primary editPost'    data-pk='" + row.pk + "'>" + '<i class="fa fa-pencil"></i>' + "</button>";
+                        btn = btn + " <button class='btn btn-secondary editPost'    data-pk='" + row.pk + "'>" + '<i class="fa fa-pencil"></i>'  +  'Editar' + "</button>";
 
-                          btn = btn +  "<a href='{% url "post_descargaArchivo" %}" + "/" +  row.pk + "'>"   +  ' <i class="fa fa-plus"></i>' + "Descargar</a>";
-                          btn = btn + " <button class='btn btn-primary imprimePost'    data-pk='" + row.pk + "'>" + '<i class="fa fa-trash">Imprime OC</i>' + "</button>";
+                          btn = btn +  "<a href='{% url "post_descargaArchivo" %}" + "/" +  row.pk + "'>"   +  ' ' + "Adjunto</a>";
+                          btn = btn + " <button class='btn btn-primary imprimePost'    data-pk='" + row.pk + "'>" + '<i class="fa fa-print">Orden</i>' + "</button>";
 
 
 
@@ -107,7 +109,7 @@
                 { data: "fields.observacionesCompras" },
                 { data: "fields.estadosCompras" },
                 { data: "fields.usuCompras" },
-
+                ,
 
             ]
         });
@@ -121,7 +123,7 @@
 
         $('body').on('click', '.imprimePost', function () {
 
-          alert("Entre a Imprimir");
+
           var username = document.getElementById("username").value;
          var sedeSeleccionada = document.getElementById("sedeSeleccionada").value;
 
@@ -130,12 +132,7 @@
            var pk = $(this).data('pk');
 
 
-
-
           var perfil = document.getElementById("perfil").value;
-
-          // yo pienso que hay que hacer aquip un AJAX que traiga el numero de la Solcitud en cuestion, cargarlo en un campo
-          // invisible de la forma, leerlo desde el Dom y si enviarlo como parametrop, para que el createView funcione
 
 
           var apasar = pk + "," + "EnviaSol" + "," + username + ',' + sedeSeleccionada+ ',' + nombreUsuario + ',' + nombreSede+ ',' + perfil;
@@ -336,7 +333,8 @@
                                      <th>Obs.Com</th>
                                      <th >Est.Com</th>
                                      <th>usuCom</th>
-                                    <th>Action</th>
+                                    <th>Acciones</th>
+
 
 
                                   <!--  <th data-visible="true"></th>  -->

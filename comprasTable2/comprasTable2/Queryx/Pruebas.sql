@@ -14,11 +14,17 @@
 1234
 
 select * from solicitud_usuarios;
-
+SELECT id,nom_usuario  FROM public.solicitud_usuarios WHERE estadoReg = 'A' and perfil  = 'S'
 
 select * from solicitud_usuarios WHERE NOM_USUARIO LIKE ('%MOLINA%');
 select * from solicitud_solicitudes;	
+select * from solicitud_solicitudesdetalle;	
 select * from solicitud_estadosvalidacion;
+
+select id id, fecha, fecha, area_id area_id, usuarios_id usuarios_id from solicitud_solicitudes sol0 where sol.usuarios_id = coordinador and fecha >= ? and fecha <= ? order by fecha
+select id id, fecha, fecha, area_id area_id, usuarios_id usuarios_id from solicitud_solicitudes sol where sol.usuarios_id = 4 and fecha >= '2023-01-01' and fecha <= '2023-12-31' order by fecha
+
+update solicitud_solicitudesdetalle set "ordenCompra_id"=null where id=139;
 
  
 
@@ -221,3 +227,5 @@ inner join solicitud_areas areas on (areas.id = sol.area_id)
 inner join solicitud_usuarios usu on (usu.id = sol.usuarios_id) 
 inner join solicitud_usuarios usu1 on (usu1.id = sol0."usuarioResponsableCompra_id") 
 where sol.id = 18 limit 1
+
+SELECT distinct sol0.solicitud_id valor FROM public.solicitud_solicitudesdetalle sol0 WHERE sol0.id = 140

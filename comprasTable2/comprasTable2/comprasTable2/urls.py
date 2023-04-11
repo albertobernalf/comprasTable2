@@ -19,6 +19,7 @@ from django.urls import path, include
 from django.conf  import settings
 from django.conf.urls.static import  static
 from solicitud import views
+from solicitud.Reporteador import PostStoreReportesConsulta
 
 
 urlpatterns = [
@@ -88,6 +89,13 @@ urlpatterns = [
     path('load_dataOrdenesCompraConsulta/<str:data>/', views.load_dataOrdenesCompraConsulta, name='load_dataOrdenesCompraConsulta'),
 
     # Fin Ordenes de Compras
+
+    ## Reportes
+    #path('reportesConsulta/<str:username>, <str:sedeSeleccionada>,<str:nombreUsuario>, <str:nombreSede>,<str:perfil>/', views.ReportesConsulta, name='ReportesConsulta'),
+    path('reportesConsultaTrae/<str:username>, <str:sedeSeleccionada>,<str:nombreUsuario>, <str:nombreSede>,<str:perfil>,<str:numeroReporte>/', PostStoreReportesConsulta.as_view(), name='post_storeReportesConsulta'),
+    path('reportesConsultaTrae/', PostStoreReportesConsulta.as_view(), name='post_storeReportesConsulta'),
+    ## Fin reportes
+
 
     ## Pruebas carga Files
 

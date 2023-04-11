@@ -11,8 +11,7 @@ import datetime
 
 class solicitudesForm(forms.ModelForm):
 
-    class Meta:
-        model = Solicitudes
+
 
         id = forms.IntegerField(label='Solicitud No', disabled=True, initial=0)
         fecha = forms.DateTimeField()
@@ -21,7 +20,9 @@ class solicitudesForm(forms.ModelForm):
 
         estadoReg = forms.CharField(max_length=1)
 
-        fields = '__all__'
+        class Meta:
+            model = Solicitudes
+            fields = '__all__'
 
         widgets = {
 
@@ -31,10 +32,10 @@ class solicitudesForm(forms.ModelForm):
 
 class solicitudesDetalleForm(forms.ModelForm):
 
-
     class Meta:
         model = SolicitudesDetalle
-
+        fields = ['id', 'item', 'descripcion', 'tiposCompra', 'producto', 'presentacion', 'cantidad', 'justificacion',
+                  'especificacionesTecnicas', 'usuarioResponsableValidacion', 'estadosValidacion', 'adjuntoCompras']
 
         id = forms.IntegerField(label='Solicitud No', disabled=True, initial=0)
         item = forms.IntegerField(label='Item', disabled=True, initial=0)
@@ -48,19 +49,11 @@ class solicitudesDetalleForm(forms.ModelForm):
         usuarioResponsableValidacion = forms.CharField(label='usuarioResponsableValidacion', max_length=1)
         adjuntoCompras = forms.FileField()
 
-
         estadosValidacion = forms.CharField(label='estadosValidacion', max_length=1)
-
-        #estadosValidacion = forms.ModelChoiceField(queryset=EstadosValidacion.objects.all() , required=True)
-      # solicitud_id = forms.IntegerField(label='solicitud_id', disabled=True, initial=0)
-        #estadosValidacion = forms.ModelChoiceField(queryset=EstadosValidacion.objects.all(), label='name',widget=forms.Select )
-
-        #fields = '__all__'
-        fields = ['id', 'item', 'descripcion', 'tiposCompra','producto','presentacion','cantidad', 'justificacion','especificacionesTecnicas',  'usuarioResponsableValidacion','estadosValidacion' , 'adjuntoCompras']
 
         widgets = {
 
-            'id':  forms.TextInput(attrs={'readonly': 'readonly'}),
+            'id': forms.TextInput(attrs={'readonly': 'readonly'}),
             'item': forms.TextInput(attrs={'readonly': 'readonly'}),
             'cantidad': forms.TextInput(attrs={'readonly': 'readonly'}),
             'tiposCompra': forms.TextInput(attrs={'readonly': 'readonly'}),
@@ -69,61 +62,71 @@ class solicitudesDetalleForm(forms.ModelForm):
             'descripcion_id': forms.TextInput(attrs={'readonly': 'readonly'}),
             'estadosSolicitud_id': forms.TextInput(attrs={'readonly': 'readonly'}),
             'presentacion_id': forms.TextInput(attrs={'readonly': 'readonly'}),
-            #'adjuntoCompras' : forms.FileField(),
-            #'estadosValidacion': forms.Select(attrs={'class': 'form-control'})
-          #  'solicitud_id': forms.TextInput(attrs={'readonly': 'readonly'}),
+            # 'adjuntoCompras' : forms.FileField(),
+            # 'estadosValidacion': forms.Select(attrs={'class': 'form-control'})
+            #  'solicitud_id': forms.TextInput(attrs={'readonly': 'readonly'}),
 
         }
+
+
+        #estadosValidacion = forms.ModelChoiceField(queryset=EstadosValidacion.objects.all() , required=True)
+      # solicitud_id = forms.IntegerField(label='solicitud_id', disabled=True, initial=0)
+        #estadosValidacion = forms.ModelChoiceField(queryset=EstadosValidacion.objects.all(), label='name',widget=forms.Select )
+
+        #fields = '__all__'
+
 
 
 class ordenesCompraForm(forms.ModelForm):
 
     class Meta:
         model = OrdenesCompra
-
-
-        id = forms.IntegerField(label='Orde de Compra No', disabled=True, initial=0)
-        fechaElab = forms.DateField(initial=datetime.date.today)
-        fechaRevi = forms.DateField(initial=datetime.date.today)
-        fechaApro = forms.DateField(initial=datetime.date.today)
-        estadoOrden =  forms.CharField(label='estadoOrdenon', max_length=1)
-        elaboro = forms.IntegerField(label='Usuario',  initial=0)
-        revizo = forms.IntegerField(label='Revizo',  initial=0)
-        aprobo = forms.IntegerField(label='Usuario', required=False, initial=0)
-        area_id = forms.ModelChoiceField(queryset=Areas.objects.all())
-        contacto =  forms.CharField(max_length=120)
-        entregarEn =  forms.CharField(max_length=120)
-        telefono =   forms.CharField(max_length=120)
-        proveedor_id = forms.ModelChoiceField(queryset=Proveedores.objects.all())
-        opciones =  forms.CharField(max_length=10)
-        valorBruto  = forms.DecimalField()
-        descuento = forms.DecimalField()
-        valorParcial  = forms.DecimalField()
-        iva = forms.DecimalField()
-        valorTotal = forms.DecimalField()
-        observaciones =   forms.CharField(max_length=300)
-        responsableCompra_id = forms.IntegerField(label='Usuario', disabled=True, initial=0)
-        entragaMercancia_id = forms.IntegerField(label='Usuario', disabled=True, initial=0)
-        recibeMercancia_id = forms.IntegerField(label='Usuario', disabled=True, initial=0)
-        #estadoReg = forms.CharField(max_length=120)
-
         fields = '__all__'
 
-        def __init__(self, *args, **kwargs):
-            super(self.__class__, self).__init__(*args, **kwargs)
-            # asi vuelves tus campos no requeridos
-            self.fields['revizo_id'].required = False
+
+    def __init__(self, *args, **kwargs):
+        super(ordenesCompraForm, self).__init__(*args, **kwargs)
+        instance = getattr(self, 'instance', None)
+        self.fields['revizo'].disabled = True
+        self.fields['area'].disabled = True
+        self.fields['elaboro'].disabled = True
+        self.fields['responsableCompra'].disabled = True
+
+    id = forms.IntegerField(label='Orde de Compra No', disabled=True, initial=0)
+    fechaElab = forms.DateField(initial=datetime.date.today)
+    fechaRevi = forms.DateField(initial=datetime.date.today)
+    fechaApro = forms.DateField(initial=datetime.date.today)
+    estadoOrden = forms.CharField(label='estadoOrdenon', max_length=1)
+    elaboro = forms.Select()
+    revizo = forms.Select()
+    aprobo = forms.Select()
+    area = forms.Select()
+    contacto = forms.CharField(max_length=120)
+    entregarEn = forms.CharField(max_length=120)
+    telefono = forms.CharField(max_length=120)
+    proveedor_id = forms.ModelChoiceField(queryset=Proveedores.objects.all())
+   # opciones = forms.CharField(max_length=10)
+    opciones = forms.Select()
+    valorBruto = forms.DecimalField()
+    descuento = forms.DecimalField()
+    valorParcial = forms.DecimalField()
+    iva = forms.DecimalField()
+    valorTotal = forms.DecimalField()
+    observaciones = forms.CharField(max_length=300)
+    responsableCompra = forms.Select()
+    entragaMercancia_id = forms.IntegerField(label='Usuario', disabled=True, initial=0)
+    recibeMercancia_id = forms.IntegerField(label='Usuario', disabled=True, initial=0)
 
 
+    widgets = {
 
-        widgets = {
+        'id': forms.TextInput(attrs={'readonly': 'readonly'}),
+        'aprobo': forms.Select(attrs={'readonly': 'readonly'}),
 
-            'id': forms.TextInput(attrs={'readonly': 'readonly'}),
-            'revizo' : forms.Select(attrs={'readonly': 'readonly'})
+    }
 
-        }
 
-        def clean_contacto(self):
+    def clean_contacto(self):
             print ("Entre Contacto")
             data = self.cleaned_data['contacto']
 

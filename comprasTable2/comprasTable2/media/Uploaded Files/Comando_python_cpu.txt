@@ -1,0 +1,26 @@
+var = ssh root@192.168.0.237 "/mnt/sda3/PostgreSQL/9.4/backups/cpu.sh"
+echo $var
+
+
+from subprocess import check_output
+comando = "tu_comando_aquí"
+check_output(comando, shell=True)
+
+plink -pw M3d1c4l2018 root@192.168.0.238 bash -c "/mnt/sda3/PostgreSQL/9.4/backups/cpu.sh"
+
+
+ssh root@192.168.0.238 "python /mnt/sda3/PostgreSQL/9.4/backups/consumo.py"
+
+
+keyboard.press_and_release("M")
+keyboard.press_and_release("3")
+keyboard.press_and_release("d")
+keyboard.press_and_release("1")
+keyboard.press_and_release("4")
+keyboard.press_and_release("l")
+keyboard.press_and_release("2")
+keyboard.press_and_release("0")
+keyboard.press_and_release("1")
+keyboard.press_and_release("8")
+keyboard.press_and_release("enter")
+

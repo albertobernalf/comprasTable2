@@ -1,0 +1,2 @@
+"datname";"numbackends";"xact_commit";"xact_rollback";"blks_read";"blks_hit";"tup_returned";"tup_fetched";"tup_inserted";"tup_updated";"tup_deleted";"conflicts";"temp_files";"temp_bytes";"deadlocks";"blk_read_time";"blk_write_time";"stats_reset"
+"bd_imhotep";"295";"510756183";"293863";"181291457556";"822693660260";"12199677130032";"389559319316";"5393800";"527033163";"528184";"0";"18025240";"52870792206840";"389";"0";"0";"2022-02-06 10:46:36.753533-05"

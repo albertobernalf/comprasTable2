@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+
+
 # Create your views here.
 from django.shortcuts import render
 import re
@@ -218,10 +220,15 @@ def validaAcceso(request):
             else:
                 pass
                 print("Paso Autenticacion")
-    ## el render aquip /solicitudesConsultaTrae/{{Username}}, {{SedeSeleccionada}}, {{NombreUsuario}} , {{NombreSede}}, {{Perfil}}
+
+    xx=nombreUsuario[0]['nom_usuario']
+    yy=nombreSede[0]['nom_sede']
 
     print("Asi quedo el nombre del usuario", context['NombreUsuario'])
     #return render(request, "Reportes/cabeza.html", context)
+    ## el render aquip /solicitudesConsultaTrae/{{Username}}, {{SedeSeleccionada}}, {{NombreUsuario}} , {{NombreSede}}, {{Perfil}}
+    #return HttpResponseRedirect(reverse('post_storeSolicitudesConsulta'), {'Username':username, 'SedeSeleccionada':sedeSeleccionada, 'NombreUsuario':xx, 'NombreSede':yy, 'Perfil':perfil})
+    #return redirect(reverse('post_storeSolicitudesConsulta', kwargs={'Username':username, 'SedeSeleccionada':sedeSeleccionada, 'NombreUsuario':xx, 'NombreSede':yy, 'Perfil':perfil}))
     return render(request, "Reportes/cabeza.html", context)
 
 
@@ -976,7 +983,7 @@ class PostStoreValidacion(TemplateView):
 
         context = {}
 
-        print("OPS Entre pos POST DEL VIEW")
+        print("OPS Entre pos POST DEL VIEW Validacion")
 
         username = request.POST["username"]
         nombreSede = request.POST["nombreSede"]
@@ -994,7 +1001,8 @@ class PostStoreValidacion(TemplateView):
         print ("CONTEXTO solicitudId", solicitudId)
 
         form = self.form_class(request.POST)
-
+        print ("Antes del Error :")
+        print ("form = " , form)
         data = {'error': form.errors}
         print ("DATA MALUCA = ", data)
 
@@ -2156,7 +2164,6 @@ class PostStoreOrdenesCompra(CreateView):
 
         ## Primero con el Id que llega busco ahora si la solicitud
 
-
         miConexion = psycopg2.connect(host="192.168.0.237", database="bd_solicitudes2", port="5432", user="postgres",
                                       password="BD_m3d1c4l")
         cur = miConexion.cursor()
@@ -2212,12 +2219,13 @@ class PostStoreOrdenesCompra(CreateView):
 
         initial = super(PostStoreOrdenesCompra, self).get_initial()
 
+
+
         if ordenCompra != []:
+
 
             initial['elaboro'] = ordenCompra[0]['idSol']
             initial['revizo'] = ordenCompra[0]['usuCompras']
-            #initial['revizo'] = 'readonly'
-            #initial['aprobo'] = ordenCompra[0]['']
             initial['responsableCompra'] = ordenCompra[0]['usuCompras']
             initial['area'] = ordenCompra[0]['area']
             initial['valorBruto'] = 0
@@ -2238,12 +2246,12 @@ class PostStoreOrdenesCompra(CreateView):
     def form_valid(self, form):
 
         print ("Entre Forma valida y kwargs = ",self.kwargs )
-        solicitudId = self.request.GET["solicitudId"]
-        username = self.request.GET["username"]
-        sedeSeleccionada = self.request.GET["sedeSeleccionada"]
-        nombreUsuario = self.request.GET["nombreUsuario"]
-        nombreSede = self.request.GET["nombreSede"]
-        perfil = self.request.GET["perfil"]
+        pk = self.kwargs["pk"]
+        username = self.kwargs["username"]
+        sedeSeleccionada = self.kwargs["sedeSeleccionada"]
+        nombreUsuario = self.kwargs["nombreUsuario"]
+        nombreSede = self.kwargs["nombreSede"]
+        perfil = self.kwargs["perfil"]
 
         print("FormaValida Clean = ", form.cleaned_data)
         print("form fechaElab = ", form.cleaned_data['fechaElab'])
@@ -2261,8 +2269,41 @@ class PostStoreOrdenesCompra(CreateView):
         context['NombreUsuario'] = nombreUsuario
         context['NombreSede'] = nombreSede
         context['Perfil'] = perfil
-        context['SolicitudId'] = solicitudId
 
+
+        ## Primero con el Id que llega busco ahora si la solicitud
+
+        miConexion = psycopg2.connect(host="192.168.0.237", database="bd_solicitudes2", port="5432", user="postgres",
+                                      password="BD_m3d1c4l")
+        cur = miConexion.cursor()
+
+        comando = "SELECT DISTINCT sol0.solicitud_id valor FROM public.solicitud_solicitudesdetalle sol0 WHERE sol0.id = " + pk
+        print(comando)
+        cur.execute(comando)
+        print(comando)
+
+        solicitudx = []
+
+        for valor in cur.fetchall():
+            solicitudx.append({'valor': valor})
+
+        miConexion.close()
+        print("solicitudx ")
+        print(solicitudx)
+
+        for dato in solicitudx:
+            print(dato)
+            print(dato['valor'])
+            print(json.dumps(dato['valor']))
+            solicitudId = json.dumps(dato['valor'])
+
+        solicitudId = solicitudId.replace("[", "")
+        solicitudId = solicitudId.replace("]", "")
+
+        #context['SolicitudId '] = solicitudId
+        print("solicitudId = ", solicitudId)
+        context['SolicitudId'] = solicitudId
+        ## Fin busco la SolicitudId
 
         ## Comienza la rutina que crea el archivo Excel
 
@@ -2480,9 +2521,9 @@ class PostStoreOrdenesCompra(CreateView):
         e20 = my_sheet['E20']
         e20.value = "DETALLE DE LA COMPRA"
         e20.font = fuente1
-        k20 = my_sheet['K20']
-        k20.value = "VALOR BRUTO"
-        k20.font = fuente1
+        #k20 = my_sheet['K20']
+        #k20.value = "VALOR BRUTO"
+        #k20.font = fuente1
         b21 = my_sheet['B21']
         b21.value = "ITEM"
         b21.font = fuente1
@@ -2849,6 +2890,8 @@ class PostStoreOrdenesCompra(CreateView):
         #c31.value = "NOVENTA (90) DIAS"
         #c31.font = fuente2
         print("Pase 58")
+        voy = voy + 1
+
         llaveh = 'h' + str(voy)
         llaveh1 = 'H' + str(voy)
         llaveh = my_sheet[llaveh1]
@@ -2861,8 +2904,7 @@ class PostStoreOrdenesCompra(CreateView):
         llavel1 = 'L' + str(voy)
         llavel = my_sheet[llavel1]
         llavel.value = form.cleaned_data['valorTotal']
-        #l31 = my_sheet['L31']
-        #l31.value = form.cleaned_data['valorTotal']
+        voy = voy + 1
         llaveb = 'b' + str(voy)
         llaveb1 = 'B' + str(voy)
         llaveb = my_sheet[llaveb1]
@@ -3326,6 +3368,49 @@ def descargaArchivo(request, archivo):
     response["Content-Disposition"] = contenido
 
     return response
+
+def ReportesConsulta(request, username, sedeSeleccionada, nombreUsuario, nombreSede, perfil):
+
+    context = {}
+    print ("username = " , username )
+
+    context['Username'] = username
+    context['SedeSeleccionada'] = sedeSeleccionada
+    context['NombreUsuario'] = nombreUsuario
+    context['NombreSede'] = nombreSede
+    context['Perfil'] = perfil
+
+    ## Consigo el listado de coordinadores
+
+    miConexion = psycopg2.connect(host="192.168.0.237", database="bd_solicitudes2", port="5432", user="postgres",
+                                  password="BD_m3d1c4l")
+    cur = miConexion.cursor()
+    comando = "SELECT id,nom_usuario  FROM public.solicitud_usuarios WHERE estadoReg = '" + "A' and perfil  = 'S' ORDER BY nom_usuario"
+    cur.execute(comando)
+    print(comando)
+
+    coordinadores = []
+
+    for id, nom_usuario in cur.fetchall():
+        coordinadores.append({'id': id, 'nom_usuario': nom_usuario})
+
+
+
+    context['Coordinadores'] = coordinadores
+
+    print("coordinadores = ", coordinadores)
+
+    miConexion.close()
+
+    ## fin listado Coordinadores
+
+    return render(request, 'Reportes\ReportesConsulta.html', context )
+
+## aqui deb ir PostStoreReportesConsulta
+
+
+## Fin de PostStoreReportesConsulta
+
 
 ## Desde Aqui Consulta Ordenes de Compras
 
