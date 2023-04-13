@@ -58,7 +58,19 @@ window.onload = function(){
                 <H4>
                     <span style="font-style:font-size:2px">
                             <b>
+                                {% if NumeroReporte == '1' %}
                            <FONT COLOR="white"> SOLICITADO POR COORDINADOR </FONT>
+                                {% endif %}
+                                 {% if NumeroReporte == '2' %}
+                           <FONT COLOR="white"> VALIDADO POR AMBITO </FONT>
+                                {% endif %}
+                                 {% if NumeroReporte == '3' %}
+                           <FONT COLOR="white"> ALMACEN </FONT>
+                                {% endif %}
+
+                                {% if NumeroReporte == '4' %}
+                           <FONT COLOR="white"> COMPRADO COORDINADOR </FONT>
+                                {% endif %}
                             </b>
                     </span>
                 </H4>
@@ -113,16 +125,47 @@ window.onload = function(){
                 </div>
                 {% endif %}
                 <!-- Fin Seria desde aqui para controlar la pantalla del reporte -->
+
+                <!--
                 {% if NumeroReporte == '2' %}
                 <div class="form-row">
                 </div>
                 {% endif %}
-                {% if NumeroReporte == '3' %}
+                -->
+
+                {% if NumeroReporte == '2' or NumeroReporte == '4' or NumeroReporte == '3' %}
                 <div class="form-row">
-                </div>
-                {% endif %}
-                {% if NumeroReporte == '4' %}
-                <div class="form-row">
+                     <div class="form-group col-md-1">
+
+                        <label for="coordionador" class="col-sm-1 control-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Coordinador:</label>
+                        <select class="form-control" id="coordionador" name="coordinador">
+                            {% for coordinadores in Coordinadores %}
+                            <option value="{{coordinadores.id}}"> {{coordinadores.nom_usuario}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4"></div>
+                    <div class="form-group col-md-3">
+                        <label for="desdeFechaSolicitud" class="col-form-label">Fecha Desde:</label>
+                        <input type="datetime-local" class="form-control" id="desdeFechaSolicitud" name="desdeFechaSolicitud"></input>
+                    </div>
+                    <div class="form-group col-md-1"></div>
+
+                    <div class="form-group col-md-3 ">
+                        <label for="hastaFechaSolicitud" class="col-form-label">Fecha hasta:</label>
+                        <input type="datetime-local" class="form-control" id="hastaFechaSolicitud" name="hastaFechaSolicitud"></input>
+                        <input type="hidden" class="form-control" id="username" name="username" value={{Username}}>
+                        <input type="hidden" class="form-control" id="sedeSeleccionada" name="sedeSeleccionada"
+                               value={{SedeSeleccionada}}>
+                        <input type="hidden" class="form-control" id="nombreUsuario" name="nombreUsuario"
+                               value={{NombreUsuario}}>
+                        <input type="hidden" class="form-control" id="perfil" name="perfil" value={{Perfil}}>
+                        <input type="hidden" class="form-control" id="nombreSede" name="nombreSede"
+                               value={{NombreSede}}>
+                        <input type="hidden" class="form-control" id="numeroReporte" name="numeroReporte"
+                               value="{{NumeroReporte}}">
+                    </div>
+
                 </div>
                 {% endif %}
 
@@ -160,7 +203,13 @@ window.onload = function(){
                         <input type="submit" id="btnEnviarSol" name="btnEnviarSol" value="Enviar"> </input></div>
 
                 </div>
-
+                        {% if messages %}
+                             <ul class="messages">
+                             {% for message in messages %}
+                               <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                         </ul>
+                        {% endif %}
 
 
             </form>

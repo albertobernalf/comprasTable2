@@ -20,7 +20,8 @@ from django.conf  import settings
 from django.conf.urls.static import  static
 from solicitud import views
 from solicitud.Reporteador import PostStoreReportesConsulta
-
+from django.contrib.auth.models import User
+from django.contrib.auth.models import Group
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -112,5 +113,6 @@ if settings.DEBUG:
 admin.site.site_header = 'Administracion Medical Compras'
 admin.site.site_title = "Portal de Medical Compras"
 admin.site.index_title = "Bienvenidos al portal de administración Medical Compras"
-
+admin.site.unregister(User)
+admin.site.unregister(Group)
 

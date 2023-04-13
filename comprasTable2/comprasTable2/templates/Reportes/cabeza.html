@@ -7,15 +7,21 @@
     <title>
         {% block title %} {% endblock %}
     </title>
+
+     <!-- CON INTERNET  -->
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- FIN CON INTERNET  -->
+
     <!-- Custom css -->
     <link rel="stylesheet" type="text/css" href={% static 'css/login.css' %} >
     <link rel="stylesheet" type="text/css" href={% static 'nav_sidebar.css' %} >
     <link rel="stylesheet" type="text/css" href={% static 'css/base.css' %} >
     <link rel="stylesheet" type="text/css" href={% static 'css/responsive.css' %} >
 
-    <!-- De DATA TABLE -->
+    <!-- De DATA TABLE DE INTERNET  -->
 
      <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
@@ -27,6 +33,24 @@
     <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+
+    <!-- De DATA TABLE CON ARCHIVOS LOCALES
+
+      <link rel="stylesheet" href={% static 'DescargasChivos/bootstrap.min.Version 4.3.1.css' %}
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+     <link href={% static 'DescargasChivos/bootstrap.min.Version 5.0.1' %}  rel="stylesheet">
+    <link href={% static 'DescargasChivos/dataTables.bootstrap5.min.css' %} rel="stylesheet">
+    <link rel="stylesheet" href={% static 'DescargasChivos/font-awesome.min.css' %} />
+    <script src={% static 'DescargasChivos/jquery-3.5.1.js' %}></script>
+    <script src={% static 'DescargasChivos/jquery.validate.js' %}></script>
+    <script src={% static 'DescargasChivos/jquery.dataTables.min.js' %}></script>
+    <script src={% static 'DescargasChivos/bootstrap.bundle.min.js' %}></script>
+    <script src={% static 'DescargasChivos/dataTables.bootstrap5.min.js' %}></script>
+    <link rel="stylesheet" href={% static 'DescargasChivos/sweetalert.min.css' %} />
+    <script src={% static 'DescargasChivos/sweetalert.min.js' %}></script>
+-->
 
     <!-- FIN De DATA TABLE -->
 
@@ -143,9 +167,17 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
                                 <a class="dropdown-item" href="/reportesConsultaTrae/{{Username}}, {{SedeSeleccionada}}, {{NombreUsuario}} , {{NombreSede}}, {{Perfil}},1">Solicitado por coordinador</a>
-                                <a class="dropdown-item" href="/reportesConsultaTrae/{{Username}}, {{SedeSeleccionada}}, {{NombreUsuario}} , {{NombreSede}}, {{Perfil}},2">Validado por ambito</a>
-                                <a class="dropdown-item" href="/reportesConsultaTrae/{{Username}}, {{SedeSeleccionada}}, {{NombreUsuario}} , {{NombreSede}}, {{Perfil}}, 3">Almacen</a>
-                                <a class="dropdown-item" href="/reportesConsultaTrae/{{Username}}, {{SedeSeleccionada}}, {{NombreUsuario}} , {{NombreSede}}, {{Perfil}}, 4">Comprado</a>
+
+                                    <a class="dropdown-item" href="/reportesConsultaTrae/{{Username}}, {{SedeSeleccionada}}, {{NombreUsuario}} , {{NombreSede}}, {{Perfil}},2">Validado por ambito</a>
+
+
+
+                                    <a class="dropdown-item" href="/reportesConsultaTrae/{{Username}}, {{SedeSeleccionada}}, {{NombreUsuario}} , {{NombreSede}}, {{Perfil}},3">Almacen</a>
+
+
+
+                                     <a class="dropdown-item" href="/reportesConsultaTrae/{{Username}}, {{SedeSeleccionada}}, {{NombreUsuario}} , {{NombreSede}}, {{Perfil}},4">Comprado</a>
+
 
                             </div>
                         </li>
@@ -241,22 +273,42 @@
 <!--  Esto es Bootstrap -->
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  -->
 
+    <!-- Estos son con los archivos de internet -->
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
-<link rel="stylesheet" type="text/css"
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css"
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css">
-<link rel="stylesheet" type="text/css"
+    <link rel="stylesheet" type="text/css"
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker-standalone.css">
-<script type="text/javascript"
+    <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js"></script>
+
 
  <!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">  -->
   <!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  -->
 
 <!-- Fin  Esto es Bootstrap -->
 
+<!-- Aqui los archivos sin conexion a INTERNET
+
+
+    <link rel="stylesheet" href={% static 'DescargasChivos/bootstrap.min.Version 4.3.1.css' %} integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src={% static 'DescargasChivos/popper.min.js' %} integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src={% static 'DescargasChivos/bootstrap.min.js' %} integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type={% static 'DescargasChivos/moment.min.js' %}></script>
+    <link rel="stylesheet" type="text/css"
+      href={% static 'DescargasChivos/bootstrap-datetimepicker.min.css' %}>
+    <link rel="stylesheet" type="text/css"
+      href={% static 'DescargasChivos/bootstrap-datetimepicker-standalone.css' %}>
+    <script type="text/javascript"
+        src={% static 'DescargasChivos/bootstrap-datetimepicker.min.js' %}></script>
+-->
+
+
+
+<!-- FIN archivos sin conexion a INYTERNET -->
 </body>
 </html>

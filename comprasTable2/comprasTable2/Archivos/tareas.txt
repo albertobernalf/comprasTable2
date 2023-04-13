@@ -7,26 +7,17 @@ Tareas: comprasTable
 4. Pedir clave administrador y Activar el servicio apache, subir 8085. Ingresar a la .224 y crear el nuevo sitio web ejemplo 8085 que apunte a pruebas por el momento...
 5. ojo con las cosas quemadas en el software como estado_id = 3 aprobado, etc. Revizar todo el codigo. Valores default = 1, etc OJOO IMPORTANTE
 6. LAS FORMULAS DE SUMAN EN CAMPOS VALOR TOTAL, PARCIAL
-7, en la impresion del excel no imprime correctamente el plazo, 
-8. oc en excel valor bruto - descuento = parcial iva 19% hacer resta parcial -* iva = total
-9. Cuando edito y grabo sin ningun cambio se pierde el adjunto ...
-10. Hacer reportes de compras (4)
-11 Pruebas generales varias
+7. oc en excel valor bruto - descuento = parcial iva 19% hacer resta parcial -* iva = total
+8. Cuando edito y grabo sin ningun cambio se pierde el adjunto ...
+9. Pruebas generales varias
 
 
+12. De pronto el tamaño de los datatables a ver como se pueden encoger no es prioritario cada coordinador no es que vaya a tener muchas solicitudes
+13. Probar el scroll de un datatable
+14. PROBAR SON CONEXION A internet
+	
+    bueno hay trabajito para toda la semana . De lo que hay debe estar fino todo OK. 
 
-   bueno hay trabajito para toda la semana . De lo que hay debe estar fino todo OK. 
 
-    def __init__(self, *args, **kwargs):
-        super(ticketsForm3, self).__init__(*args, **kwargs)
-        instance = getattr(self, 'instance', None)
-        self.fields['tiposTicket'].disabled = True
-        self.fields['empleado'].disabled = True
-        self.fields['sedeInicial'].disabled = True
-        self.fields['tiposTurnoInicial'].disabled = True
-        self.fields['sedeFinal'].disabled = True
-        self.fields['tiposTurnoFinal'].disabled = True
-        self.fields['sedeReemplazo'].disabled = True
-        self.fields['reemplazo'].disabled = True
 
        

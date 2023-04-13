@@ -2629,7 +2629,7 @@ class PostStoreOrdenesCompra(CreateView):
             miConexion.set_client_encoding('LATIN1')
             cur = miConexion.cursor()
 
-            comando = "SELECT pres.nombre presentacion, des.nombre descripcion FROM public.solicitud_solicitudesdetalle sol, public.solicitud_descripcioncompra des, public.solicitud_presentacion pres WHERE sol.solicitud_id = '" + str(solicitudId) + "'" + " AND sol.descripcion_id = des.id AND sol.presentacion_id = pres.id AND sol.item = " + str(campoItem)
+            comando = 'SELECT pres.nombre presentacion, des.nombre descripcion, sol.producto producto, art.articulo articulo FROM public.solicitud_solicitudesdetalle sol, public.solicitud_descripcioncompra des, public.solicitud_presentacion pres, public.solicitud_articulos art  WHERE sol.solicitud_id = ' +  str(solicitudId) + ' AND sol.descripcion_id = des.id AND sol.presentacion_id = pres.id AND sol.producto = art."codregArticulo" AND sol.item = ' + str(campoItem)
 
             print(comando)
             print("pase2666")
@@ -2639,8 +2639,8 @@ class PostStoreOrdenesCompra(CreateView):
 
             datosAdic = []
 
-            for presentacion, descripcion in cur.fetchall():
-                datosAdic.append({'presentacion': presentacion, 'descripcion': descripcion})
+            for presentacion, descripcion, producto, articulo in cur.fetchall():
+                datosAdic.append({'presentacion': presentacion, 'descripcion': descripcion,'producto':producto, 'articulo':articulo})
 
             miConexion.close()
             print("datosAdic")
@@ -2652,6 +2652,8 @@ class PostStoreOrdenesCompra(CreateView):
 
             presentacion = jsonAdic['presentacion']
             descripcion = jsonAdic['descripcion']
+            producto = jsonAdic['producto']
+            articulo = jsonAdic['articulo']
 
 
 
@@ -2669,7 +2671,7 @@ class PostStoreOrdenesCompra(CreateView):
             llavec = 'c' + str(voy)
             llavec1 = 'C' + str(voy)
             llavec = my_sheet[llavec1]
-            llavec.value = descripcion
+            llavec.value = articulo
             # c23 = my_sheet['C23']
             # c23.value = "AqUi descripcion"
 
@@ -2771,6 +2773,22 @@ class PostStoreOrdenesCompra(CreateView):
         llavec = my_sheet[llavec1]
         llavec.value = "CONTRA ENTREGA"
         llavec.font = fuente2
+
+        #########################################
+        ## AQUI COLOCAR X PARA CONTRA ENTREGA F
+        ##########################################
+
+        if (form.cleaned_data['opciones'] == 'C'):
+            llavef = 'f' + str(voy)
+            llavef1 = 'F' + str(voy)
+            llavef = my_sheet[llavef1]
+            # llavef.value = str(form.cleaned_data['opciones'])
+            llavef.value = "X"
+            llavef.font = fuente2
+
+
+
+
         #c28 = my_sheet['C28']
         #c28.value = "CONTRA ENTREGA"
         #c28.font = fuente2
@@ -2804,6 +2822,11 @@ class PostStoreOrdenesCompra(CreateView):
         llavec = my_sheet[llavec1]
         llavec.value = "ANTICIPO"
         llavec.font = fuente2
+
+
+
+
+
         #c29 = my_sheet['C29']
         #c29.value = "ANTICIPO"
         #c29.font = fuente2
@@ -2815,11 +2838,23 @@ class PostStoreOrdenesCompra(CreateView):
         #e29 = my_sheet['E29']
         #e29.value = "50 %"
         #e29.font = fuente2
-        llavef = 'f' + str(voy)
-        llavef1 = 'F' + str(voy)
-        llavef = my_sheet[llavef1]
-        llavef.value = str(form.cleaned_data['opciones'])
-        llavef.font = fuente2
+
+        #########################################
+        ## MIRE AQUI ESTA IMPRIMIENDO OPCIONES
+        ##########################################
+
+        if (form.cleaned_data['opciones'] == 'A'):
+
+            llavef = 'f' + str(voy)
+            llavef1 = 'F' + str(voy)
+            llavef = my_sheet[llavef1]
+            #llavef.value = str(form.cleaned_data['opciones'])
+            llavef.value = "X"
+            llavef.font = fuente2
+
+
+
+
         #f29 = my_sheet['F29']
         #f29.value = str(form.cleaned_data['opciones'])
         #f29.font = fuente2
@@ -2890,6 +2925,20 @@ class PostStoreOrdenesCompra(CreateView):
         #c31.value = "NOVENTA (90) DIAS"
         #c31.font = fuente2
         print("Pase 58")
+
+        #########################################
+        ## AQUI COLOCAR X PARA 90 DIAS COLUMNA F
+        ##########################################
+
+        if (form.cleaned_data['opciones'] == 'N'):
+            llavef = 'f' + str(voy)
+            llavef1 = 'F' + str(voy)
+            llavef = my_sheet[llavef1]
+            # llavef.value = str(form.cleaned_data['opciones'])
+            llavef.value = "X"
+            llavef.font = fuente2
+
+
         voy = voy + 1
 
         llaveh = 'h' + str(voy)

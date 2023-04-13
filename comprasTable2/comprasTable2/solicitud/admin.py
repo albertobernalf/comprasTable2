@@ -5,6 +5,9 @@ from django import forms
 
 from solicitud.models import SedesCompra, Staff, Usuarios, TiposCompra, EstadosValidacion,EstadosAlmacen, Presentacion, DescripcionCompra, Proveedores, Areas, Solicitudes, SolicitudesDetalle, OrdenesCompra, Articulos
 from solicitud.models import SedesCompra, Staff, Usuarios, TiposCompra, EstadosValidacion,EstadosAlmacen, Presentacion, DescripcionCompra, Proveedores, Areas, Solicitudes, SolicitudesDetalle, OrdenesCompra, Articulos
+from django.contrib.auth.models import User
+from django.contrib.auth.admin import UserAdmin
+
 
 @admin.register(SedesCompra)
 class sedesCompraAdmin(admin.ModelAdmin):
@@ -70,6 +73,11 @@ class estadosValidacionAdmin(admin.ModelAdmin):
     def has_delete_permission(self, request, obj=None):
         return False
 
+
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
 @admin.register(EstadosAlmacen)
 class estadosAlmacenAdmin(admin.ModelAdmin):
         list_display = ("nombre", "estadoreg")
@@ -77,6 +85,11 @@ class estadosAlmacenAdmin(admin.ModelAdmin):
         list_filter = ("nombre", "estadoreg")
 
         def has_delete_permission(self, request, obj=None):
+            return False
+
+
+
+        def has_change_permission(self, request, obj=None):
             return False
 
 @admin.register(Presentacion)
@@ -133,21 +146,33 @@ class articulosAdmin(admin.ModelAdmin):
 @admin.register(Solicitudes)
 class solicitudesAdmin(admin.ModelAdmin):
 
-    list_display = ("fecha", "usuarios", "area", "estadoreg")
-    search_fields = ("fecha", "usuarios", "area", "estadoreg")
-    list_filter = ("fecha", "usuarios", "area", "estadoreg")
+    list_display = ("id", "fecha", "usuarios", "area", "estadoreg")
+    search_fields = ("id", "fecha", "usuarios", "area", "estadoreg")
+    list_filter = ("id", "fecha", "usuarios", "area", "estadoreg")
 
     def has_delete_permission(self, request, obj=None):
+        return False
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+    def has_change_permission(self, request, obj=None):
         return False
 
 @admin.register(SolicitudesDetalle)
 class solicitudesDetalleAdmin(admin.ModelAdmin):
 
-    list_display = ("solicitud", "item", "descripcion", "tiposCompra","cantidad","presentacion","producto","justificacion","estadosSolicitud","usuarioResponsableValidacion","especificacionesTecnicas","estadosValidacion","observacionesCompras")
-    search_fields = ("solicitud", "item", "descripcion", "tiposCompra","cantidad","presentacion","producto","justificacion","estadosSolicitud","usuarioResponsableValidacion","especificacionesTecnicas","estadosValidacion","observacionesCompras")
-    list_filter = ("solicitud", "item", "descripcion", "tiposCompra","cantidad","presentacion","producto","justificacion","estadosSolicitud","usuarioResponsableValidacion","especificacionesTecnicas","estadosValidacion","observacionesCompras")
+    list_display = ("id", "solicitud", "item", "descripcion", "tiposCompra","cantidad","presentacion","producto","justificacion","estadosSolicitud","usuarioResponsableValidacion","especificacionesTecnicas","estadosValidacion","observacionesCompras")
+    search_fields = ("id","solicitud", "item", "descripcion", "tiposCompra","cantidad","presentacion","producto","justificacion","estadosSolicitud","usuarioResponsableValidacion","especificacionesTecnicas","estadosValidacion","observacionesCompras")
+    list_filter = ("id","solicitud", "item", "descripcion", "tiposCompra","cantidad","presentacion","producto","justificacion","estadosSolicitud","usuarioResponsableValidacion","especificacionesTecnicas","estadosValidacion","observacionesCompras")
 
     def has_delete_permission(self, request, obj=None):
+        return False
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+    def has_change_permission(self, request, obj=None):
         return False
 
 @admin.register(OrdenesCompra)
@@ -159,6 +184,11 @@ class ordenesCompraAdmin(admin.ModelAdmin):
 
     readonly_fields = ["elaboro", "aprobo", "revizo","area"]
 
-
     def has_delete_permission(self, request, obj=None):
+        return False
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+    def has_change_permission(self, request, obj=None):
         return False

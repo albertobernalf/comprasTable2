@@ -7,6 +7,10 @@ import csv
 import psycopg2
 import io
 import math
+import json
+from django.contrib import messages
+from django.http import JsonResponse
+from django.urls import reverse_lazy, reverse
 from django.utils.encoding import smart_str
 from django.views.generic import ListView, CreateView, TemplateView
 from reportlab.platypus import *
@@ -224,7 +228,19 @@ class PostStoreReportesConsulta(TemplateView):
         miConexion = psycopg2.connect(host="192.168.0.237", database="bd_solicitudes2", port="5432", user="postgres",
                                       password="BD_m3d1c4l")
         cur = miConexion.cursor()
-        comando = "SELECT id,nom_usuario  FROM public.solicitud_usuarios WHERE estadoReg = '" + "A'  ORDER BY nom_usuario"
+        comando=""
+        if (numeroReporte=='1'):
+            print("entre 1")
+            comando = "SELECT id,nom_usuario  FROM public.solicitud_usuarios WHERE estadoReg = '" + "A'  ORDER BY nom_usuario"
+        if (numeroReporte == '2'):
+            comando = "SELECT id,nom_usuario  FROM public.solicitud_usuarios WHERE estadoReg = '" + "A' AND perfil='V' ORDER BY nom_usuario"
+        if (numeroReporte == '3'):
+            comando = "SELECT id,nom_usuario  FROM public.solicitud_usuarios WHERE estadoReg = '" + "A' AND perfil='A' ORDER BY nom_usuario"
+
+        if (numeroReporte == '4'):
+            print ("entre 4")
+            comando = "SELECT id,nom_usuario  FROM public.solicitud_usuarios WHERE estadoReg = '" + "A' AND perfil='C' ORDER BY nom_usuario"
+
         cur.execute(comando)
         print(comando)
 
@@ -292,13 +308,63 @@ class PostStoreReportesConsulta(TemplateView):
                 cuerpo_sql = cuerpo_sql.replace("?", dato, 1)
 
         if (numeroReporte == '2'):
-            pass
+            print("Entre numeroReporte = 3")
+            nombreReporte = "Validacion Ambito"
+            hayParametros = 3
+            cuerpo_sql = 'SELECT sol0.id solicitudNo,to_char(sol0.fecha,' + "'YYYY - MM - DD HH: MM.SS'" + ') fecha,  areas.area area,  usuariosCreaSol.nom_usuario usuariosCreaSol, sol.item item, des.nombre descripcion, tip.nombre tipo, sol.producto producto, art.articulo producto,pres.nombre  presentacion, sol.cantidad cantidad, sol.justificacion justificacion, sol."especificacionesTecnicas" tec, usu.nom_usuario usuResp,  est.nombre estValidacion FROM public.solicitud_solicitudes sol0 inner join  public.solicitud_solicitudesDetalle sol on (sol.solicitud_id=sol0.id) inner join public.solicitud_descripcioncompra des on (des.id = sol.descripcion_id ) inner join public.solicitud_tiposcompra tip on (tip.id = sol."tiposCompra_id" ) inner join public.solicitud_presentacion pres on (pres.id = sol.presentacion_id ) inner join public.mae_articulos art on (art.codreg_articulo = sol.producto) left join public.solicitud_usuarios usu on (usu.id = sol."usuarioResponsableValidacion_id") inner join public.solicitud_estadosvalidacion est on (est.id = sol."estadosValidacion_id") inner join public.solicitud_areas areas on (areas.id = sol0.area_id) inner join public.solicitud_usuarios usuariosCreaSol on (usuariosCreaSol.id = sol0.usuarios_id)  WHERE  sol."usuarioResponsableValidacion_id" = ? and sol0.fecha>= ? and  sol0.fecha<= ? ORDER BY sol0.fecha,sol0.id,sol.item '
+            encabezados = "#, fecha, area, usuariosCreaSol, item, descripcion, tipo,  producto, art.articulo producto, presentacion,  cantidad, justificacion, tec, usuResp, estValidacion"
+            parametros.append(coordinador)
+            parametros.append(desdeFecha)
+            parametros.append(hastaFecha)
+
+            total = len(parametros)
+            print("numero de parametros =", total)
+            t = range(1, total + 1)
+            for i in t:
+                print("Matriz parametros = ", parametros[i - 1])
+                dato = "'" + parametros[i - 1] + "'"
+                cuerpo_sql = cuerpo_sql.replace("?", dato, 1)
+
 
         if (numeroReporte == '3'):
-            pass
+
+            print("Entre numeroReporte = 3")
+            nombreReporte = "Almacen Coordinador"
+            hayParametros = 3
+            cuerpo_sql = 'SELECT sol0.id solicitudNo,to_char(sol0.fecha, ' + "'YYYY - MM - DD HH: MM.SS'" + ') fecha,  areas.area area,  usuariosCreaSol.nom_usuario usuariosCreaSol, sol.item item, des.nombre descripcion, tip.nombre tipo ,sol.producto producto,  art.articulo nombre_producto ,pres.nombre presentacion,sol.cantidad cantidad , sol.justificacion justificacion , sol."especificacionesTecnicas" tec, est.nombre estValidacion, est1.nombre estadosAlmacen,  sol."especificacionesAlmacen" especificacionesAlmacen,   usu1.nom_usuario usuAlmacen FROM public.solicitud_solicitudes sol0 INNER JOIN public.solicitud_solicitudesDetalle sol on (sol.solicitud_id=sol0.id) INNER JOIN public.solicitud_descripcioncompra des ON (des.id = sol.descripcion_id ) INNER JOIN public.solicitud_tiposcompra tip ON (tip.id = sol."tiposCompra_id" ) INNER JOIN public.solicitud_presentacion pres on (pres.id = sol.presentacion_id) INNER JOIN public.mae_articulos art   ON (art.codreg_articulo = sol.producto) LEFT JOIN  public.solicitud_usuarios usu ON (usu.id = sol."usuarioResponsableValidacion_id") LEFT JOIN public.solicitud_usuarios usu1 ON (usu1.id = sol."usuarioResponsableAlmacen_id") INNER JOIN public.solicitud_estadosvalidacion est ON (est.id = sol."estadosValidacion_id" ) INNER JOIN public.solicitud_estadosalmacen est1  ON (est1.id = sol."estadosAlmacen_id") inner join public.solicitud_areas areas on (areas.id = sol0.area_id) inner join public.solicitud_usuarios usuariosCreaSol on (usuariosCreaSol.id = sol0.usuarios_id)  WHERE  sol."usuarioResponsableAlmacen_id" =  ? and sol0.fecha >= ? and sol0.fecha <= ? ORDER BY sol0.fecha,sol0.id,sol.item '
+            encabezados = "#, fecha,  area,usuariosCreaSol,  item, descripcion, tipo , producto, nombre_producto , presentacion, cantidad, justificacion  , tec, estValidacion, estadosAlmacen, especificacionesAlmacen,   usuAlmacen "
+            parametros.append(coordinador)
+            parametros.append(desdeFecha)
+            parametros.append(hastaFecha)
+
+            total = len(parametros)
+            print("numero de parametros =", total)
+            t = range(1, total + 1)
+            for i in t:
+                print("Matriz parametros = ", parametros[i - 1])
+                dato = "'" + parametros[i - 1] + "'"
+                cuerpo_sql = cuerpo_sql.replace("?", dato, 1)
+
+
 
         if (numeroReporte == '4'):
-            pass
+
+            print("Entre numeroReporte = 4")
+            nombreReporte = "Compras Coordinador"
+            hayParametros = 3
+            cuerpo_sql = 'select ord.id orden, substring(to_char(ord."fechaElab",' + "'yyyy-mm-dd'" + '),1,10) fechaElab,area.area area, usu.nom_usuario usuarioCompras, proveedor proveedor,  sol.item item,art.articulo articulo, pre.nombre presenta, sol.iva iva,sol."solicitadoOrdenCantidad" solicitadoOrdenCantidad ,sol."recibidoOrdenCantidad" recibidoOrdenCantidad,sol."valorUnitario" valorUnitario,sol."solicitadoOrdenValor" solicitadoOrdenValor,sol."recibidoOrdenValor" recibidoOrdenValor ,ord."valorBruto" valorBruto,ord."descuento" descuento,ord."valorParcial" valorParcial, ord."iva" iva, ord."valorTotal" valorTotal,case when ord."estadoOrden" = ' + "'V'" + ' then ' + "'Vigente'" + ' when ord."estadoOrden" = ' + "'C'" + ' then ' +  "'caduca'" + ' end  estadoOrden ,case when ord.opciones= ' + "'A'" + ' then ' + "'Anticipo'" + ' when ord.opciones= ' + "'N'" + ' then ' + "'Noventa dias'" + ' when ord.opciones= ' + "'C'" + ' then ' + "'Contra enrega'" + '  end   opciones,ord.observaciones observaciones, usu1.nom_usuario usuarioAproboStaff FROM solicitud_ordenesCompra ord INNER JOIN solicitud_solicitudesdetalle sol ON (sol."ordenCompra_id" = ord.id) INNER JOIN solicitud_articulos art ON ( art."codregArticulo" = sol.producto) INNER JOIN solicitud_proveedores prov on (prov.id = ord.proveedor_id) INNER JOIN solicitud_areas area on (area.id = ord.area_id) INNER JOIN solicitud_usuarios usu on (usu.id = ord."responsableCompra_id") INNER JOIN solicitud_Staff usu1 on (usu1.id = ord."aproboCompraStaff_id") INNER JOIN solicitud_descripcioncompra des on (des.id = sol.descripcion_id) INNER JOIN solicitud_presentacion pre on (pre.id = sol.presentacion_id) WHERE ord."responsableCompra_id" = ? and ord."fechaElab"  >= ? and ord."fechaElab"  <= ? ORDER BY ord."fechaElab", sol.item'
+            encabezados = "#,Elab,area, usuCompras,proveedor, item, articulo, presenta, iva, solicitadoOrdenCantidad , recibidoOrdenCantidad, valorUnitario, solicitadoOrdenValor, recibidoOrdenValor ,valorBruto,descuento, valorParcial, iva, valorTotal,  estadoOrden , opciones,observaciones,  usuarioAproboStaff"
+            parametros.append(coordinador)
+            parametros.append(desdeFecha)
+            parametros.append(hastaFecha)
+
+            total = len(parametros)
+            print("numero de parametros =", total)
+            t = range(1, total + 1)
+            for i in t:
+                print("Matriz parametros = ", parametros[i - 1])
+                dato = "'" + parametros[i - 1] + "'"
+                cuerpo_sql = cuerpo_sql.replace("?", dato, 1)
 
 
         print("CuerpoSQl_FINAL = ", cuerpo_sql)
@@ -445,6 +511,38 @@ class PostStoreReportesConsulta(TemplateView):
 
         nombreReporteFinal = nombreReporte + ".pdf"
         response['Content-Disposition'] = 'attachment; filename= '  + nombreReporteFinal
+
+        ## Controlo si genero o no el listado del informe
+
+        print("A CONTROLAR EL ACCESO AL REPORTE")
+        data = "usuario no tiene permisos para generar el informe"
+
+        if (numeroReporte == '2'):
+            if (perfil != 'V'):
+                messages.warning(request, 'usuario no tiene permisos para generar el informe.')
+                # return redirect('post_storeReportesConsulta',kwargs={'username': username, 'sedeSeleccionada': sedeSeleccionada,'nombreUsuario': nombreUsuario, 'nombreSede': nombreSede, 'perfil': perfil, 'numeroReporte':4})
+                # return JsonResponse("usuario no tiene permisos para generar el informe")
+                return HttpResponse(json.dumps(data), content_type="application/json")
+
+        if (numeroReporte == '3'):
+            if (perfil != 'A'):
+                messages.warning(request, 'usuario no tiene permisos para generar el informe.')
+                #return redirect('post_storeReportesConsulta',kwargs={'username': username, 'sedeSeleccionada': sedeSeleccionada,'nombreUsuario': nombreUsuario, 'nombreSede': nombreSede, 'perfil': perfil, 'numeroReporte':4})
+                #return JsonResponse("usuario no tiene permisos para generar el informe")
+                return HttpResponse(json.dumps(data), content_type="application/json")
+
+        if (numeroReporte == '4'):
+            if (perfil != 'C'):
+                print("pase1")
+                messages.warning(request, 'usuario no tiene permisos para generar el informe.')
+                print("pase2")
+                #return redirect('post_storeReportesConsulta',kwargs={'username': username, 'sedeSeleccionada': sedeSeleccionada ,'nombreUsuario': nombreUsuario, 'nombreSede': nombreSede, 'perfil': perfil, 'numeroReporte':4 })
+
+                #return JsonResponse("usuario no tiene permisos para generar el informe")
+                return HttpResponse(json.dumps(data), content_type="application/json")
+
+
+        ## FIN CONROLO ACCESO
 
         #response['Content-Disposition'] = 'attachment; filename="' + tipodoc + ' ' + documento + '.pdf"'
 
